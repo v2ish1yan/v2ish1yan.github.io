@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Oauth授权类型 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="Oauth的授权类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oauth授权类型">
+<meta property="og:url" content="http://example.com/2023/07/03/web%E6%BC%8F%E6%B4%9E/OAuth%202.0%20%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E/oauth%E7%9A%84%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="Oauth的授权类型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222118409.jpeg">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222313772.jpeg">
+<meta property="article:published_time" content="2023-07-03T09:27:08.771Z">
+<meta property="article:modified_time" content="2023-07-03T09:31:25.903Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="Oauth2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222118409.jpeg">
+  
+  
+  
+  <meta name="keywords" content="Oauth2">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Oauth授权类型</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-OAuth-%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-text">什么是 OAuth 授权类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth-%E8%8C%83%E5%9B%B4%EF%BC%88scopes%EF%BC%89"><span class="toc-text">OAuth 范围（scopes）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorization-code%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B"><span class="toc-text">Authorization code授权类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Authorization-request"><span class="toc-text">1. Authorization request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Access-token-request"><span class="toc-text">4. Access token request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Access-token-grant"><span class="toc-text">5. Access token grant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-API-call"><span class="toc-text">6. API call</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Resource-grant"><span class="toc-text">7. Resource grant</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implicit-%E7%AE%80%E5%8C%96-%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B"><span class="toc-text">Implicit(简化) 授权类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Authorization-request-1"><span class="toc-text">1. Authorization request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-User-login-and-consent"><span class="toc-text">2. User login and consent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Access-token-grant"><span class="toc-text">3. Access token grant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-API-call"><span class="toc-text">4. API call</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Resource-grant"><span class="toc-text">5. Resource grant</span></a></li></ol></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/web%E6%BC%8F%E6%B4%9E/">web漏洞</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T09:27:08.771Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Oauth授权类型</span></h1>
+<h2 id="什么是-OAuth-授权类型？"><a href="#什么是-OAuth-授权类型？" class="headerlink" title="什么是 OAuth 授权类型？"></a>什么是 OAuth 授权类型？</h2><p>OAuth 授权类型决定了 OAuth 过程中涉及的步骤的确切顺序。授权类型还会影响客户端应用程序在每个阶段与 OAuth 服务通信的方式，包括访问令牌本身的发送方式。因此，授权类型通常被称为“OAuth 流程”。</p>
+<p>在客户端应用程序可以启动相应的流程之前，必须将 OAuth 服务配置为支持特定的授权类型。客户端应用程序在<strong>发送给 OAuth 服务的初始授权</strong>请求中<strong>指定要使用的授权类型</strong>。</p>
+<p>有几种不同的授权类型，每种都有不同程度的复杂性和安全考虑。我们将重点关注“authentication code”和“(隐式) implicit”授权类型，因为它们是迄今为止最常见的</p>
+<h2 id="OAuth-范围（scopes）"><a href="#OAuth-范围（scopes）" class="headerlink" title="OAuth 范围（scopes）"></a>OAuth 范围（scopes）</h2><p>对于任何 OAuth 授权类型，客户端应用程序都必须指定它想要访问哪些数据以及它想要执行哪些操作。它使用授权请求的范围参数来实现这一点，发送到 OAuth 服务。</p>
+<p>对于基本的OAuth，客户端应用程序可以请求访问的范围对于每个OAuth服务都是唯一的。由于<strong>作用域</strong>名称只是任意文本字符串，因此格式在提供者之间可能会有很大的差异。有些甚至使用完整的URI作为作用域名称，类似于REST API端点。例如，在请求读取用户联系人列表的访问权限时，作用域名称可能采用以下任何形式，具体取决于所使用的OAuth服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scope=contacts</span><br><span class="line">scope=contacts.read</span><br><span class="line">scope=contact-list-r</span><br><span class="line">scope=https://oauth-authorization-server.com/auth/scopes/user/contacts.readonly</span><br></pre></td></tr></table></figure>
+
+<p>当OAuth用于身份验证时，通常会使用标准化的OpenID Connect范围。例如，作用域openid profile将授予客户端应用程序读取用户的预定义基本信息的访问权限，例如他们的电子邮件地址、用户名等等。</p>
+<h2 id="Authorization-code授权类型"><a href="#Authorization-code授权类型" class="headerlink" title="Authorization code授权类型"></a>Authorization code授权类型</h2><p>授权码授权类型初始看起来很复杂，但一旦你熟悉了一些基础知识，它实际上比你想象的要简单。</p>
+<p>简而言之，客户端应用程序和 OAuth 服务首先使用重定向来交换一系列基于浏览器的 HTTP 请求，以启动流程。用户被询问是否同意所请求的访问权限。如果他们同意，客户端应用程序将被授予“授权码”。然后，客户端应用程序将此代码与 OAuth 服务交换以接收“访问令牌”，它们可以使用该令牌进行 API 调用以获取相关用户数据。</p>
+<blockquote>
+<p>所以说，要使用OAUTH的一个基础就是，服务器需要有可以用来提供数据的api咯？</p>
+</blockquote>
+<p>从代码&#x2F;令牌交换开始的所有通信都通过安全的、预配置的后端通道以服务器到服务器的方式发送，并且对终端用户不可见。当客户端应用程序首次向OAuth服务注册时，将建立此安全通道。此时还将生成client_secret，客户端应用程序必须使用它来在发送这些服务器到服务器请求时进行身份验证。</p>
+<p>由于最敏感的数据（访问令牌和用户数据）不会通过浏览器发送，因此这种授权类型可以说是最安全的。服务器端应用程序应尽可能始终使用此授权类型。</p>
+<p>流程图如下</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222118409.jpeg" alt="Flow for the OAuth authorization code grant type" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">Flow for the OAuth authorization code grant type</span></div></div>
+
+<h4 id="1-Authorization-request"><a href="#1-Authorization-request" class="headerlink" title="1. Authorization request"></a>1. Authorization request</h4><p>客户端应用程序向OAuth服务的<code>/authorization</code>端点发送请求，请求访问特定用户数据的权限。请注意，不同提供商之间的端点映射可能会有所不同 </p>
+<p>比如下面的请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /authorization?client_id=12345&amp;redirect_uri=https://client-app.com/callback&amp;response_type=code&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1</span><br><span class="line">Host: oauth-authorization-server.com</span><br></pre></td></tr></table></figure>
+
+<p>他包含了一些比较关键的参数</p>
+<ul>
+<li><pre><code>client_id
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  必填参数，包含客户端应用程序的唯一标识符。当客户端应用程序在OAuth服务中注册时，将生成此值。</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  redirect_uri</span><br></pre></td></tr></table></figure>
+
+当向客户端应用程序发送授权码时，用户浏览器应重定向到的 URI。这也被称为“回调 URI”或“回调终点”。**许多 OAuth 攻击**都基于利用此参数验证中的缺陷。
+</code></pre>
+</li>
+<li><pre><code>response_type
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  确定客户端应用程序期望的响应类型，因此确定它想要启动的流程。对于授权码授权类型，值应为 `code`。</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  scope</span><br></pre></td></tr></table></figure>
+
+用于指定客户端应用程序想要访问的用户数据子集。请注意，这些可能是OAuth提供者设置的自定义范围或OpenID Connect规范定义的标准范围。
+</code></pre>
+</li>
+<li><pre><code>state
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  存储一个唯一的、不可猜测的值，该值与客户端应用程序上的当前会话相关联。OAuth 服务应在响应中返回此确切值，以及授权代码。此参数作为客户端应用程序的 CSRF 令牌，通过确保发往其 /callback 端点的请求来自启动 OAuth 流程的同一人来发挥作用。</span><br><span class="line"></span><br><span class="line">#### 2. User login and consent</span><br><span class="line"></span><br><span class="line">当授权服务器收到初始请求时，它会将用户重定向到登录页面，在那里他们将被提示使用OAuth提供者的帐户登录。例如，这通常是他们的社交媒体账户。比如qq，微信那些</span><br><span class="line"></span><br><span class="line">然后用户将会看到一个数据列表，这是客户端应用程序想要访问的数据，基于授权请求中定义的范围。用户可以选择是否同意此访问。</span><br><span class="line"></span><br><span class="line">需要注意的是，一旦用户为客户端应用程序批准了给定的范围，只要用户仍然与OAuth服务保持有效会话，此步骤将自动完成。换句话说，第一次用户选择“使用社交媒体登录”时，他们需要手动登录并给予同意，但是如果他们以后再次访问客户端应用程序，他们通常可以通过单击一次登录。</span><br><span class="line"></span><br><span class="line">#### 3. Authorization code grant</span><br><span class="line"></span><br><span class="line">如果用户同意请求的访问权限，他们的浏览器将被重定向到授权请求中`redirect_uri`指定的`/callback`端点。结果生成的GET请求将包含授权代码作为查询参数。根据配置，它还可以发送与授权请求中相同值的`state`参数。</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">GET /callback?code=a1b2c3d4e5f6g7h8&amp;state=ae13d489bd00e3c24 HTTP/1.1</span><br><span class="line">Host: client-app.com</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h4 id="4-Access-token-request"><a href="#4-Access-token-request" class="headerlink" title="4. Access token request"></a>4. Access token request</h4><p>一旦客户端应用程序收到授权码，它需要将其交换为访问令牌。为此，它向OAuth服务的&#x2F;token端点发送服务器到服务器的POST请求。从这一点开始，所有通信都在安全的后台通道中进行，因此通常无法被攻击者观察或控制。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST /token HTTP/1.1</span><br><span class="line">Host: oauth-authorization-server.com</span><br><span class="line">…</span><br><span class="line">client_id=12345&amp;client_secret=SECRET&amp;redirect_uri=https://client-app.com/callback&amp;grant_type=authorization_code&amp;code=a1b2c3d4e5f6g7h8</span><br></pre></td></tr></table></figure>
+
+<p>除了client_id和授权码之外，您还会注意到以下新参数：</p>
+<ul>
+<li><pre><code>client_secret
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  客户端应用程序必须通过包含注册 OAuth 服务时分配的密钥来验证自身身份。</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  grant_type</span><br></pre></td></tr></table></figure>
+
+用于确保新端点知道客户端应用程序想要使用哪种授权类型。在这种情况下，应将其设置为`authorization_code`。
+</code></pre>
+</li>
+</ul>
+<h4 id="5-Access-token-grant"><a href="#5-Access-token-grant" class="headerlink" title="5. Access token grant"></a>5. Access token grant</h4><p>OAuth 服务将验证访问令牌请求。如果一切都符合预期，服务器将通过授予客户端应用程序所请求范围的访问令牌来响应。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;access_token&quot;</span>: <span class="string">&quot;z0y9x8w7v6u5&quot;</span>,</span><br><span class="line">    <span class="string">&quot;token_type&quot;</span>: <span class="string">&quot;Bearer&quot;</span>,</span><br><span class="line">    <span class="string">&quot;expires_in&quot;</span>: 3600,</span><br><span class="line">    <span class="string">&quot;scope&quot;</span>: <span class="string">&quot;openid profile&quot;</span>,</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-API-call"><a href="#6-API-call" class="headerlink" title="6. API call"></a>6. API call</h4><p>现在客户端应用有了访问代码，他终于可以从资源服务器调取用户的数据了。为了实现这一点，它会向OAuth服务的&#x2F;userinfo端点发出API调用。</p>
+<p>访问令牌被提交到 Authorization: Bearer 标头中，以证明客户端应用程序有权限访问这些数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /userinfo HTTP/1.1</span><br><span class="line">Host: oauth-resource-server.com</span><br><span class="line">Authorization: Bearer z0y9x8w7v6u5</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-Resource-grant"><a href="#7-Resource-grant" class="headerlink" title="7. Resource grant"></a>7. Resource grant</h4><p>资源服务器应该验证令牌是否有效，并且它属于当前的客户端应用程序</p>
+<p>如果是这样，它将通过发送客户端请求的资源，即基于访问令牌的用户数据,来做出响应。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>:<span class="string">&quot;carlos&quot;</span>,</span><br><span class="line">    <span class="string">&quot;email&quot;</span>:<span class="string">&quot;carlos@carlos-montoya.net&quot;</span>,</span><br><span class="line">    …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端应用程序最终可以将这些数据用于其预期的目的。在OAuth身份验证的情况下，它通常将被用作ID来授予用户已认证的会话，从而有效地登录他们。</p>
+<h2 id="Implicit-简化-授权类型"><a href="#Implicit-简化-授权类型" class="headerlink" title="Implicit(简化) 授权类型"></a>Implicit(简化) 授权类型</h2><p>隐式授权类型非常简单。与先获取授权码，再将其交换为访问令牌不同，Implicit授权类型中，客户端应用程序在用户同意后立即收到访问令牌（access token）。</p>
+<p>你可能想知道为什么客户端应用程序不总是使用隐式授权类型。答案相对简单 - 它远不够安全。</p>
+<p>当使用隐式授权类型时，所有通信都通过浏览器重定向进行 - 没有像授权代码流中那样的安全后通道。这意味着敏感访问令牌和用户数据更容易受到潜在攻击的影响。</p>
+<p>隐式授权类型更适用于<strong>单页应用程序</strong>和本地桌面应用程序，这些应用程序不能轻松地将client_secret存储在后端，因此不像使用授权码授权类型那样受益。</p>
+<p>图示</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222313772.jpeg" alt="Flow for the OAuth implicit grant type" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">Flow for the OAuth implicit grant type</span></div></div>
+
+<h4 id="1-Authorization-request-1"><a href="#1-Authorization-request-1" class="headerlink" title="1. Authorization request"></a>1. Authorization request</h4><p>隐式流程的开始方式与授权码流程非常相似，只不过response_type参数必须被设置为<code>token</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /authorization?client_id=12345&amp;redirect_uri=https://client-app.com/callback&amp;response_type=token&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1</span><br><span class="line">Host: oauth-authorization-server.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-User-login-and-consent"><a href="#2-User-login-and-consent" class="headerlink" title="2. User login and consent"></a>2. User login and consent</h4><p>用户登录并决定是否同意所请求的权限。这个过程与授权码流程完全相同。</p>
+<h4 id="3-Access-token-grant"><a href="#3-Access-token-grant" class="headerlink" title="3. Access token grant"></a>3. Access token grant</h4><p>如果用户同意请求的访问权限，那么事情就开始有所不同了。OAuth 服务将重定向用户的浏览器到授权请求中指定的 <code>redirect_uri</code>。然而，它不会发送包含授权码的查询参数，而是将<strong>访问令牌</strong>和其他令牌特定数据作为 URL 片段发送。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /callback<span class="comment">#access_token=z0y9x8w7v6u5&amp;token_type=Bearer&amp;expires_in=5000&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1</span></span><br><span class="line">Host: client-app.com</span><br></pre></td></tr></table></figure>
+
+<p>由于访问令牌是作为 URL 片段发送的，因此它永远不会直接发送给客户端应用程序。相反，客户端应用程序必须使用适当的脚本来提取片段并存储它。</p>
+<h4 id="4-API-call"><a href="#4-API-call" class="headerlink" title="4. API call"></a>4. API call</h4><p>一旦客户端应用程序成功从URL片段中提取了访问令牌，它就可以使用它来调用OAuth服务的<code>/userinfo</code>端点进行API调用。与授权码流程不同的是，这也是通过浏览器发生的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /userinfo HTTP/1.1</span><br><span class="line">Host: oauth-resource-server.com</span><br><span class="line">Authorization: Bearer z0y9x8w7v6u</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Resource-grant"><a href="#5-Resource-grant" class="headerlink" title="5. Resource grant"></a>5. Resource grant</h4><p>资源服务器应验证令牌是否有效，并且是否属于当前客户端应用程序。如果是，则会响应并发送所请求的资源，即基于访问令牌关联的范围的用户数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;username&quot;:&quot;carlos&quot;,</span><br><span class="line">    &quot;email&quot;:&quot;carlos@carlos-montoya.net&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端应用程序最终可以将这些数据用于其预期的目的。在OAuth身份验证的情况下，它通常被用作一个ID来授予用户一个经过身份验证的会话，有效地将其登录。</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/web%E6%BC%8F%E6%B4%9E/OAuth%202.0%20%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E/oauth%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/">Oauth漏洞靶场</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/web%E6%BC%8F%E6%B4%9E/OAuth%202.0%20%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E/oauth/">Oauth2</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

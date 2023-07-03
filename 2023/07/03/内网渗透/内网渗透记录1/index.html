@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>内网信息搜集 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="内网渗透体系建设笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网信息搜集">
+<meta property="og:url" content="http://example.com/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%951/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="内网渗透体系建设笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-03T08:36:08.030Z">
+<meta property="article:modified_time" content="2023-07-03T08:36:08.084Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="信息搜集">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="信息搜集">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">内网信息搜集</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90"><span class="toc-text">查看当前用户、权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-text">查看网络配置信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF"><span class="toc-text">查看主机路由信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">查看操作系统信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="toc-text">查看端口连接信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E4%BC%9A%E8%AF%9D%E5%88%97%E8%A1%A8"><span class="toc-text">查看当前会话列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E4%BF%A1%E6%81%AF"><span class="toc-text">查看当前网络共享信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB"><span class="toc-text">查看已连接的网络共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-text">查看当前进程信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">查看当前服务信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">查看计划任务信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF"><span class="toc-text">查看自启动程序信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%E4%BF%A1%E6%81%AF"><span class="toc-text">查看应用安装信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E8%A1%A5%E4%B8%81%E5%AE%89%E8%A3%85%E4%BF%A1%E6%81%AF"><span class="toc-text">查看系统补丁安装信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-text">查看用户组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E7%BB%84"><span class="toc-text">查看本地管理员组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8A%A0%E5%85%A5%E7%AE%A1%E7%90%86%E5%91%98%E7%BB%84"><span class="toc-text">创建新用户并加入管理员组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%9A%84%E7%94%A8%E6%88%B7"><span class="toc-text">查看当前登录的用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%9F%9F%E7%8E%AF%E5%A2%83"><span class="toc-text">判断是否存在域环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-text">查看域用户信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%9F%9F%E7%94%A8%E6%88%B7%E7%BB%84%E4%BF%A1%E6%81%AF"><span class="toc-text">查询域用户组信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E5%86%85%E5%AF%86%E7%A0%81%E7%AD%96%E7%95%A5"><span class="toc-text">查看域内密码策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8%E5%88%97%E8%A1%A8"><span class="toc-text">查看域控制器列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%BB%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">查看主域控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-text">定位域控制器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%A1%E4%BB%BB%E5%85%B3%E7%B3%BB"><span class="toc-text">查看信任关系</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:36:08.030Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>内网信息搜集</span></h1>
+<h2 id="查看当前用户、权限"><a href="#查看当前用户、权限" class="headerlink" title="查看当前用户、权限"></a>查看当前用户、权限</h2><p>whoami &#x2F;all</p>
+<h2 id="查看网络配置信息"><a href="#查看网络配置信息" class="headerlink" title="查看网络配置信息"></a>查看网络配置信息</h2><p>ipconfig &#x2F;all</p>
+<h2 id="查看主机路由信息"><a href="#查看主机路由信息" class="headerlink" title="查看主机路由信息"></a>查看主机路由信息</h2><p>route print</p>
+<h2 id="查看操作系统信息"><a href="#查看操作系统信息" class="headerlink" title="查看操作系统信息"></a>查看操作系统信息</h2><p>systeminfo</p>
+<p>systeminfo | findstr &#x2F;B &#x2F;C:”OS Name” &#x2F;C:”OS version”</p>
+<p>systeminfo | findstr &#x2F;B &#x2F;C:”OS 名称” &#x2F;C:”OS 版本”</p>
+<h2 id="查看端口连接信息"><a href="#查看端口连接信息" class="headerlink" title="查看端口连接信息"></a>查看端口连接信息</h2><p>netstat -ano</p>
+<h2 id="查看当前会话列表"><a href="#查看当前会话列表" class="headerlink" title="查看当前会话列表"></a>查看当前会话列表</h2><p>net session</p>
+<h2 id="查看当前网络共享信息"><a href="#查看当前网络共享信息" class="headerlink" title="查看当前网络共享信息"></a>查看当前网络共享信息</h2><p>net share</p>
+<h2 id="查看已连接的网络共享"><a href="#查看已连接的网络共享" class="headerlink" title="查看已连接的网络共享"></a>查看已连接的网络共享</h2><p>net use</p>
+<h2 id="查看当前进程信息"><a href="#查看当前进程信息" class="headerlink" title="查看当前进程信息"></a>查看当前进程信息</h2><p>tasklist </p>
+<p>tasklis &#x2F;SVC</p>
+<p>可以用来对目标主机的杀软进行识别</p>
+<p>通过wmic命令,查询主机进程信息并过滤出进程的路径名称和pid</p>
+<p>wmic process get Name, ProcessId, ExecutablePath</p>
+<p>查看指定进程的路径xinx</p>
+<p>wmic process where Name&#x3D;”msdtc.exe” get ExecutablePath</p>
+<h2 id="查看当前服务信息"><a href="#查看当前服务信息" class="headerlink" title="查看当前服务信息"></a>查看当前服务信息</h2><p>wmic service get Caption,Name,PathName,StartName,State</p>
+<p>wmic service where Name&#x3D;”backdoor” get Caption,PathName,State</p>
+<h2 id="查看计划任务信息"><a href="#查看计划任务信息" class="headerlink" title="查看计划任务信息"></a>查看计划任务信息</h2><p>schtasks &#x2F;query &#x2F;v &#x2F;fo list</p>
+<h2 id="查看自启动程序信息"><a href="#查看自启动程序信息" class="headerlink" title="查看自启动程序信息"></a>查看自启动程序信息</h2><p>wmic startup get Caption,Command,Location,User</p>
+<h2 id="查看应用安装信息"><a href="#查看应用安装信息" class="headerlink" title="查看应用安装信息"></a>查看应用安装信息</h2><p>wmic product get Caption,Version</p>
+<h2 id="查看系统补丁安装信息"><a href="#查看系统补丁安装信息" class="headerlink" title="查看系统补丁安装信息"></a>查看系统补丁安装信息</h2><p>wmic qfe get Caption,CSName,Description,HotFixID,InstalledOn</p>
+<h2 id="查看用户组"><a href="#查看用户组" class="headerlink" title="查看用户组"></a>查看用户组</h2><p>net user<br>net user <username></p>
+<h2 id="查看本地管理员组"><a href="#查看本地管理员组" class="headerlink" title="查看本地管理员组"></a>查看本地管理员组</h2><p>net localgroup administrators</p>
+<h2 id="创建新用户并加入管理员组"><a href="#创建新用户并加入管理员组" class="headerlink" title="创建新用户并加入管理员组"></a>创建新用户并加入管理员组</h2><p>net user <username> <password> &#x2F;add</p>
+<p>net localgroup administrators <username> &#x2F;add</p>
+<h2 id="查看当前登录的用户"><a href="#查看当前登录的用户" class="headerlink" title="查看当前登录的用户"></a>查看当前登录的用户</h2><p>query user</p>
+<h2 id="判断是否存在域环境"><a href="#判断是否存在域环境" class="headerlink" title="判断是否存在域环境"></a>判断是否存在域环境</h2><p>net config workstation</p>
+<h2 id="查看域用户信息"><a href="#查看域用户信息" class="headerlink" title="查看域用户信息"></a>查看域用户信息</h2><p>net user &#x2F;domain</p>
+<p>net user <username> &#x2F;domain</p>
+<p>获取所有用户的sid，所属域和用户描述信息</p>
+<p>wmic useraccount get Caption,Domain,Description</p>
+<p>只有域用户才能进行域内查询。本地计算机用户除非提升为本地系统权限，否则只能进行本机查询，无法查询域内信息</p>
+<h2 id="查询域用户组信息"><a href="#查询域用户组信息" class="headerlink" title="查询域用户组信息"></a>查询域用户组信息</h2><p>net group &#x2F;domain</p>
+<p>查询管理员组</p>
+<p>net group “Domain Admins” &#x2F;domina</p>
+<p>查询域成员主机组</p>
+<p>net group “Domain Computers” &#x2F;domain</p>
+<p>查询域用户组</p>
+<p>net group “Domain Users” &#x2F;domain</p>
+<p>查询企业系统管理员组</p>
+<p>net group “Enterprise Admins” &#x2F;domain</p>
+<blockquote>
+<p>默认情况下，domain admins和enterprise admins组中的用户对域内的所以域控制器和域成员主机有完全的控制权限</p>
+<p>enterprise admins是通用组</p>
+<p>domain admins是一个全局组</p>
+</blockquote>
+<h2 id="查看域内密码策略"><a href="#查看域内密码策略" class="headerlink" title="查看域内密码策略"></a>查看域内密码策略</h2><p>net accounts &#x2F;domain</p>
+<h2 id="查看域控制器列表"><a href="#查看域控制器列表" class="headerlink" title="查看域控制器列表"></a>查看域控制器列表</h2><p>net group “Domain Controllers” &#x2F;domain</p>
+<p>查看指定域内的域控制器主机</p>
+<p>nltest &#x2F;DCLIST:&lt;域名&gt;</p>
+<h2 id="查看主域控制器"><a href="#查看主域控制器" class="headerlink" title="查看主域控制器"></a>查看主域控制器</h2><p>域环境中，主域控制器会同时被用作时间服务器，使域内所以计算机时钟同步</p>
+<p>可以通过这个来获得主域控制器</p>
+<p>net time &#x2F;domain</p>
+<h2 id="定位域控制器"><a href="#定位域控制器" class="headerlink" title="定位域控制器"></a>定位域控制器</h2><p>对目标主机进行ping,可以得到目标主机在内网中的ip地址</p>
+<p>ping DC.hack-my.com #DC是域hack-my.com的域控制器主机名</p>
+<h2 id="查看信任关系"><a href="#查看信任关系" class="headerlink" title="查看信任关系"></a>查看信任关系</h2><p>域信任用于多用户环境中的跨域资源的共享，一般情况下，一个域的用户只能访问本域内的资源，无法访问其他域的资源，而想要不同域之间实现互访就需要建立域信任</p>
+<p>nltest &#x2F;domain_trusts</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E6%AF%94%E8%B5%9Bwp/CATCTF/">NepnepxCATCTF 部分WP</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%952/">内网资源探测</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

