@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Web缓存投毒靶场 - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="web缓存投毒的漏洞靶场">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web缓存投毒靶场">
+<meta property="og:url" content="http://example.com/2023/10/22/web%E6%BC%8F%E6%B4%9E/OAuth%202.0%20%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E/web%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="web缓存投毒的漏洞靶场">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032103328.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032102488.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032106730.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032107007.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121265.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121136.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121939.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032128203.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032129019.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032136257.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032135172.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042152843.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042153358.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042154847.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042155119.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202924.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042158013.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202806.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051916680.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051924233.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051929505.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051934171.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051935567.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051939448.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051940394.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941842.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941076.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052010823.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011538.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011551.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052014406.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015911.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015737.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052031131.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052034043.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052035802.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052039683.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052049146.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052042680.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052104444.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124323.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124259.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072125758.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081047891.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050656.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050318.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081057178.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081058999.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081114214.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113040.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113788.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081122381.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081129887.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081130658.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081448855.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081454482.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081500486.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081455694.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081501661.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509207.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509858.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081510859.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142116026.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142119374.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142130673.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141005.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141238.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144175.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144432.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145340.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145270.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152111143.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152113282.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152114292.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152116722.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152117062.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649053.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649699.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211704004.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211744529.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211743454.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211745269.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211749891.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211755095.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211757157.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211758051.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211802248.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211805053.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211806304.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211822872.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823389.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823549.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015129.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015410.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017199.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017076.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212018043.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212101296.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212102283.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212103341.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212104925.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107480.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107090.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212108458.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050281.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050993.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221051805.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221054651.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055875.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055680.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105340.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105901.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221106763.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221130926.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221131644.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218211.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218752.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221232571.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221220466.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235210.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235247.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221640576.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221643521.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221646646.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221652633.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221753370.png">
+<meta property="article:published_time" content="2023-10-22T09:57:11.125Z">
+<meta property="article:modified_time" content="2023-10-22T09:59:12.708Z">
+<meta property="article:author" content="v2ish1yan">
+<meta property="article:tag" content="缓存投毒">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032103328.png">
+  
+  
+  
+  <meta name="keywords" content="缓存投毒">
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/diary">随笔</a><a class="nav-item" href="/links">社交</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Web缓存投毒靶场</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E6%A0%87%E5%A4%B4%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">非缓存键标头的 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84-cookie-%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">使用非缓存键的 cookie 造成 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E5%A4%9A%E4%B8%AA%E6%A0%87%E5%A4%B4%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">具有多个标头的 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%AA%E7%9F%A5%E6%A0%87%E5%A4%B4%E8%BF%9B%E8%A1%8C%E6%9C%89%E9%92%88%E5%AF%B9%E6%80%A7%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">使用未知标头进行有针对性的 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%EF%BC%8C%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%E4%B8%A5%E6%A0%BC%E5%8F%AF%E7%BC%93%E5%AD%98%E6%80%A7%E6%A0%87%E5%87%86%E7%9A%84%E7%BC%93%E5%AD%98%E6%9D%A5%E5%88%A9%E7%94%A8-DOM-%E6%BC%8F%E6%B4%9E"><span class="toc-text">Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%90%88-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%E6%BC%8F%E6%B4%9E"><span class="toc-text">结合 Web 缓存中毒漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">通过非缓存键的查询字符串造成 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">通过非缓存键的查询参数造成 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%8F%82%E6%95%B0"><span class="toc-text">隐藏参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Fat-GET-%E8%AF%B7%E6%B1%82%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">通过Fat GET 请求造成 Web 缓存中毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-%E8%A7%84%E8%8C%83%E5%8C%96"><span class="toc-text">URL 规范化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%AF%86%E9%92%A5%E6%B3%A8%E5%85%A5"><span class="toc-text">缓存密钥注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="toc-text">内部缓存中毒</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/web%E6%BC%8F%E6%B4%9E/">web漏洞</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-10-22T09:57:11.125Z">2023-10-22</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Web缓存投毒靶场</span></h1>
+<blockquote>
+<p>靶场地址:<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/all-labs#web-cache-poisoning">https://portswigger.net/web-security/all-labs#web-cache-poisoning</a></p>
+</blockquote>
+<h2 id="非缓存键标头的-Web-缓存中毒"><a href="#非缓存键标头的-Web-缓存中毒" class="headerlink" title="非缓存键标头的 Web 缓存中毒"></a>非缓存键标头的 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的影响</a>，因为它以不安全的方式处理来自未加密标头的输入。毫无戒心的用户会定期访问该网站的主页。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+<p>提示：本实验支持<code>X-Forwarded-Host</code>标头。</p>
+</blockquote>
+<p>首先使用bp插件param miner来查找缓存键</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032103328.png" alt="image-20231003210347230" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003210347230</span></div></div>
+
+<p>发现<code>x-forwarded-host</code>会影响响应页面</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032102488.png" alt="image-20231003210245357" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003210245357</span></div></div>
+
+<p>测试发现，访问带着这个头，会在请求的静态资源文件前面添加这个头的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032106730.png" alt="image-20231003210616603" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003210616603</span></div></div>
+
+<p>然后再次访问，可以发现<code>X-Cache: hit</code>，则说明当前的响应来自缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032107007.png" alt="image-20231003210731909" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003210731909</span></div></div>
+
+<p>所以只需要让<code>x-forwarded-host</code>的值为攻击者的恶意地址，并存入缓存，就能劫持受害者在访问主页时候加载的静态资源</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121265.png" alt="image-20231003212117191" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003212117191</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121136.png" alt="image-20231003212109044" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003212109044</span></div></div>
+
+<p>然后再次访问主页，可以发现就会弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121939.png" alt="image-20231003212103866" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003212103866</span></div></div>
+
+<h2 id="使用非缓存键的-cookie-造成-Web-缓存中毒"><a href="#使用非缓存键的-cookie-造成-Web-缓存中毒" class="headerlink" title="使用非缓存键的 cookie 造成 Web 缓存中毒"></a>使用非缓存键的 cookie 造成 Web 缓存中毒</h2><blockquote>
+<p>该实验很容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为 cookie 不包含在缓存密钥中。毫无戒心的用户会定期访问该网站的主页。<code>alert(1)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>可以发现，响应页面里的值受请求的cookie的影响，且会被缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032128203.png" alt="image-20231003212847112" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003212847112</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032129019.png" alt="image-20231003212947921" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003212947921</span></div></div>
+
+<p>所以只需要构造一个xss即可，然后用intruder一直发包，直到被缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032136257.png" alt="image-20231003213607171" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003213607171</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032135172.png" alt="image-20231003213556091" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231003213556091</span></div></div>
+
+<p>再访问页面会弹窗</p>
+<h2 id="具有多个标头的-Web-缓存中毒"><a href="#具有多个标头的-Web-缓存中毒" class="headerlink" title="具有多个标头的 Web 缓存中毒"></a>具有多个标头的 Web 缓存中毒</h2><blockquote>
+<p>此实验包含一个<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒</a>漏洞，仅当您使用多个标头来制作恶意请求时才可利用该漏洞。用户大约每分钟访问一次主页。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先用parma miner来fuzz一下哪些标头会对返回包造成影响</p>
+<p>可以发现，有两个标头会影响返回包</p>
+<p><code>x-forwarded-host</code>和<code>x-forwarded-scheme</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042152843.png" alt="image-20231004215241681" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004215241681</span></div></div>
+
+<p>然后可以发现，当<code>x-forwarded-scheme</code>有值的时候，响应包就会302跳转到<code>X-Forwarded-Host</code>指定的域名，并且会被缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042153358.png" alt="image-20231004215330271" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004215330271</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042154847.png" alt="image-20231004215419749" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004215419749</span></div></div>
+
+<p>发现，网页会请求静态资源文件</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042155119.png" alt="image-20231004215518026" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004215518026</span></div></div>
+
+<p>我们只要把请求这个资源的路径进行缓存投毒，让受害者请求这个资源的时候，是请求的我构造的缓存，这样就能劫持受害者请求的静态资源，从而造成弹窗</p>
+<p>我这里是把https取消掉才可以成功访问到exploit端的资源，但是后面测试，使用https也是可以的，不知道为什么</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202924.png" alt="image-20231004220252851" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004220252851</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042158013.png" alt="image-20231004215808933" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004215808933</span></div></div>
+
+<p>成功存入缓存，然后再访问主页，就会弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202806.png" alt="image-20231004220219725" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231004220219725</span></div></div>
+
+<h2 id="使用未知标头进行有针对性的-Web-缓存中毒"><a href="#使用未知标头进行有针对性的-Web-缓存中毒" class="headerlink" title="使用未知标头进行有针对性的 Web 缓存中毒"></a>使用未知标头进行有针对性的 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。受害者用户将查看您发布的任何评论。<code>alert(document.cookie)</code>要完成此实验，您需要使用在访问者浏览器中执行的响应来毒害缓存。但是，您还需要确保将响应提供给目标受害者所属的特定用户子集。</p>
+</blockquote>
+<p>查看响应包可以知道，vary的值为<code>User-Agent</code>，<code>User-Agent</code>也就是服务器的缓存键</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051916680.png" alt="image-20231005191633511" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005191633511</span></div></div>
+
+<p>然后使用<code>parma miner</code>来爆破是否存在隐藏标头</p>
+<p>找到了两个</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051924233.png" alt="image-20231005192445143" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005192445143</span></div></div>
+
+<p>然后可以看到，<code>x-host</code>标头会影响页面请求静态资源的url路径，而且需要有origin标头的时候，才会造成影响</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051929505.png" alt="image-20231005192913406" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005192913406</span></div></div>
+
+<p>所以还是对静态资源文件的访问进行缓存投毒，因为受害者会查看评论，所以对文章页面进行投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051934171.png" alt="image-20231005193449094" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005193449094</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051935567.png" alt="image-20231005193527473" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005193527473</span></div></div>
+
+<p>但是在日志里看不到受害者的访问，原因就是我们缓存进去的User-agent和受害者的不一样，所以得通过其他方式来获得受害者的user-agent</p>
+<p>在文章评论区可以发现，评论可以解析html，所以用img标签来获得受害者的user-agent头</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051939448.png" alt="image-20231005193926369" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005193926369</span></div></div>
+
+<p>查看日志，可以得到受害者的user-agent</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051940394.png" alt="image-20231005194034307" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005194034307</span></div></div>
+
+<p>然后用这个user-agent进行缓存投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941842.png" alt="image-20231005194108745" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005194108745</span></div></div>
+
+<p>就可以让受害者访问当前页面的时候进行弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941076.png" alt="image-20231005194158982" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005194158982</span></div></div>
+
+<h2 id="Web-缓存中毒，通过具有严格可缓存性标准的缓存来利用-DOM-漏洞"><a href="#Web-缓存中毒，通过具有严格可缓存性标准的缓存来利用-DOM-漏洞" class="headerlink" title="Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞"></a>Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞</h2><blockquote>
+<p>该实验室包含一个基于 DOM 的漏洞，可被利用作为<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒</a>攻击的一部分。用户大约每分钟访问一次主页。请注意，本实验使用的缓存对于决定哪些响应可缓存有更严格的标准，因此您需要仔细研究缓存行为。</p>
+<p><code>alert(document.cookie)</code>要解决该实验室问题，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>点击一个商品页面，查看网络可以发现他其中的js文件会想一个url请求json数据，并进行dom操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initGeoLocate</span>(<span class="params">jsonUrl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_">fetch</span>(jsonUrl)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>())</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> geoLocateContent = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;shipping-info&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;img&quot;</span>);</span><br><span class="line">            img.<span class="title function_">setAttribute</span>(<span class="string">&quot;src&quot;</span>, <span class="string">&quot;/resources/images/localShipping.svg&quot;</span>);</span><br><span class="line">            geoLocateContent.<span class="title function_">appendChild</span>(img)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">            div.<span class="property">innerHTML</span> = <span class="string">&#x27;Free shipping to &#x27;</span> + j.<span class="property">country</span>;</span><br><span class="line">            geoLocateContent.<span class="title function_">appendChild</span>(div)</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052010823.png" alt="image-20231005201011726" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201011726</span></div></div>
+
+<p>在网页源代码可以看到调用这个函数的地方</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="title function_">initGeoLocate</span>(<span class="string">&#x27;//&#x27;</span> + data.<span class="property">host</span> + <span class="string">&#x27;/resources/json/geolocate.json&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011538.png" alt="image-20231005201110474" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201110474</span></div></div>
+
+<p>data的值在这定义</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011551.png" alt="image-20231005201151486" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201151486</span></div></div>
+
+<p>使用parma miner来查看是否有标头会对<code>data.host</code>的值造成影响</p>
+<p>找到了<code>x-forwarded-host</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052014406.png" alt="image-20231005201430316" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201430316</span></div></div>
+
+<p>发现这个确实会对host的值造成影，并且存入缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015911.png" alt="image-20231005201516803" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201516803</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015737.png" alt="image-20231005201547636" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005201547636</span></div></div>
+
+<p>在插入输入的地方，只有<code>j.country</code>的值是我们可控的，使用下面的payload可以造成dom xss</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;&lt;img src=xxx onerror=alert(1)&gt;X&lt;/</span>div&gt;&lt;div&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052031131.png" alt="image-20231005203132096" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005203132096</span></div></div>
+
+<p>然后对json格式的数据进行伪造</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052034043.png" alt="image-20231005203429968" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005203429968</span></div></div>
+
+<p>进行缓存投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052035802.png" alt="image-20231005203510712" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005203510712</span></div></div>
+
+<p>如何这个时候直接访问页面的话，会发现cors错误</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052039683.png" alt="image-20231005203945614" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005203945614</span></div></div>
+
+<p>因为是跨域请求资源，所以得配置一下cors</p>
+<p><code>Access-Control-Allow-Origin: *</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052049146.png" alt="image-20231005204942069" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005204942069</span></div></div>
+
+<p>再重新缓存投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052042680.png" alt="image-20231005204208589" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005204208589</span></div></div>
+
+<p>再次访问就会弹窗</p>
+<p>为了让靶场的bot访问页面，我就是要intruder一直发一直缓存，直到bot访问页面造成弹窗</p>
+<p>md，一直不能solved，不管了，反正我是成功了的</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052104444.png" alt="image-20231005210415342" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231005210415342</span></div></div>
+
+<h2 id="结合-Web-缓存中毒漏洞"><a href="#结合-Web-缓存中毒漏洞" class="headerlink" title="结合 Web 缓存中毒漏洞"></a>结合 Web 缓存中毒漏洞</h2><blockquote>
+<p>本实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响，但前提是您构建了复杂的漏洞利用链。</p>
+<p>用户大约每分钟访问一次主页，并且他们的语言设置为英语。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>先用parma miner来查看哪些标头会对响应包产生影响</p>
+<p><code>x-forwarded-host</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124323.png" alt="image-20231007212326728" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231007212326728</span></div></div>
+
+<p><code>x-forwarded-host</code>会影响<code>data.host</code>的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124259.png" alt="image-20231007212439165" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231007212439165</span></div></div>
+
+<p>然后这里有函数调用了<code>data.host</code>的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072125758.png" alt="image-20231007212541657" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231007212541657</span></div></div>
+
+<p>函数文件为<code>/resources/js/translations.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initTranslations</span>(<span class="params">jsonUrl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取cookie里键为lang的值，并返回lang的值</span></span><br><span class="line">    <span class="keyword">const</span> lang = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">        .<span class="title function_">map</span>(<span class="function"><span class="params">c</span> =&gt;</span> c.<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>))</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="function"><span class="params">p</span> =&gt;</span> p[<span class="number">0</span>] === <span class="string">&#x27;lang&#x27;</span>)</span><br><span class="line">        .<span class="title function_">map</span>(<span class="function"><span class="params">p</span> =&gt;</span> p[<span class="number">1</span>])</span><br><span class="line">        .<span class="title function_">find</span>(<span class="function">() =&gt;</span> <span class="literal">true</span>);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历字典dict，并判断当前元素的innerHTML属性是否与字典的键（即k）相等，如果相等就将当前元素的innerHTML属性设置为字典的对应值。否则，遍历当前元素的子节点对每个子节点递归调用translate函数</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">translate</span> = (<span class="params">dict, el</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> k <span class="keyword">in</span> dict) &#123;</span><br><span class="line">            <span class="keyword">if</span> (el.<span class="property">innerHTML</span> === k) &#123;</span><br><span class="line">                el.<span class="property">innerHTML</span> = dict[k];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                el.<span class="property">childNodes</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">el_</span> =&gt;</span> <span class="title function_">translate</span>(dict, el_));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过fetch api从jsonUrl地址获取json格式的数据</span></span><br><span class="line">    <span class="comment">//并从当前页面获取id为lang-select的元素，此为一个下拉选择框元素</span></span><br><span class="line">    <span class="comment">//如果获取到对应元素，则遍历json格式的数据j的键名，并从中提取name的值</span></span><br><span class="line">    <span class="comment">//创建一个名为option的元素，并设置其value属性的值为code的值，此code即遍历json格式的数据j的键名</span></span><br><span class="line">    <span class="comment">//设置option元素的文本内容为当前键的name属性值</span></span><br><span class="line">    <span class="comment">//将创建的option元素添加为下拉选择框的子元素</span></span><br><span class="line">    <span class="comment">//如果当前键的值与变量lang的值相等，则将下拉选择框选中项设置为当前添加的选项</span></span><br><span class="line">    <span class="title function_">fetch</span>(jsonUrl)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>())</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> select = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;lang-select&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span> (select) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">const</span> code <span class="keyword">in</span> j) &#123;</span><br><span class="line">                    <span class="keyword">const</span> name = j[code].<span class="property">name</span>;</span><br><span class="line">                    <span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;option&quot;</span>);</span><br><span class="line">                    el.<span class="title function_">setAttribute</span>(<span class="string">&quot;value&quot;</span>, code);</span><br><span class="line">                    el.<span class="property">innerText</span> = name;</span><br><span class="line">                    select.<span class="title function_">appendChild</span>(el);</span><br><span class="line">                    <span class="keyword">if</span> (code === lang) &#123;</span><br><span class="line">                        select.<span class="property">selectedIndex</span> = select.<span class="property">childElementCount</span> - <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果lang存在于JSON数据对象中，并且不是en，并且j[lang].translations存在，那么将执行translate函数来翻译maincontainer元素的文本内容。</span></span><br><span class="line">            lang <span class="keyword">in</span> j &amp;&amp; lang.<span class="title function_">toLowerCase</span>() !== <span class="string">&#x27;en&#x27;</span> &amp;&amp; j[lang].<span class="property">translations</span> &amp;&amp; <span class="title function_">translate</span>(j[lang].<span class="property">translations</span>, <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&#x27;maincontainer&#x27;</span>)[<span class="number">0</span>]);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>他原本请求的json数据如下</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081047891.png" alt="image-20231008104718766" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008104718766</span></div></div>
+
+<p>然后我们通过缓存投毒可控的地方为</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050656.png" alt="image-20231008105032617" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008105032617</span></div></div>
+
+<p>控制innerHTML即可控制网页源码</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050318.png" alt="image-20231008105055249" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008105055249</span></div></div>
+
+<p>总结来说，就是通过翻译，可以把对应的英文字符串替换为其他语言的</p>
+<p>如果翻译为中文</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081057178.png" alt="image-20231008105759051" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008105759051</span></div></div>
+
+<p>将<code>view details</code>替换为<code>查看详细</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081058999.png" alt="image-20231008105827868" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008105827868</span></div></div>
+
+<p>所以只要控制这里，将其替换为xss payload，即可进行攻击</p>
+<p>exploit-server配置如下:</p>
+<p>因为是跨域的，所以需要设置cors</p>
+<p><code>Access-Control-Allow-Origin: *</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081114214.png" alt="image-20231008111411140" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008111411140</span></div></div>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;en&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;English&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;translations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;Return to list&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Volver a la lista&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;View details&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;img src=x onerror=alert(document.cookie)&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Description:&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Descripcin:&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;es&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;espa&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;translations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;Return to list&quot;</span><span class="punctuation">:</span> <span class="string">&quot;123&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;View details&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;img src=x onerror=alert(document.cookie)&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Description:&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Descripcin:&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>首先测试一下使用其他语言能否弹窗</p>
+<p>投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113040.png" alt="image-20231008111329943" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008111329943</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113788.png" alt="image-20231008111314694" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008111314694</span></div></div>
+
+<p>发现使用其他语言是会弹窗的。</p>
+<p>但是这里有个问题，只有cookie里lang的值不为en的时候才会执行他的翻译函数，而受害者又偏偏是使用的英语。</p>
+<p>在通过下拉框选择语言的时候，可以发现会请求<code>https://0ab500b90310aed680d96c3b002b0080.web-security-academy.net/setlang/es?</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081122381.png" alt="image-20231008112208309" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008112208309</span></div></div>
+
+<p>然后通过这个来设置cookie里lang的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081129887.png" alt="image-20231008112917795" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008112917795</span></div></div>
+
+<p>但是无法进行缓存，因为他有<code>Set-Cookie</code>返回头</p>
+<p>但是可以发现主页有使用反斜杠作为路径分割的，服务器会通过重定向来将他们规范为正斜杠</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081130658.png" alt="image-20231008113023557" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008113023557</span></div></div>
+
+<p>类似于这样</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081448855.png" alt="image-20231008144816740" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008144816740</span></div></div>
+
+<p>这样就不会有<code>Set-Cookie</code>而且会存入缓存</p>
+<p>我之前忽视了一个标头<code>x-original-url</code>，这个自定义标头可以控制访问的路径，且会存入缓存，一般用来绕过访问控制</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081454482.png" alt="image-20231008145450391" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008145450391</span></div></div>
+
+<p>当正常访问<code>/?a=123</code>的时候就会读取缓存的内容</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081500486.png" alt="image-20231008150048401" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008150048401</span></div></div>
+
+<p>如果我们设置值为<code>/setlang/es</code>，那么就会返回正常访问<code>/setlang/es</code>的响应</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081455694.png" alt="image-20231008145533604" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008145533604</span></div></div>
+
+<p>结合上面说的，通过反斜杠使服务器通过302跳转来规范为正斜杠的操作，让访问<code>/setlang/es</code>的响应没有<code>Set-Cookie</code>头，从而成功缓存</p>
+<p>所以设置为<code>X-Original-Url: /setlang\es</code>	</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081501661.png" alt="image-20231008150107575" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008150107575</span></div></div>
+
+<p>这样一来，只要我们将主页进行缓存投毒，就可以强制让任何用户使用es翻译，从而进行弹窗</p>
+<p>先给访问json数据的url进行投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509207.png" alt="image-20231008150911112" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008150911112</span></div></div>
+
+<p>再使用<code>X-Original-URL: /setlang\es</code>给<code>/</code>投毒</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509858.png" alt="image-20231008150943764" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008150943764</span></div></div>
+
+<p>然后访问主页，就会自动切换为es并进行dom xss</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081510859.png" alt="image-20231008151028699" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231008151028699</span></div></div>
+
+<h2 id="通过非缓存键的查询字符串造成-Web-缓存中毒"><a href="#通过非缓存键的查询字符串造成-Web-缓存中毒" class="headerlink" title="通过非缓存键的查询字符串造成 Web 缓存中毒"></a>通过非缓存键的查询字符串造成 Web 缓存中毒</h2><blockquote>
+<p>该实验很容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为查询字符串不被视为缓存键。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害主页。</p>
+</blockquote>
+<p>输入任意查询字符可以发现任然是获取的缓存，可以说明查询字符串不是缓存键</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142116026.png" alt="image-20231014211039977" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014211039977</span></div></div>
+
+<p>方便测试，我们需要找到一个缓存破坏器</p>
+<p>我通过遍历headers的方式可以发现这个都可以用来作为缓存破坏器</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142119374.png" alt="image-20231014211903294" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014211903294</span></div></div>
+
+<p>我就使用<code>Origin</code>了</p>
+<p>可以发现，查询字符串的内容会对页面造成影响</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142130673.png" alt="image-20231014213054575" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014213054575</span></div></div>
+
+<p>如果是在link标签里直接xss的话，用户就只有通过按组合键才能触发</p>
+<blockquote>
+<ul>
+<li>在 Windows 上：<code>ALT+SHIFT+X</code></li>
+<li>在 MacOS 上：<code>CTRL+ALT+X</code></li>
+<li>在 Linux 上：<code>Alt+X</code></li>
+</ul>
+</blockquote>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141005.png" alt="image-20231014214137915" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214137915</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141238.png" alt="image-20231014214130147" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214130147</span></div></div>
+
+<p>但是可以逃逸出link标签</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144175.png" alt="image-20231014214439069" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214439069</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144432.png" alt="image-20231014214452344" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214452344</span></div></div>
+
+<p>把origin删除后，在进行投毒，就能让受害者弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145340.png" alt="image-20231014214539231" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214539231</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145270.png" alt="image-20231014214551177" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231014214551177</span></div></div>
+
+<h2 id="通过非缓存键的查询参数造成-Web-缓存中毒"><a href="#通过非缓存键的查询参数造成-Web-缓存中毒" class="headerlink" title="通过非缓存键的查询参数造成 Web 缓存中毒"></a>通过非缓存键的查询参数造成 Web 缓存中毒</h2><blockquote>
+<p>此实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为它从缓存密钥中排除了某个参数。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先用param miner猜测一下查询参数名</p>
+<p>找到一个<code>utm_content</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152111143.png" alt="image-20231015211153054" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231015211153054</span></div></div>
+
+<p>带上这个参数访问，可以发现返回的是缓存内容，所以说明这个参数名不是缓存键</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152113282.png" alt="image-20231015211343191" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231015211343191</span></div></div>
+
+<p>但是如果是其他参数的话，就是缓存键了</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152114292.png" alt="image-20231015211405194" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231015211405194</span></div></div>
+
+<p>利用非缓存键的参数名进行缓存投毒</p>
+<p><code>/?utm_content=%27/&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;link+href=%27</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152116722.png" alt="image-20231015211655628" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231015211655628</span></div></div>
+
+<p>然后访问主页就会造成弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152117062.png" alt="image-20231015211718969" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231015211718969</span></div></div>
+
+<h2 id="隐藏参数"><a href="#隐藏参数" class="headerlink" title="隐藏参数"></a>隐藏参数</h2><blockquote>
+<p>此实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为它从缓存密钥中排除了某个参数。缓存和后端的参数解析也不一致。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用参数隐藏技术，通过在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先可以看到，查询字符串以及参数都在缓存键内</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649053.png" alt="image-20231021164902908" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021164902908</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649699.png" alt="image-20231021164914590" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021164914590</span></div></div>
+
+<p>但是可能会有utm参数不在缓存键内，从而当做我们的缓存破坏器</p>
+<p>【utm参数就是用来分析推广数据的】</p>
+<p>用param miner来找此参数名，emmmm，没扫到，直接试试<code>utm_content</code>，发现确实不是缓存键(dog</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211704004.png" alt="image-20231021170413898" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021170413898</span></div></div>
+
+<p>而且能被缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211744529.png" alt="image-20231021174420436" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021174420436</span></div></div>
+
+<p>但是如果直接尝试利用这个参数进行缓存投毒造成xss的话，他会报错</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211743454.png" alt="image-20231021174341351" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021174341351</span></div></div>
+
+<p>带上<code>utm_content</code>参数后，再用parma miner检测一下隐藏参数，前提是知道这个网站是用Ruby on Rails 框架搭建的</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211745269.png" alt="image-20231021174523177" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021174523177</span></div></div>
+
+<p>扫到了参数隐藏</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211749891.png" alt="image-20231021174955790" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021174955790</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211755095.png" alt="image-20231021175513997" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021175513997</span></div></div>
+
+<p>如何理解这里是存在隐藏参数？</p>
+<p>首先看使用utm_content参数去访问一个页面的响应</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211757157.png" alt="image-20231021175710061" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021175710061</span></div></div>
+
+<p>在响应包里，有个Set-Cookie头，这个是后端返回来的值，且值为我们传进去的utm_content的值</p>
+<p>再来看看检测的结果</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211758051.png" fancybox="true"/></div></div>
+
+<p>可以看到，后端返回的<code>Set-Cookie</code>的值不是<code>q</code>，而是<code>akzldka</code>。这个就是ruby on rails的一个特性，会将<code>;</code>当做分割符号，同时如果存在多个相同的参数名，最终会取最后一个参数的值。所以这里最终向后端传入的<code>utm_content</code>的值就为<code>akzldka</code>。最重要的是，<code>utm_content</code>还不是缓存键</p>
+<p>再来看响应包里有个<code>/js/geolocate.js?callback=setCountryCookie</code></p>
+<p>发现可以通过修改<code>callback</code>的值来修改返回的内容</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211802248.png" alt="image-20231021180235144" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021180235144</span></div></div>
+
+<p>所以接下来，我们要做的就是，利用缓存器和后端的解析差异，进行缓存投毒，修改<code>/js/geolocate.js?callback=</code>返回的内容</p>
+<p>payload如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/js/geolocate.js?callback=setCountryCookie&amp;utm_content=1;callback=alert(1)</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211805053.png" alt="image-20231021180533961" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021180533961</span></div></div>
+
+<p>当再次访问<code>/js/geolocate.js?callback=setCountryCookie</code>时，就会命中缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211806304.png" alt="image-20231021180601211" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021180601211</span></div></div>
+
+<p>原理其实就是缓冲器看到的和后端看到的不一样，从而造成的隐藏参数缓存投毒。</p>
+<p>需要修改一下payload，否则弹不了窗</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/js/geolocate.js?callback=setCountryCookie&amp;utm_content=1aaa;callback=alert(1)%3bsetCountryCookie</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211822872.png" alt="image-20231021182247781" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021182247781</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823389.png" alt="image-20231021182324320" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021182324320</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823549.png" alt="image-20231021182315460" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021182315460</span></div></div>
+
+<h2 id="通过Fat-GET-请求造成-Web-缓存中毒"><a href="#通过Fat-GET-请求造成-Web-缓存中毒" class="headerlink" title="通过Fat GET 请求造成 Web 缓存中毒"></a>通过Fat GET 请求造成 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。它接受<code>GET</code>且具有body的请求，但不将body包含在缓存键中。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>有个callback参数，可以设置响应包</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015129.png" alt="image-20231021201503019" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021201503019</span></div></div>
+
+<p>响应包可控</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015410.png" alt="image-20231021201519311" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021201519311</span></div></div>
+
+<p>同时他还接受body里的值，且优先级高于get查询参数里的</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017199.png" alt="image-20231021201728097" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021201728097</span></div></div>
+
+<p>再访问<code>/js/geolocate.js?callback=setCountryCookie</code>后，会命中缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017076.png" alt="image-20231021201753983" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021201753983</span></div></div>
+
+<p>从而造成xss</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212018043.png" alt="image-20231021201816939" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021201816939</span></div></div>
+
+<h2 id="URL-规范化"><a href="#URL-规范化" class="headerlink" title="URL 规范化"></a>URL 规范化</h2><blockquote>
+<p>此实验室包含一个 XSS 漏洞，由于浏览器 URL 编码，该漏洞无法直接利用。</p>
+<p>要解决该实验室问题，请利用缓存的规范化过程来利用此漏洞。<code>alert(1)</code>找到 XSS 漏洞并注入将在受害者浏览器中执行的有效负载。然后，将恶意 URL 传递给受害者。</p>
+</blockquote>
+<p>访问的路径会在响应包中有显示</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212101296.png" alt="image-20231021210117198" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210117198</span></div></div>
+
+<p>如果构造如下payload，就会造成xss</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/raaa&lt;p&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212102283.png" alt="image-20231021210230179" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210230179</span></div></div>
+
+<p>show response in browers</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212103341.png" alt="image-20231021210315254" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210315254</span></div></div>
+
+<p>但是，如果我们直接访问这个url的话，浏览器会自动进行url编码，导致这个xss无法成功</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212104925.png" alt="image-20231021210420837" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210420837</span></div></div>
+
+<p>但是这里其实还是可以xss的，因为url编码是浏览器做的事情，缓存器将url编码前和url编码后的查询字符串看做是同一个缓存键，所以，即使浏览器会将其编码再访问，获得的响应还是url编码前的内容</p>
+<p>如</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107480.png" alt="image-20231021210735383" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210735383</span></div></div>
+
+<p>编码后的</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107090.png" alt="image-20231021210748003" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210748003</span></div></div>
+
+<p>这个时候再访问相同的链接，也可以造成xss</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212108458.png" alt="image-20231021210843367" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231021210843367</span></div></div>
+
+<p>然后先投毒，再给受害者发送<code>http://0ad300140309374d8133937e001a0080.web-security-academy.net/raaa%3Cp%3E%3Cscript%3Ealert(1)%3C/script%3E%3C/p%3E</code>即可成功解决lab</p>
+<h2 id="缓存密钥注入"><a href="#缓存密钥注入" class="headerlink" title="缓存密钥注入"></a>缓存密钥注入</h2><blockquote>
+<p>该实验室包含多个独立漏洞，包括缓存密钥注入。用户经常使用 Chrome 访问该网站的主页。</p>
+<p>要解决该实验室问题，请结合漏洞<code>alert(1)</code>在受害者的浏览器中执行。请注意，您需要使用<code>Pragma: x-get-cache-key</code>标头才能完成本实验。</p>
+</blockquote>
+<p>访问<code>/</code>会看到他会302跳转</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050281.png" alt="image-20231022105002131" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105002131</span></div></div>
+
+<p>跳转之后他会再次302跳转，只是会在<code>?</code>前添加一个<code>/</code>，且会命中缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050993.png" alt="image-20231022105033899" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105033899</span></div></div>
+
+<p>同时会在页面显示，但是这里的页面是无缓存的。所以如果要通过影响响应包的内容，只有通过第二次跳转来控制</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221051805.png" alt="image-20231022105153694" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105153694</span></div></div>
+
+<p>而且可以知道的是，<code>?lang=en</code>是在缓存键里的。那么就需要找一个非缓存键的参数</p>
+<p>用param miner扫描一下，又是老熟人:<code>utm_content</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221054651.png" alt="image-20231022105408556" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105408556</span></div></div>
+
+<p>将其添加到<code>/login?lang=en</code>后面</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055875.png" alt="image-20231022105532770" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105532770</span></div></div>
+
+<p>再次访问，可以命中缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055680.png" alt="image-20231022105557587" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022105557587</span></div></div>
+
+<p>但是如果我想通过这种方式来进行xss的话，会有waf拦截</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105340.png" alt="image-20231022110548238" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022110548238</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105901.png" alt="image-20231022110552816" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022110552816</span></div></div>
+
+<p>所以得换种方式了</p>
+<p>再看</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221106763.png" alt="image-20231022110626659" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022110626659</span></div></div>
+
+<p>同时修改lang的值也会改变这里src的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221130926.png" alt="image-20231022113037825" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022113037825</span></div></div>
+
+<p>如果将cors的值修改为1，那么就会使用origin的值</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221131644.png" alt="image-20231022113148548" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022113148548</span></div></div>
+
+<p>而且从响应包里的<code>X-Cache-Key</code>可以得出存在缓存键注入</p>
+<p>即，访问<code>/js/localize.js?lang=enaa?&amp;cors=1$$origin=123</code>，会命中相同的缓存</p>
+<p>修改origin的值，利用CRLF修改响应包，来造成xss</p>
+<p>这里要注意控制$$的数量，才能成功命中缓存</p>
+<p>经过测试，查询里的两个<code>$</code>对应着origin里的四个<code>$</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Origin: 123%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218211.png" alt="image-20231022121809114" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022121809114</span></div></div>
+
+<p>再访问<code>/js/localize.js?lang=en?cors=1$$origin=x%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)$$</code>可以命中相同的缓存</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218752.png" alt="image-20231022121819664" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022121819664</span></div></div>
+
+<p>为了让cors的值为1,可以在后面加上<code>#</code>来阻隔后面固定添加的<code>cors=0</code></p>
+<p>利用这一点，来进行xss</p>
+<p>现在利用点弄清楚了，需要回到开头，对<code>/login?lang=en</code>进行缓存投毒。在前面我们知道，可以修改参数lang后面的值，来修改对这个js文件的引入</p>
+<p>所以只需要发送一下请求包，即可对<code>/login?lang=en</code>进行投毒</p>
+<p>需要进行一次url编码</p>
+<p>%23就是<code>#</code>是为了让页面自动添加的cors&#x3D;0失效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /login?lang=en?utm_content=x%26cors=1$$origin=x%250d%250aContent-Length:%25208%250d%250a%250d%250aalert(1)$$%23</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221232571.png" alt="image-20231022123228468" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022123228468</span></div></div>
+
+<p>所以攻击步骤就是，先发包对js文件进行投毒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /js/localize.js?lang=en?utm_content=z&amp;cors=1 HTTP/2</span><br><span class="line">Host: 0a62005e04b2c01c82ddcef500520093.web-security-academy.net</span><br><span class="line">Origin: x%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)$$$$</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221220466.png" alt="image-20231022122014374" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022122014374</span></div></div>
+
+<p>然后再发包对<code>/login?lang=en</code>进行投毒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /login?lang=en?utm_content=x%26cors=1$$origin=x%250d%250aContent-Length:%25208%250d%250a%250d%250aalert(1)$$%23</span><br></pre></td></tr></table></figure>
+
+<p>再访问主页的时候，就会弹窗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235210.png" alt="image-20231022123501100" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022123501100</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235247.png" alt="image-20231022123517154" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022123517154</span></div></div>
+
+<h2 id="内部缓存中毒"><a href="#内部缓存中毒" class="headerlink" title="内部缓存中毒"></a>内部缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。它使用多层缓存。用户经常使用 Chrome 访问该网站的主页。</p>
+<p>要解决该实验室问题，请毒害内部缓存，以便主页<code>alert(document.cookie)</code>在受害者的浏览器中执行。</p>
+</blockquote>
+<p>添加<code>X-Forwarded-Host: exploit-0a0100df03f51a66804607ac011b004a.exploit-server.net</code>标头的时候，响应包里对静态资源文件的请求会发发生变化</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221640576.png" alt="image-20231022163857478" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022163857478</span></div></div>
+
+<p>但是对<code>/js/geolocate.js?callback=loadCountry</code>的请求不会变</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221643521.png" alt="image-20231022164305421" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022164305421</span></div></div>
+
+<p>多次发送，直到他内部缓存的此连接被exploit的url覆盖</p>
+<p>经过多次发送后，对<code>/js/geolocate.js?callback=loadCountry</code>的请求也被覆盖</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221646646.png" alt="image-20231022164655552" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022164655552</span></div></div>
+
+<p>然后修改一下exploit服务器上的返回内容，进行xss</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221652633.png" alt="image-20231022165246548" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022165246548</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221753370.png" alt="image-20231022175346277" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231022175346277</span></div></div>
+
+<p>如果一个靶机一直不行的话，就新开个靶机再这样尝试即可</p>
+
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/10/19/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/privilege/">春秋云镜Privilege-wp</a></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="v2ish1yan/giscus" data-repo-id="R_kgDOJ7K8Jg" data-category="Announcements" data-category-id="DIC_kwDOJ7K8Js4CX3Xt" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
