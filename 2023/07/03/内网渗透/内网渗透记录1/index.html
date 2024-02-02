@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="内网信息搜集" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            内网信息搜集
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90"><span class="post-toc-text">查看当前用户、权限</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看网络配置信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看主机路由信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看操作系统信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看端口连接信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E4%BC%9A%E8%AF%9D%E5%88%97%E8%A1%A8"><span class="post-toc-text">查看当前会话列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看当前网络共享信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB"><span class="post-toc-text">查看已连接的网络共享</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看当前进程信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看当前服务信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看计划任务信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看自启动程序信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看应用安装信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E8%A1%A5%E4%B8%81%E5%AE%89%E8%A3%85%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看系统补丁安装信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7%E7%BB%84"><span class="post-toc-text">查看用户组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%91%98%E7%BB%84"><span class="post-toc-text">查看本地管理员组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%94%A8%E6%88%B7%E5%B9%B6%E5%8A%A0%E5%85%A5%E7%AE%A1%E7%90%86%E5%91%98%E7%BB%84"><span class="post-toc-text">创建新用户并加入管理员组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%9A%84%E7%94%A8%E6%88%B7"><span class="post-toc-text">查看当前登录的用户</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%9F%9F%E7%8E%AF%E5%A2%83"><span class="post-toc-text">判断是否存在域环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查看域用户信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%9F%9F%E7%94%A8%E6%88%B7%E7%BB%84%E4%BF%A1%E6%81%AF"><span class="post-toc-text">查询域用户组信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E5%86%85%E5%AF%86%E7%A0%81%E7%AD%96%E7%95%A5"><span class="post-toc-text">查看域内密码策略</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8%E5%88%97%E8%A1%A8"><span class="post-toc-text">查看域控制器列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%BB%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="post-toc-text">查看主域控制器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9A%E4%BD%8D%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="post-toc-text">定位域控制器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%A1%E4%BB%BB%E5%85%B3%E7%B3%BB"><span class="post-toc-text">查看信任关系</span></a></li></ol>
+            
+        
+        <h2 id="查看当前用户、权限"><a href="#查看当前用户、权限" class="headerlink" title="查看当前用户、权限"></a>查看当前用户、权限</h2><p>whoami &#x2F;all</p>
+<h2 id="查看网络配置信息"><a href="#查看网络配置信息" class="headerlink" title="查看网络配置信息"></a>查看网络配置信息</h2><p>ipconfig &#x2F;all</p>
+<h2 id="查看主机路由信息"><a href="#查看主机路由信息" class="headerlink" title="查看主机路由信息"></a>查看主机路由信息</h2><p>route print</p>
+<h2 id="查看操作系统信息"><a href="#查看操作系统信息" class="headerlink" title="查看操作系统信息"></a>查看操作系统信息</h2><p>systeminfo</p>
+<p>systeminfo | findstr &#x2F;B &#x2F;C:”OS Name” &#x2F;C:”OS version”</p>
+<p>systeminfo | findstr &#x2F;B &#x2F;C:”OS 名称” &#x2F;C:”OS 版本”</p>
+<h2 id="查看端口连接信息"><a href="#查看端口连接信息" class="headerlink" title="查看端口连接信息"></a>查看端口连接信息</h2><p>netstat -ano</p>
+<h2 id="查看当前会话列表"><a href="#查看当前会话列表" class="headerlink" title="查看当前会话列表"></a>查看当前会话列表</h2><p>net session</p>
+<h2 id="查看当前网络共享信息"><a href="#查看当前网络共享信息" class="headerlink" title="查看当前网络共享信息"></a>查看当前网络共享信息</h2><p>net share</p>
+<h2 id="查看已连接的网络共享"><a href="#查看已连接的网络共享" class="headerlink" title="查看已连接的网络共享"></a>查看已连接的网络共享</h2><p>net use</p>
+<h2 id="查看当前进程信息"><a href="#查看当前进程信息" class="headerlink" title="查看当前进程信息"></a>查看当前进程信息</h2><p>tasklist </p>
+<p>tasklis &#x2F;SVC</p>
+<p>可以用来对目标主机的杀软进行识别</p>
+<p>通过wmic命令,查询主机进程信息并过滤出进程的路径名称和pid</p>
+<p>wmic process get Name, ProcessId, ExecutablePath</p>
+<p>查看指定进程的路径xinx</p>
+<p>wmic process where Name&#x3D;”msdtc.exe” get ExecutablePath</p>
+<h2 id="查看当前服务信息"><a href="#查看当前服务信息" class="headerlink" title="查看当前服务信息"></a>查看当前服务信息</h2><p>wmic service get Caption,Name,PathName,StartName,State</p>
+<p>wmic service where Name&#x3D;”backdoor” get Caption,PathName,State</p>
+<h2 id="查看计划任务信息"><a href="#查看计划任务信息" class="headerlink" title="查看计划任务信息"></a>查看计划任务信息</h2><p>schtasks &#x2F;query &#x2F;v &#x2F;fo list</p>
+<h2 id="查看自启动程序信息"><a href="#查看自启动程序信息" class="headerlink" title="查看自启动程序信息"></a>查看自启动程序信息</h2><p>wmic startup get Caption,Command,Location,User</p>
+<h2 id="查看应用安装信息"><a href="#查看应用安装信息" class="headerlink" title="查看应用安装信息"></a>查看应用安装信息</h2><p>wmic product get Caption,Version</p>
+<h2 id="查看系统补丁安装信息"><a href="#查看系统补丁安装信息" class="headerlink" title="查看系统补丁安装信息"></a>查看系统补丁安装信息</h2><p>wmic qfe get Caption,CSName,Description,HotFixID,InstalledOn</p>
+<h2 id="查看用户组"><a href="#查看用户组" class="headerlink" title="查看用户组"></a>查看用户组</h2><p>net user<br>net user <username></p>
+<h2 id="查看本地管理员组"><a href="#查看本地管理员组" class="headerlink" title="查看本地管理员组"></a>查看本地管理员组</h2><p>net localgroup administrators</p>
+<h2 id="创建新用户并加入管理员组"><a href="#创建新用户并加入管理员组" class="headerlink" title="创建新用户并加入管理员组"></a>创建新用户并加入管理员组</h2><p>net user <username> <password> &#x2F;add</p>
+<p>net localgroup administrators <username> &#x2F;add</p>
+<h2 id="查看当前登录的用户"><a href="#查看当前登录的用户" class="headerlink" title="查看当前登录的用户"></a>查看当前登录的用户</h2><p>query user</p>
+<h2 id="判断是否存在域环境"><a href="#判断是否存在域环境" class="headerlink" title="判断是否存在域环境"></a>判断是否存在域环境</h2><p>net config workstation</p>
+<h2 id="查看域用户信息"><a href="#查看域用户信息" class="headerlink" title="查看域用户信息"></a>查看域用户信息</h2><p>net user &#x2F;domain</p>
+<p>net user <username> &#x2F;domain</p>
+<p>获取所有用户的sid，所属域和用户描述信息</p>
+<p>wmic useraccount get Caption,Domain,Description</p>
+<p>只有域用户才能进行域内查询。本地计算机用户除非提升为本地系统权限，否则只能进行本机查询，无法查询域内信息</p>
+<h2 id="查询域用户组信息"><a href="#查询域用户组信息" class="headerlink" title="查询域用户组信息"></a>查询域用户组信息</h2><p>net group &#x2F;domain</p>
+<p>查询管理员组</p>
+<p>net group “Domain Admins” &#x2F;domina</p>
+<p>查询域成员主机组</p>
+<p>net group “Domain Computers” &#x2F;domain</p>
+<p>查询域用户组</p>
+<p>net group “Domain Users” &#x2F;domain</p>
+<p>查询企业系统管理员组</p>
+<p>net group “Enterprise Admins” &#x2F;domain</p>
+<blockquote>
+<p>默认情况下，domain admins和enterprise admins组中的用户对域内的所以域控制器和域成员主机有完全的控制权限</p>
+<p>enterprise admins是通用组</p>
+<p>domain admins是一个全局组</p>
+</blockquote>
+<h2 id="查看域内密码策略"><a href="#查看域内密码策略" class="headerlink" title="查看域内密码策略"></a>查看域内密码策略</h2><p>net accounts &#x2F;domain</p>
+<h2 id="查看域控制器列表"><a href="#查看域控制器列表" class="headerlink" title="查看域控制器列表"></a>查看域控制器列表</h2><p>net group “Domain Controllers” &#x2F;domain</p>
+<p>查看指定域内的域控制器主机</p>
+<p>nltest &#x2F;DCLIST:&lt;域名&gt;</p>
+<h2 id="查看主域控制器"><a href="#查看主域控制器" class="headerlink" title="查看主域控制器"></a>查看主域控制器</h2><p>域环境中，主域控制器会同时被用作时间服务器，使域内所以计算机时钟同步</p>
+<p>可以通过这个来获得主域控制器</p>
+<p>net time &#x2F;domain</p>
+<h2 id="定位域控制器"><a href="#定位域控制器" class="headerlink" title="定位域控制器"></a>定位域控制器</h2><p>对目标主机进行ping,可以得到目标主机在内网中的ip地址</p>
+<p>ping DC.hack-my.com #DC是域hack-my.com的域控制器主机名</p>
+<h2 id="查看信任关系"><a href="#查看信任关系" class="headerlink" title="查看信任关系"></a>查看信任关系</h2><p>域信任用于多用户环境中的跨域资源的共享，一般情况下，一个域的用户只能访问本域内的资源，无法访问其他域的资源，而想要不同域之间实现互访就需要建立域信任</p>
+<p>nltest &#x2F;domain_trusts</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/'>
+                            信息搜集
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/'>
+                            内网渗透
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

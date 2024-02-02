@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Oauth授权类型" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Oauth授权类型
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-OAuth-%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="post-toc-text">什么是 OAuth 授权类型？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OAuth-%E8%8C%83%E5%9B%B4%EF%BC%88scopes%EF%BC%89"><span class="post-toc-text">OAuth 范围（scopes）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Authorization-code%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">Authorization code授权类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Authorization-request"><span class="post-toc-text">1. Authorization request</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-User-login-and-consent"><span class="post-toc-text">2. User login and consent</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Authorization-code-grant"><span class="post-toc-text">3. Authorization code grant</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-Access-token-request"><span class="post-toc-text">4. Access token request</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-Access-token-grant"><span class="post-toc-text">5. Access token grant</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-API-call"><span class="post-toc-text">6. API call</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-Resource-grant"><span class="post-toc-text">7. Resource grant</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Implicit-%E7%AE%80%E5%8C%96-%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">Implicit(简化) 授权类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Authorization-request-1"><span class="post-toc-text">1. Authorization request</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-User-login-and-consent-1"><span class="post-toc-text">2. User login and consent</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Access-token-grant"><span class="post-toc-text">3. Access token grant</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-API-call"><span class="post-toc-text">4. API call</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-Resource-grant"><span class="post-toc-text">5. Resource grant</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <h2 id="什么是-OAuth-授权类型？"><a href="#什么是-OAuth-授权类型？" class="headerlink" title="什么是 OAuth 授权类型？"></a>什么是 OAuth 授权类型？</h2><p>OAuth 授权类型决定了 OAuth 过程中涉及的步骤的确切顺序。授权类型还会影响客户端应用程序在每个阶段与 OAuth 服务通信的方式，包括访问令牌本身的发送方式。因此，授权类型通常被称为“OAuth 流程”。</p>
+<p>在客户端应用程序可以启动相应的流程之前，必须将 OAuth 服务配置为支持特定的授权类型。客户端应用程序在<strong>发送给 OAuth 服务的初始授权</strong>请求中<strong>指定要使用的授权类型</strong>。</p>
+<p>有几种不同的授权类型，每种都有不同程度的复杂性和安全考虑。我们将重点关注“authentication code”和“(隐式) implicit”授权类型，因为它们是迄今为止最常见的</p>
+<h2 id="OAuth-范围（scopes）"><a href="#OAuth-范围（scopes）" class="headerlink" title="OAuth 范围（scopes）"></a>OAuth 范围（scopes）</h2><p>对于任何 OAuth 授权类型，客户端应用程序都必须指定它想要访问哪些数据以及它想要执行哪些操作。它使用授权请求的范围参数来实现这一点，发送到 OAuth 服务。</p>
+<p>对于基本的OAuth，客户端应用程序可以请求访问的范围对于每个OAuth服务都是唯一的。由于<strong>作用域</strong>名称只是任意文本字符串，因此格式在提供者之间可能会有很大的差异。有些甚至使用完整的URI作为作用域名称，类似于REST API端点。例如，在请求读取用户联系人列表的访问权限时，作用域名称可能采用以下任何形式，具体取决于所使用的OAuth服务：</p>
+<pre><code>scope=contacts
+scope=contacts.read
+scope=contact-list-r
+scope=https://oauth-authorization-server.com/auth/scopes/user/contacts.readonly
+</code></pre>
+<p>当OAuth用于身份验证时，通常会使用标准化的OpenID Connect范围。例如，作用域openid profile将授予客户端应用程序读取用户的预定义基本信息的访问权限，例如他们的电子邮件地址、用户名等等。</p>
+<h2 id="Authorization-code授权类型"><a href="#Authorization-code授权类型" class="headerlink" title="Authorization code授权类型"></a>Authorization code授权类型</h2><p>授权码授权类型初始看起来很复杂，但一旦你熟悉了一些基础知识，它实际上比你想象的要简单。</p>
+<p>简而言之，客户端应用程序和 OAuth 服务首先使用重定向来交换一系列基于浏览器的 HTTP 请求，以启动流程。用户被询问是否同意所请求的访问权限。如果他们同意，客户端应用程序将被授予“授权码”。然后，客户端应用程序将此代码与 OAuth 服务交换以接收“访问令牌”，它们可以使用该令牌进行 API 调用以获取相关用户数据。</p>
+<blockquote>
+<p>所以说，要使用OAUTH的一个基础就是，服务器需要有可以用来提供数据的api咯？</p>
+</blockquote>
+<p>从代码&#x2F;令牌交换开始的所有通信都通过安全的、预配置的后端通道以服务器到服务器的方式发送，并且对终端用户不可见。当客户端应用程序首次向OAuth服务注册时，将建立此安全通道。此时还将生成client_secret，客户端应用程序必须使用它来在发送这些服务器到服务器请求时进行身份验证。</p>
+<p>由于最敏感的数据（访问令牌和用户数据）不会通过浏览器发送，因此这种授权类型可以说是最安全的。服务器端应用程序应尽可能始终使用此授权类型。</p>
+<p>流程图如下</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222118409.jpeg" alt="Flow for the OAuth authorization code grant type"></p>
+<h4 id="1-Authorization-request"><a href="#1-Authorization-request" class="headerlink" title="1. Authorization request"></a>1. Authorization request</h4><p>客户端应用程序向OAuth服务的<code>/authorization</code>端点发送请求，请求访问特定用户数据的权限。请注意，不同提供商之间的端点映射可能会有所不同 </p>
+<p>比如下面的请求</p>
+<pre><code class="bash">GET /authorization?client_id=12345&amp;redirect_uri=https://client-app.com/callback&amp;response_type=code&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1
+Host: oauth-authorization-server.com
+</code></pre>
+<p>他包含了一些比较关键的参数</p>
+<ul>
+<li><pre><code>client_id
+</code></pre>
+<p>必填参数，包含客户端应用程序的唯一标识符。当客户端应用程序在OAuth服务中注册时，将生成此值。</p>
+</li>
+<li><pre><code>redirect_uri
+</code></pre>
+<p>当向客户端应用程序发送授权码时，用户浏览器应重定向到的 URI。这也被称为“回调 URI”或“回调终点”。<strong>许多 OAuth 攻击</strong>都基于利用此参数验证中的缺陷。</p>
+</li>
+<li><pre><code>response_type
+</code></pre>
+<p>确定客户端应用程序期望的响应类型，因此确定它想要启动的流程。对于授权码授权类型，值应为 <code>code</code>。</p>
+</li>
+<li><pre><code>scope
+</code></pre>
+<p>用于指定客户端应用程序想要访问的用户数据子集。请注意，这些可能是OAuth提供者设置的自定义范围或OpenID Connect规范定义的标准范围。</p>
+</li>
+<li><pre><code>state
+</code></pre>
+<p>存储一个唯一的、不可猜测的值，该值与客户端应用程序上的当前会话相关联。OAuth 服务应在响应中返回此确切值，以及授权代码。此参数作为客户端应用程序的 CSRF 令牌，通过确保发往其 &#x2F;callback 端点的请求来自启动 OAuth 流程的同一人来发挥作用。</p>
+</li>
+</ul>
+<h4 id="2-User-login-and-consent"><a href="#2-User-login-and-consent" class="headerlink" title="2. User login and consent"></a>2. User login and consent</h4><p>当授权服务器收到初始请求时，它会将用户重定向到登录页面，在那里他们将被提示使用OAuth提供者的帐户登录。例如，这通常是他们的社交媒体账户。比如qq，微信那些</p>
+<p>然后用户将会看到一个数据列表，这是客户端应用程序想要访问的数据，基于授权请求中定义的范围。用户可以选择是否同意此访问。</p>
+<p>需要注意的是，一旦用户为客户端应用程序批准了给定的范围，只要用户仍然与OAuth服务保持有效会话，此步骤将自动完成。换句话说，第一次用户选择“使用社交媒体登录”时，他们需要手动登录并给予同意，但是如果他们以后再次访问客户端应用程序，他们通常可以通过单击一次登录。</p>
+<h4 id="3-Authorization-code-grant"><a href="#3-Authorization-code-grant" class="headerlink" title="3. Authorization code grant"></a>3. Authorization code grant</h4><p>如果用户同意请求的访问权限，他们的浏览器将被重定向到授权请求中<code>redirect_uri</code>指定的<code>/callback</code>端点。结果生成的GET请求将包含授权代码作为查询参数。根据配置，它还可以发送与授权请求中相同值的<code>state</code>参数。</p>
+<pre><code class="bash">GET /callback?code=a1b2c3d4e5f6g7h8&amp;state=ae13d489bd00e3c24 HTTP/1.1
+Host: client-app.com
+</code></pre>
+<h4 id="4-Access-token-request"><a href="#4-Access-token-request" class="headerlink" title="4. Access token request"></a>4. Access token request</h4><p>一旦客户端应用程序收到授权码，它需要将其交换为访问令牌。为此，它向OAuth服务的&#x2F;token端点发送服务器到服务器的POST请求。从这一点开始，所有通信都在安全的后台通道中进行，因此通常无法被攻击者观察或控制。</p>
+<pre><code class="bash">POST /token HTTP/1.1
+Host: oauth-authorization-server.com
+…
+client_id=12345&amp;client_secret=SECRET&amp;redirect_uri=https://client-app.com/callback&amp;grant_type=authorization_code&amp;code=a1b2c3d4e5f6g7h8
+</code></pre>
+<p>除了client_id和授权码之外，您还会注意到以下新参数：</p>
+<ul>
+<li><pre><code>client_secret
+</code></pre>
+<p>客户端应用程序必须通过包含注册 OAuth 服务时分配的密钥来验证自身身份。</p>
+</li>
+<li><pre><code>grant_type
+</code></pre>
+<p>用于确保新端点知道客户端应用程序想要使用哪种授权类型。在这种情况下，应将其设置为<code>authorization_code</code>。</p>
+</li>
+</ul>
+<h4 id="5-Access-token-grant"><a href="#5-Access-token-grant" class="headerlink" title="5. Access token grant"></a>5. Access token grant</h4><p>OAuth 服务将验证访问令牌请求。如果一切都符合预期，服务器将通过授予客户端应用程序所请求范围的访问令牌来响应。</p>
+<pre><code class="bash">&#123;
+    &quot;access_token&quot;: &quot;z0y9x8w7v6u5&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;expires_in&quot;: 3600,
+    &quot;scope&quot;: &quot;openid profile&quot;,
+    …
+&#125;
+</code></pre>
+<h4 id="6-API-call"><a href="#6-API-call" class="headerlink" title="6. API call"></a>6. API call</h4><p>现在客户端应用有了访问代码，他终于可以从资源服务器调取用户的数据了。为了实现这一点，它会向OAuth服务的&#x2F;userinfo端点发出API调用。</p>
+<p>访问令牌被提交到 Authorization: Bearer 标头中，以证明客户端应用程序有权限访问这些数据。</p>
+<pre><code class="bash">GET /userinfo HTTP/1.1
+Host: oauth-resource-server.com
+Authorization: Bearer z0y9x8w7v6u5
+</code></pre>
+<h4 id="7-Resource-grant"><a href="#7-Resource-grant" class="headerlink" title="7. Resource grant"></a>7. Resource grant</h4><p>资源服务器应该验证令牌是否有效，并且它属于当前的客户端应用程序</p>
+<p>如果是这样，它将通过发送客户端请求的资源，即基于访问令牌的用户数据,来做出响应。</p>
+<pre><code class="bash">&#123;
+    &quot;username&quot;:&quot;carlos&quot;,
+    &quot;email&quot;:&quot;carlos@carlos-montoya.net&quot;,
+    …
+&#125;
+</code></pre>
+<p>客户端应用程序最终可以将这些数据用于其预期的目的。在OAuth身份验证的情况下，它通常将被用作ID来授予用户已认证的会话，从而有效地登录他们。</p>
+<h2 id="Implicit-简化-授权类型"><a href="#Implicit-简化-授权类型" class="headerlink" title="Implicit(简化) 授权类型"></a>Implicit(简化) 授权类型</h2><p>隐式授权类型非常简单。与先获取授权码，再将其交换为访问令牌不同，Implicit授权类型中，客户端应用程序在用户同意后立即收到访问令牌（access token）。</p>
+<p>你可能想知道为什么客户端应用程序不总是使用隐式授权类型。答案相对简单 - 它远不够安全。</p>
+<p>当使用隐式授权类型时，所有通信都通过浏览器重定向进行 - 没有像授权代码流中那样的安全后通道。这意味着敏感访问令牌和用户数据更容易受到潜在攻击的影响。</p>
+<p>隐式授权类型更适用于<strong>单页应用程序</strong>和本地桌面应用程序，这些应用程序不能轻松地将client_secret存储在后端，因此不像使用授权码授权类型那样受益。</p>
+<p>图示</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306222313772.jpeg" alt="Flow for the OAuth implicit grant type"></p>
+<h4 id="1-Authorization-request-1"><a href="#1-Authorization-request-1" class="headerlink" title="1. Authorization request"></a>1. Authorization request</h4><p>隐式流程的开始方式与授权码流程非常相似，只不过response_type参数必须被设置为<code>token</code></p>
+<pre><code class="bash">GET /authorization?client_id=12345&amp;redirect_uri=https://client-app.com/callback&amp;response_type=token&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1
+Host: oauth-authorization-server.com
+</code></pre>
+<h4 id="2-User-login-and-consent-1"><a href="#2-User-login-and-consent-1" class="headerlink" title="2. User login and consent"></a>2. User login and consent</h4><p>用户登录并决定是否同意所请求的权限。这个过程与授权码流程完全相同。</p>
+<h4 id="3-Access-token-grant"><a href="#3-Access-token-grant" class="headerlink" title="3. Access token grant"></a>3. Access token grant</h4><p>如果用户同意请求的访问权限，那么事情就开始有所不同了。OAuth 服务将重定向用户的浏览器到授权请求中指定的 <code>redirect_uri</code>。然而，它不会发送包含授权码的查询参数，而是将<strong>访问令牌</strong>和其他令牌特定数据作为 URL 片段发送。</p>
+<pre><code class="bash">GET /callback#access_token=z0y9x8w7v6u5&amp;token_type=Bearer&amp;expires_in=5000&amp;scope=openid%20profile&amp;state=ae13d489bd00e3c24 HTTP/1.1
+Host: client-app.com
+</code></pre>
+<p>由于访问令牌是作为 URL 片段发送的，因此它永远不会直接发送给客户端应用程序。相反，客户端应用程序必须使用适当的脚本来提取片段并存储它。</p>
+<h4 id="4-API-call"><a href="#4-API-call" class="headerlink" title="4. API call"></a>4. API call</h4><p>一旦客户端应用程序成功从URL片段中提取了访问令牌，它就可以使用它来调用OAuth服务的<code>/userinfo</code>端点进行API调用。与授权码流程不同的是，这也是通过浏览器发生的。</p>
+<pre><code>GET /userinfo HTTP/1.1
+Host: oauth-resource-server.com
+Authorization: Bearer z0y9x8w7v6u
+</code></pre>
+<h4 id="5-Resource-grant"><a href="#5-Resource-grant" class="headerlink" title="5. Resource grant"></a>5. Resource grant</h4><p>资源服务器应验证令牌是否有效，并且是否属于当前客户端应用程序。如果是，则会响应并发送所请求的资源，即基于访问令牌关联的范围的用户数据。</p>
+<pre><code>&#123;
+    &quot;username&quot;:&quot;carlos&quot;,
+    &quot;email&quot;:&quot;carlos@carlos-montoya.net&quot;
+&#125;
+</code></pre>
+<p>客户端应用程序最终可以将这些数据用于其预期的目的。在OAuth身份验证的情况下，它通常被用作一个ID来授予用户一个经过身份验证的会话，有效地将其登录。</p>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Oauth2/'>
+                            Oauth2
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/web%E6%BC%8F%E6%B4%9E/'>
+                            web漏洞
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

