@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="categories" />
+    <meta name="description" content="" />
     <meta name="hexo-theme-A4" content="v1.8.8" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>v2ish1yan`s blog</title>
@@ -23,10 +23,6 @@
 <link rel="stylesheet" href="/css/fonts.css">
  
          <!--注意：首页既不是post也不是page-->
-        
-            
-<link rel="stylesheet" href="/css/waline.css">
-
         
         
         
@@ -109,11 +105,7 @@
             
         
             
-                <li><i>
-                    
-                        <a style="color: #4e7dde;" href="/categories/">分类</a>
-                    
-                </i></li>
+                <li><a href="/categories/">分类</a></li>
             
         
             
@@ -129,81 +121,84 @@
         
                     
                     
-                            <br>
-<span>🔖<i>categories</i></span>
-<ul class="" >
-  
-
-  
-
-  
-
-  
-  
-  
-  
-  
-      
-        <li class="">
-            <a href="/categories/Java">Java</a>
-            <span><i>6</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/iNtiGriTi%20CHALLENGES">iNtiGriTi CHALLENGES</a>
-            <span><i>1</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1">代码审计</a>
-            <span><i>5</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F">内网渗透</a>
-            <span><i>4</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/CVE">CVE</a>
-            <span><i>2</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C">春秋云镜</a>
-            <span><i>8</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/Tryhackme">Tryhackme</a>
-            <span><i>7</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/WP">WP</a>
-            <span><i>16</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA">红日靶场</a>
-            <span><i>1</i></span>
-        </li>
-    
-        <li class="">
-            <a href="/categories/web%E6%BC%8F%E6%B4%9E">web漏洞</a>
-            <span><i>4</i></span>
-        </li>
-    
-    
-
-    
-</ul>
-                    
 
                     
                     
                     
                     <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+
+    <div class="post-md">
+        
+            
+        
+        
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+         
+    </div>
+    
+        
+
+    <div id="waline"></div>
+    <script type="module"  >
+        import { init } from 'https://npm.elemecdn.com/hexo-theme-a4@latest/source/js/waline.mjs'; 
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://a4-talk.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+                search: false, // 禁止表情包搜索
+                reaction: false, // 对文章打分
+                pageview: false, // 浏览量统计
+                comment: false, // 评论数统计
+
+                locale: {
+                    placeholder: '欢迎评论', 
+                    sofa: ''
+                },
+            });
+            
+        }
+        window.addEventListener('DOMContentLoaded', loadWaline);
+    </script>
+
+
+
+    
+    
+    
+    </div>
+
+
+     
+</div>
+
+
+
+                                      
                     
                     
                     <div class="footer">
