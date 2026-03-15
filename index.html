@@ -1,232 +1,190 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    
-    <head>
+<head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
-    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="v2ish1yan 的个人主页，聚焦 Web 安全、代码审计、内网渗透与 CTF 实战。">
+    <meta name="theme-color" content="#07111f">
     <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
-    <title>v2ish1yan`s blog</title>
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>v2ish1yan | Personal Homepage</title>
+</head>
+<body class="home-page">
+    <div class="home-noise" aria-hidden="true"></div>
+    <div class="home-grid" aria-hidden="true"></div>
 
-    
-        
-<link rel="stylesheet" href="/css/highlight/style1.css">
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="/">
+                <span class="brand-mark">&gt;_</span>
+                <span class="brand-name">v2ish1yan</span>
+            </a>
 
-        
-<link rel="stylesheet" href="/css/reset.css">
+            <nav class="site-nav" aria-label="主导航">
+                <a href="/list/">Articles</a>
+                <a href="/tags/">Tags</a>
+                <a href="/categories/">Categories</a>
+                <a href="/about/">About</a>
+                <a href="/friends/">Friends</a>
+            </nav>
+        </header>
 
-        
-<link rel="stylesheet" href="/css/markdown.css">
+        <main class="home-main">
+            <section class="hero-panel">
+                <div class="hero-copy">
+                    <p class="eyebrow">WEB SECURITY / CODE AUDIT / ACTIVE DIRECTORY / CTF</p>
+                    <h1>Keep Thinking.<br>Hack Deeper.</h1>
+                    <p class="hero-text">
+                        我是 <strong>v2ish1yan</strong>，持续记录 Web 安全研究、代码审计、内网渗透和靶场实战。
+                        这里既是公开笔记库，也是长期维护的个人数字据点。
+                    </p>
 
-        
-<link rel="stylesheet" href="/css/fonts.css">
- 
-         <!--注意：首页既不是post也不是page-->
-        
-        
-        
-<link rel="stylesheet" href="/css/ui.css">
- 
-        
-<link rel="stylesheet" href="/css/style.css">
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="/list/">进入文章库</a>
+                        <a class="button button-secondary" href="/about/">查看简介</a>
+                        <a class="button button-secondary" href="https://github.com/v2ish1yan" target="_blank" rel="noreferrer">GitHub</a>
+                    </div>
 
+                    <ul class="stat-strip" aria-label="站点概览">
+                        <li>
+                            <strong>56+</strong>
+                            <span>公开文章</span>
+                        </li>
+                        <li>
+                            <strong>2022-2024</strong>
+                            <span>持续更新记录</span>
+                        </li>
+                        <li>
+                            <strong>4</strong>
+                            <span>核心研究方向</span>
+                        </li>
+                    </ul>
+                </div>
 
-        
-            <!--返回顶部css-->
-            
-<link rel="stylesheet" href="/css/returnToTop.css">
+                <aside class="terminal-card" aria-label="个人状态面板">
+                    <div class="terminal-topbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <pre class="terminal-body"><code>$ whoami
+v2ish1yan
 
-            
-<link rel="stylesheet" href="/css/unicons.css">
+$ cat profile.yml
+role: security researcher
+focus:
+  - web security
+  - code audit
+  - intranet / AD
+  - ctf writeups
+team:
+  - TimelineSec
+  - Megrez
 
-        
-        
-            <!--目录-->
-            
-<link rel="stylesheet" href="/css/toc.css">
+$ echo $CONTACT
+v2ish1yan@gmail.com</code></pre>
+                </aside>
+            </section>
 
-        
-    
+            <section class="content-grid">
+                <article class="panel">
+                    <div class="panel-head">
+                        <span class="panel-tag">01 / RESEARCH</span>
+                        <h2>Research Vector</h2>
+                    </div>
+                    <div class="topic-list">
+                        <div class="topic-item">
+                            <h3>代码审计</h3>
+                            <p>关注 ThinkPHP、PHPCMS、phpyun 等常见框架与 CMS 的漏洞成因和利用链。</p>
+                        </div>
+                        <div class="topic-item">
+                            <h3>Web 漏洞</h3>
+                            <p>围绕 OAuth2、缓存投毒、文件上传、反序列化等攻击面做专题整理。</p>
+                        </div>
+                        <div class="topic-item">
+                            <h3>内网渗透</h3>
+                            <p>记录 Kerberos、AD 域、信息搜集与横向移动相关的实战与笔记。</p>
+                        </div>
+                    </div>
+                </article>
 
-    
-        
-<link rel="stylesheet" href="/css/returnToLastPage.css">
+                <article class="panel">
+                    <div class="panel-head">
+                        <span class="panel-tag">02 / FEATURED</span>
+                        <h2>Featured Writeups</h2>
+                    </div>
+                    <div class="feature-list">
+                        <a class="feature-link" href="/2024/04/16/%E9%9D%B6%E6%9C%BA/THM_Adventure%20Time/">
+                            <span>TryHackMe</span>
+                            <strong>Adventure Time</strong>
+                        </a>
+                        <a class="feature-link" href="/2024/04/04/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/thinkphp5.0.24%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">
+                            <span>Code Audit</span>
+                            <strong>ThinkPHP 5.0.24 反序列化</strong>
+                        </a>
+                        <a class="feature-link" href="/2024/03/01/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Kerberos/">
+                            <span>Intranet</span>
+                            <strong>Kerberos 攻击方式整理</strong>
+                        </a>
+                        <a class="feature-link" href="/2024/03/01/web%E6%BC%8F%E6%B4%9E/OAuth%202.0%20%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E/web%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92/">
+                            <span>Web Security</span>
+                            <strong>Web 缓存投毒靶场</strong>
+                        </a>
+                    </div>
+                </article>
 
-    
-    
-   
-<link rel="stylesheet" href="/css/lightgallery.min.css">
+                <article class="panel">
+                    <div class="panel-head">
+                        <span class="panel-tag">03 / SIGNALS</span>
+                        <h2>Signal Board</h2>
+                    </div>
+                    <ul class="signal-list">
+                        <li>
+                            <span>GitHub</span>
+                            <a href="https://github.com/v2ish1yan" target="_blank" rel="noreferrer">@v2ish1yan</a>
+                        </li>
+                        <li>
+                            <span>Email</span>
+                            <a href="mailto:v2ish1yan@gmail.com">v2ish1yan@gmail.com</a>
+                        </li>
+                        <li>
+                            <span>About</span>
+                            <a href="/about/">个人简介</a>
+                        </li>
+                        <li>
+                            <span>Friends</span>
+                            <a href="/friends/">友情链接</a>
+                        </li>
+                    </ul>
+                </article>
+            </section>
 
+            <section class="panel timeline-panel">
+                <div class="panel-head">
+                    <span class="panel-tag">04 / TIMELINE</span>
+                    <h2>Ops Timeline</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <p>开始公开沉淀比赛 WP 与漏洞学习过程，建立稳定的写作输出节奏。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <p>文章规模扩展到 50+，内容覆盖代码审计、靶机、OAuth2、AD 域与内网渗透。</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">NOW</div>
+                        <p>继续把零散实验、漏洞复现和实战笔记整理成结构化知识库。</p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-<meta name="generator" content="Hexo 7.1.1"></head>
-    
-    
-    <body>
-        
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
-        
-        <div class="paper">
-            
-            
-            
-            
-                <div class="shadow-drop-2-bottom index-main">
-                    <!-- 这个header就是特指index的头部 -->
-
-
-
-    <div style="text-align: left;">
-
-        <a class="index-logo" href="/">v2ish1yan`s blog</a>
-        <div style="margin-bottom: 12px;"> 
-            
-                
-                    首页
-                
-            
-                
-                    &nbsp / &nbsp<a href="/list/">文章</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/tags/">标签</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/categories/">分类</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/about/">关于</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/friends/">友链</a>
-                
-            
-        </div>
+        <footer class="site-footer">
+            <p>Powered by GitHub Pages. Built as a geek-style personal homepage over the existing blog archive.</p>
+        </footer>
     </div>
-
-                    <div class="post-main">
-    
-    
-       
-       
-       
-       
-            <div class="post-md">
-                <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><center>保持思考，迎接挑战</center>
-
-<p><a target="_blank" rel="noopener" href="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401302230491.jpg" class="gallery-item" style="box-shadow: none;"> <img src="https://typero-1312563978.cos.ap-shanghai.myqcloud.com/typero/202401302230491.jpg"></a></p>
-</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-            </div>
-    
-</div> 
-                    <div class="footer">
-    
-</div>
-<!--这是指一条线往下的内容-->
-<div class="footer-last">
-    
-         
-            
-                
-                <span class="index-footer-last-span">Email:<a href="mailto:v2ish1yan@gmail.com" title="v2ish1yan@gmail.com">v2ish1yan@gmail.com</a></span>
-            
-        
-    
-</div>
-
-
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-    <!--目录-->
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
-        
-<script src="/js/toc.js"></script>
-
-    
-
-    
-<script src="/js/randomHeaderContent.js"></script>
-
-    <!--回到顶部按钮-->
-    
-        
-<script src="/js/returnToTop.js"></script>
-
-    
-
-    
-        
-<script src="/js/returnToLastPage.js"></script>
-
-    
-
-
-
-
-
-<script src="/js/lightgallery.min.js"></script>
-
-
-
-                </div>
-            
-            
-                <!-- 回到顶部的按钮-->  
-                <div class="progress-wrap shadow-drop-2-bottom">
-                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                    </svg>
-                </div>
-            
-            
-                <!-- 返回的按钮-->  
-                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
-                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                    </svg>
-                </div>
-            
-    </body>
-
-
-    <!--暗黑模式-->
-    <script src="/js/darkmode-js.min.js"></script>
-    <script>
-        function addDarkmodeWidget() {
-        const options = {
-            bottom: '53px', // default: '32px'
-            right: 'unset', // default: '32px'
-            left: '42px', // default: 'unset'
-            time: '0.3s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: ' #e4e4e4 ',  // default: '#fff'
-            buttonColorDark: '#100f2c',  // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: true, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-    
-        const darkmode = new Darkmode(options);
-        darkmode.showWidget();
-        
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-    </script>
-  
+</body>
 </html>
