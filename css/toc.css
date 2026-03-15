@@ -1,13 +1,15 @@
 
 
 .left-toc-container{ 
-  top: 206px;
-  left: 1px;
-  bottom: 110px;
+  top: 38px;
+  left: 20px;
+  bottom: 40px;
   overflow-y: auto; /* 或者使用 overflow-y: scroll; */
   max-height: -webkit-fill-available; /* 设置最大高度，可以根据需要进行调整 */
   position: fixed;
   scrollbar-width: thin;
+  width: 270px;
+  padding: 12px 8px 12px 0;
 }
 
 .left-toc-container::-webkit-scrollbar {
@@ -15,7 +17,7 @@
 }
 
 .left-toc-container::-webkit-scrollbar-thumb {
-  background-color: white; /* 设置滚动条拖动块的颜色 */
+  background-color: rgba(82, 214, 255, 0.34); /* 设置滚动条拖动块的颜色 */
   border-radius: 5px; /* 设置圆角 */
 }
 
@@ -35,7 +37,7 @@
 
 .bs-docs-sidebar {
   /* top: 235px;
-  left: 1px; */
+  left: 20px; */
 }
 
 /* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
@@ -108,7 +110,7 @@
 /* all links */
 
 .bs-docs-sidebar .nav>li>a {
-  color: #999;
+  color: #6f88a2;
   font-size: 13px;
   font-weight: 400;
   border-left: 4px solid transparent;
@@ -139,10 +141,10 @@
 .bs-docs-sidebar .nav>.active>a,
 .bs-docs-sidebar .nav>li>a:hover,
 .bs-docs-sidebar .nav>li>a:focus {
-  color: #4f7ddf;
+  color: #52d6ff;
   text-decoration: none;
   background-color: transparent;
-  border-left-color: #4f7ddf;
+  border-left-color: #52d6ff;
 }
 
 
